@@ -43,7 +43,17 @@ def log(msg):
     print(msg); LOG.append(msg)
 
 
+class _Raw:  # offline testing: OFFLINE_RAW=<dir of saved pages>
+    def __init__(s, t): s.status_code, s.text = int(t.split("\n", 1)[0]), t.split("\n", 1)[1]
+    def json(s): return json.loads(s.text)
+    def raise_for_status(s):
+        if s.status_code >= 400: raise ValueError(f"HTTP {s.status_code}")
+
+
 def get(url, **kw):
+    if os.environ.get("OFFLINE_RAW"):
+        f = os.path.join(os.environ["OFFLINE_RAW"], re.sub(r"[^A-Za-z0-9]+", "_", url)[-120:] + ".txt")
+        return _Raw(open(f).read())
     r = requests.get(url, headers=UA, timeout=30, **kw)
     if os.environ.get("SAVE_RAW"):  # debugging aid: keep exactly what each source returned
         d = os.path.join(os.path.dirname(os.path.abspath(__file__)), "raw"); os.makedirs(d, exist_ok=True)
@@ -85,7 +95,7 @@ def ival(x):
 def schedule():
     url = f"https://cfbstats.com/{SEASON}/team/{IU_CFBSTATS}/index.html"
     tbs = tables(url)
-    sch = next(t for t in tbs if any("Opponent" in str(c) for c in t.columns))
+    sch = next(t for t in tbs if "Opponent" in [str(c) for c in t.columns])
     games = []
     for _, r in sch.iterrows():
         d, opp, res = str(r.iloc[0]), str(r["Opponent"]), str(r.get("Result", "") or "")
@@ -103,7 +113,8 @@ def schedule():
 
 def fbs_teams():
     t = tables(f"https://cfbstats.com/{SEASON}/leader/national/team/defense/split01/category02/sort01.html")[0]
-    return set(TEAM_FIX.get(str(x), str(x)) for x in t["Team"])
+    col = "Team" if "Team" in t.columns else "Name"
+    return set(TEAM_FIX.get(str(x), str(x)) for x in t[col])
 
 
 # ---------------------------------------------------------------- ESPN gamelog
@@ -203,7 +214,8 @@ def opp_d():
     rank_col, last, ranks = t.columns[0], None, {}
     for _, r in t.iterrows():
         rk = str(r[rank_col]).strip(); last = int(float(rk)) if rk and rk.lower() != "nan" else last
-        ranks[TEAM_FIX.get(str(r["Team"]).strip(), str(r["Team"]).strip())] = last
+        tm = str(r["Team"] if "Team" in t.columns else r["Name"]).strip()
+        ranks[TEAM_FIX.get(tm, tm)] = last
     g = U.load("games.json")
     mine = {x["opp"]: ranks[x["opp"]] for x in g["hoover"]["games"] if x.get("level") == "FBS" and x["opp"] in ranks}
     nxt = (g.get("next_game") or {}).get("opp")
@@ -227,22 +239,23 @@ def espn_player(name):
 @section("heisman")
 def heisman():
     html = get(BETMGM).text
-    m = re.search(r"(?:Updated|updated)[^0-9A-Za-z]{0,20}([A-Z][a-z]+\.? \d{1,2},? \d{4})", html)
-    as_of = dt.datetime.strptime(m.group(1).replace(".", "").replace(",", ""), "%B %d %Y").date().isoformat() if m else dt.datetime.now(ET).date().isoformat()
+    m = re.search(r'dateModified"?\s*:\s*"(\d{4}-\d{2}-\d{2})T', html) or re.search(r'article:modified_time" content="(\d{4}-\d{2}-\d{2})', html)
+    if not m: raise ValueError("BetMGM page has no modified date")
+    as_of = m.group(1)
     t = next(x for x in pd.read_html(io.StringIO(html)) if any("odds" in str(c).lower() for c in x.columns))
-    cols = {str(c).lower(): c for c in t.columns}
-    pcol = next(cols[c] for c in cols if "player" in c or "name" in c)
-    ocol = next(cols[c] for c in cols if "current" in c or c.strip() == "odds")
-    scol = next((cols[c] for c in cols if "school" in c or "team" in c), None)
+    pcol = next(c for c in t.columns if "player" in str(c).lower())
+    ocol = next(c for c in t.columns if "odds" in str(c).lower() and "open" not in str(c).lower())
     h = U.load("heisman.json"); odds, new = {}, {}
     for _, r in t.iterrows():
         o = re.sub(r"[^\d+-]", "", str(r[ocol]))
         if not re.fullmatch(r"[+-]?\d+", o): continue
-        name = str(r[pcol]).strip()
+        mm = re.match(r"\s*(.+?)\s*\(([^)]*)\)\s*$", str(r[pcol]))
+        name, school = (mm.group(1), mm.group(2)) if mm else (str(r[pcol]).strip(), "")
         odds[name] = int(o)
         if name not in h["players"]:
-            _, pos = espn_player(name)
-            new[name] = {"school": str(r[scol]).strip() if scol is not None else "", "pos": pos or "?"}
+            try: _, pos = espn_player(name)
+            except Exception: pos = None
+            new[name] = {"school": school, "pos": pos or "?"}
     if len(odds) < 8: raise ValueError(f"only {len(odds)} odds rows read from BetMGM")
     U.heisman({"book": "BetMGM", "as_of": as_of, "outlet": "BetMGM", "url": BETMGM, "odds": odds, "players": new})
 
@@ -269,9 +282,8 @@ def cohort():
             pid, _ = espn_player(n)
             if not pid: raise ValueError(f"no ESPN id found for {n}")
             q = {"name": n, "school": h["players"][n]["school"], "espn_id": pid}
-        games = espn_gamelog(q["espn_id"], 2)
-        try: games += espn_gamelog(q["espn_id"], 3)
-        except Exception: pass
+        games = espn_gamelog(q["espn_id"])
+        seen = set(); games = [x for x in games if not (x["espn_event"] in seen or seen.add(x["espn_event"]))]
         qbs.append({"name": n, "school": q["school"], "espn_id": q["espn_id"],
                     "games": [{"date": x["date"], "opp": x["opp"], "result": f"{x['wl']} {x['score']}".strip(),
                                **{k: x[k] for k in ("cmp", "att", "yds", "td", "int")}} for x in games]})
