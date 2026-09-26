@@ -536,7 +536,7 @@ $("#oppd-note").textContent = "Opp pass D: " + (M.opp_d_method || "") + " Rows b
     let rows = b.top.map(r => `<tr class="${r.is_hoover?"hv":""}"><td class="rk">${tieMark(r)}</td><td>${r.is_hoover?"★ ":""}${esc(r.name)}<span class="tm">${esc(r.team)}</span></td><td class="val">${fmtV[cat](r.value)}</td></tr>`).join("");
     if (!h.in_top) rows += `<tr class="gap"><td colspan="3"></td></tr><tr class="hv"><td class="rk">${h.rank}</td><td>★ Josh Hoover<span class="tm">Indiana</span></td><td class="val">${fmtV[cat](h.value)}</td></tr>`;
     const pts = hist.map(e => e.ranks[cat]).filter(v=>v!=null);
-    const trendTxt = pts.length>1 ? (()=>{const d = pts[pts.length-2]-pts[pts.length-1]; return d>0?`up ${d} spot${d>1?"s":""} since last week`:d<0?`down ${-d} spot${d<-1?"s":""} since last week`:"unchanged from last week";})() : "trend starts next week";
+    const trendTxt = pts.length>1 ? (()=>{const d = pts[pts.length-2]-pts[pts.length-1]; return d>0?`up ${d} spot${d>1?"s":""} since last week`:d<0?`down ${-d} spot${d<-1?"s":""} since last week`:"unchanged from last week";})() : "weekly rank chart appears after next week's update";
     return `<div class="board">
       <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><h3>${b.label}</h3><span class="rankchip num" title="Hoover's national rank">${h.tied?"T":""}${ord(h.rank)}</span></div>
       <table>${rows}</table>
@@ -551,7 +551,8 @@ function drawSparks(){
     const cat = host.dataset.cat;
     const pts = hist.map((e,i) => ({i, y:e.ranks[cat] ?? null, d:e.through})).filter(p=>p.y!=null);
     host.innerHTML = "";
-    if (!pts.length) return;
+    if (pts.length < 2) return;
+    host.insertAdjacentHTML("beforeend", '<div class="small" style="margin:2px 0 4px">Hoover\'s national rank by week</div>');
     const W = Math.max(240, host.clientWidth || 280), H = 92, pl = 40, pr = 48, pt = 10, pb = 22;
     const n = Math.max(2, hist.length), hi = Math.max(10, Math.ceil(Math.max(...pts.map(p=>p.y))/10)*10);
     const x = i => pl + i/(n-1)*(W-pl-pr), y = r => pt + (r-1)/(hi-1)*(H-pt-pb);
