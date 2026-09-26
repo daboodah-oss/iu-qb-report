@@ -360,14 +360,14 @@
    }
   },
   "2026": {
-   "through": "2026-09-24",
-   "source_url": "https://cfbstats.com/2026/leader/national/team/defense/split01/category02/sort01.html",
+   "through": "2026-09-25",
    "ranks": {
-    "North Texas": 101,
-    "Western Kentucky": 101,
-    "Northwestern": 93,
-    "Rutgers": 110
-   }
+    "North Texas": 104,
+    "Western Kentucky": 104,
+    "Northwestern": 85,
+    "Rutgers": 64
+   },
+   "source_url": "https://cfbstats.com/2026/leader/national/team/defense/split01/category02/sort01.html"
   }
  }
 }

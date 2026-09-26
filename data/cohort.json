@@ -1,31 +1,155 @@
 {
-  "schema_version": 1,
-  "rule": "The four highest-ranked quarterbacks in consensus Heisman odds, other than Hoover. Game logs from ESPN.",
-  "retrieved_at": "2026-09-26T10:05:00-04:00",
-  "qbs": [
-    {"name": "Trinidad Chambliss", "school": "Ole Miss", "espn_id": "4911529",
-      "games": [
-        {"date": "2026-09-06", "opp": "Louisville", "result": "W 41-38", "cmp": 21, "att": 36, "yds": 336, "td": 3, "int": 1},
-        {"date": "2026-09-12", "opp": "Charlotte", "result": "W 41-9", "cmp": 23, "att": 26, "yds": 225, "td": 2, "int": 0},
-        {"date": "2026-09-19", "opp": "LSU", "result": "W 32-24", "cmp": 33, "att": 48, "yds": 363, "td": 2, "int": 1}
-      ]},
-    {"name": "Darian Mensah", "school": "Miami", "espn_id": "5121169",
-      "games": [
-        {"date": "2026-09-04", "opp": "Stanford", "result": "W 45-6", "cmp": 27, "att": 30, "yds": 401, "td": 5, "int": 0},
-        {"date": "2026-09-10", "opp": "Florida A&M", "result": "W 77-7", "cmp": 14, "att": 15, "yds": 252, "td": 3, "int": 0},
-        {"date": "2026-09-18", "opp": "Wake Forest", "result": "W 33-20", "cmp": 30, "att": 34, "yds": 220, "td": 3, "int": 0}
-      ]},
-    {"name": "Arch Manning", "school": "Texas", "espn_id": "4870906",
-      "games": [
-        {"date": "2026-09-05", "opp": "Texas State", "result": "W 59-7", "cmp": 20, "att": 27, "yds": 305, "td": 4, "int": 1},
-        {"date": "2026-09-12", "opp": "Ohio State", "result": "W 24-23", "cmp": 23, "att": 37, "yds": 195, "td": 1, "int": 1},
-        {"date": "2026-09-19", "opp": "UTSA", "result": "W 30-6", "cmp": 16, "att": 32, "yds": 161, "td": 2, "int": 0}
-      ]},
-    {"name": "Kamario Taylor", "school": "Mississippi State", "espn_id": "5177084",
-      "games": [
-        {"date": "2026-09-05", "opp": "Louisiana-Monroe", "result": "W 62-13", "cmp": 22, "att": 34, "yds": 354, "td": 4, "int": 0},
-        {"date": "2026-09-12", "opp": "Minnesota", "result": "W 38-13", "cmp": 16, "att": 22, "yds": 227, "td": 3, "int": 0},
-        {"date": "2026-09-19", "opp": "South Carolina", "result": "W 41-34", "cmp": 18, "att": 26, "yds": 251, "td": 4, "int": 1}
-      ]}
-  ]
+ "schema_version": 1,
+ "rule": "The four highest-ranked quarterbacks in consensus Heisman odds, other than Hoover. Game logs from ESPN.",
+ "retrieved_at": "2026-09-26T18:29+00:00",
+ "qbs": [
+  {
+   "name": "Trinidad Chambliss",
+   "school": "Ole Miss",
+   "espn_id": "4911529",
+   "games": [
+    {
+     "date": "2026-09-06",
+     "opp": "Louisville Cardinals",
+     "result": "W 41-38",
+     "cmp": 21,
+     "att": 36,
+     "yds": 336,
+     "td": 3,
+     "int": 1
+    },
+    {
+     "date": "2026-09-12",
+     "opp": "Charlotte 49ers",
+     "result": "W 41-9",
+     "cmp": 23,
+     "att": 26,
+     "yds": 225,
+     "td": 2,
+     "int": 0
+    },
+    {
+     "date": "2026-09-19",
+     "opp": "LSU Tigers",
+     "result": "W 32-24",
+     "cmp": 33,
+     "att": 48,
+     "yds": 363,
+     "td": 2,
+     "int": 1
+    }
+   ]
+  },
+  {
+   "name": "Darian Mensah",
+   "school": "Miami",
+   "espn_id": "5121169",
+   "games": [
+    {
+     "date": "2026-09-04",
+     "opp": "Stanford Cardinal",
+     "result": "W 45-6",
+     "cmp": 27,
+     "att": 30,
+     "yds": 401,
+     "td": 5,
+     "int": 0
+    },
+    {
+     "date": "2026-09-10",
+     "opp": "Florida A&M Rattlers",
+     "result": "W 77-7",
+     "cmp": 14,
+     "att": 15,
+     "yds": 252,
+     "td": 3,
+     "int": 0
+    },
+    {
+     "date": "2026-09-18",
+     "opp": "Wake Forest Demon Deacons",
+     "result": "W 33-20",
+     "cmp": 30,
+     "att": 34,
+     "yds": 220,
+     "td": 3,
+     "int": 0
+    }
+   ]
+  },
+  {
+   "name": "Kamario Taylor",
+   "school": "Mississippi State",
+   "espn_id": "5177084",
+   "games": [
+    {
+     "date": "2026-09-05",
+     "opp": "UL Monroe Warhawks",
+     "result": "W 62-13",
+     "cmp": 22,
+     "att": 34,
+     "yds": 354,
+     "td": 4,
+     "int": 0
+    },
+    {
+     "date": "2026-09-12",
+     "opp": "Minnesota Golden Gophers",
+     "result": "W 38-13",
+     "cmp": 16,
+     "att": 22,
+     "yds": 227,
+     "td": 3,
+     "int": 0
+    },
+    {
+     "date": "2026-09-19",
+     "opp": "South Carolina Gamecocks",
+     "result": "W 41-34",
+     "cmp": 18,
+     "att": 26,
+     "yds": 251,
+     "td": 4,
+     "int": 1
+    }
+   ]
+  },
+  {
+   "name": "Arch Manning",
+   "school": "Texas",
+   "espn_id": "4870906",
+   "games": [
+    {
+     "date": "2026-09-05",
+     "opp": "Texas State Bobcats",
+     "result": "W 59-7",
+     "cmp": 20,
+     "att": 27,
+     "yds": 305,
+     "td": 4,
+     "int": 1
+    },
+    {
+     "date": "2026-09-12",
+     "opp": "Ohio State Buckeyes",
+     "result": "W 24-23",
+     "cmp": 23,
+     "att": 37,
+     "yds": 195,
+     "td": 1,
+     "int": 1
+    },
+    {
+     "date": "2026-09-19",
+     "opp": "UTSA Roadrunners",
+     "result": "W 30-6",
+     "cmp": 16,
+     "att": 32,
+     "yds": 161,
+     "td": 2,
+     "int": 0
+    }
+   ]
+  }
+ ]
 }
