@@ -1,0 +1,554 @@
+200
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-10344841-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-10344841-1');
+</script>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>cfbstats.com - 2026 Indiana Hoosiers</title>
+<link rel="stylesheet" type="text/css" href="/css/cfbstats.css">
+<link rel="stylesheet" type="text/css" href="/css/leader.css">
+<style type="text/css">
+<!--
+table.team-statistics {width: 80%;}
+table.team-statistics th.statistic-name {width: 50%;}
+table.team-statistics th.team-stat {width: 25%;}
+table.team-statistics th.opponent-stat {width: 25%;}
+table.team-schedule {width: 60%;}
+table.team-schedule th.date {width: 11%;}
+table.team-schedule th.opponent {width: 34%;}
+table.team-schedule th.result {width: 15%;}
+table.team-schedule th.game-time {width: 20%;}
+table.team-schedule th.attendance {width: 20%;}
+table.team-record {width: 30%;}
+table.team-record th.split-name {width: 50%;}
+table.team-record th.w-l-record {width: 50%;}
+-->
+</style>
+
+<!-- START Drew's Adds -->
+<script type="text/javascript" src="/wp-content/custom-php/jquery/jquery.min.js?version=133"></script>
+<script type="text/javascript" src="/wp-content/custom-php/cfbstats.js"></script>
+<link rel="image_src" type="image/jpeg" href="/wp-content/custom-php/images/socialLogo.png" />
+
+<link rel="stylesheet" href="/wp-content/custom-php/bootstrap/css/bootstrap.min.css?version=1">
+<link rel="stylesheet" href="/wp-content/custom-php/bootstrap/css/bootstrap-theme.min.css?version=1">
+<link rel="stylesheet" href="/wp-content/custom-php/cfbstats.css">
+
+<!-- Start DFP SETUP - Header Tags -->
+<script type='text/javascript'>
+    var gptadslots=[], googletag = googletag || {}; googletag.cmd = googletag.cmd || [];
+    (function(){ var gads = document.createElement('script');
+        gads.async = true; gads.type = 'text/javascript';
+        var useSSL = 'https:' == document.location.protocol;
+        gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';
+        var node = document.getElementsByTagName('script')[0];
+        node.parentNode.insertBefore(gads, node);
+    })();
+</script>
+<script type='text/javascript' src='https://img.bnqt.com/lib/js/sdpdfphelper.js'></script>
+<script type='text/javascript'>
+    googletag.cmd.push(function() {
+        googletag.pubads().enableAsyncRendering(); googletag.pubads().enableSingleRequest();
+        googletag.pubads().setTargeting('title', sdpTargeting.title)
+            .setTargeting('targetPaths', sdpTargeting.targetPaths)
+            .setTargeting('fullPath', sdpTargeting.fullPath)
+            .setTargeting('queryStr', sdpTargeting.queryStr)
+            .setTargeting('domainName', sdpTargeting.domainName);
+    });
+</script>
+<!-- DFP SETUP end -->
+<!-- END Drew's Adds -->
+</head>
+
+<body>
+<div id="wrapper">
+<div id="breadcrumb">
+  <span class="label">You are here:</span>
+  <a href="/">Home</a>
+  <span class="separator">&gt;</span>
+  <a href="/2026/team/index.html">2026 Teams</a>
+  <span class="separator">&gt;</span>
+  <span class="selected">Indiana</span>
+</div> <!-- breadcrumb -->
+
+<!-- New navbar, added by Drew -->
+<nav class="navbar navbar-default navbar-static-top navbar-inverse navbar-thin" role="navigation" style="margin-bottom:0px;">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <img src="/wp-content/custom-php/images/sportsourcenav.png" width="210" style="border:0;margin-top:13px"/>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-nav-thin navbar-right">
+        <li><a href="mailto:team@sportsourceanalytics.com">Advertise?</a></li>
+        <li><a href="mailto:feedback@cfbstats.com">Contact Us</a></li>
+        <li><a href="https://twitter.com/SportSourceA"><img src="/wp-content/custom-php/images/twitter_icon_24.png" width="14" style="margin-bottom:5px"/> @SportSourceA</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div id="globalHeader">
+  <a id="imagemap" href="/"></a>
+  <ul id="globalNav">
+    <li><a href="/">Home</a></li>
+    <li><a href="/2026/national/index.html">National</a></li>
+    <li><a href="/2026/conference/index.html">Conferences</a></li>
+    <li><a href="/2026/team/index.html">Teams</a></li>
+    <li><a href="/2026/player/index.html">Players</a></li>
+  </ul>
+</div> <!-- globalHeader -->
+<div id="content">
+<?php include('/home/webadmin/cfbstats.com/html/banner.php'); ?>
+<h1 id="pageTitle">2026 Indiana Hoosiers
+through 09/25/2026</h1>
+<div id="seasons">
+<ul>
+  <li class="selected">2026</li>
+  <li><a href="/2025/team/306/index.html">2025</a></li>
+  <li><a href="/2024/team/306/index.html">2024</a></li>
+  <li><a href="/2023/team/306/index.html">2023</a></li>
+  <li><a href="/2022/team/306/index.html">2022</a></li>
+  <li><a href="/2021/team/306/index.html">2021</a></li>
+  <li><a href="/2020/team/306/index.html">2020</a></li>
+</ul>
+</div>
+<div class="team-statistics">
+<table class="team-statistics">
+  <caption>Team Statistics</caption>
+  <tr>
+    <th scope="col" class="statistic-name"></th>
+    <th scope="col" class="team-stat">Indiana</th>
+    <th scope="col" class="opponent-stat">Opponents</th>
+  </tr>
+  <tr>
+  <td class="statistic-name">Scoring:  Points/Game</td>
+  <td>43.5</td>
+  <td>9.8</td>
+  </tr>
+  <tr class="even-row">
+  <td class="statistic-name">Scoring:  Games - Points</td>
+  <td>4 - 174</td>
+  <td>4 - 39</td>
+  </tr>
+  <tr>
+  <td class="statistic-name row-group">First Downs:  Total</td>
+  <td class="row-group">90</td>
+  <td class="row-group">54</td>
+  </tr>
+  <tr class="even-row">
+  <td class="statistic-name">First Downs:  Rushing - Passing - By Penalty</td>
+  <td>40 - 42 - 8</td>
+  <td>15 - 34 - 5</td>
+  </tr>
+  <tr>
+  <td class="statistic-name row-group">Rushing:  Yards / Attempt</td>
+  <td class="row-group">5.95</td>
+  <td class="row-group">2.17</td>
+  </tr>
+  <tr class="even-row">
+  <td class="statistic-name">Rushing:  Attempts - Yards - TD</td>
+  <td>157 - 934 - 9</td>
+  <td>121 - 263 - 2</td>
+  </tr>
+  <tr>
+  <td class="statistic-name row-group">Passing:  Rating</td>
+  <td class="row-group">209.61</td>
+  <td class="row-group">116.26</td>
+  </tr>
+  <tr class="even-row">
+  <td class="statistic-name">Passing:  Yards</td>
+  <td>921</td>
+  <td>672</td>
+  </tr>
+  <tr>
+  <td class="statistic-name">Passing:  Attempts - Completions - Interceptions - TD</td>
+  <td>86 - 60 - 0 - 13</td>
+  <td>111 - 72 - 3 - 2</td>
+  </tr>
+  <tr class="even-row">
+  <td class="statistic-name row-group">Total Offense:  Yards / Play</td>
+  <td class="row-group">7.63</td>
+  <td class="row-group">4.03</td>
+  </tr>
+  <tr>
+  <td class="statistic-name">Total Offense:  Plays - Yards</td>
+  <td>243 - 1855</td>
+  <td>232 - 935</td>
+  </tr>
+  <tr class="even-row">
+  <td class="statistic-name row-group">Punt Returns:  Yards / Return</td>
+  <td class="row-group">12.00</td>
+  <td class="row-group">11.00</td>
+  </tr>
+  <tr>
+  <td class="statistic-name">Punt Returns:  Returns - Yards - TD</td>
+  <td>6 - 72 - 0</td>
+  <td>1 - 11 - 0</td>
+  </tr>
+  <tr class="even-row">
+  <td class="statistic-name row-group">Kickoff Returns:  Yards / Return</td>
+  <td class="row-group">21.80</td>
+  <td class="row-group">19.00</td>
+  </tr>
+  <tr>
+  <td class="statistic-name">Kickoff Returns:  Returns - Yards - TD</td>
+  <td>10 - 218 - 0</td>
+  <td>6 - 114 - 0</td>
+  </tr>
+  <tr class="even-row">
+  <td class="statistic-name row-group">Punting:  Yards / Punt</td>
+  <td class="row-group">39.00</td>
+  <td class="row-group">42.68</td>
+  </tr>
+  <tr>
+  <td class="statistic-name">Punting:  Punts - Yards</td>
+  <td>8 - 312</td>
+  <td>22 - 939</td>
+  </tr>
+  <tr class="even-row">
+  <td class="statistic-name row-group">Interceptions:  Returns - Yards - TD</td>
+  <td class="row-group">3 - 71 - 1</td>
+  <td class="row-group">0 - 0 - 0</td>
+  </tr>
+  <tr>
+  <td class="statistic-name">Fumbles:  Number - Lost</td>
+  <td>5 - 1</td>
+  <td>7 - 0</td>
+  </tr>
+  <tr class="even-row">
+  <td class="statistic-name">Penalties:  Number - Yards</td>
+  <td>17 - 138</td>
+  <td>27 - 202</td>
+  </tr>
+  <tr>
+  <td class="statistic-name">Time of Possession / Game</td>
+  <td>30:13.00</td>
+  <td>28:32.00</td>
+  </tr>
+  <tr class="even-row">
+  <td class="statistic-name row-group">3rd Down Conversions: Conversion %</td>
+  <td class="row-group">52.27%</td>
+  <td class="row-group">30.19%</td>
+  </tr>
+  <tr>
+  <td class="statistic-name">3rd Down Conversions:  Attempts - Conversions</td>
+  <td>44 - 23</td>
+  <td>53 - 16</td>
+  </tr>
+  <tr class="even-row">
+  <td class="statistic-name row-group">4th Down Conversions: Conversion %</td>
+  <td class="row-group">62.5%</td>
+  <td class="row-group">25%</td>
+  </tr>
+  <tr>
+  <td class="statistic-name">4th Down Conversions:  Attempts - Conversions</td>
+  <td>8 - 5</td>
+  <td>8 - 2</td>
+  </tr>
+  <tr class="even-row">
+  <td class="statistic-name row-group">Red Zone:  Success %</td>
+  <td class="row-group">93.33%</td>
+  <td class="row-group">85.71%</td>
+  </tr>
+  <tr>
+  <td class="statistic-name">Red Zone:  Attempts - Scores</td>
+  <td>15 - 14</td>
+  <td>7 - 6</td>
+  </tr>
+  <tr class="even-row">
+  <td class="statistic-name row-group">Field Goals:  Success %</td>
+  <td class="row-group">80%</td>
+  <td class="row-group">80%</td>
+  </tr>
+  <tr>
+  <td class="statistic-name">Field Goals:  Attempts - Made</td>
+  <td>5 - 4</td>
+  <td>5 - 4</td>
+  </tr>
+  <tr class="even-row">
+  <td class="statistic-name row-group">PAT Kicking:  Success %</td>
+  <td class="row-group">95.7%</td>
+  <td class="row-group">100%</td>
+  </tr>
+  <tr>
+  <td class="statistic-name">PAT Kicking:  Attempts - Made</td>
+  <td>23 - 22</td>
+  <td>3 - 3</td>
+  </tr>
+  <tr class="even-row">
+  <td class="statistic-name row-group">2-Point Conversions:  Success %</td>
+  <td class="row-group">-</td>
+  <td class="row-group">0%</td>
+  </tr>
+  <tr>
+  <td class="statistic-name">2-Point Conversions:  Attempts - Made</td>
+  <td>0 - 0</td>
+  <td>1 - 0</td>
+  </tr>
+</table>
+</div> <!-- team-statistics -->
+<div class="team-schedule">
+<table class="team-schedule">
+  <caption>Team Schedule</caption>
+  <tr>
+    <th scope="col" class="date">Date</th>
+    <th scope="col" class="opponent">Opponent</th>
+    <th scope="col" class="result">Result</th>
+    <th scope="col" class="game-time">Game Time</th>
+    <th scope="col" class="attendance">Attendance</th>
+  </tr>
+  <tr>
+  <td class="date">09/05/26</td>
+  <td class="opponent"><a href="/2026/team/497/index.html">North Texas</a></td>
+  <td class="result">W 52-16</td>
+  <td>3:12</td>
+  <td>54,493</td>
+  </tr>
+  <tr class="even-row">
+  <td class="date">09/12/26</td>
+  <td class="opponent">Howard</td>
+  <td class="result">W 55-0</td>
+  <td>2:48</td>
+  <td>54,376</td>
+  </tr>
+  <tr>
+  <td class="date">09/19/26</td>
+  <td class="opponent"><a href="/2026/team/772/index.html">Western Kentucky</a></td>
+  <td class="result">W 38-0</td>
+  <td>3:15</td>
+  <td>54,695</td>
+  </tr>
+  <tr class="even-row">
+  <td class="date">09/25/26</td>
+  <td class="opponent"><a href="/2026/team/509/index.html">Northwestern</a></td>
+  <td class="result">W 29-23</td>
+  <td>3:31</td>
+  <td>54,593</td>
+  </tr>
+  <tr>
+  <td class="date">10/03/26</td>
+  <td class="opponent">@ <a href="/2026/team/587/index.html">Rutgers</a></td>
+  <td class="result"></td>
+  <td></td>
+  <td></td>
+  </tr>
+  <tr class="even-row">
+  <td class="date">10/10/26</td>
+  <td class="opponent">@ <a href="/2026/team/463/index.html">Nebraska</a></td>
+  <td class="result"></td>
+  <td></td>
+  <td></td>
+  </tr>
+  <tr>
+  <td class="date">10/17/26</td>
+  <td class="opponent">7 <a href="/2026/team/518/index.html">Ohio State</a></td>
+  <td class="result"></td>
+  <td></td>
+  <td></td>
+  </tr>
+  <tr class="even-row">
+  <td class="date">10/24/26</td>
+  <td class="opponent">@ 18 <a href="/2026/team/418/index.html">Michigan</a></td>
+  <td class="result"></td>
+  <td></td>
+  <td></td>
+  </tr>
+  <tr>
+  <td class="date">10/31/26</td>
+  <td class="opponent"><a href="/2026/team/428/index.html">Minnesota</a></td>
+  <td class="result"></td>
+  <td></td>
+  <td></td>
+  </tr>
+  <tr class="even-row">
+  <td class="date">11/14/26</td>
+  <td class="opponent">12 <a href="/2026/team/657/index.html">USC</a></td>
+  <td class="result"></td>
+  <td></td>
+  <td></td>
+  </tr>
+  <tr>
+  <td class="date">11/21/26</td>
+  <td class="opponent">@ <a href="/2026/team/756/index.html">Washington</a></td>
+  <td class="result"></td>
+  <td></td>
+  <td></td>
+  </tr>
+  <tr class="even-row">
+  <td class="date">11/28/26</td>
+  <td class="opponent"><a href="/2026/team/559/index.html">Purdue</a></td>
+  <td class="result"></td>
+  <td></td>
+  <td></td>
+  </tr>
+  <tfoot>
+    <tr>
+      <td class="legend" colspan="5">@ : Away, + : Neutral Site</td>
+    </tr>
+  </tfoot>
+</table>
+</div> <!-- team-schedule -->
+<div class="team-record">
+<table class="team-record">
+  <caption>Team Record</caption>
+  <tr>
+    <th scope="col" class="split-name">Split</th>
+    <th scope="col" class="w-l-record">Record</th>
+  </tr>
+  <tr>
+  <td class="split-name">All Games</td>
+  <td>4-0</td>
+  </tr>
+  <tr class="even-row">
+  <td class="split-name">at Home</td>
+  <td>4-0</td>
+  </tr>
+  <tr>
+  <td class="split-name">on Road/Neutral Site</td>
+  <td>0-0</td>
+  </tr>
+  <tr class="even-row">
+  <td class="split-name">vs. Conference</td>
+  <td>1-0</td>
+  </tr>
+  <tr>
+  <td class="split-name">vs. Non-Conference</td>
+  <td>3-0</td>
+  </tr>
+  <tr class="even-row">
+  <td class="split-name">vs. Ranked (AP)</td>
+  <td>0-0</td>
+  </tr>
+  <tr>
+  <td class="split-name">vs. Unranked (AP)</td>
+  <td>4-0</td>
+  </tr>
+  <tr class="even-row">
+  <td class="split-name">vs. FBS (I-A)</td>
+  <td>3-0</td>
+  </tr>
+  <tr>
+  <td class="split-name">vs. FCS (I-AA)</td>
+  <td>1-0</td>
+  </tr>
+  <tr class="even-row">
+  <td class="split-name">vs. FBS Winning</td>
+  <td>1-0</td>
+  </tr>
+  <tr>
+  <td class="split-name">vs. FBS Non-Winning</td>
+  <td>2-0</td>
+  </tr>
+  <tr class="even-row">
+  <td class="split-name">vs. BCS AQ</td>
+  <td>2-0</td>
+  </tr>
+  <tr>
+  <td class="split-name">vs. BCS non-AQ</td>
+  <td>1-0</td>
+  </tr>
+  <tr class="even-row">
+  <td class="split-name">vs. FBS Power 5</td>
+  <td>1-0</td>
+  </tr>
+  <tr>
+  <td class="split-name">vs. FBS non-Power 5</td>
+  <td>2-0</td>
+  </tr>
+  <tr class="even-row">
+  <td class="split-name">in August/September</td>
+  <td>4-0</td>
+  </tr>
+  <tr>
+  <td class="split-name">in October</td>
+  <td>0-0</td>
+  </tr>
+  <tr class="even-row">
+  <td class="split-name">in November</td>
+  <td>0-0</td>
+  </tr>
+  <tr>
+  <td class="split-name">in December/January</td>
+  <td>0-0</td>
+  </tr>
+</table>
+</div> <!-- team-record -->
+<div id="footer">
+<p>Copyright � 2006-2026 www.cfbstats.com All rights reserved.</p>
+<p><a href="https://www.trackingfootball.com/site-policies/">Terms of Use/Site Policies</a></p>
+<p id="timestamp">09/26/2026 04:01:49</p>
+<!-- SMG_CFBStats/300x250_1a/sports/general -->
+<div id="usmg_ad__general_sports_300x250_1a">
+<script type='text/javascript'>
+googletag.defineSlot('/7103/SMG_CFBStats/300x250_1a/sports/general', [[300,250],[300,600]], 'usmg_ad__general_sports_300x250_1a').addService(googletag.pubads());
+googletag.enableServices();
+googletag.display('usmg_ad__general_sports_300x250_1a');
+</script>
+</div>
+</div> <!-- footer -->
+</div> <!-- content -->
+<div id="leftColumn">
+<div class="section">
+<ul class="">
+  <li class=" selected">Team Home</li>
+  <li class=""><a href="/2026/team/306/roster.html">Roster</a></li>
+  <li class=""><a href="/2026/team/306/rushing/index.html">Rushing</a></li>
+  <li class=""><a href="/2026/team/306/passing/index.html">Passing</a></li>
+  <li class=""><a href="/2026/team/306/receiving/index.html">Receiving</a></li>
+  <li class=""><a href="/2026/team/306/puntreturn/index.html">Punt Returns</a></li>
+  <li class=""><a href="/2026/team/306/kickreturn/index.html">Kickoff Returns</a></li>
+  <li class=""><a href="/2026/team/306/punting/index.html">Punting</a></li>
+  <li class=""><a href="/2026/team/306/kickoff/index.html">Kickoffs</a></li>
+  <li class=""><a href="/2026/team/306/kicking/index.html">Place Kicking</a></li>
+  <li class=""><a href="/2026/team/306/scoring/index.html">Scoring</a></li>
+  <li class=""><a href="/2026/team/306/total/index.html">Total Offense</a></li>
+  <li class=""><a href="/2026/team/306/allpurpose/index.html">All-Purpose Running</a></li>
+  <li class=""><a href="/2026/team/306/interception/index.html">Interceptions</a></li>
+  <li class=""><a href="/2026/team/306/fumblereturn/index.html">Fumble Returns</a></li>
+  <li class=""><a href="/2026/team/306/tackle/index.html">Tackles</a></li>
+  <li class=""><a href="/2026/team/306/tackleforloss/index.html">Tackles For Loss</a></li>
+  <li class=""><a href="/2026/team/306/sack/index.html">Sacks</a></li>
+  <li class=""><a href="/2026/team/306/miscdefense/index.html">Misc. Defense</a></li>
+  <li class=""><a href="/2026/team/306/firstdown/offense/split.html">First Downs</a></li>
+  <li class=""><a href="/2026/team/306/penalty/offense/split.html">Penalties</a></li>
+  <li class=""><a href="/2026/team/306/thirddown/offense/split.html">3rd Down Conversions</a></li>
+  <li class=""><a href="/2026/team/306/fourthdown/offense/split.html">4th Down Conversions</a></li>
+  <li class=""><a href="/2026/team/306/redzone/offense/split.html">Red Zone Conversions</a></li>
+  <li class=""><a href="/2026/team/306/turnovermargin/split.html">Turnover Margin</a></li>
+</ul>
+</div> <!-- section -->
+</div> <!-- leftColumn -->
+<div id="wrapperClear"/>
+</div> <!-- wrapper -->
+<!-- Start of ADS -->
+<div id="usmg_ad__main_sports_skin">
+    <script type='text/javascript'>
+        //googletag.defineSlot('/7103/SMG_CFBStats/skin/sports/main', [1,1], 'usmg_ad__main_sports_skin').addService(googletag.pubads());
+        //googletag.enableServices();
+        //googletag.display('usmg_ad__main_sports_skin');
+    </script>
+</div>
+
+<!-- SMG_CFBStats/skin/sports/general -->
+<div id="usmg_ad__general_sports_skin">
+    <script type='text/javascript'>
+        googletag.defineSlot('/7103/SMG_CFBStats/skin/sports/general', [1,1], 'usmg_ad__general_sports_skin').addService(googletag.pubads());
+        googletag.enableServices();
+        googletag.display('usmg_ad__general_sports_skin');
+    </script>
+</div>
+<br/><br/><br/><br/>
+<!-- End of ADS -->
+</body>
+</html>

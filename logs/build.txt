@@ -1,0 +1,9 @@
+VALIDATION FAILED - report not written:
+  - Trinidad Chambliss: games not in date order
+  - Trinidad Chambliss: duplicate game date
+  - Darian Mensah: games not in date order
+  - Darian Mensah: duplicate game date
+  - Kamario Taylor: games not in date order
+  - Kamario Taylor: duplicate game date
+  - Arch Manning: games not in date order
+  - Arch Manning: duplicate game date
