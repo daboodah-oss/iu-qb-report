@@ -1,0 +1,48 @@
+name: Update report
+
+on:
+  schedule:
+    # Sunday and Wednesday 10:47 Eastern (cron is UTC; 14:47 UTC = 10:47 EDT, 9:47 EST)
+    - cron: "47 14 * * 0,3"
+  workflow_dispatch:
+    inputs:
+      save_raw:
+        description: "Save raw source pages to raw/ (debugging)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Collect new data
+        id: collect
+        continue-on-error: true
+        env:
+          SAVE_RAW: ${{ inputs.save_raw && '1' || '' }}
+        run: python collect.py
+      - name: Build page (validation must pass)
+        run: python build_report.py --standalone --out index.html
+      - name: Commit and push
+        run: |
+          git config user.name "iu-qb-report bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A data index.html; [ -d raw ] && git add -A raw || true
+          if git diff --cached --quiet; then echo "No changes"; else git commit -m "Update $(date -u +%F)"; git push; fi
+      - name: Report collection problems
+        if: steps.collect.outcome == 'failure'
+        run: |
+          echo "Some sources could not be refreshed; see data/last_run.json"
+          exit 1

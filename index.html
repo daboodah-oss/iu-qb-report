@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style></head><body>
+<title>IU QB Watch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+<style>
+:root{
+  --bg:#f3f4f6; --surface:#ffffff; --surface-2:#eceef2; --ink:#16181d; --ink-2:#4a4f5c; --muted:#6a7080;
+  --rule:#d8dbe2; --grid:#e6e8ed;
+  --hoover:#a3121c; --hoover-soft:#f6e3e4; --mendoza:#2a78d6; --mendoza-soft:#e2edfa; --field:#8d93a1;
+  --good:#1f7a4d;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#111216; --surface:#1a1c22; --surface-2:#22252d; --ink:#eceef2; --ink-2:#c3c7d1; --muted:#9aa0ae;
+    --rule:#2e313b; --grid:#262932;
+    --hoover:#e66767; --hoover-soft:#3a1d20; --mendoza:#3987e5; --mendoza-soft:#172a44; --field:#7a808e;
+    --good:#4cc38a;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#111216; --surface:#1a1c22; --surface-2:#22252d; --ink:#eceef2; --ink-2:#c3c7d1; --muted:#9aa0ae;
+  --rule:#2e313b; --grid:#262932;
+  --hoover:#e66767; --hoover-soft:#3a1d20; --mendoza:#3987e5; --mendoza-soft:#172a44; --field:#7a808e;
+  --good:#4cc38a;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:16px;padding-block:20px 56px}
+a{color:inherit;text-decoration-color:var(--rule);text-underline-offset:3px}
+a:hover{text-decoration-color:currentColor}
+:focus-visible{outline:2px solid var(--mendoza);outline-offset:2px;border-radius:3px}
+.num{font-variant-numeric:tabular-nums}
+h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:.01em;text-wrap:balance;margin:0;line-height:1.05}
+h2{font-size:30px;text-transform:uppercase}
+h3{font-size:19px;text-transform:uppercase;letter-spacing:.04em}
+.eyebrow{font-family:var(--display);font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:13px;color:var(--muted)}
+.lede{color:var(--ink-2);max-width:66ch;margin:6px 0 0}
+.small{font-size:13px;color:var(--muted)}
+.h{color:var(--hoover)} .m{color:var(--mendoza)}
+
+/* masthead */
+.mast{display:grid;grid-template-columns:1.35fr 1fr;gap:28px;align-items:end;padding-bottom:22px;border-bottom:3px solid var(--ink)}
+.mast>*{min-width:0}
+.mast h1{font-size:clamp(40px,10.5vw,92px);text-transform:uppercase;line-height:.9}
+.mast h1 .vs{font-size:.42em;color:var(--muted);vertical-align:.55em;margin:0 .12em;letter-spacing:.06em}
+.stamp{display:inline-flex;gap:10px;align-items:center;margin-top:10px;flex-wrap:wrap}
+.pill{font-family:var(--display);font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:13px;padding:3px 9px;border-radius:3px;background:var(--ink);color:var(--bg)}
+.pill.ghost{background:transparent;color:var(--ink-2);border:1px solid var(--rule)}
+.verdict{font-size:18px;line-height:1.45;margin:14px 0 0;max-width:60ch}
+.scorecard{background:var(--surface);border:1px solid var(--rule);border-top:4px solid var(--hoover);padding:14px 16px;display:grid;gap:10px}
+.scorecard .score{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.scorecard .score b{font-family:var(--display);font-size:40px;line-height:1;white-space:nowrap}
+.statline{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;border-top:1px solid var(--rule);padding-top:10px}
+.statline div{display:grid}
+.statline b{font-family:var(--display);font-size:24px;line-height:1.1}
+.statline span{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+
+nav.jump{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--rule);margin:0 -16px;padding:8px 16px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+nav.jump a{font-family:var(--display);font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:14px;text-decoration:none;color:var(--ink-2);padding:4px 10px;border-radius:3px;white-space:nowrap}
+nav.jump a:hover{background:var(--surface-2);color:var(--ink)}
+
+section{padding-top:40px;scroll-margin-top:48px}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:16px;border-bottom:1px solid var(--rule);padding-bottom:10px}
+.panel{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:16px}
+
+/* head to head */
+.h2h{width:100%;border-collapse:collapse}
+.h2h th,.h2h td{padding:9px 8px;border-bottom:1px solid var(--grid);vertical-align:middle}
+.h2h thead th{font-family:var(--display);text-transform:uppercase;letter-spacing:.08em;font-size:13px;color:var(--muted);font-weight:600;text-align:right}
+.h2h thead th:first-child{text-align:left}
+.h2h td.v{text-align:right;font-family:var(--display);font-size:24px;font-weight:600;width:110px;white-space:nowrap}
+.h2h td.v.win{font-weight:700}
+.h2h td.v span{display:inline-block;padding:1px 8px;border-radius:4px}
+.h2h td.v.lose span{opacity:.55}
+.h2h td.v.win span{opacity:1;box-shadow:inset 0 0 0 1.5px currentColor}
+.h2h td.v.h.win span{background:var(--hoover-soft)}
+.h2h td.v.m.win span{background:var(--mendoza-soft)}
+.keychip{display:inline-block;padding:0 6px;border-radius:3px;box-shadow:inset 0 0 0 1.5px var(--ink-2);background:var(--surface-2);color:var(--ink);font-weight:600}
+.h2h td.lab{font-weight:600}
+.h2h td.bars{width:38%}
+.barpair{display:grid;gap:3px}
+.barpair i{display:block;height:8px;border-radius:0 4px 4px 0;min-width:2px}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:14px;height:4px;border-radius:2px;display:inline-block}
+.sw.thick{height:6px}
+
+/* pace */
+.pace{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.tile{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:14px;display:grid;gap:6px;align-content:start}
+.tile .big{font-family:var(--display);font-size:38px;font-weight:700;line-height:1}
+.tile .row{display:flex;justify-content:space-between;font-size:13px;color:var(--ink-2)}
+.meter{height:8px;background:var(--surface-2);border-radius:4px;overflow:hidden;position:relative}
+.meter i{position:absolute;inset:0 auto 0 0;background:var(--hoover);border-radius:4px}
+.meter u{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--mendoza)}
+
+/* controls + charts */
+.controls{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:4px;overflow:hidden;background:var(--surface)}
+.seg button{font:600 13px/1 var(--body);border:0;background:transparent;color:var(--ink-2);padding:8px 11px;cursor:pointer;border-right:1px solid var(--rule)}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.chart{position:relative;margin-top:12px}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.chart .ax{fill:var(--muted);font:12px var(--body)}
+.chart .gl{stroke:var(--grid);stroke-width:1}
+.chart .base{stroke:var(--rule);stroke-width:1}
+.chart .lbl,.spark .lbl{font:600 12px var(--body);paint-order:stroke;stroke:var(--surface);stroke-width:3px;stroke-linejoin:round}
+.spark .ax{fill:var(--muted);font:12px var(--body)} .spark .gl{stroke:var(--grid);stroke-width:1}
+.tip{position:absolute;pointer-events:none;background:var(--surface);border:1px solid var(--rule);box-shadow:0 4px 14px rgba(0,0,0,.12);border-radius:4px;padding:8px 10px;font-size:13px;min-width:150px;z-index:3}
+.tip b{font-family:var(--display);font-size:15px;letter-spacing:.04em;text-transform:uppercase}
+.tip .r{display:flex;justify-content:space-between;gap:14px}
+.caption{font-size:13px;color:var(--muted);margin-top:8px;max-width:75ch}
+
+/* tables */
+.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table.log{width:100%;border-collapse:collapse;font-size:14px;min-width:640px}
+table.log th,table.log td{padding:7px 8px;border-bottom:1px solid var(--grid);text-align:right;white-space:nowrap}
+table.log th{font-family:var(--display);text-transform:uppercase;letter-spacing:.06em;font-size:12.5px;color:var(--muted);font-weight:600}
+table.log th:nth-child(-n+3),table.log td:nth-child(-n+3){text-align:left}
+table.log tfoot td{font-weight:700;border-top:2px solid var(--ink);border-bottom:0}
+table.log tr.future td{color:var(--muted)}
+table.log tr.cut td{border-bottom:2px dashed var(--mendoza)}
+.lvl{font-size:11px;font-weight:700;letter-spacing:.06em;padding:1px 5px;border-radius:3px;border:1px solid var(--rule);color:var(--ink-2)}
+.logs{display:grid;gap:18px;margin-top:18px}
+.logs>*,.notes>*,.pace>*{min-width:0}
+.logs h3{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+
+/* national */
+.boards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.board{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:12px 14px;display:grid;gap:8px;align-content:start}
+.board table{width:100%;border-collapse:collapse;font-size:14px}
+.board td{padding:5px 4px;border-bottom:1px solid var(--grid)}
+.board td.rk{width:34px;color:var(--muted);font-variant-numeric:tabular-nums}
+.board td.val{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
+.board td .tm{color:var(--muted);font-size:12.5px;margin-left:4px}
+.board tr.hv td{background:var(--hoover-soft);font-weight:700}
+.board tr.hv td.rk{color:var(--hoover)}
+.board tr.gap td{border-bottom:0;padding:0;height:6px}
+.board .foot{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:12.5px;color:var(--muted)}
+.rankchip{font-family:var(--display);font-weight:700;font-size:20px;color:var(--hoover)}
+
+/* heisman */
+table.odds{width:100%;border-collapse:collapse;font-size:14px;min-width:600px}
+table.odds th,table.odds td{padding:7px 8px;border-bottom:1px solid var(--grid);text-align:right;white-space:nowrap}
+table.odds th{font-family:var(--display);text-transform:uppercase;letter-spacing:.06em;font-size:12.5px;color:var(--muted);font-weight:600;vertical-align:bottom}
+table.odds th small{display:block;font-family:var(--body);text-transform:none;letter-spacing:0;font-weight:400}
+table.odds td:nth-child(-n+2),table.odds th:nth-child(-n+2){text-align:left}
+table.odds tr.hv td{background:var(--hoover-soft);font-weight:700}
+.probbar{display:inline-block;height:6px;border-radius:0 3px 3px 0;background:var(--field);vertical-align:middle;margin-right:8px}
+tr.hv .probbar{background:var(--hoover)}
+.trail{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.trail .step{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:8px 10px;display:grid;font-size:12.5px;color:var(--muted)}
+.trail .step b{font-family:var(--display);font-size:22px;color:var(--ink)}
+
+.notes{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.notes ul{margin:8px 0 0;padding-left:18px;display:grid;gap:6px;color:var(--ink-2);font-size:14px}
+footer{margin-top:36px;padding-top:14px;border-top:3px solid var(--ink);font-size:12.5px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (max-width:820px){
+  .mast{grid-template-columns:minmax(0,1fr)}
+  .pace{grid-template-columns:1fr 1fr}
+  .notes{grid-template-columns:1fr}
+  .h2h .bars{display:none}
+}
+@media (max-width:420px){
+  .statline b{font-size:21px}
+  .scorecard .score b{font-size:32px}
+  .h2h td.v{font-size:21px;width:70px}
+  .tile .big{font-size:32px}
+}
+@media (prefers-reduced-motion:no-preference){ .seg button{transition:background .15s} }
+</style>
+
+<div class="wrap">
+  <header class="mast">
+    <div>
+      <div class="eyebrow">IU QB Watch · Indiana football 2026</div>
+      <h1><span class="h">Hoover</span> <span class="vs">vs</span> <span class="m">Mendoza</span></h1>
+      <div class="stamp" id="stamp"></div>
+      <p class="verdict" id="verdict"></p>
+    </div>
+    <aside class="scorecard" id="scorecard" aria-label="Latest game"></aside>
+  </header>
+
+  <nav class="jump" aria-label="Sections">
+    <a href="#h2h">Head to head</a><a href="#pace">Season pace</a><a href="#totals">Running totals</a><a href="#games">Game by game</a><a href="#national">National</a><a href="#field">Heisman QBs</a><a href="#odds">Odds</a><a href="#method">Method</a>
+  </nav>
+
+  <section id="h2h">
+    <div class="sec-head">
+      <div><div class="eyebrow">Same number of games</div><h2>Head to head</h2></div>
+      <div class="legend"><span><i class="sw thick" style="background:var(--hoover)"></i>Hoover 2026</span><span><i class="sw thick" style="background:var(--mendoza)"></i>Mendoza 2025</span><span class="small"><span class="keychip">Boxed</span> = leader; ties stay plain</span></div>
+    </div>
+    <div class="panel tscroll"><table class="h2h" id="h2h-table"></table></div>
+  </section>
+
+  <section id="pace">
+    <div class="sec-head">
+      <div><div class="eyebrow">Against Mendoza's full Heisman season</div><h2>Season pace</h2>
+      <p class="lede" id="pace-lede"></p></div>
+    </div>
+    <div class="pace" id="pace-tiles"></div>
+  </section>
+
+  <section id="totals">
+    <div class="sec-head">
+      <div><div class="eyebrow">Cumulative, by game number</div><h2>Running totals</h2>
+      <p class="lede">Mendoza's line runs the full 2025 season so you can see where Hoover needs to be. The dashed marker is the current game.</p></div>
+      <div class="controls" role="group" aria-label="Running total metric"><div class="seg" id="tot-seg"></div></div>
+    </div>
+    <div class="panel"><div class="legend"><span><i class="sw thick" style="background:var(--hoover)"></i>Hoover 2026</span><span><i class="sw" style="background:var(--mendoza)"></i>Mendoza 2025</span></div>
+      <div class="chart" id="tot-chart"></div><p class="caption" id="tot-cap"></p></div>
+  </section>
+
+  <section id="games">
+    <div class="sec-head">
+      <div><div class="eyebrow">Each game on its own</div><h2>Game by game</h2></div>
+      <div class="controls" role="group" aria-label="Per-game metric"><div class="seg" id="pg-seg"></div></div>
+    </div>
+    <div class="panel"><div class="legend"><span><i class="sw thick" style="background:var(--hoover)"></i>Hoover 2026</span><span><i class="sw thick" style="background:var(--mendoza)"></i>Mendoza 2025</span></div>
+      <div class="chart" id="pg-chart"></div><p class="caption">Lines trace each quarterback's game-to-game trend over bars that start at zero. Game numbers line up the two seasons, so point 3 is each quarterback's third game. Faded points are Mendoza games Hoover has not reached yet.</p></div>
+    <div class="logs">
+      <div><h3><i class="sw thick" style="background:var(--hoover)"></i>Hoover 2026 game log</h3><div class="panel tscroll"><table class="log" id="log-h"></table></div></div>
+      <div><h3><i class="sw thick" style="background:var(--mendoza)"></i>Mendoza 2025 game log</h3><div class="panel tscroll"><table class="log" id="log-m"></table></div>
+      <p class="caption" id="oppd-note"></p></div>
+    </div>
+  </section>
+
+  <section id="national">
+    <div class="sec-head">
+      <div><div class="eyebrow">All FBS quarterbacks</div><h2>National leaderboards</h2>
+      <p class="lede" id="nat-lede"></p></div>
+    </div>
+    <div class="boards" id="boards"></div>
+  </section>
+
+  <section id="field">
+    <div class="sec-head">
+      <div><div class="eyebrow">Hoover against the Heisman favorites</div><h2>The Heisman QB field</h2>
+      <p class="lede" id="field-lede"></p></div>
+      <div class="controls">
+        <div class="seg" id="fd-mode" role="group" aria-label="Running total or per game"></div>
+        <div class="seg" id="fd-seg" role="group" aria-label="Field metric"></div>
+      </div>
+    </div>
+    <div class="panel"><div class="legend" id="fd-legend"></div><div class="chart" id="fd-chart"></div></div>
+  </section>
+
+  <section id="odds">
+    <div class="sec-head">
+      <div><div class="eyebrow">Reported sportsbook odds</div><h2>Heisman odds</h2>
+      <p class="lede" id="odds-lede"></p></div>
+    </div>
+    <div class="panel tscroll"><table class="odds" id="odds-table"></table></div>
+    <h3 style="margin-top:20px">Hoover's odds trail</h3>
+    <div class="trail" id="trail"></div>
+  </section>
+
+  <section id="method">
+    <div class="sec-head"><div><div class="eyebrow">How the numbers are built</div><h2>Method and sources</h2></div></div>
+    <div class="notes">
+      <div>
+        <h3>Notes</h3>
+        <ul id="notes"></ul>
+      </div>
+      <div>
+        <h3>Sources</h3>
+        <ul id="sources"></ul>
+      </div>
+    </div>
+  </section>
+
+  <footer><span id="foot-l"></span><span>Built from stored game rows; every figure is computed from them.</span></footer>
+</div>
+
+<script>
+const MODEL = {"as_of":"2026-09-26T14:21-04:00","N":4,"season_games_mendoza":16,"latest":{"date":"2026-09-25","espn_event":"401858461","opp":"Northwestern","site":"H","level":"FBS","result":"W 29-23","cmp":19,"att":29,"yds":201,"td":1,"int":0,"rush_att":6,"rush_yds":1,"rush_td":1,"sacks":2,"n":4,"pct":65.51724137931035,"ypa":6.931034482758621,"rating":135.11724137931034,"cum_yds":850,"cum_td":11,"cum_total_td":12,"cum_rating":204.625,"opp_d_rank":93},"next_game":{"date":"2026-10-03","opp":"Rutgers","site":"A","source_url":"https://cfbstats.com/2026/team/306/index.html"},"hoover":{"rows":[{"date":"2026-09-05","espn_event":"401858425","opp":"North Texas","site":"H","level":"FBS","result":"W 52-16","cmp":13,"att":16,"yds":231,"td":4,"int":0,"rush_att":0,"rush_yds":0,"rush_td":0,"sacks":0,"n":1,"pct":81.25,"ypa":14.4375,"rating":285.025,"cum_yds":231,"cum_td":4,"cum_total_td":4,"cum_rating":285.025,"opp_d_rank":101},{"date":"2026-09-12","espn_event":"401858439","opp":"Howard","site":"H","level":"FCS","result":"W 55-0","cmp":6,"att":11,"yds":145,"td":4,"int":0,"rush_att":6,"rush_yds":18,"rush_td":0,"sacks":2,"n":2,"pct":54.54545454545455,"ypa":13.181818181818182,"rating":285.27272727272725,"cum_yds":376,"cum_td":8,"cum_total_td":8,"cum_rating":285.1259259259259,"opp_d_rank":null},{"date":"2026-09-19","espn_event":"401858449","opp":"Western Kentucky","site":"H","level":"FBS","result":"W 38-0","cmp":18,"att":24,"yds":273,"td":2,"int":0,"rush_att":2,"rush_yds":2,"rush_td":0,"sacks":1,"n":3,"pct":75.0,"ypa":11.375,"rating":198.05000000000004,"cum_yds":649,"cum_td":10,"cum_total_td":10,"cum_rating":244.14901960784314,"opp_d_rank":101},{"date":"2026-09-25","espn_event":"401858461","opp":"Northwestern","site":"H","level":"FBS","result":"W 29-23","cmp":19,"att":29,"yds":201,"td":1,"int":0,"rush_att":6,"rush_yds":1,"rush_td":1,"sacks":2,"n":4,"pct":65.51724137931035,"ypa":6.931034482758621,"rating":135.11724137931034,"cum_yds":850,"cum_td":11,"cum_total_td":12,"cum_rating":204.625,"opp_d_rank":93}],"totals":{"cmp":56,"att":80,"yds":850,"td":11,"int":0,"rush_att":14,"rush_yds":21,"rush_td":1,"games":4,"pct":70.0,"ypa":10.625,"rating":204.625,"total_td":12}},"mendoza":{"rows":[{"date":"2025-08-30","opp":"Old Dominion","site":"H","level":"FBS","result":"W 27-14","cmp":18,"att":31,"yds":193,"td":0,"int":0,"rush_att":6,"rush_yds":33,"rush_td":1,"n":1,"pct":58.064516129032256,"ypa":6.225806451612903,"rating":110.36129032258064,"cum_yds":193,"cum_td":0,"cum_total_td":1,"cum_rating":110.36129032258064,"opp_d_rank":29},{"date":"2025-09-06","opp":"Kennesaw State","site":"H","level":"FBS","result":"W 56-9","cmp":18,"att":25,"yds":245,"td":4,"int":0,"rush_att":3,"rush_yds":20,"rush_td":0,"n":2,"pct":72.0,"ypa":9.8,"rating":207.12,"cum_yds":438,"cum_td":4,"cum_total_td":5,"cum_rating":153.55714285714288,"opp_d_rank":67},{"date":"2025-09-12","opp":"Indiana State","site":"H","level":"FCS","result":"W 73-0","cmp":19,"att":20,"yds":270,"td":5,"int":0,"rush_att":6,"rush_yds":19,"rush_td":1,"n":3,"pct":95.0,"ypa":13.5,"rating":290.9,"cum_yds":708,"cum_td":9,"cum_total_td":11,"cum_rating":189.70000000000002,"opp_d_rank":null},{"date":"2025-09-20","opp":"Illinois","site":"H","level":"FBS","result":"W 63-10","cmp":21,"att":23,"yds":267,"td":5,"int":0,"rush_att":7,"rush_yds":4,"rush_td":0,"n":4,"pct":91.30434782608695,"ypa":11.608695652173912,"rating":260.55652173913046,"cum_yds":975,"cum_td":14,"cum_total_td":16,"cum_rating":206.16161616161617,"opp_d_rank":63},{"date":"2025-09-27","opp":"Iowa","site":"A","level":"FBS","result":"W 20-15","cmp":13,"att":23,"yds":233,"td":2,"int":1,"rush_att":8,"rush_yds":26,"rush_td":0,"n":5,"pct":56.52173913043478,"ypa":10.130434782608695,"rating":161.61739130434782,"cum_yds":1208,"cum_td":16,"cum_total_td":18,"cum_rating":197.76393442622953,"opp_d_rank":10},{"date":"2025-10-11","opp":"Oregon","site":"A","level":"FBS","result":"W 30-20","cmp":20,"att":31,"yds":215,"td":1,"int":1,"rush_att":6,"rush_yds":31,"rush_td":0,"n":6,"pct":64.51612903225806,"ypa":6.935483870967742,"rating":126.96774193548387,"cum_yds":1423,"cum_td":17,"cum_total_td":19,"cum_rating":183.41960784313727,"opp_d_rank":4},{"date":"2025-10-18","opp":"Michigan State","site":"H","level":"FBS","result":"W 38-13","cmp":24,"att":28,"yds":332,"td":4,"int":0,"rush_att":5,"rush_yds":18,"rush_td":0,"n":7,"pct":85.71428571428571,"ypa":11.857142857142858,"rating":232.45714285714286,"cum_yds":1755,"cum_td":21,"cum_total_td":23,"cum_rating":191.00552486187846,"opp_d_rank":93},{"date":"2025-10-25","opp":"UCLA","site":"H","level":"FBS","result":"W 56-6","cmp":15,"att":22,"yds":168,"td":3,"int":1,"rush_att":5,"rush_yds":45,"rush_td":1,"n":8,"pct":68.18181818181819,"ypa":7.636363636363637,"rating":168.23636363636362,"cum_yds":1923,"cum_td":24,"cum_total_td":27,"cum_rating":188.53793103448274,"opp_d_rank":35},{"date":"2025-11-01","opp":"Maryland","site":"A","level":"FBS","result":"W 55-10","cmp":14,"att":21,"yds":201,"td":1,"int":1,"rush_att":4,"rush_yds":24,"rush_td":1,"n":9,"pct":66.66666666666667,"ypa":9.571428571428571,"rating":153.25714285714287,"cum_yds":2124,"cum_td":25,"cum_total_td":29,"cum_rating":185.23035714285717,"opp_d_rank":82},{"date":"2025-11-08","opp":"Penn State","site":"A","level":"FBS","result":"W 27-24","cmp":19,"att":30,"yds":218,"td":1,"int":1,"rush_att":6,"rush_yds":20,"rush_td":1,"n":10,"pct":63.333333333333336,"ypa":7.266666666666667,"rating":128.70666666666665,"cum_yds":2342,"cum_td":26,"cum_total_td":31,"cum_rating":178.55433070866144,"opp_d_rank":20},{"date":"2025-11-15","opp":"Wisconsin","site":"H","level":"FBS","result":"W 31-7","cmp":22,"att":24,"yds":299,"td":4,"int":0,"rush_att":6,"rush_yds":-24,"rush_td":0,"n":11,"pct":91.66666666666667,"ypa":12.458333333333334,"rating":251.3166666666667,"cum_yds":2641,"cum_td":30,"cum_total_td":35,"cum_rating":184.8359712230216,"opp_d_rank":62},{"date":"2025-11-28","opp":"Purdue","site":"A","level":"FBS","result":"W 56-3","cmp":8,"att":15,"yds":117,"td":2,"int":0,"rush_att":2,"rush_yds":27,"rush_td":1,"n":12,"pct":53.333333333333336,"ypa":7.8,"rating":162.85333333333335,"cum_yds":2758,"cum_td":32,"cum_total_td":38,"cum_rating":183.71058020477815,"opp_d_rank":110},{"date":"2025-12-06","opp":"Ohio State","site":"N","level":"FBS","result":"W 13-10","note":"Big Ten Championship","cmp":15,"att":23,"yds":222,"td":1,"int":1,"rush_att":5,"rush_yds":-3,"rush_td":0,"n":13,"pct":65.21739130434783,"ypa":9.652173913043478,"rating":151.94782608695652,"cum_yds":2980,"cum_td":33,"cum_total_td":39,"cum_rating":181.3987341772152,"opp_d_rank":1},{"date":"2026-01-01","opp":"Alabama","site":"N","level":"FBS","result":"W 38-3","note":"CFP quarterfinal, Rose Bowl","cmp":14,"att":16,"yds":192,"td":3,"int":0,"rush_att":8,"rush_yds":16,"rush_td":0,"n":14,"pct":87.5,"ypa":12.0,"rating":250.175,"cum_yds":3172,"cum_td":36,"cum_total_td":42,"cum_rating":184.7132530120482,"opp_d_rank":9},{"date":"2026-01-09","opp":"Oregon","site":"N","level":"FBS","result":"W 56-22","note":"CFP semifinal, Peach Bowl","cmp":17,"att":20,"yds":177,"td":5,"int":0,"rush_att":6,"rush_yds":28,"rush_td":0,"n":15,"pct":85.0,"ypa":8.85,"rating":241.84,"cum_yds":3349,"cum_td":41,"cum_total_td":47,"cum_rating":187.95909090909092,"opp_d_rank":4},{"date":"2026-01-19","opp":"Miami","site":"N","level":"FBS","result":"W 27-21","note":"CFP National Championship","cmp":16,"att":27,"yds":186,"td":0,"int":0,"rush_att":7,"rush_yds":-8,"rush_td":1,"n":16,"pct":59.25925925925926,"ypa":6.888888888888889,"rating":117.12592592592593,"cum_yds":3535,"cum_td":41,"cum_total_td":48,"cum_rating":182.91292875989447,"opp_d_rank":43}],"totals":{"cmp":76,"att":99,"yds":975,"td":14,"int":0,"rush_att":22,"rush_yds":76,"rush_td":2,"games":4,"pct":76.76767676767676,"ypa":9.848484848484848,"rating":206.16161616161617,"total_td":16},"season":{"cmp":273,"att":379,"yds":3535,"td":41,"int":6,"rush_att":90,"rush_yds":276,"rush_td":7,"games":16,"pct":72.03166226912928,"ypa":9.327176781002638,"rating":182.91292875989447,"total_td":48}},"h2h":[{"key":"yds","label":"Passing yards","hoover":850,"mendoza":975,"dp":0,"higher_better":true,"winner":"mendoza","headline":true},{"key":"td","label":"Passing TD","hoover":11,"mendoza":14,"dp":0,"higher_better":true,"winner":"mendoza","headline":true},{"key":"pct","label":"Completion %","hoover":70.0,"mendoza":76.76767676767676,"dp":1,"higher_better":true,"winner":"mendoza","headline":true},{"key":"rating","label":"Passer rating","hoover":204.625,"mendoza":206.16161616161617,"dp":1,"higher_better":true,"winner":"mendoza","headline":true},{"key":"ypa","label":"Yards per attempt","hoover":10.625,"mendoza":9.848484848484848,"dp":1,"higher_better":true,"winner":"hoover","headline":true},{"key":"int","label":"Interceptions","hoover":0,"mendoza":0,"dp":0,"higher_better":false,"winner":"tie","headline":false},{"key":"rush_yds","label":"Rushing yards","hoover":21,"mendoza":76,"dp":0,"higher_better":true,"winner":"mendoza","headline":false},{"key":"total_td","label":"Total TD (pass + rush)","hoover":12,"mendoza":16,"dp":0,"higher_better":true,"winner":"mendoza","headline":false}],"verdict":"Through 4 games, Mendoza's 2025 line leads 4 of 5 headline passing measures; Hoover has the edge in yards per attempt. Hoover trails Mendoza's game-4 totals by 125 yards and 3 passing TD.","leads":{"hoover":1,"mendoza":4,"tie":0},"pace":[{"key":"yds","label":"Passing yards","to_date":850,"pace":3400.0,"mendoza_final":3535,"share":0.24045261669024046},{"key":"td","label":"Passing TD","to_date":11,"pace":44.0,"mendoza_final":41,"share":0.2682926829268293},{"key":"int","label":"Interceptions","to_date":0,"pace":0.0,"mendoza_final":6,"share":0.0},{"key":"total_td","label":"Total TD","to_date":12,"pace":48.0,"mendoza_final":48,"share":0.25}],"national":{"data_through":"2026-09-25","current":true,"boards":{"yds":{"label":"Passing yards","source_url":"https://cfbstats.com/2026/leader/national/player/split01/category02/sort08.html","qualified":false,"top":[{"name":"Jayden Maiava","team":"USC","g":4,"cmp":87,"att":115,"yds":1173,"td":12,"int":1,"src_rating":194.03,"value":1173,"is_hoover":false,"rank":1},{"name":"Braden Atkinson","team":"Oregon State","g":3,"cmp":82,"att":129,"yds":1120,"td":8,"int":1,"src_rating":155.42,"value":1120,"is_hoover":false,"rank":2},{"name":"Marcus Stokes","team":"Memphis","g":4,"cmp":70,"att":98,"yds":1053,"td":9,"int":3,"src_rating":185.88,"value":1053,"is_hoover":false,"rank":3},{"name":"Deuce Bailey","team":"Coastal Carolina","g":4,"cmp":66,"att":122,"yds":1039,"td":10,"int":2,"src_rating":149.4,"value":1039,"is_hoover":false,"rank":4},{"name":"Luke Weaver","team":"San Jose State","g":4,"cmp":87,"att":143,"yds":1032,"td":9,"int":5,"src_rating":135.24,"value":1032,"is_hoover":false,"rank":5}],"hoover":{"name":"Josh Hoover","team":"Indiana","g":4,"cmp":56,"att":80,"yds":850,"td":11,"int":0,"src_rating":204.63,"value":850,"rank":24,"tied":false,"in_top":false}},"td":{"label":"Passing TD","source_url":"https://cfbstats.com/2026/leader/national/player/split01/category02/sort10.html","qualified":false,"top":[{"name":"Jayden Maiava","team":"USC","g":4,"cmp":87,"att":115,"yds":1173,"td":12,"int":1,"src_rating":194.03,"value":12,"is_hoover":false,"rank":1},{"name":"Darian Mensah","team":"Miami","g":3,"cmp":71,"att":79,"yds":873,"td":11,"int":0,"src_rating":228.65,"value":11,"is_hoover":false,"rank":2},{"name":"Josh Hoover","team":"Indiana","g":4,"cmp":56,"att":80,"yds":850,"td":11,"int":0,"src_rating":204.63,"value":11,"is_hoover":true,"rank":2},{"name":"Kamario Taylor","team":"Mississippi State","g":3,"cmp":56,"att":82,"yds":832,"td":11,"int":1,"src_rating":195.35,"value":11,"is_hoover":false,"rank":2},{"name":"Deuce Bailey","team":"Coastal Carolina","g":4,"cmp":66,"att":122,"yds":1039,"td":10,"int":2,"src_rating":149.4,"value":10,"is_hoover":false,"rank":5},{"name":"Hauss Hejny","team":"Colorado State","g":3,"cmp":47,"att":73,"yds":619,"td":10,"int":1,"src_rating":178.07,"value":10,"is_hoover":false,"rank":5}],"hoover":{"name":"Josh Hoover","team":"Indiana","g":4,"cmp":56,"att":80,"yds":850,"td":11,"int":0,"src_rating":204.63,"value":11,"rank":2,"tied":true,"in_top":true}},"pct":{"label":"Completion %","source_url":"https://cfbstats.com/2026/leader/national/player/split01/category02/sort03.html","qualified":true,"top":[{"name":"Darian Mensah","team":"Miami","g":3,"cmp":71,"att":79,"yds":873,"td":11,"int":0,"src_rating":228.65,"value":89.87341772151899,"is_hoover":false,"rank":1},{"name":"Gunner Stockton","team":"Georgia","g":3,"cmp":38,"att":45,"yds":583,"td":9,"int":0,"src_rating":259.27,"value":84.44444444444444,"is_hoover":false,"rank":2},{"name":"Noah Fifita","team":"Arizona","g":3,"cmp":77,"att":95,"yds":834,"td":7,"int":1,"src_rating":176.99,"value":81.05263157894737,"is_hoover":false,"rank":3},{"name":"Cibastian Broughton","team":"Akron","g":3,"cmp":53,"att":66,"yds":380,"td":4,"int":0,"src_rating":148.67,"value":80.3030303030303,"is_hoover":false,"rank":4},{"name":"Ethan Grunkemeyer","team":"Virginia Tech","g":3,"cmp":79,"att":101,"yds":865,"td":7,"int":0,"src_rating":173.03,"value":78.21782178217822,"is_hoover":false,"rank":5}],"hoover":{"name":"Josh Hoover","team":"Indiana","g":4,"cmp":56,"att":80,"yds":850,"td":11,"int":0,"src_rating":204.63,"value":70.0,"rank":32,"tied":false,"in_top":false}},"rating":{"label":"Passer rating","source_url":"https://cfbstats.com/2026/leader/national/player/split01/category02/sort02.html","qualified":true,"top":[{"name":"Gunner Stockton","team":"Georgia","g":3,"cmp":38,"att":45,"yds":583,"td":9,"int":0,"src_rating":259.27,"value":259.2711111111111,"is_hoover":false,"rank":1},{"name":"Darian Mensah","team":"Miami","g":3,"cmp":71,"att":79,"yds":873,"td":11,"int":0,"src_rating":228.65,"value":228.6481012658228,"is_hoover":false,"rank":2},{"name":"Rocco Becht","team":"Penn State","g":3,"cmp":45,"att":64,"yds":751,"td":9,"int":0,"src_rating":215.29,"value":215.28750000000002,"is_hoover":false,"rank":3},{"name":"Josh Hoover","team":"Indiana","g":4,"cmp":56,"att":80,"yds":850,"td":11,"int":0,"src_rating":204.63,"value":204.625,"is_hoover":true,"rank":4},{"name":"Kamario Taylor","team":"Mississippi State","g":3,"cmp":56,"att":82,"yds":832,"td":11,"int":1,"src_rating":195.35,"value":195.35121951219512,"is_hoover":false,"rank":5}],"hoover":{"name":"Josh Hoover","team":"Indiana","g":4,"cmp":56,"att":80,"yds":850,"td":11,"int":0,"src_rating":204.63,"value":204.625,"rank":4,"tied":false,"in_top":true}},"ypa":{"label":"Yards per attempt","source_url":"https://cfbstats.com/2026/leader/national/player/split01/category02/sort04.html","qualified":true,"top":[{"name":"Gunner Stockton","team":"Georgia","g":3,"cmp":38,"att":45,"yds":583,"td":9,"int":0,"src_rating":259.27,"value":12.955555555555556,"is_hoover":false,"rank":1},{"name":"Rocco Becht","team":"Penn State","g":3,"cmp":45,"att":64,"yds":751,"td":9,"int":0,"src_rating":215.29,"value":11.734375,"is_hoover":false,"rank":2},{"name":"Kevin Jennings","team":"SMU","g":3,"cmp":64,"att":87,"yds":989,"td":9,"int":4,"src_rating":193.99,"value":11.367816091954023,"is_hoover":false,"rank":3},{"name":"Aaron Philo","team":"Florida","g":3,"cmp":47,"att":64,"yds":721,"td":6,"int":2,"src_rating":192.76,"value":11.265625,"is_hoover":false,"rank":4},{"name":"Lincoln Kienholz","team":"Louisville","g":3,"cmp":48,"att":73,"yds":816,"td":6,"int":0,"src_rating":186.77,"value":11.178082191780822,"is_hoover":false,"rank":5}],"hoover":{"name":"Josh Hoover","team":"Indiana","g":4,"cmp":56,"att":80,"yds":850,"td":11,"int":0,"src_rating":204.63,"value":10.625,"rank":10,"tied":false,"in_top":false}}},"qualifier_note":"Completion %, passer rating and yards per attempt require 15 pass attempts per game played and 75% of team games (cfbstats/NCAA rule). Yards and TD have no qualifier.","rank_history":[{"through":"2026-09-19","games":3,"ranks":{"rating":2},"note":"Only the passer rating board was captured for this week."},{"through":"2026-09-25","games":4,"ranks":{"yds":24,"td":2,"pct":32,"rating":4,"ypa":10}}],"order":["yds","td","pct","rating","ypa"]},"heisman":{"books":[{"book":"BetMGM","as_of":"2026-09-25","outlet":"BetMGM","url":"https://sports.betmgm.com/en/blog/college-football/heisman-trohpy-odds-favorites-to-win-bm06/"},{"book":"DraftKings","as_of":"2026-09-22","outlet":"NBC Sports","url":"https://www.nbcsports.com/betting/college-football/news/2026-heisman-trophy-betting-odds-favorites-contenders-future-picks-for-week-4-including-chambliss-mensah"},{"book":"FanDuel","as_of":"2026-09-20","outlet":"Sports Illustrated","url":"https://www.si.com/betting/2026-heisman-trophy-odds-trinidad-chambliss-skyrockets-to-favorite-keelon-russell-kamario-taylor-rising"}],"players":[{"name":"Trinidad Chambliss","school":"Ole Miss","pos":"QB","odds":{"BetMGM":325,"DraftKings":310,"FanDuel":310},"prob":0.24390243902439024,"n_books":3,"rank":1},{"name":"Darian Mensah","school":"Miami","pos":"QB","odds":{"BetMGM":325,"DraftKings":370,"FanDuel":390},"prob":0.2127659574468085,"n_books":3,"rank":2},{"name":"Jeremiah Smith","school":"Ohio State","pos":"WR","odds":{"BetMGM":1000,"DraftKings":1050,"FanDuel":950},"prob":0.09090909090909091,"n_books":3,"rank":3},{"name":"Kamario Taylor","school":"Mississippi State","pos":"QB","odds":{"BetMGM":1000,"DraftKings":1100,"FanDuel":1100},"prob":0.08333333333333333,"n_books":3,"rank":4},{"name":"Arch Manning","school":"Texas","pos":"QB","odds":{"BetMGM":1000,"DraftKings":1400,"FanDuel":1200},"prob":0.07692307692307693,"n_books":3,"rank":5},{"name":"Malachi Toney","school":"Miami","pos":"WR","odds":{"BetMGM":1000,"DraftKings":1300,"FanDuel":1200},"prob":0.07692307692307693,"n_books":3,"rank":5},{"name":"CJ Carr","school":"Notre Dame","pos":"QB","odds":{"BetMGM":1400,"DraftKings":1500,"FanDuel":1200},"prob":0.06666666666666667,"n_books":3,"rank":7},{"name":"Keelon Russell","school":"Alabama","pos":"QB","odds":{"BetMGM":2500,"DraftKings":null,"FanDuel":2200},"prob":0.04096989966555184,"n_books":2,"rank":8},{"name":"Josh Hoover","school":"Indiana","pos":"QB","odds":{"BetMGM":2500,"DraftKings":2500,"FanDuel":2500},"prob":0.038461538461538464,"n_books":3,"rank":9},{"name":"Julian Sayin","school":"Ohio State","pos":"QB","odds":{"BetMGM":3000,"DraftKings":null,"FanDuel":3000},"prob":0.03225806451612903,"n_books":2,"rank":10},{"name":"Jayden Maiava","school":"USC","pos":"QB","odds":{"BetMGM":4000,"DraftKings":3000,"FanDuel":3000},"prob":0.03225806451612903,"n_books":3,"rank":10},{"name":"Gunner Stockton","school":"Georgia","pos":"QB","odds":{"BetMGM":4000,"DraftKings":null,"FanDuel":4000},"prob":0.024390243902439025,"n_books":2,"rank":12}],"hoover":{"name":"Josh Hoover","school":"Indiana","pos":"QB","odds":{"BetMGM":2500,"DraftKings":2500,"FanDuel":2500},"prob":0.038461538461538464,"n_books":3,"rank":9},"trail":[{"date":"preseason","book":"BetMGM","odds":1200,"url":"https://sports.betmgm.com/en/blog/college-football/heisman-trohpy-odds-favorites-to-win-bm06/"},{"date":"2026-09-20","book":"DraftKings","odds":2500,"url":"https://www.foxsports.com/stories/college-football/2026-heisman-trophy-odds","outlet":"FOX Sports"},{"date":"2026-09-20","book":"FanDuel","odds":2500,"url":"https://www.si.com/betting/2026-heisman-trophy-odds-trinidad-chambliss-skyrockets-to-favorite-keelon-russell-kamario-taylor-rising","outlet":"Sports Illustrated"},{"date":"2026-09-22","book":"DraftKings","odds":2500,"url":"https://www.nbcsports.com/betting/college-football/news/2026-heisman-trophy-betting-odds-favorites-contenders-future-picks-for-week-4-including-chambliss-mensah","outlet":"NBC Sports"},{"date":"2026-09-25","book":"BetMGM","odds":2500,"url":"https://sports.betmgm.com/en/blog/college-football/heisman-trohpy-odds-favorites-to-win-bm06/","outlet":"BetMGM"}],"note":"Reported sportsbook odds, not live lines. Each book is shown as of the date its odds were published."},"cohort":{"rule":"The four highest-ranked quarterbacks in consensus Heisman odds, other than Hoover. Game logs from ESPN.","qbs":[{"name":"Josh Hoover","school":"Indiana","games":[{"date":"2026-09-05","espn_event":"401858425","opp":"North Texas","site":"H","level":"FBS","result":"W 52-16","cmp":13,"att":16,"yds":231,"td":4,"int":0,"rush_att":0,"rush_yds":0,"rush_td":0,"sacks":0,"n":1,"pct":81.25,"ypa":14.4375,"rating":285.025,"cum_yds":231,"cum_td":4,"cum_total_td":4,"cum_rating":285.025,"opp_d_rank":101},{"date":"2026-09-12","espn_event":"401858439","opp":"Howard","site":"H","level":"FCS","result":"W 55-0","cmp":6,"att":11,"yds":145,"td":4,"int":0,"rush_att":6,"rush_yds":18,"rush_td":0,"sacks":2,"n":2,"pct":54.54545454545455,"ypa":13.181818181818182,"rating":285.27272727272725,"cum_yds":376,"cum_td":8,"cum_total_td":8,"cum_rating":285.1259259259259,"opp_d_rank":null},{"date":"2026-09-19","espn_event":"401858449","opp":"Western Kentucky","site":"H","level":"FBS","result":"W 38-0","cmp":18,"att":24,"yds":273,"td":2,"int":0,"rush_att":2,"rush_yds":2,"rush_td":0,"sacks":1,"n":3,"pct":75.0,"ypa":11.375,"rating":198.05000000000004,"cum_yds":649,"cum_td":10,"cum_total_td":10,"cum_rating":244.14901960784314,"opp_d_rank":101},{"date":"2026-09-25","espn_event":"401858461","opp":"Northwestern","site":"H","level":"FBS","result":"W 29-23","cmp":19,"att":29,"yds":201,"td":1,"int":0,"rush_att":6,"rush_yds":1,"rush_td":1,"sacks":2,"n":4,"pct":65.51724137931035,"ypa":6.931034482758621,"rating":135.11724137931034,"cum_yds":850,"cum_td":11,"cum_total_td":12,"cum_rating":204.625,"opp_d_rank":93}],"is_hoover":true},{"name":"Trinidad Chambliss","school":"Ole Miss","games":[{"date":"2026-09-06","opp":"Louisville","result":"W 41-38","cmp":21,"att":36,"yds":336,"td":3,"int":1,"n":1,"pct":58.333333333333336,"ypa":9.333333333333334,"rating":158.67777777777778,"cum_yds":336,"cum_td":3,"cum_total_td":3,"cum_rating":158.67777777777778,"opp_d_rank":null},{"date":"2026-09-12","opp":"Charlotte","result":"W 41-9","cmp":23,"att":26,"yds":225,"td":2,"int":0,"n":2,"pct":88.46153846153847,"ypa":8.653846153846153,"rating":186.53846153846155,"cum_yds":561,"cum_td":5,"cum_total_td":5,"cum_rating":170.36129032258066,"opp_d_rank":null},{"date":"2026-09-19","opp":"LSU","result":"W 32-24","cmp":33,"att":48,"yds":363,"td":2,"int":1,"n":3,"pct":68.75,"ypa":7.5625,"rating":141.85833333333335,"cum_yds":924,"cum_td":7,"cum_total_td":7,"cum_rating":157.92363636363635,"opp_d_rank":null}]},{"name":"Darian Mensah","school":"Miami","games":[{"date":"2026-09-04","opp":"Stanford","result":"W 45-6","cmp":27,"att":30,"yds":401,"td":5,"int":0,"n":1,"pct":90.0,"ypa":13.366666666666667,"rating":257.28,"cum_yds":401,"cum_td":5,"cum_total_td":5,"cum_rating":257.28,"opp_d_rank":null},{"date":"2026-09-10","opp":"Florida A&M","result":"W 77-7","cmp":14,"att":15,"yds":252,"td":3,"int":0,"n":2,"pct":93.33333333333333,"ypa":16.8,"rating":300.4533333333333,"cum_yds":653,"cum_td":8,"cum_total_td":8,"cum_rating":271.67111111111114,"opp_d_rank":null},{"date":"2026-09-18","opp":"Wake Forest","result":"W 33-20","cmp":30,"att":34,"yds":220,"td":3,"int":0,"n":3,"pct":88.23529411764706,"ypa":6.470588235294118,"rating":171.7058823529412,"cum_yds":873,"cum_td":11,"cum_total_td":11,"cum_rating":228.6481012658228,"opp_d_rank":null}]},{"name":"Arch Manning","school":"Texas","games":[{"date":"2026-09-05","opp":"Texas State","result":"W 59-7","cmp":20,"att":27,"yds":305,"td":4,"int":1,"n":1,"pct":74.07407407407408,"ypa":11.296296296296296,"rating":210.44444444444446,"cum_yds":305,"cum_td":4,"cum_total_td":4,"cum_rating":210.44444444444446,"opp_d_rank":null},{"date":"2026-09-12","opp":"Ohio State","result":"W 24-23","cmp":23,"att":37,"yds":195,"td":1,"int":1,"n":2,"pct":62.16216216216216,"ypa":5.27027027027027,"rating":109.94594594594595,"cum_yds":500,"cum_td":5,"cum_total_td":5,"cum_rating":152.34375,"opp_d_rank":null},{"date":"2026-09-19","opp":"UTSA","result":"W 30-6","cmp":16,"att":32,"yds":161,"td":2,"int":0,"n":3,"pct":50.0,"ypa":5.03125,"rating":112.8875,"cum_yds":661,"cum_td":7,"cum_total_td":7,"cum_rating":139.1916666666667,"opp_d_rank":null}]},{"name":"Kamario Taylor","school":"Mississippi State","games":[{"date":"2026-09-05","opp":"Louisiana-Monroe","result":"W 62-13","cmp":22,"att":34,"yds":354,"td":4,"int":0,"n":1,"pct":64.70588235294117,"ypa":10.411764705882353,"rating":190.98823529411766,"cum_yds":354,"cum_td":4,"cum_total_td":4,"cum_rating":190.98823529411766,"opp_d_rank":null},{"date":"2026-09-12","opp":"Minnesota","result":"W 38-13","cmp":16,"att":22,"yds":227,"td":3,"int":0,"n":2,"pct":72.72727272727273,"ypa":10.318181818181818,"rating":204.4,"cum_yds":581,"cum_td":7,"cum_total_td":7,"cum_rating":196.2571428571429,"opp_d_rank":null},{"date":"2026-09-19","opp":"South Carolina","result":"W 41-34","cmp":18,"att":26,"yds":251,"td":4,"int":1,"n":3,"pct":69.23076923076923,"ypa":9.653846153846153,"rating":193.39999999999998,"cum_yds":832,"cum_td":11,"cum_total_td":11,"cum_rating":195.35121951219512,"opp_d_rank":null}]}]},"opp_d_method":"Opponent's national rank in passing yards allowed per game (cfbstats.com, FBS). 2025 opponents use final 2025 ranks. 2026 opponents use the current 2026 rank, which moves every week.","caveats":["Opponent pass-defense ranks for 2026 opponents are early-season figures and will move week to week.","National rank history starts 2026-09-19; each weekly refresh adds a point."],"sources":[{"label":"ESPN: Josh Hoover 2026 game log","url":"https://site.web.api.espn.com/apis/common/v3/sports/football/college-football/athletes/4685401/gamelog?season=2026"},{"label":"FOX Sports: Fernando Mendoza 2025 game log","url":"https://www.foxsports.com/college-football/fernando-mendoza-player-game-log?season=2025"},{"label":"cfbstats.com: 2026 national passing leaders","url":"https://cfbstats.com/2026/leader/national/player/split01/category02/sort08.html"},{"label":"cfbstats.com: team passing defense (2025 final, 2026 current)","url":"https://cfbstats.com/2026/leader/national/team/defense/split01/category02/sort01.html"},{"label":"Sports Illustrated: FanDuel Heisman odds, 2026-09-20","url":"https://www.si.com/betting/2026-heisman-trophy-odds-trinidad-chambliss-skyrockets-to-favorite-keelon-russell-kamario-taylor-rising"},{"label":"FOX Sports: DraftKings Heisman odds, 2026-09-20","url":"https://www.foxsports.com/stories/college-football/2026-heisman-trophy-odds"},{"label":"NBC Sports: DraftKings Heisman odds, 2026-09-22","url":"https://www.nbcsports.com/betting/college-football/news/2026-heisman-trophy-betting-odds-favorites-contenders-future-picks-for-week-4-including-chambliss-mensah"},{"label":"BetMGM: BetMGM Heisman odds, 2026-09-25","url":"https://sports.betmgm.com/en/blog/college-football/heisman-trohpy-odds-favorites-to-win-bm06/"},{"label":"ESPN: Trinidad Chambliss 2026 game log","url":"https://www.espn.com/college-football/player/gamelog/_/id/4911529"},{"label":"ESPN: Darian Mensah 2026 game log","url":"https://www.espn.com/college-football/player/gamelog/_/id/5121169"},{"label":"ESPN: Arch Manning 2026 game log","url":"https://www.espn.com/college-football/player/gamelog/_/id/4870906"},{"label":"ESPN: Kamario Taylor 2026 game log","url":"https://www.espn.com/college-football/player/gamelog/_/id/5177084"}]};
+(function(){
+const M = MODEL, $ = s => document.querySelector(s);
+const fmt = (v, dp=0) => v==null ? "–" : Number(v).toLocaleString("en-US",{minimumFractionDigits:dp,maximumFractionDigits:dp});
+const odds = o => o==null ? "–" : (o>0?"+":"")+o;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const SVGNS = "http://www.w3.org/2000/svg";
+const dateFmt = d => { const [y,m,dd] = d.split("-").map(Number); return new Date(y,m-1,dd).toLocaleDateString("en-US",{month:"short",day:"numeric"}); };
+const dateFmtY = d => { const [y,m,dd] = d.split("-").map(Number); return new Date(y,m-1,dd).toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"}); };
+const N = M.N, ord = n => n+(["th","st","nd","rd"][(n%100-20)%10]||["th","st","nd","rd"][n%100]||"th");
+
+/* ---------- masthead ---------- */
+const asof = new Date(M.as_of);
+const TZ = {timeZone:"America/Indiana/Indianapolis"};
+$("#stamp").innerHTML = `<span class="pill">Through game ${N}</span><span class="pill ghost">Updated ${asof.toLocaleDateString("en-US",{...TZ,month:"short",day:"numeric",year:"numeric"})}</span>`
+  + (M.next_game ? `<span class="pill ghost">Next: ${M.next_game.site==="A"?"at ":"vs "}${esc(M.next_game.opp)}, ${dateFmt(M.next_game.date)}</span>` : "");
+$("#verdict").textContent = M.verdict;
+const L = M.latest;
+const [wl, sc] = L.result.split(" ");
+$("#scorecard").innerHTML = `
+  <div class="eyebrow">Latest final · Game ${L.n} · ${dateFmtY(L.date)}</div>
+  <div class="score"><span style="font-weight:600;font-size:17px">${L.site==="A"?"at ":"vs "}${esc(L.opp)}</span><b class="num">${wl==="W"?"W":"L"} ${sc}</b></div>
+  <div class="statline num">
+    <div><b>${L.cmp}/${L.att}</b><span>Cmp/Att</span></div>
+    <div><b>${L.yds}</b><span>Pass yds</span></div>
+    <div><b>${L.td}</b><span>Pass TD</span></div>
+    <div><b>${L.int}</b><span>INT</span></div>
+    <div><b>${fmt(L.rating,1)}</b><span>Rating</span></div>
+  </div>
+  <div class="small">Rushing: ${L.rush_att} for ${L.rush_yds} yds, ${L.rush_td} TD${L.sacks!=null?` · Sacked ${L.sacks}×`:""}</div>`;
+
+/* ---------- head to head ---------- */
+{
+  const rows = M.h2h.map(r => {
+    const mx = Math.max(Math.abs(r.hoover), Math.abs(r.mendoza)) || 1;
+    const hw = Math.max(0, r.hoover)/mx*100, mw = Math.max(0, r.mendoza)/mx*100;
+    return `<tr>
+      <td class="lab">${r.label}${r.higher_better?"":' <span class="small">(fewer is better)</span>'}</td>
+      <td class="v num h ${r.winner==="hoover"?"win":r.winner==="mendoza"?"lose":""}"><span>${fmt(r.hoover,r.dp)}</span></td>
+      <td class="bars"><div class="barpair" aria-hidden="true"><i style="width:${hw}%;background:var(--hoover)"></i><i style="width:${mw}%;background:var(--mendoza)"></i></div></td>
+      <td class="v num m ${r.winner==="mendoza"?"win":r.winner==="hoover"?"lose":""}"><span>${fmt(r.mendoza,r.dp)}</span></td></tr>`;
+  }).join("");
+  $("#h2h-table").innerHTML = `<thead><tr><th>Through ${N} games</th><th>Hoover</th><th class="bars"></th><th>Mendoza</th></tr></thead><tbody>${rows}</tbody>`;
+}
+
+/* ---------- pace ---------- */
+{
+  const G = M.season_games_mendoza;
+  $("#pace-lede").textContent = `Mendoza played ${G} games in 2025 and won the Heisman and the national title. Pace is Hoover's per-game average so far, stretched over the same ${G} games.`;
+  $("#pace-tiles").innerHTML = M.pace.map(p => {
+    const share = Math.min(1, p.to_date/p.mendoza_final);
+    const markPct = Math.min(100, (N/G)*100);
+    return `<div class="tile">
+      <div class="eyebrow">${p.label}</div>
+      <div class="big num h">${fmt(p.pace)}</div>
+      <div class="small">${G}-game pace</div>
+      <div class="meter" role="img" aria-label="Hoover has ${fmt(p.to_date)} of Mendoza's ${fmt(p.mendoza_final)}"><i style="width:${share*100}%"></i><u style="left:${markPct}%"></u></div>
+      <div class="row num"><span>So far <b class="h">${fmt(p.to_date)}</b></span><span>Mendoza final <b class="m">${fmt(p.mendoza_final)}</b></span></div>
+    </div>`;
+  }).join("");
+  $("#pace-tiles").insertAdjacentHTML("afterend", `<p class="caption">The red bar is Hoover's total as a share of Mendoza's final number. The blue tick marks ${N} of ${G} games played, so a red bar past the tick means Hoover is ahead of that pace.</p>`);
+}
+
+/* ---------- chart engine ---------- */
+const tip = (() => { const d = document.createElement("div"); d.className="tip"; d.hidden=true; return d; })();
+function el(tag, attrs, parent){ const e = document.createElementNS(SVGNS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
+function niceMax(v){ if (v<=0) return 1; const p = Math.pow(10, Math.floor(Math.log10(v))); for (const m of [1,1.2,1.5,2,2.5,3,4,5,6,8,10]) if (m*p >= v) return m*p; return 10*p; }
+function ticks(max, n=4){ const step = max/n; return Array.from({length:n+1},(_,i)=>i*step); }
+
+function frame(host, opts){
+  host.innerHTML = ""; tip.hidden = true;
+  const W = Math.max(320, host.clientWidth), H = opts.height || Math.round(Math.min(360, Math.max(240, W*0.42)));
+  const pad = {l:opts.padL||46, r:opts.padR||16, t:14, b:26};
+  const svg = el("svg", {viewBox:`0 0 ${W} ${H}`, role:"img", "aria-label":opts.aria}, host);
+  return {svg, W, H, pad, iw:W-pad.l-pad.r, ih:H-pad.t-pad.b};
+}
+function yAxis(f, ymax, fmtY, invert, ymin=0){
+  const ts = invert ? rankTicks(ymin, ymax) : ticks(ymax);
+  const y = v => invert ? f.pad.t + (v-ymin)/(ymax-ymin||1)*f.ih : f.pad.t + f.ih - (v-ymin)/(ymax-ymin||1)*f.ih;
+  ts.forEach(t => {
+    el("line",{x1:f.pad.l,x2:f.W-f.pad.r,y1:y(t),y2:y(t),class:"gl"},f.svg);
+    const tx = el("text",{x:f.pad.l-8,y:y(t)+4,"text-anchor":"end",class:"ax"},f.svg); tx.textContent = fmtY(t);
+  });
+  return y;
+}
+function rankTicks(lo, hi){ const span = hi-lo; const step = span<=6?1:span<=12?2:span<=30?5:10; const out=[lo]; for(let v=Math.ceil((lo+1)/step)*step; v<=hi; v+=step) out.push(v); return out; }
+function showTip(host, x, y, html){
+  if (tip.parentNode!==host) host.appendChild(tip);
+  tip.innerHTML = html; tip.hidden = false;
+  const hw = host.clientWidth, tw = tip.offsetWidth;
+  let left = x + 14; if (left + tw > hw) left = x - tw - 14; if (left < 0) left = 0;
+  tip.style.left = left+"px"; tip.style.top = Math.max(0, y - 20)+"px";
+}
+
+/* line chart: series [{name, color, width, points:[{x,y,label?}], faded?}] */
+function lineChart(host, o){
+  const f = frame(host, o);
+  const xs = o.xMax, x = n => f.pad.l + (n-1)/(Math.max(1,xs-1))*f.iw;
+  const ymax = o.yMax ?? niceMax(Math.max(...o.series.flatMap(s=>s.points.map(p=>p.y))) * 1.02);
+  const ymin = o.yMin ?? 0;
+  const y = yAxis(f, ymax, o.fmtY || (v=>fmt(v)), o.invert, ymin);
+  el("line",{x1:f.pad.l,x2:f.W-f.pad.r,y1:f.pad.t+f.ih,y2:f.pad.t+f.ih,class:"base"},f.svg);
+  const step = xs>12 ? 2 : 1;
+  for (let n=1;n<=xs;n++){ if ((n-1)%step) continue; const t = el("text",{x:x(n),y:f.H-12,"text-anchor":"middle",class:"ax"},f.svg); t.textContent = o.xLabel ? o.xLabel(n) : n; }
+  if (o.marker){ el("line",{x1:x(o.marker),x2:x(o.marker),y1:f.pad.t,y2:f.pad.t+f.ih,stroke:css("--ink-2"),"stroke-dasharray":"3 4","stroke-width":1},f.svg); }
+  const order = [...o.series].sort((a,b)=>(a.z||0)-(b.z||0)), labels = [];
+  order.forEach(s => {
+    const col = s.color;
+    // segments broken at null
+    let seg = [];
+    const flush = () => { if (seg.length>1) el("path",{d:seg.map((p,i)=>(i?"L":"M")+x(p.x)+" "+y(p.y)).join(""),fill:"none",stroke:col,"stroke-width":s.width||2,"stroke-linejoin":"round","stroke-linecap":"round",opacity:s.opacity||1},f.svg); seg=[]; };
+    s.points.forEach(p => { if (p.y==null) flush(); else seg.push(p); }); flush();
+    s.points.forEach(p => { if (p.y==null) return; el("circle",{cx:x(p.x),cy:y(p.y),r:s.r||(s.width>2?4.5:3.5),fill:col,stroke:css("--surface"),"stroke-width":2,opacity:s.opacity||1},f.svg); });
+    if (s.endLabel){ const last = [...s.points].reverse().find(p=>p.y!=null); if (last) labels.push({x:x(last.x)+8, y:y(last.y)+4, s}); }
+  });
+  // spread end labels that sit in the same column so none overlap
+  const cols = {}; labels.forEach(l => (cols[Math.round(l.x)] ||= []).push(l));
+  Object.values(cols).forEach(g => { g.sort((a,b)=>a.y-b.y); for (let i=1;i<g.length;i++) if (g[i].y-g[i-1].y<14) g[i].y=g[i-1].y+14;
+    const over = g.length ? g[g.length-1].y-(f.pad.t+f.ih+4) : 0; if (over>0) g.forEach(l=>l.y-=over); });
+  labels.forEach(l => { const t = el("text",{x:l.x,y:l.y,class:"lbl",fill:l.s.labelColor||css("--ink-2")},f.svg); t.textContent = l.s.endLabel; if (l.s.width>2) t.setAttribute("font-weight","700"); });
+  // hover
+  const hit = el("rect",{x:f.pad.l-10,y:f.pad.t,width:f.iw+20,height:f.ih,fill:"transparent"},f.svg);
+  const guide = el("line",{y1:f.pad.t,y2:f.pad.t+f.ih,stroke:css("--muted"),"stroke-width":1,opacity:0},f.svg);
+  const move = ev => {
+    const r = f.svg.getBoundingClientRect(), sx = (ev.clientX - r.left)/r.width*f.W;
+    const n = Math.min(xs, Math.max(1, Math.round((sx - f.pad.l)/f.iw*(xs-1))+1));
+    guide.setAttribute("x1",x(n)); guide.setAttribute("x2",x(n)); guide.setAttribute("opacity",.6);
+    const lines = o.series.map(s => { const p = s.points.find(q=>q.x===n); return p&&p.y!=null ? `<div class="r"><span><i class="sw" style="background:${s.color}"></i> ${esc(s.name)}</span><b class="num" style="font-family:var(--body);font-size:13px">${o.fmtTip(p)}</b></div>` : ""; }).join("");
+    if (!lines) { tip.hidden = true; return; }
+    showTip(host, x(n)/f.W*r.width, (ev.clientY-r.top), `<b>${o.xLabel?o.xLabel(n):"Game "+n}</b>${lines}`);
+  };
+  hit.addEventListener("pointermove", move); hit.addEventListener("pointerdown", move);
+  hit.addEventListener("pointerleave", ()=>{ tip.hidden = true; guide.setAttribute("opacity",0); });
+}
+
+/* paired bar chart */
+function barChart(host, o){
+  const f = frame(host, o);
+  const n = o.n, band = f.iw/n, bw = Math.max(4, Math.min(22, band*0.34));
+  const ymax = niceMax(Math.max(...o.groups.flatMap(g=>g.values.map(v=>v.y||0))) * 1.05);
+  const y = yAxis(f, ymax, o.fmtY || (v=>fmt(v)));
+  el("line",{x1:f.pad.l,x2:f.W-f.pad.r,y1:f.pad.t+f.ih,y2:f.pad.t+f.ih,class:"base"},f.svg);
+  const step = n>12?2:1;
+  const pts = [[],[]];
+  o.groups.forEach((g,i) => {
+    const cx = f.pad.l + band*(i+.5);
+    if (!(i%step)){ const t = el("text",{x:cx,y:f.H-12,"text-anchor":"middle",class:"ax"},f.svg); t.textContent = i+1; }
+    g.values.forEach((v,j) => {
+      if (v.y==null) { pts[j].push(null); return; }
+      const x0 = cx + (j===0 ? -bw-1 : 1), h = Math.max(1, f.pad.t+f.ih - y(v.y));
+      const top = y(v.y), r = Math.min(4, bw/2, h);
+      el("path",{d:`M${x0} ${f.pad.t+f.ih}V${top+r}Q${x0} ${top} ${x0+r} ${top}H${x0+bw-r}Q${x0+bw} ${top} ${x0+bw} ${top+r}V${f.pad.t+f.ih}Z`,fill:v.color,opacity:(v.opacity||1)*(o.lines?.42:1)},f.svg);
+      pts[j].push({x:x0+bw/2, y:top, color:v.color, future:!!v.future});
+    });
+  });
+  // trend lines through the bar tops (one per player); future games drawn faded
+  if (o.lines) pts.forEach(ps => {
+    for (let i=1;i<ps.length;i++){ const a=ps[i-1], b=ps[i]; if (!a||!b) continue;
+      el("line",{x1:a.x,y1:a.y,x2:b.x,y2:b.y,stroke:b.color,"stroke-width":b.future?1.5:2.5,"stroke-linecap":"round",opacity:b.future?.4:1,"stroke-dasharray":b.future?"4 4":"none"},f.svg); }
+    ps.forEach(p => { if (p) el("circle",{cx:p.x,cy:p.y,r:p.future?3:4.5,fill:p.color,stroke:css("--surface"),"stroke-width":2,opacity:p.future?.5:1},f.svg); });
+  });
+  o.groups.forEach((g,i) => {
+    const cx = f.pad.l + band*(i+.5);
+    const hit = el("rect",{x:cx-band/2,y:f.pad.t,width:band,height:f.ih,fill:"transparent"},f.svg);
+    const show = ev => { const r = f.svg.getBoundingClientRect(); showTip(host, cx/f.W*r.width, ev.clientY-r.top, o.tip(i)); };
+    hit.addEventListener("pointermove", show); hit.addEventListener("pointerdown", show);
+    hit.addEventListener("pointerleave", ()=>{ tip.hidden = true; });
+  });
+}
+
+function seg(host, items, current, onPick, label){
+  host.innerHTML = items.map(([k,t]) => `<button type="button" data-k="${k}" aria-pressed="${k===current}">${t}</button>`).join("");
+  host.addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; host.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed", x===b)); onPick(b.dataset.k); });
+}
+
+/* ---------- running totals ---------- */
+const HR = M.hoover.rows, MR = M.mendoza.rows;
+const TOT = {
+  cum_yds:{t:"Pass yards", dp:0, cap:"Total passing yards after each game."},
+  cum_td:{t:"Pass TD", dp:0, cap:"Total passing touchdowns after each game."},
+  cum_total_td:{t:"Total TD", dp:0, cap:"Passing plus rushing touchdowns after each game."},
+  cum_rating:{t:"Season rating", dp:1, cap:"NCAA passer rating computed on season totals after each game (not an average of game ratings)."}
+};
+let totKey = "cum_yds";
+function drawTotals(){
+  const d = TOT[totKey];
+  const all = [...HR.map(r=>r[totKey]), ...MR.map(r=>r[totKey])];
+  const isRating = totKey==="cum_rating";
+  lineChart($("#tot-chart"), {
+    aria:`Running ${d.t}, Hoover through ${N} games versus Mendoza's 2025 season`,
+    xMax: MR.length, marker: N,
+    yMin: isRating ? Math.floor(Math.min(...all)/20)*20 : 0,
+    yMax: isRating ? Math.ceil(Math.max(...all)/20)*20 : undefined,
+    fmtY: v => fmt(v, 0),
+    fmtTip: p => fmt(p.y, d.dp) + (p.opp ? ` <span class="small">${esc(p.opp)}</span>` : ""),
+    series: [
+      {name:"Mendoza 2025", color:css("--mendoza"), width:2, z:1, points: MR.map(r=>({x:r.n,y:r[totKey],opp:r.opp})), endLabel: fmt(MR[MR.length-1][totKey], d.dp), labelColor:css("--mendoza")},
+      {name:"Hoover 2026", color:css("--hoover"), width:3.5, z:2, points: HR.map(r=>({x:r.n,y:r[totKey],opp:r.opp})), endLabel: fmt(HR[HR.length-1][totKey], d.dp), labelColor:css("--hoover")}
+    ],
+    padR: 44
+  });
+  const hv = HR[N-1][totKey], mv = MR[N-1][totKey];
+  $("#tot-cap").textContent = `${d.cap} After game ${N}: Hoover ${fmt(hv,d.dp)}, Mendoza ${fmt(mv,d.dp)}${isRating?"":` (${hv>=mv?"+":""}${fmt(hv-mv,d.dp)})`}.`;
+}
+seg($("#tot-seg"), Object.entries(TOT).map(([k,v])=>[k,v.t]), totKey, k=>{totKey=k; drawTotals();});
+
+/* ---------- per game ---------- */
+const PG = { yds:{t:"Pass yards",dp:0}, td:{t:"Pass TD",dp:0}, rating:{t:"Rating",dp:1}, pct:{t:"Comp %",dp:1}, att:{t:"Attempts",dp:0} };
+let pgKey = "yds";
+function drawPG(){
+  const d = PG[pgKey], n = Math.max(N, Math.min(MR.length, N+4));
+  barChart($("#pg-chart"), {
+    aria:`${d.t} per game, Hoover versus Mendoza`, n,
+    groups: Array.from({length:n},(_,i)=>({values:[
+      {y: HR[i]? HR[i][pgKey] : null, color:css("--hoover")},
+      {y: MR[i]? MR[i][pgKey] : null, color:css("--mendoza"), opacity: i<N?1:.45, future: i>=N}]})), lines: true,
+    fmtY: v=>fmt(v,0),
+    tip: i => `<b>Game ${i+1}</b>` +
+      (HR[i]?`<div class="r"><span><i class="sw" style="background:var(--hoover)"></i> Hoover vs ${esc(HR[i].opp)}</span><b>${fmt(HR[i][pgKey],d.dp)}</b></div>`:`<div class="r"><span class="small">Hoover: not played yet</span></div>`) +
+      `<div class="r"><span><i class="sw" style="background:var(--mendoza)"></i> Mendoza ${MR[i].site==="A"?"at":"vs"} ${esc(MR[i].opp)}</span><b>${fmt(MR[i][pgKey],d.dp)}</b></div>`
+  });
+}
+seg($("#pg-seg"), Object.entries(PG).map(([k,v])=>[k,v.t]), pgKey, k=>{pgKey=k; drawPG();});
+
+/* ---------- game logs ---------- */
+function logTable(rows, tot, upto, player){
+  const head = `<thead><tr><th>#</th><th>Opponent</th><th>Result</th><th>Opp pass D</th><th>C/A</th><th>Yds</th><th>TD</th><th>INT</th><th>Rtg</th><th>Rush att</th><th>Rush yds</th><th>Rush TD</th></tr></thead>`;
+  const body = rows.map(r => `<tr class="${r.n>upto?"future":""} ${r.n===upto && rows.length>upto?"cut":""}">
+    <td class="num">${r.n}</td>
+    <td>${r.site==="A"?"at ":r.site==="N"?"vs ":""}${esc(r.opp)} ${r.level==="FCS"?'<span class="lvl">FCS</span>':""}${r.site==="N"?' <span class="lvl" title="Neutral site">N</span>':""}${r.note?`<div class="small">${esc(r.note)}</div>`:""}</td>
+    <td>${esc(r.result)}</td>
+    <td class="num">${r.level==="FCS"?"FCS":r.opp_d_rank?ord(r.opp_d_rank):"–"}</td>
+    <td class="num">${r.cmp}/${r.att}</td><td class="num">${r.yds}</td><td class="num">${r.td}</td><td class="num">${r.int}</td>
+    <td class="num">${fmt(r.rating,1)}</td><td class="num">${r.rush_att}</td><td class="num">${r.rush_yds}</td><td class="num">${r.rush_td}</td></tr>`).join("");
+  const t = tot;
+  const foot = `<tfoot><tr><td></td><td>${player} total${rows.length>upto?", first "+upto:""}</td><td></td><td></td><td class="num">${t.cmp}/${t.att}</td><td class="num">${fmt(t.yds)}</td><td class="num">${t.td}</td><td class="num">${t.int}</td><td class="num">${fmt(t.rating,1)}</td><td class="num">${t.rush_att}</td><td class="num">${t.rush_yds}</td><td class="num">${t.rush_td}</td></tr>`
+    + (rows.length>upto ? `<tr><td></td><td>2025 season, all ${rows.length}</td><td></td><td></td><td class="num">${M.mendoza.season.cmp}/${M.mendoza.season.att}</td><td class="num">${fmt(M.mendoza.season.yds)}</td><td class="num">${M.mendoza.season.td}</td><td class="num">${M.mendoza.season.int}</td><td class="num">${fmt(M.mendoza.season.rating,1)}</td><td class="num">${M.mendoza.season.rush_att}</td><td class="num">${M.mendoza.season.rush_yds}</td><td class="num">${M.mendoza.season.rush_td}</td></tr>` : "") + `</tfoot>`;
+  return head + `<tbody>${body}</tbody>` + foot;
+}
+$("#log-h").innerHTML = logTable(HR, M.hoover.totals, N, "Hoover");
+$("#log-m").innerHTML = logTable(MR, M.mendoza.totals, N, "Mendoza");
+$("#oppd-note").textContent = "Opp pass D: " + (M.opp_d_method || "") + " Rows below the dashed line are Mendoza games Hoover has not reached yet.";
+
+/* ---------- national ---------- */
+{
+  const NT = M.national;
+  $("#nat-lede").innerHTML = `Top five in each category from the full FBS leaderboard, with Hoover's exact national rank. Leaderboards through <b>${dateFmtY(NT.data_through)}</b>${NT.current?", which includes his latest game":". They do not include his latest game yet"}. ${esc(NT.qualifier_note)}`;
+  const fmtV = {yds:v=>fmt(v), td:v=>fmt(v), pct:v=>fmt(v,1)+"%", rating:v=>fmt(v,1), ypa:v=>fmt(v,1)};
+  const hist = NT.rank_history;
+  $("#boards").innerHTML = NT.order.map(cat => {
+    const b = NT.boards[cat], h = b.hoover;
+    const cnt = {}; b.top.forEach(r => cnt[r.rank] = (cnt[r.rank]||0)+1);
+    const tieMark = r => cnt[r.rank]>1 ? "T"+r.rank : r.rank;
+    let rows = b.top.map(r => `<tr class="${r.is_hoover?"hv":""}"><td class="rk">${tieMark(r)}</td><td>${r.is_hoover?"★ ":""}${esc(r.name)}<span class="tm">${esc(r.team)}</span></td><td class="val">${fmtV[cat](r.value)}</td></tr>`).join("");
+    if (!h.in_top) rows += `<tr class="gap"><td colspan="3"></td></tr><tr class="hv"><td class="rk">${h.rank}</td><td>★ Josh Hoover<span class="tm">Indiana</span></td><td class="val">${fmtV[cat](h.value)}</td></tr>`;
+    const pts = hist.map(e => e.ranks[cat]).filter(v=>v!=null);
+    const trendTxt = pts.length>1 ? (()=>{const d = pts[pts.length-2]-pts[pts.length-1]; return d>0?`up ${d} spot${d>1?"s":""} since last week`:d<0?`down ${-d} spot${d<-1?"s":""} since last week`:"unchanged from last week";})() : "trend starts next week";
+    return `<div class="board">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><h3>${b.label}</h3><span class="rankchip num" title="Hoover's national rank">${h.tied?"T":""}${ord(h.rank)}</span></div>
+      <table>${rows}</table>
+      <div class="spark" data-cat="${cat}" aria-label="Hoover's weekly national rank in ${b.label}"></div>
+      <div class="foot"><span>Hoover ${trendTxt}${b.qualified?" · qualified passers only":""}</span><a href="${b.source_url}" target="_blank" rel="noopener">Source</a></div>
+    </div>`;
+  }).join("");
+}
+function drawSparks(){
+  const hist = M.national.rank_history;
+  document.querySelectorAll(".spark").forEach(host => {
+    const cat = host.dataset.cat;
+    const pts = hist.map((e,i) => ({i, y:e.ranks[cat] ?? null, d:e.through})).filter(p=>p.y!=null);
+    host.innerHTML = "";
+    if (!pts.length) return;
+    const W = Math.max(240, host.clientWidth || 280), H = 92, pl = 40, pr = 48, pt = 10, pb = 22;
+    const n = Math.max(2, hist.length), hi = Math.max(10, Math.ceil(Math.max(...pts.map(p=>p.y))/10)*10);
+    const x = i => pl + i/(n-1)*(W-pl-pr), y = r => pt + (r-1)/(hi-1)*(H-pt-pb);
+    const svg = el("svg",{viewBox:`0 0 ${W} ${H}`,width:W,height:H,style:"max-width:100%;height:auto;display:block;overflow:visible",role:"img","aria-label":`Hoover's weekly national rank: ${pts.map(p=>ord(p.y)+" through "+dateFmt(p.d)).join(", ")}`},host);
+    [1,hi].forEach(r => { el("line",{x1:pl,x2:W-pr,y1:y(r),y2:y(r),class:"gl"},svg); const t=el("text",{x:pl-6,y:y(r)+4,"text-anchor":"end",class:"ax"},svg); t.textContent = ord(r); });
+    hist.forEach((e,i) => { if (i===0 || i===hist.length-1){ const t=el("text",{x:x(i),y:H-4,"text-anchor":i===0&&hist.length>1?"start":"middle",class:"ax"},svg); t.textContent = dateFmt(e.through); } });
+    let d = "", pen = false; hist.forEach((e,i)=>{ const r = e.ranks[cat]; if (r==null){ pen = false; return; } d += (pen?"L":"M") + x(i) + " " + y(r); pen = true; });
+    el("path",{d,fill:"none",stroke:css("--hoover"),"stroke-width":2.5,"stroke-linejoin":"round"},svg);
+    pts.forEach(p => el("circle",{cx:x(p.i),cy:y(p.y),r:4,fill:css("--hoover"),stroke:css("--surface"),"stroke-width":2},svg));
+    const last = pts[pts.length-1]; const t = el("text",{x:x(last.i)+8,y:y(last.y)+4,class:"lbl",fill:css("--hoover"),"font-weight":"700"},svg); t.textContent = ord(last.y);
+  });
+}
+
+/* ---------- heisman QB field ---------- */
+const FD = { yds:{t:"Pass yards",dp:0,cum:"cum_yds"}, td:{t:"Pass TD",dp:0,cum:"cum_td"}, rating:{t:"Rating",dp:1,cum:"cum_rating"} };
+let fdKey = "yds", fdMode = "cum";
+{
+  const others = M.cohort.qbs.filter(q=>!q.is_hoover);
+  $("#field-lede").textContent = `${M.cohort.rule} Hoover is in red; the other contenders are gray and labeled at the end of each line. Hover or tap a game number for everyone's value. Game numbers line up each player's season, so a player with an extra game played has a longer line.`;
+  $("#fd-legend").innerHTML = `<span><i class="sw thick" style="background:var(--hoover)"></i>Josh Hoover, Indiana</span>` + others.map(q=>`<span><i class="sw" style="background:var(--field)"></i>${esc(q.name)}, ${esc(q.school)}</span>`).join("");
+}
+function drawField(){
+  const d = FD[fdKey], key = fdMode==="cum" ? d.cum : fdKey;
+  const qbs = M.cohort.qbs, xMax = Math.max(...qbs.map(q=>q.games.length));
+  const all = qbs.flatMap(q=>q.games.map(g=>g[key]));
+  const isR = fdKey==="rating";
+  lineChart($("#fd-chart"), {aria:`${d.t} ${fdMode==="cum"?"running total":"per game"} for Hoover and the Heisman QB field`, xMax: Math.max(2,xMax),
+    yMin: isR ? Math.floor(Math.min(...all)/20)*20 : 0, yMax: isR ? Math.ceil(Math.max(...all)/20)*20 : undefined,
+    fmtY: v=>fmt(v,0), fmtTip: p => fmt(p.y, d.dp) + (p.opp?` <span class="small">${esc(p.opp)}</span>`:""), padR: 128,
+    series: qbs.map(q => ({name:q.name, color: q.is_hoover?css("--hoover"):css("--field"), width: q.is_hoover?3.5:1.75, z: q.is_hoover?2:1,
+      points: q.games.map(g=>({x:g.n, y:g[key], opp:g.opp})), endLabel: q.name.split(" ").slice(-1)[0] + " " + fmt(q.games[q.games.length-1][key], d.dp),
+      labelColor: q.is_hoover?css("--hoover"):css("--ink-2")}))});
+}
+seg($("#fd-mode"), [["cum","Running total"],["pg","Per game"]], fdMode, k=>{fdMode=k; drawField();});
+seg($("#fd-seg"), Object.entries(FD).map(([k,v])=>[k,v.t]), fdKey, k=>{fdKey=k; drawField();});
+
+/* ---------- odds ---------- */
+{
+  const Hs = M.heisman, books = Hs.books;
+  const hp = Hs.hoover;
+  $("#odds-lede").innerHTML = `Players are ranked by the median implied probability across the books listed. ${hp?`Hoover is <b class="h">${ord(hp.rank)}</b> in that consensus at about ${fmt(hp.prob*100,1)}%.`:""} ${esc(Hs.note)}`;
+  const maxP = Math.max(...Hs.players.map(p=>p.prob));
+  const cnt = {}; Hs.players.forEach(p=>cnt[p.rank]=(cnt[p.rank]||0)+1);
+  const head = `<thead><tr><th>#</th><th>Player</th>${books.map(b=>`<th>${esc(b.book)}<small>${dateFmt(b.as_of)}</small></th>`).join("")}<th>Implied chance<small>median of books</small></th></tr></thead>`;
+  const body = Hs.players.map(p => `<tr class="${p.name==="Josh Hoover"?"hv":""}"><td class="num">${cnt[p.rank]>1?"T":""}${p.rank}</td><td>${p.name==="Josh Hoover"?"★ ":""}${esc(p.name)} <span class="small">${esc(p.school)} · ${p.pos}</span></td>${books.map(b=>`<td class="num">${odds(p.odds[b.book])}</td>`).join("")}<td class="num"><span class="probbar" style="width:${Math.max(2,p.prob/maxP*70)}px"></span>${fmt(p.prob*100,1)}%</td></tr>`).join("");
+  $("#odds-table").innerHTML = head + `<tbody>${body}</tbody>`;
+  $("#trail").innerHTML = Hs.trail.map(t => `<div class="step"><span>${t.date==="preseason"?"Preseason open":dateFmt(t.date)} · ${esc(t.book)}</span><b class="num">${odds(t.odds)}</b><span>${fmt(100/(t.odds+100)*100,1)}% implied</span></div>`).join("");
+}
+
+/* ---------- notes, sources, footer ---------- */
+{
+  const notes = [
+    "Head-to-head numbers compare Hoover's first games of 2026 with Mendoza's first games of 2025, always the same count.",
+    "Passer rating uses the NCAA formula (8.4 × yards + 330 × TD + 100 × completions − 200 × INT) ÷ attempts, on totals, never an average of game ratings.",
+    "National ranks use competition ranking, so tied players share a rank and the next rank is skipped.",
+    "Heisman odds are as reported by each outlet on the date shown, not live lines.",
+    ...M.caveats
+  ];
+  $("#notes").innerHTML = notes.map(n=>`<li>${esc(n)}</li>`).join("");
+  $("#sources").innerHTML = M.sources.map(s=>`<li><a href="${s.url}" target="_blank" rel="noopener">${esc(s.label)}</a></li>`).join("");
+  $("#foot-l").textContent = `Updated ${asof.toLocaleString("en-US",{...TZ,dateStyle:"medium",timeStyle:"short"})} ET · Through game ${N}`;
+}
+
+function drawAll(){ drawTotals(); drawPG(); drawSparks(); drawField(); }
+drawAll();
+let rt; addEventListener("resize", ()=>{ clearTimeout(rt); rt = setTimeout(drawAll, 120); });
+matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", drawAll);
+new MutationObserver(drawAll).observe(document.documentElement, {attributes:true, attributeFilter:["data-theme"]});
+})();
+</script>
+
+</body></html>

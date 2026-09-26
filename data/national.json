@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "source": "cfbstats.com national player leaders, passing, all games (FBS)",
+  "qualifier_note": "Completion %, passer rating and yards per attempt require 15 pass attempts per game played and 75% of team games (cfbstats/NCAA rule). Yards and TD have no qualifier.",
+  "latest": {
+    "data_through": "2026-09-25",
+    "retrieved_at": "2026-09-26T09:40:00-04:00",
+    "boards": {
+      "yds": {"label": "Passing yards", "source_url": "https://cfbstats.com/2026/leader/national/player/split01/category02/sort08.html",
+        "rows": [
+          {"name": "Jayden Maiava", "team": "USC", "g": 4, "cmp": 87, "att": 115, "yds": 1173, "td": 12, "int": 1, "src_rating": 194.03},
+          {"name": "Braden Atkinson", "team": "Oregon State", "g": 3, "cmp": 82, "att": 129, "yds": 1120, "td": 8, "int": 1, "src_rating": 155.42},
+          {"name": "Marcus Stokes", "team": "Memphis", "g": 4, "cmp": 70, "att": 98, "yds": 1053, "td": 9, "int": 3, "src_rating": 185.88},
+          {"name": "Deuce Bailey", "team": "Coastal Carolina", "g": 4, "cmp": 66, "att": 122, "yds": 1039, "td": 10, "int": 2, "src_rating": 149.40},
+          {"name": "Luke Weaver", "team": "San Jose State", "g": 4, "cmp": 87, "att": 143, "yds": 1032, "td": 9, "int": 5, "src_rating": 135.24}
+        ],
+        "hoover_rank": 24},
+      "td": {"label": "Passing TD", "source_url": "https://cfbstats.com/2026/leader/national/player/split01/category02/sort10.html",
+        "rows": [
+          {"name": "Jayden Maiava", "team": "USC", "g": 4, "cmp": 87, "att": 115, "yds": 1173, "td": 12, "int": 1, "src_rating": 194.03},
+          {"name": "Darian Mensah", "team": "Miami", "g": 3, "cmp": 71, "att": 79, "yds": 873, "td": 11, "int": 0, "src_rating": 228.65},
+          {"name": "Kamario Taylor", "team": "Mississippi State", "g": 3, "cmp": 56, "att": 82, "yds": 832, "td": 11, "int": 1, "src_rating": 195.35},
+          {"name": "Josh Hoover", "team": "Indiana", "g": 4, "cmp": 56, "att": 80, "yds": 850, "td": 11, "int": 0, "src_rating": 204.63},
+          {"name": "Deuce Bailey", "team": "Coastal Carolina", "g": 4, "cmp": 66, "att": 122, "yds": 1039, "td": 10, "int": 2, "src_rating": 149.40},
+          {"name": "Hauss Hejny", "team": "Colorado State", "g": 3, "cmp": 47, "att": 73, "yds": 619, "td": 10, "int": 1, "src_rating": 178.07}
+        ],
+        "hoover_rank": 2},
+      "pct": {"label": "Completion %", "qualified": true, "source_url": "https://cfbstats.com/2026/leader/national/player/split01/category02/sort03.html",
+        "rows": [
+          {"name": "Darian Mensah", "team": "Miami", "g": 3, "cmp": 71, "att": 79, "yds": 873, "td": 11, "int": 0, "src_rating": 228.65},
+          {"name": "Gunner Stockton", "team": "Georgia", "g": 3, "cmp": 38, "att": 45, "yds": 583, "td": 9, "int": 0, "src_rating": 259.27},
+          {"name": "Noah Fifita", "team": "Arizona", "g": 3, "cmp": 77, "att": 95, "yds": 834, "td": 7, "int": 1, "src_rating": 176.99},
+          {"name": "Cibastian Broughton", "team": "Akron", "g": 3, "cmp": 53, "att": 66, "yds": 380, "td": 4, "int": 0, "src_rating": 148.67},
+          {"name": "Ethan Grunkemeyer", "team": "Virginia Tech", "g": 3, "cmp": 79, "att": 101, "yds": 865, "td": 7, "int": 0, "src_rating": 173.03}
+        ],
+        "hoover_rank": 32},
+      "rating": {"label": "Passer rating", "qualified": true, "source_url": "https://cfbstats.com/2026/leader/national/player/split01/category02/sort02.html",
+        "rows": [
+          {"name": "Gunner Stockton", "team": "Georgia", "g": 3, "cmp": 38, "att": 45, "yds": 583, "td": 9, "int": 0, "src_rating": 259.27},
+          {"name": "Darian Mensah", "team": "Miami", "g": 3, "cmp": 71, "att": 79, "yds": 873, "td": 11, "int": 0, "src_rating": 228.65},
+          {"name": "Rocco Becht", "team": "Penn State", "g": 3, "cmp": 45, "att": 64, "yds": 751, "td": 9, "int": 0, "src_rating": 215.29},
+          {"name": "Josh Hoover", "team": "Indiana", "g": 4, "cmp": 56, "att": 80, "yds": 850, "td": 11, "int": 0, "src_rating": 204.63},
+          {"name": "Kamario Taylor", "team": "Mississippi State", "g": 3, "cmp": 56, "att": 82, "yds": 832, "td": 11, "int": 1, "src_rating": 195.35}
+        ],
+        "hoover_rank": 4},
+      "ypa": {"label": "Yards per attempt", "qualified": true, "source_url": "https://cfbstats.com/2026/leader/national/player/split01/category02/sort04.html",
+        "rows": [
+          {"name": "Gunner Stockton", "team": "Georgia", "g": 3, "cmp": 38, "att": 45, "yds": 583, "td": 9, "int": 0, "src_rating": 259.27},
+          {"name": "Rocco Becht", "team": "Penn State", "g": 3, "cmp": 45, "att": 64, "yds": 751, "td": 9, "int": 0, "src_rating": 215.29},
+          {"name": "Kevin Jennings", "team": "SMU", "g": 3, "cmp": 64, "att": 87, "yds": 989, "td": 9, "int": 4, "src_rating": 193.99},
+          {"name": "Aaron Philo", "team": "Florida", "g": 3, "cmp": 47, "att": 64, "yds": 721, "td": 6, "int": 2, "src_rating": 192.76},
+          {"name": "Lincoln Kienholz", "team": "Louisville", "g": 3, "cmp": 48, "att": 73, "yds": 816, "td": 6, "int": 0, "src_rating": 186.77}
+        ],
+        "hoover_rank": 10}
+    },
+    "hoover_row": {"name": "Josh Hoover", "team": "Indiana", "g": 4, "cmp": 56, "att": 80, "yds": 850, "td": 11, "int": 0, "src_rating": 204.63}
+  },
+  "rank_history": [
+    {"through": "2026-09-19", "games": 3, "ranks": {"rating": 2}, "note": "Only the passer rating board was captured for this week."},
+    {"through": "2026-09-25", "games": 4, "ranks": {"yds": 24, "td": 2, "pct": 32, "rating": 4, "ypa": 10}}
+  ]
+}

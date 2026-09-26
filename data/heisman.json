@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "note": "Reported sportsbook odds, not live lines. Each book is shown as of the date its odds were published.",
+  "players": {
+    "Trinidad Chambliss": {"school": "Ole Miss", "pos": "QB"},
+    "Darian Mensah": {"school": "Miami", "pos": "QB"},
+    "Jeremiah Smith": {"school": "Ohio State", "pos": "WR"},
+    "Arch Manning": {"school": "Texas", "pos": "QB"},
+    "Malachi Toney": {"school": "Miami", "pos": "WR"},
+    "Kamario Taylor": {"school": "Mississippi State", "pos": "QB"},
+    "CJ Carr": {"school": "Notre Dame", "pos": "QB"},
+    "Keelon Russell": {"school": "Alabama", "pos": "QB"},
+    "Josh Hoover": {"school": "Indiana", "pos": "QB"},
+    "Julian Sayin": {"school": "Ohio State", "pos": "QB"},
+    "Jayden Maiava": {"school": "USC", "pos": "QB"},
+    "Gunner Stockton": {"school": "Georgia", "pos": "QB"}
+  },
+  "hoover_opening": {"book": "BetMGM", "odds": 1200, "source_url": "https://sports.betmgm.com/en/blog/college-football/heisman-trohpy-odds-favorites-to-win-bm06/"},
+  "snapshots": [
+    {"book": "FanDuel", "as_of": "2026-09-20", "outlet": "Sports Illustrated", "url": "https://www.si.com/betting/2026-heisman-trophy-odds-trinidad-chambliss-skyrockets-to-favorite-keelon-russell-kamario-taylor-rising",
+      "odds": {"Trinidad Chambliss": 310, "Darian Mensah": 390, "Jeremiah Smith": 950, "Kamario Taylor": 1100, "Arch Manning": 1200, "Malachi Toney": 1200, "CJ Carr": 1200, "Keelon Russell": 2200, "Josh Hoover": 2500, "Jayden Maiava": 3000, "Julian Sayin": 3000, "Gunner Stockton": 4000}},
+    {"book": "DraftKings", "as_of": "2026-09-20", "outlet": "FOX Sports", "url": "https://www.foxsports.com/stories/college-football/2026-heisman-trophy-odds",
+      "odds": {"Trinidad Chambliss": 300, "Darian Mensah": 360, "Jeremiah Smith": 1000, "Arch Manning": 1200, "Malachi Toney": 1300, "Kamario Taylor": 1400, "CJ Carr": 1500, "Keelon Russell": 2500, "Julian Sayin": 2500, "Josh Hoover": 2500, "Jayden Maiava": 3000, "Gunner Stockton": 3500}},
+    {"book": "DraftKings", "as_of": "2026-09-22", "outlet": "NBC Sports", "url": "https://www.nbcsports.com/betting/college-football/news/2026-heisman-trophy-betting-odds-favorites-contenders-future-picks-for-week-4-including-chambliss-mensah",
+      "odds": {"Darian Mensah": 370, "Trinidad Chambliss": 310, "Jeremiah Smith": 1050, "Arch Manning": 1400, "Malachi Toney": 1300, "Kamario Taylor": 1100, "Josh Hoover": 2500, "CJ Carr": 1500, "Jayden Maiava": 3000}},
+    {"book": "BetMGM", "as_of": "2026-09-25", "outlet": "BetMGM", "url": "https://sports.betmgm.com/en/blog/college-football/heisman-trohpy-odds-favorites-to-win-bm06/",
+      "odds": {"Darian Mensah": 325, "Trinidad Chambliss": 325, "Arch Manning": 1000, "Jeremiah Smith": 1000, "Malachi Toney": 1000, "Kamario Taylor": 1000, "CJ Carr": 1400, "Josh Hoover": 2500, "Keelon Russell": 2500, "Julian Sayin": 3000, "Jayden Maiava": 4000, "Gunner Stockton": 4000}}
+  ]
+}
