@@ -32,17 +32,26 @@ jobs:
         continue-on-error: true
         env:
           SAVE_RAW: ${{ inputs.save_raw && '1' || '' }}
-        run: python collect.py
+        run: |
+          mkdir -p logs
+          set -o pipefail
+          python collect.py 2>&1 | tee logs/collect.txt
       - name: Build page (validation must pass)
-        run: python build_report.py --standalone --out index.html
+        id: build
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python build_report.py --standalone --out index.html 2>&1 | tee logs/build.txt
       - name: Commit and push
         run: |
           git config user.name "iu-qb-report bot"
           git config user.email "actions@users.noreply.github.com"
-          git add -A data index.html; [ -d raw ] && git add -f raw || true
+          if [ "${{ steps.build.outcome }}" = "success" ]; then git add -A data index.html; else git checkout -- data index.html 2>/dev/null || true; fi
+          git add -f logs
+          [ -d raw ] && git add -f raw || true
           if git diff --cached --quiet; then echo "No changes"; else git commit -m "Update $(date -u +%F)"; git push; fi
-      - name: Report collection problems
-        if: steps.collect.outcome == 'failure'
+      - name: Report problems
+        if: steps.collect.outcome == 'failure' || steps.build.outcome == 'failure'
         run: |
-          echo "Some sources could not be refreshed; see data/last_run.json"
+          echo "collect=${{ steps.collect.outcome }} build=${{ steps.build.outcome }}; see logs/ in the repository"
           exit 1
