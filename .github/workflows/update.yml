@@ -39,7 +39,7 @@ jobs:
         run: |
           git config user.name "iu-qb-report bot"
           git config user.email "actions@users.noreply.github.com"
-          git add -A data index.html; [ -d raw ] && git add -A raw || true
+          git add -A data index.html; [ -d raw ] && git add -f raw || true
           if git diff --cached --quiet; then echo "No changes"; else git commit -m "Update $(date -u +%F)"; git push; fi
       - name: Report collection problems
         if: steps.collect.outcome == 'failure'
