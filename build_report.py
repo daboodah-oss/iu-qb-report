@@ -268,7 +268,31 @@ def build(root, as_of):
     ] + [{"label": f"{s['outlet']}: {s['book']} Heisman odds, {s['as_of']}", "url": s["url"]} for s in sorted(heis["snapshots"], key=lambda s: s["as_of"])] \
       + [{"label": f"ESPN: {q['name']} 2026 game log", "url": f"https://www.espn.com/college-football/player/gamelog/_/id/{q['espn_id']}"} for q in coh["qbs"]]
 
+    # data freshness: what each section's data covers and when it was last successfully checked
+    fp = os.path.join(root, "data", "freshness.json")
+    fr = json.load(open(fp)) if os.path.exists(fp) else {}
+    last_game = H[-1]
+    cohort_last = max((g["date"] for q in coh["qbs"] for g in q["games"]), default=None)
+    def d(iso): return datetime.date.fromisoformat(iso).strftime("%b %-d") if iso else "?"
+    fresh = {
+        "games": {"what": f"Game data through {d(last_game['date'])} vs {last_game['opp']}",
+                  "checked": fr.get("hoover") or games["hoover"].get("retrieved_at")},
+        "national": {"what": f"Leaderboards through {d(L['data_through'])} games",
+                     "checked": fr.get("national") or L.get("retrieved_at")},
+        "field": {"what": f"Contender game logs through {d(cohort_last)}",
+                  "checked": fr.get("cohort") or coh.get("retrieved_at")},
+        "heisman": {"what": "Odds as published: " + ", ".join(f"{s['book']} {d(s['as_of'])}" for s in books),
+                    "checked": fr.get("heisman")},
+    }
+    checks = [v["checked"] for v in fresh.values() if v["checked"]]
+    fresh["checked_any"] = max(checks, key=lambda x: datetime.datetime.fromisoformat(x)) if checks else None
+    now = datetime.datetime.fromisoformat(as_of)
+    for k, v in fresh.items():
+        if isinstance(v, dict) and v["checked"]:
+            v["stale"] = (now - datetime.datetime.fromisoformat(v["checked"])).days >= 5
+
     model = {
+        "fresh": fresh,
         "as_of": as_of, "N": N, "season_games_mendoza": SEASON_G,
         "latest": hrows[-1], "next_game": games.get("next_game"),
         "hoover": {"rows": hrows, "totals": ht}, "mendoza": {"rows": mrows, "totals": mt, "season": mfull},

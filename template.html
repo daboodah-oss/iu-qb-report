@@ -65,6 +65,9 @@ nav.jump a:hover{background:var(--surface-2);color:var(--ink)}
 
 section{padding-top:40px;scroll-margin-top:48px}
 .sec-head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:16px;border-bottom:1px solid var(--rule);padding-bottom:10px}
+.fresh{font-size:12.5px;color:var(--muted);margin:6px 0 0}
+.fresh::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--good);margin-right:6px;vertical-align:1px}
+.fresh.stale::before{background:#c98500}
 .panel{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:16px}
 
 /* head to head */
@@ -99,11 +102,28 @@ section{padding-top:40px;scroll-margin-top:48px}
 .meter u{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--mendoza)}
 
 /* controls + charts */
-.controls{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
-.seg{display:inline-flex;border:1px solid var(--rule);border-radius:4px;overflow:hidden;background:var(--surface)}
+.controls{display:flex;gap:6px;flex-wrap:wrap;align-items:center;min-width:0;max-width:100%}
+.seg{display:inline-flex;flex-wrap:wrap;border:1px solid var(--rule);border-radius:4px;overflow:hidden;background:var(--surface);max-width:100%}
 .seg button{font:600 13px/1 var(--body);border:0;background:transparent;color:var(--ink-2);padding:8px 11px;cursor:pointer;border-right:1px solid var(--rule)}
 .seg button:last-child{border-right:0}
 .seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+/* view toggle (scope) vs stat tabs: different shapes so they never read as one control */
+.controls.stack{flex-direction:column;align-items:flex-start;gap:10px;min-width:0;max-width:100%}
+.seg.toggle{border:0;border-radius:999px;padding:3px;background:var(--surface-2);gap:2px;flex-wrap:nowrap}
+.seg.toggle button{border:0;border-radius:999px;padding:7px 16px;font-size:13px}
+.seg.toggle button[aria-pressed="true"]{background:var(--ink);color:var(--bg);box-shadow:0 1px 3px rgba(0,0,0,.18)}
+.seg.chips{border:0;border-radius:0;background:transparent;gap:2px 16px;overflow:visible}
+.seg.chips button{border:0;border-bottom:2px solid transparent;border-radius:0;padding:6px 1px;background:transparent;color:var(--muted);font-weight:600}
+.seg.chips button:hover{color:var(--ink)}
+.seg.chips button[aria-pressed="true"]{background:transparent;color:var(--ink);border-bottom-color:var(--hoover)}
+@media (max-width:820px){
+  .controls.stack{align-items:stretch;width:100%}
+  .seg.toggle{display:flex;width:100%}
+  .seg.toggle button{flex:1}
+  .seg.chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;mask-image:linear-gradient(90deg,#000 88%,transparent)}
+  .seg.chips::-webkit-scrollbar{display:none}
+  .seg.chips button{white-space:nowrap;padding:8px 1px}
+}
 .chart{position:relative;margin-top:12px}
 .chart svg{display:block;width:100%;height:auto;overflow:visible}
 .chart .ax{fill:var(--muted);font:12px var(--body)}
@@ -188,12 +208,13 @@ footer{margin-top:36px;padding-top:14px;border-top:3px solid var(--ink);font-siz
   </header>
 
   <nav class="jump" aria-label="Sections">
-    <a href="#h2h">Head to head</a><a href="#pace">Season pace</a><a href="#totals">Running totals</a><a href="#games">Game by game</a><a href="#national">National</a><a href="#field">Heisman QBs</a><a href="#odds">Odds</a><a href="#method">Method</a>
+    <a href="#h2h">Head to head</a><a href="#pace">Season pace</a><a href="#compare">Compare</a><a href="#games">Game logs</a><a href="#national">National</a><a href="#field">Heisman QBs</a><a href="#odds">Odds</a><a href="#method">Method</a>
   </nav>
 
   <section id="h2h">
     <div class="sec-head">
-      <div><div class="eyebrow">Same number of games</div><h2>Head to head</h2></div>
+      <div><div class="eyebrow">Same number of games</div><h2>Head to head</h2>
+      <p class="fresh" data-fresh="games"></p></div>
       <div class="legend"><span><i class="sw thick" style="background:var(--hoover)"></i>Hoover 2026</span><span><i class="sw thick" style="background:var(--mendoza)"></i>Mendoza 2025</span><span class="small"><span class="keychip">Boxed</span> = leader; ties stay plain</span></div>
     </div>
     <div class="panel tscroll"><table class="h2h" id="h2h-table"></table></div>
@@ -202,29 +223,32 @@ footer{margin-top:36px;padding-top:14px;border-top:3px solid var(--ink);font-siz
   <section id="pace">
     <div class="sec-head">
       <div><div class="eyebrow">Against Mendoza's full Heisman season</div><h2>Season pace</h2>
-      <p class="lede" id="pace-lede"></p></div>
+      <p class="lede" id="pace-lede"></p>
+      </div>
     </div>
     <div class="pace" id="pace-tiles"></div>
   </section>
 
-  <section id="totals">
+  <section id="compare">
     <div class="sec-head">
-      <div><div class="eyebrow">Cumulative, by game number</div><h2>Running totals</h2>
-      <p class="lede">Mendoza's line runs the full 2025 season so you can see where Hoover needs to be. The dashed marker is the current game.</p></div>
-      <div class="controls" role="group" aria-label="Running total metric"><div class="seg" id="tot-seg"></div></div>
+      <div><div class="eyebrow">Running total or each game, any stat</div><h2>Compare chart</h2>
+      <p class="lede">One chart for both views.  Mendoza's line runs his full 2025 season; the dashed marker is Hoover's latest game.</p>
+      <p class="fresh" data-fresh="games"></p></div>
+      <div class="controls stack">
+        <div class="seg toggle" id="cmp-mode" role="group" aria-label="View: running total or per game"></div>
+        <div class="seg chips" id="cmp-seg" role="group" aria-label="Stat"></div>
+      </div>
     </div>
     <div class="panel"><div class="legend"><span><i class="sw thick" style="background:var(--hoover)"></i>Hoover 2026</span><span><i class="sw" style="background:var(--mendoza)"></i>Mendoza 2025</span></div>
-      <div class="chart" id="tot-chart"></div><p class="caption" id="tot-cap"></p></div>
+      <div class="chart" id="cmp-chart"></div><p class="caption" id="cmp-cap"></p></div>
   </section>
 
   <section id="games">
     <div class="sec-head">
-      <div><div class="eyebrow">Each game on its own</div><h2>Game by game</h2></div>
-      <div class="controls" role="group" aria-label="Per-game metric"><div class="seg" id="pg-seg"></div></div>
+      <div><div class="eyebrow">Every game, both seasons</div><h2>Game logs</h2>
+      </div>
     </div>
-    <div class="panel"><div class="legend"><span><i class="sw thick" style="background:var(--hoover)"></i>Hoover 2026</span><span><i class="sw thick" style="background:var(--mendoza)"></i>Mendoza 2025</span></div>
-      <div class="chart" id="pg-chart"></div><p class="caption">Lines trace each quarterback's game-to-game trend over bars that start at zero. Game numbers line up the two seasons, so point 3 is each quarterback's third game. Faded points are Mendoza games Hoover has not reached yet.</p></div>
-    <div class="logs">
+    <div class="logs" style="margin-top:0">
       <div><h3><i class="sw thick" style="background:var(--hoover)"></i>Hoover 2026 game log</h3><div class="panel tscroll"><table class="log" id="log-h"></table></div></div>
       <div><h3><i class="sw thick" style="background:var(--mendoza)"></i>Mendoza 2025 game log</h3><div class="panel tscroll"><table class="log" id="log-m"></table></div>
       <p class="caption" id="oppd-note"></p></div>
@@ -234,7 +258,8 @@ footer{margin-top:36px;padding-top:14px;border-top:3px solid var(--ink);font-siz
   <section id="national">
     <div class="sec-head">
       <div><div class="eyebrow">All FBS quarterbacks</div><h2>National leaderboards</h2>
-      <p class="lede" id="nat-lede"></p></div>
+      <p class="lede" id="nat-lede"></p>
+      <p class="fresh" data-fresh="national"></p></div>
     </div>
     <div class="boards" id="boards"></div>
   </section>
@@ -242,10 +267,11 @@ footer{margin-top:36px;padding-top:14px;border-top:3px solid var(--ink);font-siz
   <section id="field">
     <div class="sec-head">
       <div><div class="eyebrow">Hoover against the Heisman favorites</div><h2>The Heisman QB field</h2>
-      <p class="lede" id="field-lede"></p></div>
-      <div class="controls">
-        <div class="seg" id="fd-mode" role="group" aria-label="Running total or per game"></div>
-        <div class="seg" id="fd-seg" role="group" aria-label="Field metric"></div>
+      <p class="lede" id="field-lede"></p>
+      <p class="fresh" data-fresh="field"></p></div>
+      <div class="controls stack">
+        <div class="seg toggle" id="fd-mode" role="group" aria-label="View: running total or per game"></div>
+        <div class="seg chips" id="fd-seg" role="group" aria-label="Stat"></div>
       </div>
     </div>
     <div class="panel"><div class="legend" id="fd-legend"></div><div class="chart" id="fd-chart"></div></div>
@@ -254,7 +280,8 @@ footer{margin-top:36px;padding-top:14px;border-top:3px solid var(--ink);font-siz
   <section id="odds">
     <div class="sec-head">
       <div><div class="eyebrow">Reported sportsbook odds</div><h2>Heisman odds</h2>
-      <p class="lede" id="odds-lede"></p></div>
+      <p class="lede" id="odds-lede"></p>
+      <p class="fresh" data-fresh="heisman"></p></div>
     </div>
     <div class="panel tscroll"><table class="odds" id="odds-table"></table></div>
     <h3 style="margin-top:20px">Hoover's odds trail</h3>
@@ -291,11 +318,24 @@ const dateFmt = d => { const [y,m,dd] = d.split("-").map(Number); return new Dat
 const dateFmtY = d => { const [y,m,dd] = d.split("-").map(Number); return new Date(y,m-1,dd).toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"}); };
 const N = M.N, ord = n => n+(["th","st","nd","rd"][(n%100-20)%10]||["th","st","nd","rd"][n%100]||"th");
 
+
+/* ---------- data freshness ---------- */
+function fmtWhen(iso){ if(!iso) return "unknown"; const d=new Date(iso);
+  return d.toLocaleDateString("en-US",{timeZone:"America/Indiana/Indianapolis",month:"short",day:"numeric"})+", "+d.toLocaleTimeString("en-US",{timeZone:"America/Indiana/Indianapolis",hour:"numeric",minute:"2-digit"})+" ET"; }
+function drawFresh(){
+  document.querySelectorAll("[data-fresh]").forEach(el => {
+    const f = M.fresh[el.dataset.fresh]; if (!f) return;
+    el.textContent = `${f.what}. Last checked ${fmtWhen(f.checked)}.`;
+    if (f.stale) el.classList.add("stale");
+  });
+}
+drawFresh();
+
 /* ---------- masthead ---------- */
 const asof = new Date(M.as_of);
 const TZ = {timeZone:"America/Indiana/Indianapolis"};
-$("#stamp").innerHTML = `<span class="pill">Through game ${N}</span><span class="pill ghost">Updated ${asof.toLocaleDateString("en-US",{...TZ,month:"short",day:"numeric",year:"numeric"})}, ${asof.toLocaleTimeString("en-US",{...TZ,hour:"numeric",minute:"2-digit"}).toLowerCase()} ET</span>`
-  + (M.next_game ? `<span class="pill ghost">Next: ${M.next_game.site==="A"?"at ":"vs "}${esc(M.next_game.opp)}, ${dateFmt(M.next_game.date)}</span>` : "");
+$("#stamp").innerHTML = `<span class="pill">Through game ${N}</span><span class="pill ghost">Data checked ${fmtWhen(M.fresh.checked_any)}</span>`
+  + (M.next_game ? `<span class="pill ghost">Next: ${M.next_game.site==="A"?"at ":"vs "}${esc(M.next_game.opp)}, ${dateFmt(M.next_game.date)}, ${M.next_game.kickoff ? new Date(M.next_game.kickoff).toLocaleTimeString("en-US",{...TZ,hour:"numeric",minute:"2-digit"})+" ET" : "time TBA"}${M.next_game.tv ? " · "+esc(M.next_game.tv) : ""}</span>` : "");
 $("#verdict").textContent = M.verdict;
 const L = M.latest;
 const [wl, sc] = L.result.split(" ");
@@ -357,7 +397,7 @@ function frame(host, opts){
   return {svg, W, H, pad, iw:W-pad.l-pad.r, ih:H-pad.t-pad.b};
 }
 function yAxis(f, ymax, fmtY, invert, ymin=0){
-  const ts = invert ? rankTicks(ymin, ymax) : ticks(ymax);
+  const ts = invert ? rankTicks(ymin, ymax) : (ymin ? Array.from({length:5},(_,i)=>ymin+i*(ymax-ymin)/4) : ticks(ymax));
   const y = v => invert ? f.pad.t + (v-ymin)/(ymax-ymin||1)*f.ih : f.pad.t + f.ih - (v-ymin)/(ymax-ymin||1)*f.ih;
   ts.forEach(t => {
     el("line",{x1:f.pad.l,x2:f.W-f.pad.r,y1:y(t),y2:y(t),class:"gl"},f.svg);
@@ -484,7 +524,7 @@ function drawTotals(){
   const hv = HR[N-1][totKey], mv = MR[N-1][totKey];
   $("#tot-cap").textContent = `${d.cap} After game ${N}: Hoover ${fmt(hv,d.dp)}, Mendoza ${fmt(mv,d.dp)}${isRating?"":` (${hv>=mv?"+":""}${fmt(hv-mv,d.dp)})`}.`;
 }
-seg($("#tot-seg"), Object.entries(TOT).map(([k,v])=>[k,v.t]), totKey, k=>{totKey=k; drawTotals();});
+
 
 /* ---------- per game ---------- */
 const PG = { yds:{t:"Pass yards",dp:0}, td:{t:"Pass TD",dp:0}, rating:{t:"Rating",dp:1}, pct:{t:"Comp %",dp:1}, att:{t:"Attempts",dp:0} };
@@ -502,7 +542,44 @@ function drawPG(){
       `<div class="r"><span><i class="sw" style="background:var(--mendoza)"></i> Mendoza ${MR[i].site==="A"?"at":"vs"} ${esc(MR[i].opp)}</span><b>${fmt(MR[i][pgKey],d.dp)}</b></div>`
   });
 }
-seg($("#pg-seg"), Object.entries(PG).map(([k,v])=>[k,v.t]), pgKey, k=>{pgKey=k; drawPG();});
+
+
+/* ---------- compare chart (running total or per game) ---------- */
+const CMP = {
+  yds:{t:"Pass yards",dp:0}, td:{t:"Pass TD",dp:0}, total_td:{t:"Total TD",dp:0},
+  rating:{t:"Rating",dp:1}, pct:{t:"Comp %",dp:1}, att:{t:"Attempts",dp:0}
+};
+let cmpKey = "yds", cmpMode = "cum";
+function cmpSeries(rows){
+  let c={cmp:0,att:0,yds:0,td:0,int:0,rtd:0};
+  return rows.map(r => {
+    c.cmp+=r.cmp; c.att+=r.att; c.yds+=r.yds; c.td+=r.td; c.int+=r.int; c.rtd+=(r.rush_td||0);
+    const cum = {yds:c.yds, td:c.td, total_td:c.td+c.rtd, att:c.att,
+      pct: c.att?100*c.cmp/c.att:null, rating: c.att?(8.4*c.yds+330*c.td+100*c.cmp-200*c.int)/c.att:null};
+    const pg = {yds:r.yds, td:r.td, total_td:r.td+(r.rush_td||0), att:r.att, pct:r.pct, rating:r.rating};
+    return {x:r.n, opp:r.opp, y:(cmpMode==="cum"?cum:pg)[cmpKey]};
+  });
+}
+function drawCompare(){
+  const d = CMP[cmpKey], H = cmpSeries(HR), Mx = cmpSeries(MR);
+  const all = [...H, ...Mx].map(p=>p.y).filter(v=>v!=null);
+  const rate = cmpKey==="rating" || cmpKey==="pct";
+  const lo = rate ? Math.floor(Math.min(...all)/20)*20 : 0; let hi = rate ? Math.ceil(Math.max(...all)/20)*20 : undefined; if (rate) hi = lo + Math.ceil((hi-lo)/20)*20;
+  lineChart($("#cmp-chart"), {
+    aria:`${d.t}, ${cmpMode==="cum"?"running total":"per game"}, Hoover versus Mendoza`,
+    xMax: MR.length, marker: N, yMin: lo, yMax: hi, padR: 44,
+    fmtY: v => fmt(v,0), fmtTip: p => fmt(p.y, d.dp) + (p.opp?` <span class="small">${esc(p.opp)}</span>`:""),
+    series: [
+      {name:"Mendoza 2025", color:css("--mendoza"), width:2, z:1, points:Mx, endLabel: fmt(Mx[Mx.length-1].y, d.dp), labelColor:css("--mendoza")},
+      {name:"Hoover 2026", color:css("--hoover"), width:3.5, z:2, points:H, endLabel: fmt(H[H.length-1].y, d.dp), labelColor:css("--hoover")}
+    ]});
+  const hv = H[N-1].y, mv = Mx[N-1].y;
+  const what = cmpMode==="cum" ? (rate ? `Season ${d.t.toLowerCase()} on totals after each game` : `Total ${d.t.toLowerCase()} after each game`) : `${d.t} in each game`;
+  $("#cmp-cap").textContent = `${what}.  Game ${N}: Hoover ${fmt(hv,d.dp)}, Mendoza ${fmt(mv,d.dp)}.`;
+}
+seg($("#cmp-mode"), [["cum","Running total"],["pg","Per game"]], cmpMode, k=>{cmpMode=k; drawCompare();});
+seg($("#cmp-seg"), Object.entries(CMP).map(([k,v])=>[k,v.t]), cmpKey, k=>{cmpKey=k; drawCompare();});
+
 
 /* ---------- game logs ---------- */
 function logTable(rows, tot, upto, player){
@@ -616,7 +693,7 @@ seg($("#fd-seg"), Object.entries(FD).map(([k,v])=>[k,v.t]), fdKey, k=>{fdKey=k; 
   $("#foot-l").textContent = `Updated ${asof.toLocaleString("en-US",{...TZ,dateStyle:"medium",timeStyle:"short"})} ET · Through game ${N}`;
 }
 
-function drawAll(){ drawTotals(); drawPG(); drawSparks(); drawField(); }
+function drawAll(){ drawCompare(); drawSparks(); drawField(); }
 drawAll();
 let rt; addEventListener("resize", ()=>{ clearTimeout(rt); rt = setTimeout(drawAll, 120); });
 matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", drawAll);

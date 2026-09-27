@@ -4,6 +4,9 @@ on:
   schedule:
     # Sunday and Wednesday 10:47 Eastern (cron is UTC; 14:47 UTC = 10:47 EDT, 9:47 EST)
     - cron: "47 14 * * 0,3"
+    # backups in case GitHub skips a scheduled run (a run with no new data changes nothing)
+    - cron: "47 16 * * 0,3"
+    - cron: "47 20 * * 0,3"
   workflow_dispatch:
     inputs:
       save_raw:

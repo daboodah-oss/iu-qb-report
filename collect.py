@@ -62,11 +62,21 @@ def get(url, **kw):
     return r
 
 
+def mark_fresh(name):
+    """Record when a section last collected successfully (shown on the page as 'last checked')."""
+    p = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "freshness.json")
+    d = json.load(open(p)) if os.path.exists(p) else {}
+    d[name] = dt.datetime.now(ET).isoformat(timespec="minutes")
+    json.dump(d, open(p, "w"), indent=1)
+
+
 def section(name):
     def wrap(fn):
         def run(*a, **k):
             try:
-                return fn(*a, **k)
+                out = fn(*a, **k)
+                mark_fresh(name)
+                return out
             except SystemExit as e:  # update.py refused the data
                 FAILED.append(name); log(f"[{name}] REFUSED by validator (exit {e.code})")
             except Exception as e:
@@ -169,8 +179,30 @@ def hoover(sched, fbs):
                **{k: e[k] for k in ("cmp", "att", "yds", "td", "int", "rush_att", "rush_yds", "rush_td", "sacks")}}
         U.hoover_game(row); log(f"[hoover] added {sg['date']} {sg['opp']} {sg['result']}")
     nxt = next((x for x in sched if not x["result"]), None)
-    U.next_game({"date": nxt["date"], "opp": nxt["opp"], "site": nxt["site"],
-                 "source_url": f"https://cfbstats.com/{SEASON}/team/{IU_CFBSTATS}/index.html"} if nxt else None)
+    ng = {"date": nxt["date"], "opp": nxt["opp"], "site": nxt["site"],
+          "source_url": f"https://cfbstats.com/{SEASON}/team/{IU_CFBSTATS}/index.html"} if nxt else None
+    if ng:
+        try: ng.update(kickoff_info(ng["date"]))
+        except Exception as e: log(f"[hoover] kickoff time not available: {e}")
+    U.next_game(ng)
+
+
+def kickoff_info(date):
+    """Kickoff time and TV for IU's game on `date` (Eastern), from ESPN's team schedule. Empty if not set yet."""
+    j = get(f"https://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/84/schedule?season={SEASON}").json()
+    for ev in j.get("events", []):
+        when = dt.datetime.fromisoformat(ev["date"].replace("Z", "+00:00")).astimezone(ET)
+        if when.date().isoformat() != date: continue
+        comp = (ev.get("competitions") or [{}])[0]
+        out = {}
+        if comp.get("timeValid", True) and not comp.get("status", {}).get("type", {}).get("detail", "").upper().endswith("TBD"):
+            out["kickoff"] = when.isoformat(timespec="minutes")
+        tv = [b.get("media", {}).get("shortName") or ", ".join(b.get("names", [])) for b in comp.get("broadcasts", [])]
+        tv = [t for t in tv if t]
+        if tv: out["tv"] = tv[0]
+        log(f"[hoover] next game kickoff: {out or 'not announced'}")
+        return out
+    return {}
 
 
 # ---------------------------------------------------------------- national boards
