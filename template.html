@@ -1,4 +1,4 @@
-<title>IU QB Watch</title>
+<title>IU QB Report</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
@@ -179,7 +179,7 @@ footer{margin-top:36px;padding-top:14px;border-top:3px solid var(--ink);font-siz
 <div class="wrap">
   <header class="mast">
     <div>
-      <div class="eyebrow">IU QB Watch · Indiana football 2026</div>
+      <div class="eyebrow">IU QB Report · Indiana football 2026</div>
       <h1><span class="h">Hoover</span> <span class="vs">vs</span> <span class="m">Mendoza</span></h1>
       <div class="stamp" id="stamp"></div>
       <p class="verdict" id="verdict"></p>
@@ -294,7 +294,7 @@ const N = M.N, ord = n => n+(["th","st","nd","rd"][(n%100-20)%10]||["th","st","n
 /* ---------- masthead ---------- */
 const asof = new Date(M.as_of);
 const TZ = {timeZone:"America/Indiana/Indianapolis"};
-$("#stamp").innerHTML = `<span class="pill">Through game ${N}</span><span class="pill ghost">Updated ${asof.toLocaleDateString("en-US",{...TZ,month:"short",day:"numeric",year:"numeric"})}</span>`
+$("#stamp").innerHTML = `<span class="pill">Through game ${N}</span><span class="pill ghost">Updated ${asof.toLocaleDateString("en-US",{...TZ,month:"short",day:"numeric",year:"numeric"})}, ${asof.toLocaleTimeString("en-US",{...TZ,hour:"numeric",minute:"2-digit"}).toLowerCase()} ET</span>`
   + (M.next_game ? `<span class="pill ghost">Next: ${M.next_game.site==="A"?"at ":"vs "}${esc(M.next_game.opp)}, ${dateFmt(M.next_game.date)}</span>` : "");
 $("#verdict").textContent = M.verdict;
 const L = M.latest;
