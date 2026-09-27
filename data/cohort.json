@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "rule": "The four highest-ranked quarterbacks in consensus Heisman odds, other than Hoover. Game logs from ESPN.",
- "retrieved_at": "2026-09-26T18:50+00:00",
+ "retrieved_at": "2026-09-27T16:30+00:00",
  "qbs": [
   {
    "name": "Trinidad Chambliss",
@@ -36,6 +36,16 @@
      "att": 48,
      "yds": 363,
      "td": 2,
+     "int": 1
+    },
+    {
+     "date": "2026-09-26",
+     "opp": "Florida Gators",
+     "result": "L 52-28",
+     "cmp": 25,
+     "att": 34,
+     "yds": 298,
+     "td": 1,
      "int": 1
     }
    ]
@@ -72,6 +82,16 @@
      "cmp": 30,
      "att": 34,
      "yds": 220,
+     "td": 3,
+     "int": 0
+    },
+    {
+     "date": "2026-09-26",
+     "opp": "Central Michigan Chippewas",
+     "result": "W 52-3",
+     "cmp": 23,
+     "att": 27,
+     "yds": 338,
      "td": 3,
      "int": 0
     }
@@ -111,6 +131,16 @@
      "yds": 251,
      "td": 4,
      "int": 1
+    },
+    {
+     "date": "2026-09-26",
+     "opp": "Missouri Tigers",
+     "result": "W 31-24",
+     "cmp": 27,
+     "att": 38,
+     "yds": 360,
+     "td": 3,
+     "int": 1
     }
    ]
   },
@@ -148,6 +178,16 @@
      "yds": 161,
      "td": 2,
      "int": 0
+    },
+    {
+     "date": "2026-09-26",
+     "opp": "Tennessee Volunteers",
+     "result": "W 20-17",
+     "cmp": 14,
+     "att": 19,
+     "yds": 201,
+     "td": 0,
+     "int": 1
     }
    ]
   }
