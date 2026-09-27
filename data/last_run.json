@@ -1,8 +1,9 @@
 {
- "at": "2026-09-27T12:30-04:00",
+ "at": "2026-09-27T13:22-04:00",
  "failed": [],
  "log": [
   "[schedule] 12 games, 4 played",
+  "[hoover] next game kickoff: {'kickoff': '2026-10-03T20:00-04:00', 'tv': 'BTN'}",
   "FAILED sections: none"
  ]
 }

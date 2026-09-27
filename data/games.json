@@ -335,7 +335,9 @@
   "date": "2026-10-03",
   "opp": "Rutgers",
   "site": "A",
-  "source_url": "https://cfbstats.com/2026/team/306/index.html"
+  "source_url": "https://cfbstats.com/2026/team/306/index.html",
+  "kickoff": "2026-10-03T20:00-04:00",
+  "tv": "BTN"
  },
  "opp_pass_defense": {
   "method": "Opponent's national rank in passing yards allowed per game (cfbstats.com, FBS). 2025 opponents use final 2025 ranks. 2026 opponents use the current 2026 rank, which moves every week.",
