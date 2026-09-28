@@ -341,7 +341,7 @@
    "int": 0,
    "src_rating": 204.63
   },
-  "retrieved_at": "2026-09-27T23:25+00:00"
+  "retrieved_at": "2026-09-28T22:49+00:00"
  },
  "rank_history": [
   {
@@ -351,17 +351,6 @@
     "rating": 2
    },
    "note": "Only the passer rating board was captured for this week."
-  },
-  {
-   "through": "2026-09-25",
-   "games": 4,
-   "ranks": {
-    "yds": 24,
-    "td": 2,
-    "pct": 32,
-    "rating": 4,
-    "ypa": 10
-   }
   },
   {
    "through": "2026-09-26",
