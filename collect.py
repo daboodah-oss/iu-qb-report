@@ -27,6 +27,9 @@ SEASON = 2026
 IU_CFBSTATS = 306
 HOOVER_ESPN = "4685401"
 UA = {"User-Agent": "Mozilla/5.0 (compatible; iu-qb-watch/1.0; +https://github.com/daboodah-oss/iu-qb-report)"}
+ESPN_IDS = {  # known ESPN athlete ids for Heisman contenders (new names are looked up automatically)
+    "Trinidad Chambliss": "4911529", "Darian Mensah": "5121169", "Arch Manning": "4870906",
+    "Kamario Taylor": "5177084", "Jeremiah Smith": "5079720", "Malachi Toney": "5159175", "CJ Carr": "5079369"}
 BOARD_SORT = {"yds": "sort08", "td": "sort10", "pct": "sort03", "rating": "sort02", "ypa": "sort04"}
 BETMGM = "https://sports.betmgm.com/en/blog/college-football/heisman-trohpy-odds-favorites-to-win-bm06/"
 TEAM_FIX = {"Oregon St": "Oregon State", "Miss St": "Mississippi State", "Coast Car": "Coastal Carolina",
@@ -152,9 +155,11 @@ def espn_gamelog(athlete_id, seasontype=None):
                     "int": ival(g("interceptions", "INT")), "sacks": ival(g("sacks", "SACK")),
                     "rtg": float(g("QBRating", "RTG")),
                     "rush_att": ival(g("rushingAttempts", "CAR")), "rush_yds": ival(g("rushingYards")),
-                    "rush_td": ival(g("rushingTouchdowns"))})
+                    "rush_td": ival(g("rushingTouchdowns")),
+                    "rec": ival(g("receptions")), "rec_yds": ival(g("receivingYards")), "rec_td": ival(g("receivingTouchdowns"))})
     out.sort(key=lambda x: x["date"])
     for r in out:  # the listed rating must match the formula, or the row was misread
+        if not r["att"]: continue
         calc = U.rating(r)
         if abs(calc - r["rtg"]) > 0.06:
             raise ValueError(f"ESPN row {r['date']} rating {r['rtg']} != computed {calc:.1f}")
@@ -303,10 +308,12 @@ def cohort():
     prob = lambda o: 100 / (o + 100) if o > 0 else -o / (-o + 100)
     import statistics
     ranked = sorted(((statistics.median([prob(s["odds"][n]) for s in books if n in s["odds"]]), n)
-                     for n, p in h["players"].items() if p.get("pos") == "QB" and n != "Josh Hoover"
+                     for n, p in h["players"].items() if n != "Josh Hoover"
                      and any(n in s["odds"] for s in books)), reverse=True)
     want = [n for _, n in ranked[:4]]
     ids = {q["name"]: q for q in c["qbs"]}
+    known = {**ESPN_IDS, **c.get("espn_ids", {})}
+    for n, pid in known.items(): ids.setdefault(n, {"name": n, "school": h["players"].get(n, {}).get("school", ""), "espn_id": pid})
     qbs = []
     for n in want:
         q = ids.get(n)
@@ -316,9 +323,10 @@ def cohort():
             q = {"name": n, "school": h["players"][n]["school"], "espn_id": pid}
         games = espn_gamelog(q["espn_id"])
         seen = set(); games = [x for x in games if not (x["espn_event"] in seen or seen.add(x["espn_event"]))]
-        qbs.append({"name": n, "school": q["school"], "espn_id": q["espn_id"],
+        qbs.append({"name": n, "school": q["school"] or h["players"][n]["school"], "espn_id": q["espn_id"],
+                    "pos": h["players"][n].get("pos", "?"),
                     "games": [{"date": x["date"], "opp": x["opp"], "result": f"{x['wl']} {x['score']}".strip(),
-                               **{k: x[k] for k in ("cmp", "att", "yds", "td", "int")}} for x in games]})
+                               **{k: x[k] for k in ("cmp", "att", "yds", "td", "int", "rush_yds", "rush_td", "rec", "rec_yds", "rec_td")}} for x in games]})
     U.cohort({"qbs": qbs})
 
 

@@ -145,12 +145,16 @@ def build(root, as_of):
     # Game rows with per-game metrics and cumulative series
     opp_d = games.get("opp_pass_defense", {})
     def rows(gs, season):
-        out, cum = [], {"yds": 0, "td": 0, "total_td": 0, "cmp": 0, "att": 0, "int": 0}
+        out, cum = [], {"yds": 0, "td": 0, "total_td": 0, "cmp": 0, "att": 0, "int": 0, "tot_yds": 0, "tot_td": 0}
         rk = opp_d.get(str(season), {}).get("ranks", {})
         for i, g in enumerate(gs):
             for k in ("yds", "td", "cmp", "att", "int"): cum[k] += g[k]
             cum["total_td"] += g["td"] + g.get("rush_td", 0)
+            ty = g["yds"] + g.get("rush_yds", 0) + g.get("rec_yds", 0)
+            tt = g["td"] + g.get("rush_td", 0) + g.get("rec_td", 0)
+            cum["tot_yds"] += ty; cum["tot_td"] += tt
             r = dict(g)
+            r.update({"tot_yds": ty, "tot_td": tt, "cum_tot_yds": cum["tot_yds"], "cum_tot_td": cum["tot_td"]})
             r.update({"n": i + 1, "pct": metric(g, "pct"), "ypa": metric(g, "ypa"), "rating": metric(g, "rating"),
                       "cum_yds": cum["yds"], "cum_td": cum["td"], "cum_total_td": cum["total_td"],
                       "cum_rating": rating(cum["cmp"], cum["att"], cum["yds"], cum["td"], cum["int"]),
@@ -221,7 +225,7 @@ def build(root, as_of):
     for s in sorted(heis["snapshots"], key=lambda s: (s["as_of"], s["book"])):
         if "Josh Hoover" in s["odds"]:
             trail.append({"date": s["as_of"], "book": s["book"], "odds": s["odds"]["Josh Hoover"], "url": s["url"], "outlet": s["outlet"]})
-    qb_rank = [p["name"] for p in players if p["pos"] == "QB" and p["name"] != "Josh Hoover"]
+    qb_rank = [p["name"] for p in players if p["name"] != "Josh Hoover"]
     expected_field = qb_rank[:4]
     players = [p for p in players if p["rank"] <= 12 or p["name"] == "Josh Hoover"]
 
@@ -230,8 +234,9 @@ def build(root, as_of):
     for q in coh["qbs"]:
         for g in q["games"]: validate_game(g, q["name"])
         ordered_unique(q["games"], q["name"])
-        cohort.append({"name": q["name"], "school": q["school"], "games": rows(q["games"], None)})
-    cohort.insert(0, {"name": "Josh Hoover", "school": "Indiana", "games": hrows, "is_hoover": True})
+        pos = q.get("pos") or heis["players"].get(q["name"], {}).get("pos", "?")
+        cohort.append({"name": q["name"], "school": q["school"], "pos": pos, "games": rows(q["games"], None)})
+    cohort.insert(0, {"name": "Josh Hoover", "school": "Indiana", "pos": "QB", "games": hrows, "is_hoover": True})
     # cross-check cohort logs against the national rows where both exist
     all_nat = {r["name"]: r for b in L["boards"].values() for r in b["rows"]}
     for q in cohort[1:]:
@@ -251,7 +256,7 @@ def build(root, as_of):
         caveats.append("Odds older than 10 days are hidden: " + ", ".join(stale_books) + ".")
     have = {q["name"] for q in coh["qbs"]}
     if set(expected_field) != have:
-        caveats.append("The Heisman QB field chart shows " + ", ".join(sorted(have)) + "; by the latest odds the top four QBs are " + ", ".join(expected_field) + ". The chart updates on the next refresh.")
+        caveats.append("The Heisman field chart shows " + ", ".join(sorted(have)) + "; by the latest odds the top four candidates are " + ", ".join(expected_field) + ". The chart updates on the next refresh.")
     if not nat_current:
         caveats.append(f"National leaderboards are through {L['data_through']} and do not yet include Hoover's latest game.")
     if hp and hp["n_books"] < len(books):
@@ -302,7 +307,7 @@ def build(root, as_of):
                      "qualifier_note": nat["qualifier_note"], "rank_history": rank_hist, "order": CATS},
         "heisman": {"books": [{"book": s["book"], "as_of": s["as_of"], "outlet": s["outlet"], "url": s["url"]} for s in books],
                     "players": players, "hoover": hp, "trail": trail, "note": heis["note"]},
-        "cohort": {"rule": coh["rule"], "qbs": cohort},
+        "cohort": {"rule": "The four players with the best consensus Heisman odds, any position. Game logs from ESPN.", "qbs": cohort},
         "opp_d_method": opp_d.get("method"),
         "caveats": caveats, "sources": sources,
     }

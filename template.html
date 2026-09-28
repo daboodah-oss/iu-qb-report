@@ -207,7 +207,7 @@ footer{margin-top:36px;padding-top:14px;border-top:3px solid var(--ink);font-siz
   </header>
 
   <nav class="jump" aria-label="Sections">
-    <a href="#h2h">Head to head</a><a href="#pace">Season pace</a><a href="#compare">Compare</a><a href="#games">Game logs</a><a href="#national">National</a><a href="#field">Heisman QBs</a><a href="#odds">Odds</a><a href="#method">Method</a>
+    <a href="#h2h">Head to head</a><a href="#pace">Season pace</a><a href="#compare">Compare</a><a href="#games">Game logs</a><a href="#national">National</a><a href="#field">Heisman field</a><a href="#odds">Odds</a><a href="#method">Method</a>
   </nav>
 
   <section id="h2h">
@@ -265,7 +265,7 @@ footer{margin-top:36px;padding-top:14px;border-top:3px solid var(--ink);font-siz
 
   <section id="field">
     <div class="sec-head">
-      <div><div class="eyebrow">Hoover against the Heisman favorites</div><h2>The Heisman QB field</h2>
+      <div><div class="eyebrow">Hoover against the Heisman favorites</div><h2>The Heisman field</h2>
       <p class="lede" id="field-lede"></p>
       <p class="fresh" data-fresh="field"></p></div>
       <div class="controls stack">
@@ -273,7 +273,7 @@ footer{margin-top:36px;padding-top:14px;border-top:3px solid var(--ink);font-siz
         <div class="seg chips" id="fd-seg" role="group" aria-label="Stat"></div>
       </div>
     </div>
-    <div class="panel"><div class="legend" id="fd-legend"></div><div class="chart" id="fd-chart"></div></div>
+    <div class="panel"><div class="legend" id="fd-legend"></div><div class="chart" id="fd-chart"></div><p class="caption" id="fd-note"></p></div>
   </section>
 
   <section id="odds">
@@ -435,9 +435,12 @@ function lineChart(host, o){
     if (s.endLabel){ const last = [...s.points].reverse().find(p=>p.y!=null); if (last) labels.push({x:x(last.x)+8, y:y(last.y)+4, s}); }
   });
   // spread end labels that sit in the same column so none overlap
-  const cols = {}; labels.forEach(l => (cols[Math.round(l.x)] ||= []).push(l));
-  Object.values(cols).forEach(g => { g.sort((a,b)=>a.y-b.y); for (let i=1;i<g.length;i++) if (g[i].y-g[i-1].y<14) g[i].y=g[i-1].y+14;
-    const over = g.length ? g[g.length-1].y-(f.pad.t+f.ih+4) : 0; if (over>0) g.forEach(l=>l.y-=over); });
+  // push apart any labels that would overlap, including labels at different game numbers
+  labels.sort((a,b)=>a.y-b.y);
+  const placed = [];
+  labels.forEach(l => { for (const q of placed) if (Math.abs(q.x-l.x) < 110 && l.y-q.y < 14) l.y = q.y+14; placed.push(l); });
+  const bottom = f.pad.t+f.ih+4, over = placed.length ? Math.max(...placed.map(l=>l.y))-bottom : 0;
+  if (over>0) placed.forEach(l=>l.y-=over);
   labels.forEach(l => { const t = el("text",{x:l.x,y:l.y,class:"lbl",fill:l.s.labelColor||css("--ink-2")},f.svg); t.textContent = l.s.endLabel; if (l.s.width>2) t.setAttribute("font-weight","700"); });
   // hover
   const hit = el("rect",{x:f.pad.l-10,y:f.pad.t,width:f.iw+20,height:f.ih,fill:"transparent"},f.svg);
@@ -644,19 +647,23 @@ function drawSparks(){
 }
 
 /* ---------- heisman QB field ---------- */
-const FD = { yds:{t:"Pass yards",dp:0,cum:"cum_yds"}, td:{t:"Pass TD",dp:0,cum:"cum_td"}, rating:{t:"Rating",dp:1,cum:"cum_rating"} };
-let fdKey = "yds", fdMode = "cum";
+const FD = {
+  tot_yds:{t:"Total yards",dp:0,cum:"cum_tot_yds"}, tot_td:{t:"Total TD",dp:0,cum:"cum_tot_td"},
+  yds:{t:"Pass yards",dp:0,cum:"cum_yds",qb:true}, td:{t:"Pass TD",dp:0,cum:"cum_td",qb:true}, rating:{t:"Rating",dp:1,cum:"cum_rating",qb:true} };
+let fdKey = "tot_yds", fdMode = "cum";
 {
   const others = M.cohort.qbs.filter(q=>!q.is_hoover);
-  $("#field-lede").textContent = `${M.cohort.rule} Hoover is in red; the other contenders are gray and labeled at the end of each line. Hover or tap a game number for everyone's value. Game numbers line up each player's season, so a player with an extra game played has a longer line.`;
-  $("#fd-legend").innerHTML = `<span><i class="sw thick" style="background:var(--hoover)"></i>Josh Hoover, Indiana</span>` + others.map(q=>`<span><i class="sw" style="background:var(--field)"></i>${esc(q.name)}, ${esc(q.school)}</span>`).join("");
+  $("#field-lede").textContent = `${M.cohort.rule} Total yards and Total TD count passing, rushing and receiving, so every position compares fairly; the passing tabs show quarterbacks only. Hoover is in red, the others gray and labeled at the end of each line. Hover or tap a game number for everyone's value.`;
+  $("#fd-legend").innerHTML = `<span><i class="sw thick" style="background:var(--hoover)"></i>Josh Hoover, Indiana · QB</span>` + others.map(q=>`<span><i class="sw" style="background:var(--field)"></i>${esc(q.name)}, ${esc(q.school)} · ${esc(q.pos||"")}</span>`).join("");
 }
 function drawField(){
   const d = FD[fdKey], key = fdMode==="cum" ? d.cum : fdKey;
-  const qbs = M.cohort.qbs, xMax = Math.max(...qbs.map(q=>q.games.length));
-  const all = qbs.flatMap(q=>q.games.map(g=>g[key]));
+  const qbs = M.cohort.qbs.filter(q => !d.qb || q.pos==="QB"), xMax = Math.max(...qbs.map(q=>q.games.length));
+  const all = qbs.flatMap(q=>q.games.map(g=>g[key])).filter(v=>v!=null);
   const isR = fdKey==="rating";
-  lineChart($("#fd-chart"), {aria:`${d.t} ${fdMode==="cum"?"running total":"per game"} for Hoover and the Heisman QB field`, xMax: Math.max(2,xMax),
+  const hidden = M.cohort.qbs.filter(q => d.qb && q.pos!=="QB").map(q=>q.name);
+  $("#fd-note").textContent = hidden.length ? `Not shown on passing stats: ${hidden.join(", ")} (not a quarterback).` : "";
+  lineChart($("#fd-chart"), {aria:`${d.t} ${fdMode==="cum"?"running total":"per game"} for Hoover and the Heisman field`, xMax: Math.max(2,xMax),
     yMin: isR ? Math.floor(Math.min(...all)/20)*20 : 0, yMax: isR ? Math.ceil(Math.max(...all)/20)*20 : undefined,
     fmtY: v=>fmt(v,0), fmtTip: p => fmt(p.y, d.dp) + (p.opp?` <span class="small">${esc(p.opp)}</span>`:""), padR: 128,
     series: qbs.map(q => ({name:q.name, color: q.is_hoover?css("--hoover"):css("--field"), width: q.is_hoover?3.5:1.75, z: q.is_hoover?2:1,
