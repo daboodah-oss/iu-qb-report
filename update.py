@@ -100,8 +100,13 @@ def national(L):
     L.setdefault("retrieved_at", datetime.datetime.now().astimezone().isoformat(timespec="minutes"))
     n["latest"] = L
     entry = {"through": L["data_through"], "games": L["hoover_row"]["g"], "ranks": {c: L["boards"][c]["hoover_rank"] for c in CATS}}
-    n["rank_history"] = [e for e in n["rank_history"] if e["through"] != entry["through"]] + [entry]
-    n["rank_history"].sort(key=lambda e: e["through"])
+    # one point per football week (Tue-Mon): a newer snapshot in the same week replaces the older one
+    def wk(d):
+        d = datetime.date.fromisoformat(d); return (d - datetime.timedelta(days=(d.weekday() - 1) % 7)).isoformat()
+    keep = {}
+    for e in sorted(n["rank_history"] + [entry], key=lambda e: e["through"]):
+        keep[wk(e["through"])] = e
+    n["rank_history"] = [keep[k] for k in sorted(keep)]
     save("national.json", n); print("UPDATED national through", L["data_through"], entry["ranks"])
 
 
