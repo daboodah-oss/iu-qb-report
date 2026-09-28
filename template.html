@@ -120,8 +120,7 @@ section{padding-top:40px;scroll-margin-top:48px}
   .controls.stack{align-items:stretch;width:100%}
   .seg.toggle{display:flex;width:100%}
   .seg.toggle button{flex:1}
-  .seg.chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;mask-image:linear-gradient(90deg,#000 88%,transparent)}
-  .seg.chips::-webkit-scrollbar{display:none}
+  .seg.chips{flex-wrap:wrap;gap:2px 18px}
   .seg.chips button{white-space:nowrap;padding:8px 1px}
 }
 .chart{position:relative;margin-top:12px}
@@ -547,16 +546,16 @@ function drawPG(){
 /* ---------- compare chart (running total or per game) ---------- */
 const CMP = {
   yds:{t:"Pass yards",dp:0}, td:{t:"Pass TD",dp:0}, total_td:{t:"Total TD",dp:0},
-  rating:{t:"Rating",dp:1}, pct:{t:"Comp %",dp:1}, att:{t:"Attempts",dp:0}
+  int:{t:"INT",dp:0,cap:"interceptions"}, rating:{t:"Rating",dp:1}, pct:{t:"Comp %",dp:1}, att:{t:"Attempts",dp:0}
 };
 let cmpKey = "yds", cmpMode = "cum";
 function cmpSeries(rows){
   let c={cmp:0,att:0,yds:0,td:0,int:0,rtd:0};
   return rows.map(r => {
     c.cmp+=r.cmp; c.att+=r.att; c.yds+=r.yds; c.td+=r.td; c.int+=r.int; c.rtd+=(r.rush_td||0);
-    const cum = {yds:c.yds, td:c.td, total_td:c.td+c.rtd, att:c.att,
+    const cum = {yds:c.yds, td:c.td, total_td:c.td+c.rtd, att:c.att, int:c.int,
       pct: c.att?100*c.cmp/c.att:null, rating: c.att?(8.4*c.yds+330*c.td+100*c.cmp-200*c.int)/c.att:null};
-    const pg = {yds:r.yds, td:r.td, total_td:r.td+(r.rush_td||0), att:r.att, pct:r.pct, rating:r.rating};
+    const pg = {yds:r.yds, td:r.td, total_td:r.td+(r.rush_td||0), att:r.att, int:r.int, pct:r.pct, rating:r.rating};
     return {x:r.n, opp:r.opp, y:(cmpMode==="cum"?cum:pg)[cmpKey]};
   });
 }
@@ -565,6 +564,7 @@ function drawCompare(){
   const all = [...H, ...Mx].map(p=>p.y).filter(v=>v!=null);
   const rate = cmpKey==="rating" || cmpKey==="pct";
   const lo = rate ? Math.floor(Math.min(...all)/20)*20 : 0; let hi = rate ? Math.ceil(Math.max(...all)/20)*20 : undefined; if (rate) hi = lo + Math.ceil((hi-lo)/20)*20;
+  if (!rate) { const m = Math.max(...all); if (m <= 40) hi = Math.max(4, Math.ceil(m/4)*4); }  // whole-number ticks for small counts like INT
   lineChart($("#cmp-chart"), {
     aria:`${d.t}, ${cmpMode==="cum"?"running total":"per game"}, Hoover versus Mendoza`,
     xMax: MR.length, marker: N, yMin: lo, yMax: hi, padR: 44,
@@ -574,7 +574,7 @@ function drawCompare(){
       {name:"Hoover 2026", color:css("--hoover"), width:3.5, z:2, points:H, endLabel: fmt(H[H.length-1].y, d.dp), labelColor:css("--hoover")}
     ]});
   const hv = H[N-1].y, mv = Mx[N-1].y;
-  const what = cmpMode==="cum" ? (rate ? `Season ${d.t.toLowerCase()} on totals after each game` : `Total ${d.t.toLowerCase()} after each game`) : `${d.t} in each game`;
+  const what = cmpMode==="cum" ? (rate ? `Season ${d.t.toLowerCase()} on totals after each game` : `Total ${d.cap||d.t.toLowerCase()} after each game`) : `${d.cap ? d.cap[0].toUpperCase()+d.cap.slice(1) : d.t} in each game`;
   $("#cmp-cap").textContent = `${what}.  Game ${N}: Hoover ${fmt(hv,d.dp)}, Mendoza ${fmt(mv,d.dp)}.`;
 }
 seg($("#cmp-mode"), [["cum","Running total"],["pg","Per game"]], cmpMode, k=>{cmpMode=k; drawCompare();});
