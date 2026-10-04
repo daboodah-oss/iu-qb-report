@@ -296,6 +296,30 @@ def build(root, as_of):
         if isinstance(v, dict) and v["checked"]:
             v["stale"] = (now - datetime.datetime.fromisoformat(v["checked"])).days >= 5
 
+    # Prominent data-quality flags (a short, visible subset of the caveats).
+    notices = []
+    if os.path.exists(lr_path):
+        _lr = json.load(open(lr_path))
+        if _lr.get("failed"):
+            notices.append("The latest automatic update could not refresh: " + ", ".join(_lr["failed"]) +
+                           ". Those sections show the last verified data.")
+    if not nat_current:
+        notices.append(f"National leaderboards are through {L['data_through']} and do not include Hoover's latest game yet.")
+    _stale_names = {"games": "Game data", "national": "National leaderboards",
+                    "field": "Heisman-field game logs", "heisman": "Heisman odds"}
+    for _k, _v in fresh.items():
+        if isinstance(_v, dict) and _v.get("stale"):
+            notices.append(f"{_stale_names.get(_k, _k)} has not refreshed in over 5 days "
+                           f"(last checked {_v['checked'][:10]}).")
+
+    # Most recent change in Hoover's odds trail, for a one-line narrative.
+    move = None
+    for i in range(len(trail) - 1, 0, -1):
+        if trail[i]["odds"] != trail[i - 1]["odds"]:
+            move = {"book": trail[i]["book"], "from": trail[i - 1]["odds"],
+                    "to": trail[i]["odds"], "date": trail[i]["date"]}
+            break
+
     model = {
         "fresh": fresh,
         "as_of": as_of, "N": N, "season_games_mendoza": SEASON_G,
@@ -306,10 +330,10 @@ def build(root, as_of):
         "national": {"data_through": L["data_through"], "current": nat_current, "boards": boards,
                      "qualifier_note": nat["qualifier_note"], "rank_history": rank_hist, "order": CATS},
         "heisman": {"books": [{"book": s["book"], "as_of": s["as_of"], "outlet": s["outlet"], "url": s["url"]} for s in books],
-                    "players": players, "hoover": hp, "trail": trail, "note": heis["note"]},
+                    "players": players, "hoover": hp, "trail": trail, "note": heis["note"], "move": move},
         "cohort": {"rule": "The four players with the best consensus Heisman odds, any position. Game logs from ESPN.", "qbs": cohort},
         "opp_d_method": opp_d.get("method"),
-        "caveats": caveats, "sources": sources,
+        "caveats": caveats, "notices": notices, "sources": sources,
     }
     return model
 
@@ -340,8 +364,8 @@ def main():
                 '<meta name="theme-color" content="#990000">'
                 '<meta property="og:title" content="IU QB Report: Hoover vs Mendoza">'
                 '<meta property="og:description" content="Josh Hoover\'s 2026 season against Fernando Mendoza\'s 2025 Heisman season, game for game, plus national ranks and the Heisman race.">'
-                '<meta property="og:image" content="https://daboodah-oss.github.io/iu-qb-report/icons/og.png">'
-                '<meta property="og:url" content="https://daboodah-oss.github.io/iu-qb-report/">'
+                '<meta property="og:image" content="https://qb.daboodah.com/icons/og.png">'
+                '<meta property="og:url" content="https://qb.daboodah.com/">'
                 '<meta name="twitter:card" content="summary_large_image">'
                 '<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>'
                 '</head><body>\n' + html + '\n</body></html>\n')

@@ -69,6 +69,8 @@ section{padding-top:40px;scroll-margin-top:48px}
 .fresh::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--good);margin-right:6px;vertical-align:1px}
 .fresh.stale::before{background:#c98500}
 .panel{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:16px}
+.notices{margin:16px 0 0;background:var(--surface);border:1px solid var(--rule);border-left:4px solid #c98500;border-radius:4px;padding:12px 16px}
+.notices ul{margin:8px 0 0;padding-left:18px;display:grid;gap:6px;color:var(--ink-2);font-size:14px}
 
 /* head to head */
 .h2h{width:100%;border-collapse:collapse}
@@ -205,6 +207,7 @@ footer{margin-top:36px;padding-top:14px;border-top:3px solid var(--ink);font-siz
     </div>
     <aside class="scorecard" id="scorecard" aria-label="Latest game"></aside>
   </header>
+  <div class="notices" id="notices" hidden></div>
 
   <nav class="jump" aria-label="Sections">
     <a href="#h2h">Head to head</a><a href="#pace">Season pace</a><a href="#compare">Compare</a><a href="#games">Game logs</a><a href="#national">National</a><a href="#field">Heisman field</a><a href="#odds">Odds</a><a href="#method">Method</a>
@@ -349,6 +352,16 @@ $("#scorecard").innerHTML = `
     <div><b>${fmt(L.rating,1)}</b><span>Rating</span></div>
   </div>
   <div class="small">Rushing: ${L.rush_att} for ${L.rush_yds} yds, ${L.rush_td} TD${L.sacks!=null?` · Sacked ${L.sacks}×`:""}</div>`;
+
+/* ---------- data notices ---------- */
+{
+  const ns = M.notices || [];
+  if (ns.length) {
+    const box = $("#notices");
+    box.hidden = false;
+    box.innerHTML = `<div class="eyebrow">Data notes</div><ul>${ns.map(n=>`<li>${esc(n)}</li>`).join("")}</ul>`;
+  }
+}
 
 /* ---------- head to head ---------- */
 {
@@ -677,7 +690,7 @@ seg($("#fd-seg"), Object.entries(FD).map(([k,v])=>[k,v.t]), fdKey, k=>{fdKey=k; 
 {
   const Hs = M.heisman, books = Hs.books;
   const hp = Hs.hoover;
-  $("#odds-lede").innerHTML = `Players are ranked by the median implied probability across the books listed. ${hp?`Hoover is <b class="h">${ord(hp.rank)}</b> in that consensus at about ${fmt(hp.prob*100,1)}%.`:""} ${esc(Hs.note)}`;
+  $("#odds-lede").innerHTML = `Players are ranked by the median implied probability across the books listed. ${hp?`Hoover is <b class="h">${ord(hp.rank)}</b> in that consensus at about ${fmt(hp.prob*100,1)}%.`:""} ${esc(Hs.note)}${Hs.move?` Hoover's ${esc(Hs.move.book)} line moved from ${odds(Hs.move.from)} to ${odds(Hs.move.to)} on ${dateFmt(Hs.move.date)}.`:""}`;
   const maxP = Math.max(...Hs.players.map(p=>p.prob));
   const cnt = {}; Hs.players.forEach(p=>cnt[p.rank]=(cnt[p.rank]||0)+1);
   const head = `<thead><tr><th>#</th><th>Player</th>${books.map(b=>`<th>${esc(b.book)}<small>${dateFmt(b.as_of)}</small></th>`).join("")}<th>Implied chance<small>median of books</small></th></tr></thead>`;
