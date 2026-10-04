@@ -334,6 +334,15 @@ def main():
     if a.standalone:
         html = ('<!doctype html>\n<html lang="en"><head><meta charset="utf-8">'
                 '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">'
+                '<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">'
+                '<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">'
+                '<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">'
+                '<meta name="theme-color" content="#990000">'
+                '<meta property="og:title" content="IU QB Report: Hoover vs Mendoza">'
+                '<meta property="og:description" content="Josh Hoover\'s 2026 season against Fernando Mendoza\'s 2025 Heisman season, game for game, plus national ranks and the Heisman race.">'
+                '<meta property="og:image" content="https://daboodah-oss.github.io/iu-qb-report/icons/og.png">'
+                '<meta property="og:url" content="https://daboodah-oss.github.io/iu-qb-report/">'
+                '<meta name="twitter:card" content="summary_large_image">'
                 '<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>'
                 '</head><body>\n' + html + '\n</body></html>\n')
     tmp = a.out + ".tmp"
