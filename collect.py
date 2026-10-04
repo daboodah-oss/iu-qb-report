@@ -359,6 +359,7 @@ def main():
     # cfbstats posts results overnight; ESPN marks games final within minutes. Fill any gap from ESPN.
     try:
         finals = espn_finals()
+        log(f"[schedule] ESPN finals seen: {len(finals)}" + (f", latest {max(finals)} {finals[max(finals)]}" if finals else ""))
         for g in sched or []:
             if not g["result"] and g["date"] in finals:
                 g["result"] = finals[g["date"]]; log(f"[schedule] {g['date']} {g['opp']}: final from ESPN ({g['result']})")
