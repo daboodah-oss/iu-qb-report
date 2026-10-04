@@ -1,9 +1,10 @@
 {
- "at": "2026-09-30T20:11-04:00",
+ "at": "2026-10-04T08:40-04:00",
  "failed": [],
  "log": [
-  "[schedule] 12 games, 4 played",
-  "[hoover] next game kickoff: {'kickoff': '2026-10-03T20:00-04:00', 'tv': 'BTN'}",
+  "[schedule] 12 games, 5 played",
+  "[hoover] added 2026-10-03 Rutgers W 47-15",
+  "[hoover] next game kickoff: {'kickoff': '2026-10-10T12:00-04:00', 'tv': 'FOX'}",
   "FAILED sections: none"
  ]
 }

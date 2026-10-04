@@ -5,7 +5,7 @@
   "season": 2026,
   "espn_id": "4685401",
   "source_url": "https://site.web.api.espn.com/apis/common/v3/sports/football/college-football/athletes/4685401/gamelog?season=2026",
-  "retrieved_at": "2026-09-26T09:50:00-04:00",
+  "retrieved_at": "2026-10-04T12:40+00:00",
   "games": [
    {
     "date": "2026-09-05",
@@ -74,6 +74,23 @@
     "rush_yds": 1,
     "rush_td": 1,
     "sacks": 2
+   },
+   {
+    "date": "2026-10-03",
+    "espn_event": "401858477",
+    "opp": "Rutgers",
+    "site": "A",
+    "level": "FBS",
+    "result": "W 47-15",
+    "cmp": 20,
+    "att": 27,
+    "yds": 251,
+    "td": 4,
+    "int": 0,
+    "rush_att": 3,
+    "rush_yds": -3,
+    "rush_td": 0,
+    "sacks": 1
    }
   ]
  },
@@ -332,12 +349,12 @@
   ]
  },
  "next_game": {
-  "date": "2026-10-03",
-  "opp": "Rutgers",
+  "date": "2026-10-10",
+  "opp": "Nebraska",
   "site": "A",
   "source_url": "https://cfbstats.com/2026/team/306/index.html",
-  "kickoff": "2026-10-03T20:00-04:00",
-  "tv": "BTN"
+  "kickoff": "2026-10-10T12:00-04:00",
+  "tv": "FOX"
  },
  "opp_pass_defense": {
   "method": "Opponent's national rank in passing yards allowed per game (cfbstats.com, FBS). 2025 opponents use final 2025 ranks. 2026 opponents use the current 2026 rank, which moves every week.",
@@ -362,12 +379,13 @@
    }
   },
   "2026": {
-   "through": "2026-09-26",
+   "through": "2026-10-03",
    "ranks": {
-    "North Texas": 77,
-    "Western Kentucky": 82,
-    "Northwestern": 80,
-    "Rutgers": 56
+    "North Texas": 75,
+    "Western Kentucky": 64,
+    "Northwestern": 89,
+    "Rutgers": 68,
+    "Nebraska": 23
    },
    "source_url": "https://cfbstats.com/2026/leader/national/team/defense/split01/category02/sort01.html"
   }

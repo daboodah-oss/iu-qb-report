@@ -1,8 +1,10 @@
-[schedule] 12 games, 4 played
-[hoover] next game kickoff: {'kickoff': '2026-10-03T20:00-04:00', 'tv': 'BTN'}
-UPDATED next game: {'date': '2026-10-03', 'opp': 'Rutgers', 'site': 'A', 'source_url': 'https://cfbstats.com/2026/team/306/index.html', 'kickoff': '2026-10-03T20:00-04:00', 'tv': 'BTN'}
-UPDATED national through 2026-09-26 {'yds': 63, 'td': 7, 'pct': 27, 'rating': 3, 'ypa': 7}
-SKIPPED: snapshot exists for BetMGM 2026-09-29
-UPDATED cohort: Trinidad Chambliss, Darian Mensah, Jeremiah Smith, Kamario Taylor
+[schedule] 12 games, 5 played
+ADDED game 5: Rutgers W 47-15
+[hoover] added 2026-10-03 Rutgers W 47-15
+[hoover] next game kickoff: {'kickoff': '2026-10-10T12:00-04:00', 'tv': 'FOX'}
+UPDATED next game: {'date': '2026-10-10', 'opp': 'Nebraska', 'site': 'A', 'source_url': 'https://cfbstats.com/2026/team/306/index.html', 'kickoff': '2026-10-10T12:00-04:00', 'tv': 'FOX'}
+UPDATED national through 2026-10-03 {'yds': 50, 'td': 3, 'pct': 15, 'rating': 2, 'ypa': 6}
+ADDED BetMGM 2026-10-03 Hoover: 5000
+UPDATED cohort: Jeremiah Smith, Darian Mensah, Keelon Russell, CJ Carr
 UPDATED opponent pass-D ranks
 FAILED sections: none

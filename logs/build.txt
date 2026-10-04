@@ -1,2 +1,2 @@
-OK  games=4  verdict: Through 4 games, Mendoza's 2025 line leads 4 of 5 headline passing measures; Hoover has the edge in yards per attempt. Hoover trails Mendoza's game-4 totals by 125 yards and 3 passing TD.
-    sha256=efa32517f89b799a  bytes=81384
+OK  games=5  verdict: Through 5 games, Mendoza's 2025 line leads 3 of 5 headline passing measures; Hoover has the edge in passer rating and yards per attempt. Hoover trails Mendoza's game-5 totals by 107 yards and 1 passing TD.
+    sha256=76c33c2d324d2fcc  bytes=83309
