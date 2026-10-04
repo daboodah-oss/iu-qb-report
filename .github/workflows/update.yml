@@ -2,11 +2,14 @@ name: Update report
 
 on:
   schedule:
-    # Sunday and Wednesday 10:47 Eastern (cron is UTC; 14:47 UTC = 10:47 EDT, 9:47 EST)
+    # Full refresh: Sunday and Wednesday 10:47 Eastern, with two backups (cron is UTC; EDT = UTC-4)
     - cron: "47 14 * * 0,3"
-    # backups in case GitHub skips a scheduled run (a run with no new data changes nothing)
     - cron: "47 16 * * 0,3"
     - cron: "47 20 * * 0,3"
+    # Game-window quick checks every 20 minutes, Thu/Fri/Sat 4 PM to 2 AM Eastern.
+    # Each check exits in seconds unless an IU game has just gone final, then runs a full update.
+    - cron: "*/20 20-23 * * 4,5,6"
+    - cron: "*/20 0-6 * * 5,6,0"
   workflow_dispatch:
     inputs:
       save_raw:
@@ -35,24 +38,30 @@ jobs:
         continue-on-error: true
         env:
           SAVE_RAW: ${{ inputs.save_raw && '1' || '' }}
+          QUICK: ${{ startsWith(github.event.schedule, '*/20') && '1' || '' }}
         run: |
           mkdir -p logs
           set -o pipefail
           python collect.py 2>&1 | tee logs/collect.txt
+      - name: Check for changes
+        id: gate
+        run: if [ -f .nochange ]; then echo "skip=1" >> "$GITHUB_OUTPUT"; echo "No new game; nothing to publish"; fi
       - name: Build page (validation must pass)
         id: build
+        if: steps.gate.outputs.skip != '1'
         continue-on-error: true
         run: |
           set -o pipefail
           python build_report.py --standalone --out index.html 2>&1 | tee logs/build.txt
       - name: Commit and push
+        if: steps.gate.outputs.skip != '1'
         run: |
           git config user.name "iu-qb-report bot"
           git config user.email "actions@users.noreply.github.com"
           if [ "${{ steps.build.outcome }}" = "success" ]; then git add -A data index.html; else git checkout -- data index.html 2>/dev/null || true; fi
           git add -f logs
           [ -d raw ] && git add -f raw || true
-          if git diff --cached --quiet; then echo "No changes"; else git commit -m "Update $(date -u +%F)"; git push; fi
+          if git diff --cached --quiet; then echo "No changes"; else git commit -m "Update $(date -u +%F)"; git pull --rebase -q || true; git push; fi
       - name: Report problems
         if: steps.collect.outcome == 'failure' || steps.build.outcome == 'failure'
         run: |

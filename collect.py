@@ -192,9 +192,33 @@ def hoover(sched, fbs):
     U.next_game(ng)
 
 
+_ESPN_SCHED = {}
+def espn_team_schedule():
+    if "j" not in _ESPN_SCHED:
+        _ESPN_SCHED["j"] = get(f"https://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/84/schedule?season={SEASON}").json()
+    return _ESPN_SCHED["j"]
+
+
+def espn_finals():
+    """{date: 'W 47-15'} for IU games ESPN marks final (posts within minutes of the final whistle)."""
+    out = {}
+    for ev in espn_team_schedule().get("events", []):
+        comp = (ev.get("competitions") or [{}])[0]
+        st = (comp.get("status") or ev.get("status") or {}).get("type", {})
+        if not st.get("completed"): continue
+        sc = {}
+        for c in comp.get("competitors", []):
+            v = c.get("score"); v = v.get("value", v.get("displayValue")) if isinstance(v, dict) else v
+            sc["iu" if str(c.get("id")) == "84" else "opp"] = int(float(v))
+        if len(sc) != 2: continue
+        date = dt.datetime.fromisoformat(ev["date"].replace("Z", "+00:00")).astimezone(ET).date().isoformat()
+        out[date] = f"{'W' if sc['iu'] > sc['opp'] else 'L' if sc['iu'] < sc['opp'] else 'T'} {sc['iu']}-{sc['opp']}"
+    return out
+
+
 def kickoff_info(date):
     """Kickoff time and TV for IU's game on `date` (Eastern), from ESPN's team schedule. Empty if not set yet."""
-    j = get(f"https://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/84/schedule?season={SEASON}").json()
+    j = espn_team_schedule()
     for ev in j.get("events", []):
         when = dt.datetime.fromisoformat(ev["date"].replace("Z", "+00:00")).astimezone(ET)
         if when.date().isoformat() != date: continue
@@ -332,6 +356,21 @@ def cohort():
 
 def main():
     sched = schedule()
+    # cfbstats posts results overnight; ESPN marks games final within minutes. Fill any gap from ESPN.
+    try:
+        finals = espn_finals()
+        for g in sched or []:
+            if not g["result"] and g["date"] in finals:
+                g["result"] = finals[g["date"]]; log(f"[schedule] {g['date']} {g['opp']}: final from ESPN ({g['result']})")
+    except Exception as e:
+        log(f"[schedule] ESPN finals not available: {e}")
+    if os.environ.get("QUICK"):  # game-window check: do nothing unless a new IU game has gone final
+        have = {x["date"] for x in U.load("games.json")["hoover"]["games"]}
+        new = [g for g in (sched or []) if g["result"] and g["date"] not in have]
+        if not new:
+            print("quick check: no new final"); open(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".nochange"), "w").write("1")
+            sys.exit(0)
+        log(f"quick check: new final {new[0]['date']} {new[0]['opp']} {new[0]['result']}")
     fbs = set()
     try: fbs = fbs_teams()
     except Exception as e: log(f"[fbs list] {e}")
