@@ -59,3 +59,11 @@ No AI or paid service is involved in the scheduled run. Keep it that way.
   `cohort.json`, `freshness.json`, `last_run.json`
 - `icons/`, `assets/` — PWA icons, trident logo, link-preview card
 - `logs/` — per-run logs, force-added to git
+
+## Page behavior notes
+
+- Theme: the page follows `prefers-color-scheme` unless the reader picks the
+  header sun/moon toggle, which sets `data-theme` on `:root` and persists in
+  localStorage (`qb-theme`). Charts redraw on `data-theme` changes via a
+  MutationObserver. An inline head script applies the saved theme before first
+  paint to avoid a flash.
