@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Collect fresh data for IU QB Watch without any AI step.
+"""Collect fresh data for the IU QB Report without any AI step.
 
 Runs inside GitHub Actions (or any machine with open internet). Each section is
 independent: a failure keeps that section's stored data, is logged, and makes
@@ -7,8 +7,10 @@ the script exit 1 at the end (so GitHub emails the owner), but every section
 that did succeed is still saved and the page is still rebuilt.
 
 Sources
-  schedule + results ... cfbstats.com team page (Indiana = 306)
-  Hoover game line ..... ESPN athlete gamelog JSON
+  schedule + results ... cfbstats.com team page (Indiana = 306), ESPN team schedule for fast finals
+  current QB game line . ESPN athlete gamelog JSON
+  earlier QB seasons ... ESPN athlete gamelog JSON for that season, joined to that season's
+                         cfbstats schedule; stored once (backfill), must reconcile to roster.json totals
   national boards ...... cfbstats.com national passing leaders (5 sort pages)
   opponent pass D ...... cfbstats.com team passing defense
   Heisman odds ......... BetMGM Heisman odds page (table)
@@ -23,9 +25,10 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import update as U  # noqa: E402  (the same validated editors Claude used)
 
 ET = ZoneInfo("America/Indiana/Indianapolis")
-SEASON = 2026
+CUR = U.current()          # roster.json: the newest season's QB
+SEASON = CUR["season"]
 IU_CFBSTATS = 306
-HOOVER_ESPN = "4685401"
+IU_ESPN = "84"
 UA = {"User-Agent": "Mozilla/5.0 (compatible; iu-qb-watch/1.0; +https://github.com/daboodah-oss/iu-qb-report)"}
 ESPN_IDS = {  # known ESPN athlete ids for Heisman contenders (new names are looked up automatically)
     "Trinidad Chambliss": "4911529", "Darian Mensah": "5121169", "Arch Manning": "4870906",
@@ -104,9 +107,8 @@ def ival(x):
 
 
 # ---------------------------------------------------------------- schedule
-@section("schedule")
-def schedule():
-    url = f"https://cfbstats.com/{SEASON}/team/{IU_CFBSTATS}/index.html"
+def season_schedule(season):
+    url = f"https://cfbstats.com/{season}/team/{IU_CFBSTATS}/index.html"
     tbs = tables(url)
     sch = next(t for t in tbs if "Opponent" in [str(c) for c in t.columns])
     games = []
@@ -120,19 +122,24 @@ def schedule():
         name = re.sub(r"^\d+\s+", "", name).strip()          # AP rank prefix
         res = "" if res.lower() == "nan" else res.strip()
         games.append({"date": date, "opp": name, "site": site, "result": res})
-    log(f"[schedule] {len(games)} games, {sum(1 for g in games if g['result'])} played")
+    log(f"[schedule] {season}: {len(games)} games, {sum(1 for g in games if g['result'])} played")
     return games
 
 
-def fbs_teams():
-    t = tables(f"https://cfbstats.com/{SEASON}/leader/national/team/defense/split01/category02/sort01.html")[0]
+@section("schedule")
+def schedule():
+    return season_schedule(SEASON)
+
+
+def fbs_teams(season=SEASON):
+    t = tables(f"https://cfbstats.com/{season}/leader/national/team/defense/split01/category02/sort01.html")[0]
     col = "Team" if "Team" in t.columns else "Name"
     return set(TEAM_FIX.get(str(x), str(x)) for x in t[col])
 
 
 # ---------------------------------------------------------------- ESPN gamelog
-def espn_gamelog(athlete_id, seasontype=None):
-    url = f"https://site.web.api.espn.com/apis/common/v3/sports/football/college-football/athletes/{athlete_id}/gamelog?season={SEASON}"
+def espn_gamelog(athlete_id, seasontype=None, season=SEASON):
+    url = f"https://site.web.api.espn.com/apis/common/v3/sports/football/college-football/athletes/{athlete_id}/gamelog?season={season}"
     if seasontype: url += f"&seasontype={seasontype}"
     j = get(url).json()
     labels = j.get("names") or j.get("labels")
@@ -147,7 +154,7 @@ def espn_gamelog(athlete_id, seasontype=None):
         s = rows[eid]
         when = dt.datetime.fromisoformat(meta["gameDate"].replace("Z", "+00:00")).astimezone(ET)
         g = lambda *k: next((s[x] for x in k if x in s), "0")
-        out.append({"espn_event": eid, "date": when.date().isoformat(),
+        out.append({"espn_event": eid, "date": when.date().isoformat(), "at_vs": meta.get("atVs", ""),
                     "opp": meta.get("opponent", {}).get("displayName", ""),
                     "score": meta.get("score", ""), "wl": meta.get("gameResult", ""),
                     "cmp": ival(g("completions", "CMP")), "att": ival(g("passingAttempts", "ATT")),
@@ -166,29 +173,85 @@ def espn_gamelog(athlete_id, seasontype=None):
     return out
 
 
-# ---------------------------------------------------------------- Hoover's new games
-@section("hoover")
-def hoover(sched, fbs):
+# ---------------------------------------------------------------- earlier QBs' completed seasons
+def espn_iu_games(season):
+    """{date: {opp, site, result}} for every IU game ESPN lists in `season` (regular season + postseason)."""
+    out = {}
+    for st in (2, 3):
+        j = get(f"https://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/{IU_ESPN}/schedule?season={season}&seasontype={st}").json()
+        for ev in j.get("events", []):
+            comp = (ev.get("competitions") or [{}])[0]
+            iu = next((c for c in comp.get("competitors", []) if str(c.get("id")) == IU_ESPN), None)
+            op = next((c for c in comp.get("competitors", []) if str(c.get("id")) != IU_ESPN), None)
+            if not iu or not op: continue
+            sc = lambda c: int(float((c.get("score") or {}).get("value", 0) if isinstance(c.get("score"), dict) else c.get("score") or 0))
+            a, b = sc(iu), sc(op)
+            date = dt.datetime.fromisoformat(ev["date"].replace("Z", "+00:00")).astimezone(ET).date().isoformat()
+            out[date] = {"opp": op.get("team", {}).get("location", ""),
+                         "site": "N" if comp.get("neutralSite") else ("H" if iu.get("homeAway") == "home" else "A"),
+                         "result": f"{'W' if a > b else 'L' if a < b else 'T'} {a}-{b}"}
+    return out
+
+
+def game_rows(espn_rows, sched, fbs, tag):
+    """Join ESPN stat lines to schedule rows by Eastern date. Returns rows in the games.json format."""
+    out = []
+    by_date = {x["date"]: x for x in sched}
+    for e in espn_rows:
+        sg = by_date.get(e["date"])
+        if not sg or not sg.get("result"): raise ValueError(f"{tag}: ESPN game {e['date']} vs {e['opp']} has no final on the schedule")
+        out.append({"date": e["date"], "espn_event": e["espn_event"], "opp": sg["opp"], "site": sg["site"],
+                    "level": "FBS" if sg["opp"] in fbs else "FCS", "result": sg["result"],
+                    **{k: e[k] for k in ("cmp", "att", "yds", "td", "int", "rush_att", "rush_yds", "rush_td", "sacks")}})
+    return out
+
+
+@section("backfill")
+def backfill():
+    """Store each earlier roster QB's completed season once. A no-op after the first successful run."""
+    g = U.load("games.json")
+    for q in sorted(U.roster()["qbs"], key=lambda q: q["season"]):
+        if q["season"] >= SEASON or g.get(q["key"], {}).get("games"): continue
+        sched = season_schedule(q["season"])
+        try:  # cfbstats is authoritative for names; ESPN fills any game cfbstats lacks (e.g. a playoff game)
+            for d, x in espn_iu_games(q["season"]).items():
+                if d not in {s["date"] for s in sched}: sched.append({"date": d, **x}); log(f"[backfill] {d} {x['opp']}: schedule row from ESPN")
+        except Exception as e:
+            log(f"[backfill] ESPN schedule for {q['season']} not available: {e}")
+        espn_rows = espn_gamelog(q["espn_id"], season=q["season"])  # every row passes the rating check
+        seen = set(); espn_rows = [r for r in espn_rows if not (r["espn_event"] in seen or seen.add(r["espn_event"]))]
+        rows = game_rows(espn_rows, sched, fbs_teams(q["season"]), f"backfill {q['short']}")
+        U.backfill({"key": q["key"], "games": rows, "source_url": U.espn_log_url(q["espn_id"]),
+                    "verified_note": f"Backfilled by collect.py from ESPN's athlete game log JSON ({len(rows)} games). "
+                                     "Every row passed the NCAA passer-rating check and the season reconciles to the published totals in roster.json."})
+        log(f"[backfill] stored {q['name']} {q['season']}: {len(rows)} games")
+    g = U.load("games.json")  # final opponent pass-D ranks for any completed season that lacks them
+    for q in U.roster()["qbs"]:
+        if q["season"] < SEASON and g.get(q["key"], {}).get("games") and str(q["season"]) not in g["opp_pass_defense"]:
+            opp_d_ranks(q["season"], g[q["key"]]["games"]); log(f"[backfill] stored {q['season']} final opponent pass-D ranks")
+
+
+# ---------------------------------------------------------------- current QB's new games
+@section("games")
+def current_games(sched, fbs):
     if not sched: raise ValueError("no schedule")
-    g = U.load("games.json"); have = {x["date"] for x in g["hoover"]["games"]}
+    g = U.load("games.json"); have = {x["date"] for x in g.get(CUR["key"], {}).get("games", [])}
     played = [x for x in sched if x["result"]]
-    logs = espn_gamelog(HOOVER_ESPN)
+    logs = espn_gamelog(CUR["espn_id"])
     for i, sg in enumerate(played):
         if sg["date"] in have: continue
         # match ESPN row by date (ESPN date is converted to Eastern time)
         e = next((r for r in logs if r["date"] == sg["date"]), None)
         if not e:
-            log(f"[hoover] {sg['date']} {sg['opp']}: no ESPN line yet (did not play, or not posted)"); continue
-        row = {"date": sg["date"], "espn_event": e["espn_event"], "opp": sg["opp"], "site": sg["site"],
-               "level": "FBS" if sg["opp"] in fbs else "FCS", "result": sg["result"],
-               **{k: e[k] for k in ("cmp", "att", "yds", "td", "int", "rush_att", "rush_yds", "rush_td", "sacks")}}
-        U.hoover_game(row); log(f"[hoover] added {sg['date']} {sg['opp']} {sg['result']}")
+            log(f"[games] {sg['date']} {sg['opp']}: no {CUR['short']} ESPN line yet (did not play, or not posted)"); continue
+        row = game_rows([e], [sg], fbs, "games")[0]
+        U.qb_game(row); log(f"[games] added {CUR['short']} {sg['date']} {sg['opp']} {sg['result']}")
     nxt = next((x for x in sched if not x["result"]), None)
     ng = {"date": nxt["date"], "opp": nxt["opp"], "site": nxt["site"],
           "source_url": f"https://cfbstats.com/{SEASON}/team/{IU_CFBSTATS}/index.html"} if nxt else None
     if ng:
         try: ng.update(kickoff_info(ng["date"]))
-        except Exception as e: log(f"[hoover] kickoff time not available: {e}")
+        except Exception as e: log(f"[games] kickoff time not available: {e}")
     U.next_game(ng)
 
 
@@ -229,7 +292,7 @@ def kickoff_info(date):
         tv = [b.get("media", {}).get("shortName") or ", ".join(b.get("names", [])) for b in comp.get("broadcasts", [])]
         tv = [t for t in tv if t]
         if tv: out["tv"] = tv[0]
-        log(f"[hoover] next game kickoff: {out or 'not announced'}")
+        log(f"[games] next game kickoff: {out or 'not announced'}")
         return out
     return {}
 
@@ -252,8 +315,8 @@ def national():
                    "g": ival(r["G"]), "cmp": ival(r["Comp"]), "att": ival(r["Att"]), "yds": ival(r["Yards"]),
                    "td": ival(r["TD"]), "int": ival(r["Int"]), "src_rating": float(r["Rating"]), "_rank": last_rank}
             rows.append(row)
-        hv = next((x for x in rows if x["name"] == "Josh Hoover"), None)
-        if not hv: raise ValueError(f"Hoover not listed on the {cat} board (top 100)")
+        hv = next((x for x in rows if x["name"] == CUR["name"]), None)
+        if not hv: raise ValueError(f"{CUR['name']} not listed on the {cat} board (top 100)")
         hoover_row = {k: hv[k] for k in ("name", "team", "g", "cmp", "att", "yds", "td", "int", "src_rating")}
         top = [x for x in rows if x["_rank"] <= 5]
         vals = [U.rating(x) if cat == "rating" else x["yds"] / x["att"] if cat == "ypa" else 100 * x["cmp"] / x["att"] if cat == "pct" else x[cat] for x in top]
@@ -267,9 +330,8 @@ def national():
 
 
 # ---------------------------------------------------------------- opponent pass D
-@section("opp_d")
-def opp_d():
-    url = f"https://cfbstats.com/{SEASON}/leader/national/team/defense/split01/category02/sort01.html"
+def opp_d_ranks(season, games, extra=None):
+    url = f"https://cfbstats.com/{season}/leader/national/team/defense/split01/category02/sort01.html"
     html = get(url).text
     t = pd.read_html(io.StringIO(html))[0]
     rank_col, last, ranks = t.columns[0], None, {}
@@ -277,11 +339,15 @@ def opp_d():
         rk = str(r[rank_col]).strip(); last = int(float(rk)) if rk and rk.lower() != "nan" else last
         tm = str(r["Team"] if "Team" in t.columns else r["Name"]).strip()
         ranks[TEAM_FIX.get(tm, tm)] = last
+    mine = {x["opp"]: ranks[x["opp"]] for x in games if x.get("level") == "FBS" and x["opp"] in ranks}
+    if extra in ranks: mine[extra] = ranks[extra]
+    U.opp_d({str(season): {"through": through_date(html) or dt.date.today().isoformat(), "ranks": mine, "source_url": url}})
+
+
+@section("opp_d")
+def opp_d():
     g = U.load("games.json")
-    mine = {x["opp"]: ranks[x["opp"]] for x in g["hoover"]["games"] if x.get("level") == "FBS" and x["opp"] in ranks}
-    nxt = (g.get("next_game") or {}).get("opp")
-    if nxt in ranks: mine[nxt] = ranks[nxt]
-    U.opp_d({str(SEASON): {"through": through_date(html) or dt.date.today().isoformat(), "ranks": mine}})
+    opp_d_ranks(SEASON, g.get(CUR["key"], {}).get("games", []), (g.get("next_game") or {}).get("opp"))
 
 
 # ---------------------------------------------------------------- Heisman odds (BetMGM)
@@ -332,7 +398,7 @@ def cohort():
     prob = lambda o: 100 / (o + 100) if o > 0 else -o / (-o + 100)
     import statistics
     ranked = sorted(((statistics.median([prob(s["odds"][n]) for s in books if n in s["odds"]]), n)
-                     for n, p in h["players"].items() if n != "Josh Hoover"
+                     for n, p in h["players"].items() if n != CUR["name"]
                      and any(n in s["odds"] for s in books)), reverse=True)
     want = [n for _, n in ranked[:4]]
     ids = {q["name"]: q for q in c["qbs"]}
@@ -366,7 +432,7 @@ def main():
     except Exception as e:
         log(f"[schedule] ESPN finals not available: {e}")
     if os.environ.get("QUICK"):  # game-window check: do nothing unless a new IU game has gone final
-        have = {x["date"] for x in U.load("games.json")["hoover"]["games"]}
+        have = {x["date"] for x in U.load("games.json").get(CUR["key"], {}).get("games", [])}
         new = [g for g in (sched or []) if g["result"] and g["date"] not in have]
         if not new:
             print("quick check: no new final"); open(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".nochange"), "w").write("1")
@@ -375,7 +441,8 @@ def main():
     fbs = set()
     try: fbs = fbs_teams()
     except Exception as e: log(f"[fbs list] {e}")
-    hoover(sched, fbs)
+    backfill()
+    current_games(sched, fbs)
     national()
     heisman()
     cohort()
