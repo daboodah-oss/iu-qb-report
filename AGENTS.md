@@ -50,7 +50,10 @@ No AI or paid service is involved in the scheduled run. Keep it that way.
 6. **Keep page output deterministic.** No live API calls, no AI-generated
    text in the scheduled build. Editorial judgment (discrepancy writeups,
    caveats) is added by a human as data/notes, and the page renders them.
-7. The output check in `build_report.py` rejects `TODO`, `lorem`,
+7. **No secrets in files.** Pushes authenticate through Git Credential
+   Manager on the owner's PC; the scheduled workflow uses its own temporary
+   `GITHUB_TOKEN`. See the Secrets section of README.md.
+8. The output check in `build_report.py` rejects `TODO`, `lorem`,
    `PLACEHOLDER`, and anything looking like a credential. Don't add those.
 
 ## File map

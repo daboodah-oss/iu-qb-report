@@ -1,0 +1,6 @@
+# Never commit credentials (tokens live only in Windows Credential Manager)
+github-token.txt
+*.token
+.env
+raw/
+__pycache__/
