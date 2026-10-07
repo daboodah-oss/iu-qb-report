@@ -354,7 +354,7 @@
   "site": "A",
   "source_url": "https://cfbstats.com/2026/team/306/index.html",
   "kickoff": "2026-10-10T12:00-04:00",
-  "tv": "FOX"
+  "tv": "Fox"
  },
  "opp_pass_defense": {
   "method": "Opponent's national rank in passing yards allowed per game (cfbstats.com, FBS). 2025 opponents use final 2025 ranks. 2026 opponents use the current 2026 rank, which moves every week.",
@@ -379,12 +379,12 @@
    }
   },
   "2026": {
-   "through": "2026-10-03",
+   "through": "2026-10-06",
    "ranks": {
-    "North Texas": 75,
-    "Western Kentucky": 64,
-    "Northwestern": 89,
-    "Rutgers": 68,
+    "North Texas": 74,
+    "Western Kentucky": 63,
+    "Northwestern": 88,
+    "Rutgers": 67,
     "Nebraska": 23
    },
    "source_url": "https://cfbstats.com/2026/leader/national/team/defense/split01/category02/sort01.html"
