@@ -3,7 +3,7 @@
 [hoover] next game kickoff: {'kickoff': '2026-10-10T12:00-04:00', 'tv': 'Fox'}
 UPDATED next game: {'date': '2026-10-10', 'opp': 'Nebraska', 'site': 'A', 'source_url': 'https://cfbstats.com/2026/team/306/index.html', 'kickoff': '2026-10-10T12:00-04:00', 'tv': 'Fox'}
 UPDATED national through 2026-10-06 {'yds': 50, 'td': 3, 'pct': 15, 'rating': 2, 'ypa': 6}
-ADDED BetMGM 2026-10-07 Hoover: None
+SKIPPED: snapshot exists for BetMGM 2026-10-07
 UPDATED cohort: Jeremiah Smith, Darian Mensah, Keelon Russell, CJ Carr
 UPDATED opponent pass-D ranks
 FAILED sections: none
