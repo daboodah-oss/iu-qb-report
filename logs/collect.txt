@@ -1,9 +1,14 @@
-[schedule] 12 games, 5 played
+[schedule] 2026: 12 games, 5 played
 [schedule] ESPN finals seen: 5, latest 2026-10-03 W 47-15
-[hoover] next game kickoff: {'kickoff': '2026-10-10T12:00-04:00', 'tv': 'Fox'}
+[schedule] 2024: 13 games, 13 played
+BACKFILLED Kurtis Rourke 2024: 12 games
+[backfill] stored Kurtis Rourke 2024: 12 games
+UPDATED opponent pass-D ranks
+[backfill] stored 2024 final opponent pass-D ranks
+[games] next game kickoff: {'kickoff': '2026-10-10T12:00-04:00', 'tv': 'Fox'}
 UPDATED next game: {'date': '2026-10-10', 'opp': 'Nebraska', 'site': 'A', 'source_url': 'https://cfbstats.com/2026/team/306/index.html', 'kickoff': '2026-10-10T12:00-04:00', 'tv': 'Fox'}
-UPDATED national through 2026-10-06 {'yds': 50, 'td': 3, 'pct': 15, 'rating': 2, 'ypa': 6}
-SKIPPED: snapshot exists for BetMGM 2026-10-07
+UPDATED national through 2026-10-09 {'yds': 53, 'td': 3, 'pct': 15, 'rating': 2, 'ypa': 6}
+ADDED BetMGM 2026-10-08 Hoover: None
 UPDATED cohort: Jeremiah Smith, Darian Mensah, Keelon Russell, CJ Carr
 UPDATED opponent pass-D ranks
 FAILED sections: none

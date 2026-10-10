@@ -1,2 +1,2 @@
-OK  games=5  verdict: Through 5 games, Mendoza's 2025 line leads 3 of 5 headline passing measures; Hoover has the edge in passer rating and yards per attempt. Hoover trails Mendoza's game-5 totals by 107 yards and 1 passing TD.
-    sha256=eb012f1f0b62cc7f  bytes=86820
+OK  games=5  verdict: Through 5 games, Hoover leads Mendoza's 2025 line in 2 of 5 and Rourke's 2024 line in 2 of 5 headline passing measures. At the same point he is 107 yards and 1 passing TD behind Mendoza and 271 yards behind Rourke but 4 passing TD ahead.
+    sha256=8fcb9c4174fe88a9  bytes=91721
