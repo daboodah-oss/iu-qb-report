@@ -8,7 +8,10 @@ in `build_report.py` is the quality gate. Follow these rules so any helper
 ## Pipeline
 
 1. `collect.py` pulls ESPN game logs, cfbstats.com leaderboards, and sportsbook
-   Heisman odds into `data/*.json`. Each section is independent; a failed
+   Heisman odds into `data/*.json`. The quarterbacks come from `roster.json`
+   (newest season = current QB, earlier seasons = comparison QBs). An earlier
+   QB with no stored season is backfilled once from ESPN and must reconcile to
+   his `final_totals`. Each section is independent; a failed
    section keeps its last verified data and is recorded in `data/last_run.json`.
 2. `update.py` validates every row before it is stored (e.g. each passer rating
    must match the NCAA formula).
@@ -31,7 +34,8 @@ No AI or paid service is involved in the scheduled run. Keep it that way.
 
 1. **Pull before pushing.** The bot commits on schedule; push with
    `git pull --rebase` first to avoid collisions.
-2. **Never hand-edit `data/*.json`.** Data comes from `collect.py`. The one
+2. **Never hand-edit `data/*.json`.** To add a quarterback or season, edit
+   `roster.json` and let the pipeline collect the games. Data comes from `collect.py`. The one
    exception is Heisman odds snapshots, which are recorded by hand from
    published reports — each snapshot must carry `book`, `as_of`, `outlet`,
    and `url`.
@@ -46,12 +50,16 @@ No AI or paid service is involved in the scheduled run. Keep it that way.
 6. **Keep page output deterministic.** No live API calls, no AI-generated
    text in the scheduled build. Editorial judgment (discrepancy writeups,
    caveats) is added by a human as data/notes, and the page renders them.
-7. The output check in `build_report.py` rejects `TODO`, `lorem`,
+7. **No secrets in files.** Pushes authenticate through Git Credential
+   Manager on the owner's PC; the scheduled workflow uses its own temporary
+   `GITHUB_TOKEN`. See the Secrets section of README.md.
+8. The output check in `build_report.py` rejects `TODO`, `lorem`,
    `PLACEHOLDER`, and anything looking like a credential. Don't add those.
 
 ## File map
 
-- `collect.py` — data fetching (network)
+- `roster.json` — Cignetti-era starters, one per season; drives every name on the page
+- `collect.py` — data fetching (network), including the one-time season backfill
 - `update.py` — row validation before storage
 - `build_report.py` — validation + model + render (no network)
 - `template.html` — page; the model is injected at `/*__MODEL__*/null`
@@ -61,6 +69,17 @@ No AI or paid service is involved in the scheduled run. Keep it that way.
 - `logs/` — per-run logs, force-added to git
 
 ## Page behavior notes
+
+- Comparisons always line seasons up by game number through the current QB's
+  game count (N). Completed seasons also show full-season totals. A comparison
+  QB whose season was shorter than N shows his full season, is marked, and is
+  left out of the leader boxes.
+- Data field names `hoover_row`, `hoover_rank` (national.json) and
+  `hoover_opening` (heisman.json, read as `<key>_opening`) are legacy names
+  that mean "the current QB". The national top-5 boards and the Heisman
+  sections are scoped to the current QB only.
+- Colors: CSS slots `--cur` (current QB) and `--p1`..`--p4` (earlier starters,
+  newest first), defined for light and dark themes.
 
 - Theme: the page follows `prefers-color-scheme` unless the reader picks the
   header sun/moon toggle, which sets `data-theme` on `:root` and persists in

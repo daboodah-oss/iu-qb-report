@@ -1,0 +1,14 @@
+{
+ "about": "Cignetti-era Indiana starting quarterbacks, one per season. The newest season is the current QB; every earlier season is a comparison QB. To start a new season, add one entry (key, name, short, season, espn_id) and the pipeline backfills or tracks everything else. final_totals are the published season totals (passing yards, TD, INT) the stored game log must reconcile to; add them when a season ends.",
+ "team": "Indiana",
+ "coach": "Curt Cignetti",
+ "qbs": [
+  {"key": "rourke", "name": "Kurtis Rourke", "short": "Rourke", "season": 2024, "espn_id": "4430431",
+   "note": "led Indiana to its first College Football Playoff",
+   "final_totals": {"yds": 3042, "td": 29, "int": 5}},
+  {"key": "mendoza", "name": "Fernando Mendoza", "short": "Mendoza", "season": 2025, "espn_id": "4837248",
+   "note": "won the Heisman and the national title",
+   "final_totals": {"yds": 3535, "td": 41, "int": 6}},
+  {"key": "hoover", "name": "Josh Hoover", "short": "Hoover", "season": 2026, "espn_id": "4685401"}
+ ]
+}

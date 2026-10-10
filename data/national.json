@@ -3,7 +3,7 @@
  "source": "cfbstats.com national player leaders, passing, all games (FBS)",
  "qualifier_note": "Completion %, passer rating and yards per attempt require 15 pass attempts per game played and 75% of team games (cfbstats/NCAA rule). Yards and TD have no qualifier.",
  "latest": {
-  "data_through": "2026-10-06",
+  "data_through": "2026-10-09",
   "boards": {
    "yds": {
     "rows": [
@@ -41,6 +41,17 @@
       "src_rating": 183.7
      },
      {
+      "name": "Lincoln Kienholz",
+      "team": "Louisville",
+      "g": 6,
+      "cmp": 107,
+      "att": 154,
+      "yds": 1534,
+      "td": 9,
+      "int": 1,
+      "src_rating": 171.14
+     },
+     {
       "name": "Julian Sayin",
       "team": "Ohio State",
       "g": 5,
@@ -50,20 +61,9 @@
       "td": 13,
       "int": 1,
       "src_rating": 191.85
-     },
-     {
-      "name": "Tayven Jackson",
-      "team": "North Texas",
-      "g": 5,
-      "cmp": 119,
-      "att": 167,
-      "yds": 1519,
-      "td": 10,
-      "int": 4,
-      "src_rating": 162.64
      }
     ],
-    "hoover_rank": 50,
+    "hoover_rank": 53,
     "label": "Passing yards",
     "source_url": "https://cfbstats.com/2026/leader/national/player/split01/category02/sort08.html"
    },
@@ -330,7 +330,7 @@
    "int": 0,
    "src_rating": 203.73
   },
-  "retrieved_at": "2026-10-08T00:26+00:00"
+  "retrieved_at": "2026-10-10T12:39+00:00"
  },
  "rank_history": [
   {
@@ -364,10 +364,10 @@
    }
   },
   {
-   "through": "2026-10-06",
+   "through": "2026-10-09",
    "games": 5,
    "ranks": {
-    "yds": 50,
+    "yds": 53,
     "td": 3,
     "pct": 15,
     "rating": 2,

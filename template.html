@@ -7,7 +7,9 @@
 :root{
   --bg:#f3f4f6; --surface:#ffffff; --surface-2:#eceef2; --ink:#16181d; --ink-2:#4a4f5c; --muted:#6a7080;
   --rule:#d8dbe2; --grid:#e6e8ed;
-  --hoover:#a3121c; --hoover-soft:#f6e3e4; --mendoza:#2a78d6; --mendoza-soft:#e2edfa; --field:#8d93a1;
+  /* QB color slots: cur = current season (IU crimson); p1..p4 = earlier starters, newest first */
+  --cur:#a3121c; --cur-soft:#f6e3e4; --p1:#2a78d6; --p1-soft:#e2edfa; --p2:#b86e00; --p2-soft:#fbefd9;
+  --p3:#12806e; --p3-soft:#dcf1ec; --p4:#7a4fc0; --p4-soft:#ece5f8; --field:#8d93a1;
   --good:#1f7a4d;
   --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
   --body:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
@@ -17,7 +19,8 @@
     color-scheme:dark;
     --bg:#111216; --surface:#1a1c22; --surface-2:#22252d; --ink:#eceef2; --ink-2:#c3c7d1; --muted:#9aa0ae;
     --rule:#2e313b; --grid:#262932;
-    --hoover:#e66767; --hoover-soft:#3a1d20; --mendoza:#3987e5; --mendoza-soft:#172a44; --field:#7a808e;
+    --cur:#e66767; --cur-soft:#3a1d20; --p1:#3987e5; --p1-soft:#172a44; --p2:#e0a33a; --p2-soft:#3a2c14;
+    --p3:#3bb9a0; --p3-soft:#143a33; --p4:#a685e8; --p4-soft:#2a2140; --field:#7a808e;
     --good:#4cc38a;
   }
 }
@@ -25,7 +28,8 @@
   color-scheme:dark;
   --bg:#111216; --surface:#1a1c22; --surface-2:#22252d; --ink:#eceef2; --ink-2:#c3c7d1; --muted:#9aa0ae;
   --rule:#2e313b; --grid:#262932;
-  --hoover:#e66767; --hoover-soft:#3a1d20; --mendoza:#3987e5; --mendoza-soft:#172a44; --field:#7a808e;
+  --cur:#e66767; --cur-soft:#3a1d20; --p1:#3987e5; --p1-soft:#172a44; --p2:#e0a33a; --p2-soft:#3a2c14;
+  --p3:#3bb9a0; --p3-soft:#143a33; --p4:#a685e8; --p4-soft:#2a2140; --field:#7a808e;
   --good:#4cc38a;
 }
 *{box-sizing:border-box}
@@ -33,7 +37,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15p
 .wrap{max-width:1080px;margin:0 auto;padding-inline:16px;padding-block:20px 56px}
 a{color:inherit;text-decoration-color:var(--rule);text-underline-offset:3px}
 a:hover{text-decoration-color:currentColor}
-:focus-visible{outline:2px solid var(--mendoza);outline-offset:2px;border-radius:3px}
+:focus-visible{outline:2px solid var(--p1);outline-offset:2px;border-radius:3px}
 .num{font-variant-numeric:tabular-nums}
 h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:.01em;text-wrap:balance;margin:0;line-height:1.05}
 h2{font-size:30px;text-transform:uppercase}
@@ -41,7 +45,7 @@ h3{font-size:19px;text-transform:uppercase;letter-spacing:.04em}
 .eyebrow{font-family:var(--display);font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:13px;color:var(--muted)}
 .lede{color:var(--ink-2);max-width:66ch;margin:6px 0 0}
 .small{font-size:13px;color:var(--muted)}
-.h{color:var(--hoover)} .m{color:var(--mendoza)}
+.h{color:var(--cur)}
 
 /* masthead */
 .mast{display:grid;grid-template-columns:1.35fr 1fr;gap:28px;align-items:end;padding-bottom:22px;border-bottom:3px solid var(--ink)}
@@ -49,15 +53,19 @@ h3{font-size:19px;text-transform:uppercase;letter-spacing:.04em}
 .mast-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
 .theme-toggle{flex:none;width:34px;height:34px;border-radius:50%;border:1px solid var(--rule);background:var(--surface);color:var(--ink-2);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:0}
 .theme-toggle:hover{color:var(--ink);border-color:var(--ink-2)}
-.theme-toggle:focus-visible{outline:2px solid var(--mendoza);outline-offset:2px}
+.theme-toggle:focus-visible{outline:2px solid var(--p1);outline-offset:2px}
 .theme-toggle svg{width:17px;height:17px}
 .mast h1{font-size:clamp(40px,10.5vw,92px);text-transform:uppercase;line-height:.9}
+.mast-sub{margin:10px 0 0;font-size:15px;color:var(--ink-2);display:flex;flex-wrap:wrap;gap:4px 14px}
+.mast-sub span{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.mast h1 .era{display:block;font-size:.4em;line-height:1.05;margin-top:.1em;letter-spacing:.03em}
+.mast h1 .era .vs{font-size:1em;vertical-align:0;margin:0 .1em 0 0}
 .mast h1 .vs{font-size:.42em;color:var(--muted);vertical-align:.55em;margin:0 .12em;letter-spacing:.06em}
 .stamp{display:inline-flex;gap:10px;align-items:center;margin-top:10px;flex-wrap:wrap}
 .pill{font-family:var(--display);font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:13px;padding:3px 9px;border-radius:3px;background:var(--ink);color:var(--bg)}
 .pill.ghost{background:transparent;color:var(--ink-2);border:1px solid var(--rule)}
 .verdict{font-size:18px;line-height:1.45;margin:14px 0 0;max-width:60ch}
-.scorecard{background:var(--surface);border:1px solid var(--rule);border-top:4px solid var(--hoover);padding:14px 16px;display:grid;gap:10px}
+.scorecard{background:var(--surface);border:1px solid var(--rule);border-top:4px solid var(--cur);padding:14px 16px;display:grid;gap:10px}
 .scorecard .score{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
 .scorecard .score b{font-family:var(--display);font-size:40px;line-height:1;white-space:nowrap}
 .statline{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;border-top:1px solid var(--rule);padding-top:10px}
@@ -88,8 +96,8 @@ section{padding-top:40px;scroll-margin-top:48px}
 .h2h td.v span{display:inline-block;padding:1px 8px;border-radius:4px}
 .h2h td.v.lose span{opacity:.55}
 .h2h td.v.win span{opacity:1;box-shadow:inset 0 0 0 1.5px currentColor}
-.h2h td.v.h.win span{background:var(--hoover-soft)}
-.h2h td.v.m.win span{background:var(--mendoza-soft)}
+.h2h thead th small{display:block;font-family:var(--body);text-transform:none;letter-spacing:0;font-weight:400;color:var(--muted)}
+.h2h td.v.short span{font-style:italic}
 .keychip{display:inline-block;padding:0 6px;border-radius:3px;box-shadow:inset 0 0 0 1.5px var(--ink-2);background:var(--surface-2);color:var(--ink);font-weight:600}
 .h2h td.lab{font-weight:600}
 .h2h td.bars{width:38%}
@@ -106,8 +114,15 @@ section{padding-top:40px;scroll-margin-top:48px}
 .tile .big{font-family:var(--display);font-size:38px;font-weight:700;line-height:1}
 .tile .row{display:flex;justify-content:space-between;font-size:13px;color:var(--ink-2)}
 .meter{height:8px;background:var(--surface-2);border-radius:4px;overflow:hidden;position:relative}
-.meter i{position:absolute;inset:0 auto 0 0;background:var(--hoover);border-radius:4px}
-.meter u{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--mendoza)}
+.meter{overflow:visible;margin:4px 0}
+.meter i{position:absolute;inset:0 auto 0 0;background:var(--cur);border-radius:4px}
+.meter s{position:absolute;inset:0 auto 0 0;background:var(--cur);opacity:.28;border-radius:4px}
+.meter u{position:absolute;top:-4px;bottom:-4px;width:3px;margin-left:-1px;border-radius:1px;box-shadow:0 0 0 1px var(--surface)}
+.tile .finals{display:grid;gap:2px;font-size:13px;color:var(--ink-2)}
+.tile .finals div{display:flex;justify-content:space-between;gap:6px}
+.tile .finals div span{white-space:nowrap}
+@media (max-width:420px){.tile .finals{font-size:12.5px}}
+.tile .finals i{display:inline-block;width:3px;height:11px;border-radius:1px;margin-right:6px;vertical-align:-1px}
 
 /* controls + charts */
 .controls{display:flex;gap:6px;flex-wrap:wrap;align-items:center;min-width:0;max-width:100%}
@@ -123,7 +138,7 @@ section{padding-top:40px;scroll-margin-top:48px}
 .seg.chips{border:0;border-radius:0;background:transparent;gap:2px 16px;overflow:visible}
 .seg.chips button{border:0;border-bottom:2px solid transparent;border-radius:0;padding:6px 1px;background:transparent;color:var(--muted);font-weight:600}
 .seg.chips button:hover{color:var(--ink)}
-.seg.chips button[aria-pressed="true"]{background:transparent;color:var(--ink);border-bottom-color:var(--hoover)}
+.seg.chips button[aria-pressed="true"]{background:transparent;color:var(--ink);border-bottom-color:var(--cur)}
 @media (max-width:820px){
   .controls.stack{align-items:stretch;width:100%}
   .seg.toggle{display:flex;width:100%}
@@ -151,7 +166,7 @@ table.log th{font-family:var(--display);text-transform:uppercase;letter-spacing:
 table.log th:nth-child(-n+3),table.log td:nth-child(-n+3){text-align:left}
 table.log tfoot td{font-weight:700;border-top:2px solid var(--ink);border-bottom:0}
 table.log tr.future td{color:var(--muted)}
-table.log tr.cut td{border-bottom:2px dashed var(--mendoza)}
+table.log tr.cut td{border-bottom:2px dashed var(--ink-2)}
 .lvl{font-size:11px;font-weight:700;letter-spacing:.06em;padding:1px 5px;border-radius:3px;border:1px solid var(--rule);color:var(--ink-2)}
 .logs{display:grid;gap:18px;margin-top:18px}
 .logs>*,.notes>*,.pace>*{min-width:0}
@@ -165,11 +180,11 @@ table.log tr.cut td{border-bottom:2px dashed var(--mendoza)}
 .board td.rk{width:34px;color:var(--muted);font-variant-numeric:tabular-nums}
 .board td.val{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
 .board td .tm{color:var(--muted);font-size:12.5px;margin-left:4px}
-.board tr.hv td{background:var(--hoover-soft);font-weight:700}
-.board tr.hv td.rk{color:var(--hoover)}
+.board tr.hv td{background:var(--cur-soft);font-weight:700}
+.board tr.hv td.rk{color:var(--cur)}
 .board tr.gap td{border-bottom:0;padding:0;height:6px}
 .board .foot{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:12.5px;color:var(--muted)}
-.rankchip{font-family:var(--display);font-weight:700;font-size:20px;color:var(--hoover)}
+.rankchip{font-family:var(--display);font-weight:700;font-size:20px;color:var(--cur)}
 
 /* heisman */
 table.odds{width:100%;border-collapse:collapse;font-size:14px;min-width:600px}
@@ -177,9 +192,9 @@ table.odds th,table.odds td{padding:7px 8px;border-bottom:1px solid var(--grid);
 table.odds th{font-family:var(--display);text-transform:uppercase;letter-spacing:.06em;font-size:12.5px;color:var(--muted);font-weight:600;vertical-align:bottom}
 table.odds th small{display:block;font-family:var(--body);text-transform:none;letter-spacing:0;font-weight:400}
 table.odds td:nth-child(-n+2),table.odds th:nth-child(-n+2){text-align:left}
-table.odds tr.hv td{background:var(--hoover-soft);font-weight:700}
+table.odds tr.hv td{background:var(--cur-soft);font-weight:700}
 .probbar{display:inline-block;height:6px;border-radius:0 3px 3px 0;background:var(--field);vertical-align:middle;margin-right:8px}
-tr.hv .probbar{background:var(--hoover)}
+tr.hv .probbar{background:var(--cur)}
 .trail{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 .trail .step{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:8px 10px;display:grid;font-size:12.5px;color:var(--muted)}
 .trail .step b{font-family:var(--display);font-size:22px;color:var(--ink)}
@@ -197,7 +212,10 @@ footer{margin-top:36px;padding-top:14px;border-top:3px solid var(--ink);font-siz
 @media (max-width:420px){
   .statline b{font-size:21px}
   .scorecard .score b{font-size:32px}
-  .h2h td.v{font-size:21px;width:70px}
+  .h2h td.v{font-size:18px;width:auto}
+  .h2h th,.h2h td{padding:8px 3px}
+  .h2h td.lab{font-size:13.5px}
+  .h2h td.v span{padding:1px 4px}
   .tile .big{font-size:32px}
 }
 @media (prefers-reduced-motion:no-preference){ .seg button{transition:background .15s} }
@@ -206,8 +224,9 @@ footer{margin-top:36px;padding-top:14px;border-top:3px solid var(--ink);font-siz
 <div class="wrap">
   <header class="mast">
     <div>
-      <div class="eyebrow mast-top"><span>IU QB Report · Indiana football 2026</span><button id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Switch to dark mode"></button></div>
-      <h1><span class="h">Hoover</span> <span class="vs">vs</span> <span class="m">Mendoza</span></h1>
+      <div class="eyebrow mast-top"><span id="mast-eyebrow">IU QB Report · Indiana football</span><button id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Switch to dark mode"></button></div>
+      <h1><span class="h" id="h1-cur"></span> <span class="era"><span class="vs">vs</span> the Cignetti era</span></h1>
+      <p class="mast-sub" id="mast-sub"></p>
       <div class="stamp" id="stamp"></div>
       <p class="verdict" id="verdict"></p>
     </div>
@@ -223,14 +242,14 @@ footer{margin-top:36px;padding-top:14px;border-top:3px solid var(--ink);font-siz
     <div class="sec-head">
       <div><div class="eyebrow">Same number of games</div><h2>Head to head</h2>
       <p class="fresh" data-fresh="games"></p></div>
-      <div class="legend"><span><i class="sw thick" style="background:var(--hoover)"></i>Hoover 2026</span><span><i class="sw thick" style="background:var(--mendoza)"></i>Mendoza 2025</span><span class="small"><span class="keychip">Boxed</span> = leader; ties stay plain</span></div>
+      <div class="legend"><span class="small"><span class="keychip">Boxed</span> = leader; when everyone is level, nothing is boxed</span></div>
     </div>
     <div class="panel tscroll"><table class="h2h" id="h2h-table"></table></div>
   </section>
 
   <section id="pace">
     <div class="sec-head">
-      <div><div class="eyebrow">Against Mendoza's full Heisman season</div><h2>Season pace</h2>
+      <div><div class="eyebrow" id="pace-eyebrow">Against the full seasons before him</div><h2>Season pace</h2>
       <p class="lede" id="pace-lede"></p>
       </div>
     </div>
@@ -240,27 +259,24 @@ footer{margin-top:36px;padding-top:14px;border-top:3px solid var(--ink);font-siz
   <section id="compare">
     <div class="sec-head">
       <div><div class="eyebrow">Running total or each game, any stat</div><h2>Compare chart</h2>
-      <p class="lede">One chart for both views.  Mendoza's line runs his full 2025 season; the dashed marker is Hoover's latest game.</p>
+      <p class="lede" id="cmp-lede"></p>
       <p class="fresh" data-fresh="games"></p></div>
       <div class="controls stack">
         <div class="seg toggle" id="cmp-mode" role="group" aria-label="View: running total or per game"></div>
         <div class="seg chips" id="cmp-seg" role="group" aria-label="Stat"></div>
       </div>
     </div>
-    <div class="panel"><div class="legend"><span><i class="sw thick" style="background:var(--hoover)"></i>Hoover 2026</span><span><i class="sw" style="background:var(--mendoza)"></i>Mendoza 2025</span></div>
+    <div class="panel"><div class="legend" id="cmp-legend"></div>
       <div class="chart" id="cmp-chart"></div><p class="caption" id="cmp-cap"></p></div>
   </section>
 
   <section id="games">
     <div class="sec-head">
-      <div><div class="eyebrow">Every game, both seasons</div><h2>Game logs</h2>
+      <div><div class="eyebrow">Every game, every season</div><h2>Game logs</h2>
       </div>
     </div>
-    <div class="logs" style="margin-top:0">
-      <div><h3><i class="sw thick" style="background:var(--hoover)"></i>Hoover 2026 game log</h3><div class="panel tscroll"><table class="log" id="log-h"></table></div></div>
-      <div><h3><i class="sw thick" style="background:var(--mendoza)"></i>Mendoza 2025 game log</h3><div class="panel tscroll"><table class="log" id="log-m"></table></div>
-      <p class="caption" id="oppd-note"></p></div>
-    </div>
+    <div class="logs" id="logs" style="margin-top:0"></div>
+    <p class="caption" id="oppd-note"></p>
   </section>
 
   <section id="national">
@@ -274,7 +290,7 @@ footer{margin-top:36px;padding-top:14px;border-top:3px solid var(--ink);font-siz
 
   <section id="field">
     <div class="sec-head">
-      <div><div class="eyebrow">Hoover against the Heisman favorites</div><h2>The Heisman field</h2>
+      <div><div class="eyebrow" id="field-eyebrow">Against the Heisman favorites</div><h2>The Heisman field</h2>
       <p class="lede" id="field-lede"></p>
       <p class="fresh" data-fresh="field"></p></div>
       <div class="controls stack">
@@ -292,7 +308,7 @@ footer{margin-top:36px;padding-top:14px;border-top:3px solid var(--ink);font-siz
       <p class="fresh" data-fresh="heisman"></p></div>
     </div>
     <div class="panel tscroll"><table class="odds" id="odds-table"></table></div>
-    <h3 style="margin-top:20px">Hoover's odds trail</h3>
+    <h3 style="margin-top:20px" id="trail-head">Odds trail</h3>
     <div class="trail" id="trail"></div>
   </section>
 
@@ -324,6 +340,9 @@ const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).
 const SVGNS = "http://www.w3.org/2000/svg";
 const dateFmt = d => { const [y,m,dd] = d.split("-").map(Number); return new Date(y,m-1,dd).toLocaleDateString("en-US",{month:"short",day:"numeric"}); };
 const dateFmtY = d => { const [y,m,dd] = d.split("-").map(Number); return new Date(y,m-1,dd).toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"}); };
+const CUR = M.cur, PREV = M.prev, ALL = [CUR, ...PREV];   // current QB first, then earlier starters newest first
+const qvar = q => `var(--${q.slot})`, qcol = q => css("--"+q.slot), qlab = q => `${q.short} ${q.season}`;
+const legendHTML = () => ALL.map(q => `<span><i class="sw${q===CUR?" thick":""}" style="background:${qvar(q)}"></i>${esc(q.name)} ${q.season}</span>`).join("");
 const N = M.N, ord = n => n+(["th","st","nd","rd"][(n%100-20)%10]||["th","st","nd","rd"][n%100]||"th");
 
 
@@ -340,6 +359,9 @@ function drawFresh(){
 drawFresh();
 
 /* ---------- masthead ---------- */
+$("#mast-eyebrow").textContent = `IU QB Report · ${M.team} football ${CUR.season}`;
+$("#h1-cur").textContent = CUR.short;
+$("#mast-sub").innerHTML = legendHTML();
 const asof = new Date(M.as_of);
 const TZ = {timeZone:"America/Indiana/Indianapolis"};
 $("#stamp").innerHTML = `<span class="pill">Through game ${N}</span><span class="pill ghost">Data checked ${fmtWhen(M.fresh.checked_any)}</span>`
@@ -395,33 +417,36 @@ paintThemeBtn();
 /* ---------- head to head ---------- */
 {
   const rows = M.h2h.map(r => {
-    const mx = Math.max(Math.abs(r.hoover), Math.abs(r.mendoza)) || 1;
-    const hw = Math.max(0, r.hoover)/mx*100, mw = Math.max(0, r.mendoza)/mx*100;
-    return `<tr>
-      <td class="lab">${r.label}${r.higher_better?"":' <span class="small">(fewer is better)</span>'}</td>
-      <td class="v num h ${r.winner==="hoover"?"win":r.winner==="mendoza"?"lose":""}"><span>${fmt(r.hoover,r.dp)}</span></td>
-      <td class="bars"><div class="barpair" aria-hidden="true"><i style="width:${hw}%;background:var(--hoover)"></i><i style="width:${mw}%;background:var(--mendoza)"></i></div></td>
-      <td class="v num m ${r.winner==="mendoza"?"win":r.winner==="hoover"?"lose":""}"><span>${fmt(r.mendoza,r.dp)}</span></td></tr>`;
+    const mx = Math.max(...ALL.map(q => Math.abs(r.values[q.key]))) || 1;
+    const cells = ALL.map(q => {
+      const st = r.leaders.includes(q.key) ? "win" : r.leaders.length ? "lose" : "";
+      return `<td class="v num ${st}${q.short_of_n?" short":""}" style="color:${qvar(q)}"><span${st==="win"?` style="background:var(--${q.slot}-soft)"`:""}>${fmt(r.values[q.key],r.dp)}</span></td>`;
+    }).join("");
+    const bars = `<td class="bars"><div class="barpair" aria-hidden="true">${ALL.map(q=>`<i style="width:${Math.max(0, r.values[q.key])/mx*100}%;background:${qvar(q)}"></i>`).join("")}</div></td>`;
+    return `<tr><td class="lab">${r.label}${r.higher_better?"":' <span class="small">(fewer is better)</span>'}</td>${cells}${bars}</tr>`;
   }).join("");
-  $("#h2h-table").innerHTML = `<thead><tr><th>Through ${N} games</th><th>Hoover</th><th class="bars"></th><th>Mendoza</th></tr></thead><tbody>${rows}</tbody>`;
+  $("#h2h-table").innerHTML = `<thead><tr><th>Through ${N} games</th>${ALL.map(q=>`<th style="color:${qvar(q)}">${esc(q.short)}<small>${q.short_of_n?`${q.season}, all ${q.games} games`:q.season}</small></th>`).join("")}<th class="bars"></th></tr></thead><tbody>${rows}</tbody>`;
 }
 
 /* ---------- pace ---------- */
 {
-  const G = M.season_games_mendoza;
-  $("#pace-lede").textContent = `Mendoza played ${G} games in 2025 and won the Heisman and the national title. Pace is Hoover's per-game average so far, stretched over the same ${G} games.`;
+  const G = M.pace_games, B = PREV.find(q => q.key === M.pace_basis);
+  $("#pace-eyebrow").textContent = PREV.length > 1 ? "Against the full seasons before him" : PREV.length ? "Against the full season before him" : "Full-season pace";
+  const hist = PREV.map(q => `${q.short} played ${q.games} games in ${q.season}${q.note ? ` and ${q.note}` : ""}`);
+  $("#pace-lede").textContent = (B ? `Pace is ${CUR.short}'s per-game average so far, stretched over ${G} games, the length of ${B.short}'s ${B.season} season. ` : "") + (hist.length ? hist.join("; ") + "." : "");
   $("#pace-tiles").innerHTML = M.pace.map(p => {
-    const share = Math.min(1, p.to_date/p.mendoza_final);
-    const markPct = Math.min(100, (N/G)*100);
+    const scale = Math.max(p.to_date, p.pace, ...p.finals.map(f => f.value)) || 1;
+    const fq = f => PREV.find(q => q.key === f.key);
     return `<div class="tile">
       <div class="eyebrow">${p.label}</div>
       <div class="big num h">${fmt(p.pace)}</div>
       <div class="small">${G}-game pace</div>
-      <div class="meter" role="img" aria-label="Hoover has ${fmt(p.to_date)} of Mendoza's ${fmt(p.mendoza_final)}"><i style="width:${share*100}%"></i><u style="left:${markPct}%"></u></div>
-      <div class="row num"><span>So far <b class="h">${fmt(p.to_date)}</b></span><span>Mendoza final <b class="m">${fmt(p.mendoza_final)}</b></span></div>
+      <div class="meter" role="img" aria-label="${esc(CUR.short)} has ${fmt(p.to_date)} so far and is on pace for ${fmt(p.pace)}. ${p.finals.map(f=>`${esc(fq(f).short)} finished ${fq(f).season} with ${fmt(f.value)}`).join(". ")}."><s style="width:${p.pace/scale*100}%"></s><i style="width:${p.to_date/scale*100}%"></i>${p.finals.map(f=>`<u style="left:${f.value/scale*100}%;background:${qvar(fq(f))}"></u>`).join("")}</div>
+      <div class="row num"><span>So far <b class="h">${fmt(p.to_date)}</b></span></div>
+      <div class="finals num">${p.finals.length?'<span class="small">Full-season finals</span>':""}${p.finals.map(f=>`<div><span><i style="background:${qvar(fq(f))}"></i>${esc(fq(f).short)} ${fq(f).season}</span><b style="color:${qvar(fq(f))}">${fmt(f.value)}</b></div>`).join("")}</div>
     </div>`;
   }).join("");
-  $("#pace-tiles").insertAdjacentHTML("afterend", `<p class="caption">The red bar is Hoover's total as a share of Mendoza's final number. The blue tick marks ${N} of ${G} games played, so a red bar past the tick means Hoover is ahead of that pace.</p>`);
+  if (PREV.length) $("#pace-tiles").insertAdjacentHTML("afterend", `<p class="caption">The solid red bar is ${esc(CUR.short)}'s total so far; the lighter bar runs to his ${G}-game pace. Each colored tick is an earlier starter's final season total, so a lighter bar past a tick means ${esc(CUR.short)} is on pace to pass it.</p>`);
 }
 
 /* ---------- chart engine ---------- */
@@ -499,94 +524,10 @@ function lineChart(host, o){
   hit.addEventListener("pointerleave", ()=>{ tip.hidden = true; guide.setAttribute("opacity",0); });
 }
 
-/* paired bar chart */
-function barChart(host, o){
-  const f = frame(host, o);
-  const n = o.n, band = f.iw/n, bw = Math.max(4, Math.min(22, band*0.34));
-  const ymax = niceMax(Math.max(...o.groups.flatMap(g=>g.values.map(v=>v.y||0))) * 1.05);
-  const y = yAxis(f, ymax, o.fmtY || (v=>fmt(v)));
-  el("line",{x1:f.pad.l,x2:f.W-f.pad.r,y1:f.pad.t+f.ih,y2:f.pad.t+f.ih,class:"base"},f.svg);
-  const step = n>12?2:1;
-  const pts = [[],[]];
-  o.groups.forEach((g,i) => {
-    const cx = f.pad.l + band*(i+.5);
-    if (!(i%step)){ const t = el("text",{x:cx,y:f.H-12,"text-anchor":"middle",class:"ax"},f.svg); t.textContent = i+1; }
-    g.values.forEach((v,j) => {
-      if (v.y==null) { pts[j].push(null); return; }
-      const x0 = cx + (j===0 ? -bw-1 : 1), h = Math.max(1, f.pad.t+f.ih - y(v.y));
-      const top = y(v.y), r = Math.min(4, bw/2, h);
-      el("path",{d:`M${x0} ${f.pad.t+f.ih}V${top+r}Q${x0} ${top} ${x0+r} ${top}H${x0+bw-r}Q${x0+bw} ${top} ${x0+bw} ${top+r}V${f.pad.t+f.ih}Z`,fill:v.color,opacity:(v.opacity||1)*(o.lines?.42:1)},f.svg);
-      pts[j].push({x:x0+bw/2, y:top, color:v.color, future:!!v.future});
-    });
-  });
-  // trend lines through the bar tops (one per player); future games drawn faded
-  if (o.lines) pts.forEach(ps => {
-    for (let i=1;i<ps.length;i++){ const a=ps[i-1], b=ps[i]; if (!a||!b) continue;
-      el("line",{x1:a.x,y1:a.y,x2:b.x,y2:b.y,stroke:b.color,"stroke-width":b.future?1.5:2.5,"stroke-linecap":"round",opacity:b.future?.4:1,"stroke-dasharray":b.future?"4 4":"none"},f.svg); }
-    ps.forEach(p => { if (p) el("circle",{cx:p.x,cy:p.y,r:p.future?3:4.5,fill:p.color,stroke:css("--surface"),"stroke-width":2,opacity:p.future?.5:1},f.svg); });
-  });
-  o.groups.forEach((g,i) => {
-    const cx = f.pad.l + band*(i+.5);
-    const hit = el("rect",{x:cx-band/2,y:f.pad.t,width:band,height:f.ih,fill:"transparent"},f.svg);
-    const show = ev => { const r = f.svg.getBoundingClientRect(); showTip(host, cx/f.W*r.width, ev.clientY-r.top, o.tip(i)); };
-    hit.addEventListener("pointermove", show); hit.addEventListener("pointerdown", show);
-    hit.addEventListener("pointerleave", ()=>{ tip.hidden = true; });
-  });
-}
-
 function seg(host, items, current, onPick, label){
   host.innerHTML = items.map(([k,t]) => `<button type="button" data-k="${k}" aria-pressed="${k===current}">${t}</button>`).join("");
   host.addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; host.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed", x===b)); onPick(b.dataset.k); });
 }
-
-/* ---------- running totals ---------- */
-const HR = M.hoover.rows, MR = M.mendoza.rows;
-const TOT = {
-  cum_yds:{t:"Pass yards", dp:0, cap:"Total passing yards after each game."},
-  cum_td:{t:"Pass TD", dp:0, cap:"Total passing touchdowns after each game."},
-  cum_total_td:{t:"Total TD", dp:0, cap:"Passing plus rushing touchdowns after each game."},
-  cum_rating:{t:"Season rating", dp:1, cap:"NCAA passer rating computed on season totals after each game (not an average of game ratings)."}
-};
-let totKey = "cum_yds";
-function drawTotals(){
-  const d = TOT[totKey];
-  const all = [...HR.map(r=>r[totKey]), ...MR.map(r=>r[totKey])];
-  const isRating = totKey==="cum_rating";
-  lineChart($("#tot-chart"), {
-    aria:`Running ${d.t}, Hoover through ${N} games versus Mendoza's 2025 season`,
-    xMax: MR.length, marker: N,
-    yMin: isRating ? Math.floor(Math.min(...all)/20)*20 : 0,
-    yMax: isRating ? Math.ceil(Math.max(...all)/20)*20 : undefined,
-    fmtY: v => fmt(v, 0),
-    fmtTip: p => fmt(p.y, d.dp) + (p.opp ? ` <span class="small">${esc(p.opp)}</span>` : ""),
-    series: [
-      {name:"Mendoza 2025", color:css("--mendoza"), width:2, z:1, points: MR.map(r=>({x:r.n,y:r[totKey],opp:r.opp})), endLabel: fmt(MR[MR.length-1][totKey], d.dp), labelColor:css("--mendoza")},
-      {name:"Hoover 2026", color:css("--hoover"), width:3.5, z:2, points: HR.map(r=>({x:r.n,y:r[totKey],opp:r.opp})), endLabel: fmt(HR[HR.length-1][totKey], d.dp), labelColor:css("--hoover")}
-    ],
-    padR: 44
-  });
-  const hv = HR[N-1][totKey], mv = MR[N-1][totKey];
-  $("#tot-cap").textContent = `${d.cap} After game ${N}: Hoover ${fmt(hv,d.dp)}, Mendoza ${fmt(mv,d.dp)}${isRating?"":` (${hv>=mv?"+":""}${fmt(hv-mv,d.dp)})`}.`;
-}
-
-
-/* ---------- per game ---------- */
-const PG = { yds:{t:"Pass yards",dp:0}, td:{t:"Pass TD",dp:0}, rating:{t:"Rating",dp:1}, pct:{t:"Comp %",dp:1}, att:{t:"Attempts",dp:0} };
-let pgKey = "yds";
-function drawPG(){
-  const d = PG[pgKey], n = Math.max(N, Math.min(MR.length, N+4));
-  barChart($("#pg-chart"), {
-    aria:`${d.t} per game, Hoover versus Mendoza`, n,
-    groups: Array.from({length:n},(_,i)=>({values:[
-      {y: HR[i]? HR[i][pgKey] : null, color:css("--hoover")},
-      {y: MR[i]? MR[i][pgKey] : null, color:css("--mendoza"), opacity: i<N?1:.45, future: i>=N}]})), lines: true,
-    fmtY: v=>fmt(v,0),
-    tip: i => `<b>Game ${i+1}</b>` +
-      (HR[i]?`<div class="r"><span><i class="sw" style="background:var(--hoover)"></i> Hoover vs ${esc(HR[i].opp)}</span><b>${fmt(HR[i][pgKey],d.dp)}</b></div>`:`<div class="r"><span class="small">Hoover: not played yet</span></div>`) +
-      `<div class="r"><span><i class="sw" style="background:var(--mendoza)"></i> Mendoza ${MR[i].site==="A"?"at":"vs"} ${esc(MR[i].opp)}</span><b>${fmt(MR[i][pgKey],d.dp)}</b></div>`
-  });
-}
-
 
 /* ---------- compare chart (running total or per game) ---------- */
 const CMP = {
@@ -604,30 +545,30 @@ function cmpSeries(rows){
     return {x:r.n, opp:r.opp, y:(cmpMode==="cum"?cum:pg)[cmpKey]};
   });
 }
+$("#cmp-lede").textContent = `One chart for every view, lined up by game number.  Earlier seasons run their full length; the dashed marker is ${CUR.short}'s latest game.`;
+$("#cmp-legend").innerHTML = legendHTML();
 function drawCompare(){
-  const d = CMP[cmpKey], H = cmpSeries(HR), Mx = cmpSeries(MR);
-  const all = [...H, ...Mx].map(p=>p.y).filter(v=>v!=null);
+  const d = CMP[cmpKey], S = ALL.map(q => ({q, pts: cmpSeries(q.rows)}));
+  const all = S.flatMap(s => s.pts.map(p=>p.y)).filter(v=>v!=null);
   const rate = cmpKey==="rating" || cmpKey==="pct";
   const lo = rate ? Math.floor(Math.min(...all)/20)*20 : 0; let hi = rate ? Math.ceil(Math.max(...all)/20)*20 : undefined; if (rate) hi = lo + Math.ceil((hi-lo)/20)*20;
   if (!rate) { const m = Math.max(...all); if (m <= 40) hi = Math.max(4, Math.ceil(m/4)*4); }  // whole-number ticks for small counts like INT
   lineChart($("#cmp-chart"), {
-    aria:`${d.t}, ${cmpMode==="cum"?"running total":"per game"}, Hoover versus Mendoza`,
-    xMax: MR.length, marker: N, yMin: lo, yMax: hi, padR: 44,
+    aria:`${d.t}, ${cmpMode==="cum"?"running total":"per game"}, ${ALL.map(qlab).join(" versus ")}`,
+    xMax: Math.max(...ALL.map(q=>q.rows.length)), marker: N, yMin: lo, yMax: hi, padR: 44,
     fmtY: v => fmt(v,0), fmtTip: p => fmt(p.y, d.dp) + (p.opp?` <span class="small">${esc(p.opp)}</span>`:""),
-    series: [
-      {name:"Mendoza 2025", color:css("--mendoza"), width:2, z:1, points:Mx, endLabel: fmt(Mx[Mx.length-1].y, d.dp), labelColor:css("--mendoza")},
-      {name:"Hoover 2026", color:css("--hoover"), width:3.5, z:2, points:H, endLabel: fmt(H[H.length-1].y, d.dp), labelColor:css("--hoover")}
-    ]});
-  const hv = H[N-1].y, mv = Mx[N-1].y;
+    series: S.map(({q, pts}) => ({name: qlab(q), color: qcol(q), width: q===CUR?3.5:2, z: q===CUR?2:1, points: pts,
+      endLabel: fmt(pts[pts.length-1].y, d.dp), labelColor: qcol(q)}))});
   const what = cmpMode==="cum" ? (rate ? `Season ${d.t.toLowerCase()} on totals after each game` : `Total ${d.cap||d.t.toLowerCase()} after each game`) : `${d.cap ? d.cap[0].toUpperCase()+d.cap.slice(1) : d.t} in each game`;
-  $("#cmp-cap").textContent = `${what}.  Game ${N}: Hoover ${fmt(hv,d.dp)}, Mendoza ${fmt(mv,d.dp)}.`;
+  $("#cmp-cap").textContent = `${what}.  Game ${N}: ` + S.map(({q, pts}) => `${q.short} ${pts[N-1] ? fmt(pts[N-1].y, d.dp) : `n/a (${q.games}-game season)`}`).join(", ") + ".";
 }
 seg($("#cmp-mode"), [["cum","Running total"],["pg","Per game"]], cmpMode, k=>{cmpMode=k; drawCompare();});
 seg($("#cmp-seg"), Object.entries(CMP).map(([k,v])=>[k,v.t]), cmpKey, k=>{cmpKey=k; drawCompare();});
 
 
 /* ---------- game logs ---------- */
-function logTable(rows, tot, upto, player){
+function logTable(q){
+  const rows = q.rows, upto = N;
   const head = `<thead><tr><th>#</th><th>Opponent</th><th>Result</th><th>Opp pass D</th><th>C/A</th><th>Yds</th><th>TD</th><th>INT</th><th>Rtg</th><th>Rush att</th><th>Rush yds</th><th>Rush TD</th></tr></thead>`;
   const body = rows.map(r => `<tr class="${r.n>upto?"future":""} ${r.n===upto && rows.length>upto?"cut":""}">
     <td class="num">${r.n}</td>
@@ -636,34 +577,32 @@ function logTable(rows, tot, upto, player){
     <td class="num">${r.level==="FCS"?"FCS":r.opp_d_rank?ord(r.opp_d_rank):"–"}</td>
     <td class="num">${r.cmp}/${r.att}</td><td class="num">${r.yds}</td><td class="num">${r.td}</td><td class="num">${r.int}</td>
     <td class="num">${fmt(r.rating,1)}</td><td class="num">${r.rush_att}</td><td class="num">${r.rush_yds}</td><td class="num">${r.rush_td}</td></tr>`).join("");
-  const t = tot;
-  const foot = `<tfoot><tr><td></td><td>${player} total${rows.length>upto?", first "+upto:""}</td><td></td><td></td><td class="num">${t.cmp}/${t.att}</td><td class="num">${fmt(t.yds)}</td><td class="num">${t.td}</td><td class="num">${t.int}</td><td class="num">${fmt(t.rating,1)}</td><td class="num">${t.rush_att}</td><td class="num">${t.rush_yds}</td><td class="num">${t.rush_td}</td></tr>`
-    + (rows.length>upto ? `<tr><td></td><td>2025 season, all ${rows.length}</td><td></td><td></td><td class="num">${M.mendoza.season.cmp}/${M.mendoza.season.att}</td><td class="num">${fmt(M.mendoza.season.yds)}</td><td class="num">${M.mendoza.season.td}</td><td class="num">${M.mendoza.season.int}</td><td class="num">${fmt(M.mendoza.season.rating,1)}</td><td class="num">${M.mendoza.season.rush_att}</td><td class="num">${M.mendoza.season.rush_yds}</td><td class="num">${M.mendoza.season.rush_td}</td></tr>` : "") + `</tfoot>`;
+  const line = (label, t) => `<tr><td></td><td>${label}</td><td></td><td></td><td class="num">${t.cmp}/${t.att}</td><td class="num">${fmt(t.yds)}</td><td class="num">${t.td}</td><td class="num">${t.int}</td><td class="num">${fmt(t.rating,1)}</td><td class="num">${t.rush_att}</td><td class="num">${t.rush_yds}</td><td class="num">${t.rush_td}</td></tr>`;
+  const foot = `<tfoot>${line(`${esc(q.short)} total${rows.length>upto?", first "+upto:""}`, q.totals)}${q.season_totals && rows.length>upto ? line(`${q.season} season, all ${rows.length}`, q.season_totals) : ""}</tfoot>`;
   return head + `<tbody>${body}</tbody>` + foot;
 }
-$("#log-h").innerHTML = logTable(HR, M.hoover.totals, N, "Hoover");
-$("#log-m").innerHTML = logTable(MR, M.mendoza.totals, N, "Mendoza");
-$("#oppd-note").textContent = "Opp pass D: " + (M.opp_d_method || "") + " Rows below the dashed line are Mendoza games Hoover has not reached yet.";
+$("#logs").innerHTML = ALL.map(q => `<div><h3><i class="sw thick" style="background:${qvar(q)}"></i>${esc(q.short)} ${q.season} game log</h3><div class="panel tscroll"><table class="log">${logTable(q)}</table></div></div>`).join("");
+$("#oppd-note").textContent = "Opp pass D: " + (M.opp_d_method || "") + ` Rows below the dashed line are games ${CUR.short} has not reached yet.`;
 
 /* ---------- national ---------- */
 {
   const NT = M.national;
-  $("#nat-lede").innerHTML = `Top five in each category from the full FBS leaderboard, with Hoover's exact national rank. Leaderboards through <b>${dateFmtY(NT.data_through)}</b>${NT.current?", which includes his latest game":". They do not include his latest game yet"}. ${esc(NT.qualifier_note)}`;
+  $("#nat-lede").innerHTML = `Top five in each category from the full FBS leaderboard, with ${esc(CUR.short)}'s exact national rank. Leaderboards through <b>${dateFmtY(NT.data_through)}</b>${NT.current?", which includes his latest game":". They do not include his latest game yet"}. ${esc(NT.qualifier_note)}`;
   const fmtV = {yds:v=>fmt(v), td:v=>fmt(v), pct:v=>fmt(v,1)+"%", rating:v=>fmt(v,1), ypa:v=>fmt(v,1)};
   const hist = NT.rank_history;
   $("#boards").innerHTML = NT.order.map(cat => {
-    const b = NT.boards[cat], h = b.hoover;
+    const b = NT.boards[cat], h = b.cur;
     const cnt = {}; b.top.forEach(r => cnt[r.rank] = (cnt[r.rank]||0)+1);
     const tieMark = r => cnt[r.rank]>1 ? "T"+r.rank : r.rank;
-    let rows = b.top.map(r => `<tr class="${r.is_hoover?"hv":""}"><td class="rk">${tieMark(r)}</td><td>${r.is_hoover?"★ ":""}${esc(r.name)}<span class="tm">${esc(r.team)}</span></td><td class="val">${fmtV[cat](r.value)}</td></tr>`).join("");
-    if (!h.in_top) rows += `<tr class="gap"><td colspan="3"></td></tr><tr class="hv"><td class="rk">${h.rank}</td><td>★ Josh Hoover<span class="tm">Indiana</span></td><td class="val">${fmtV[cat](h.value)}</td></tr>`;
+    let rows = b.top.map(r => `<tr class="${r.is_cur?"hv":""}"><td class="rk">${tieMark(r)}</td><td>${r.is_cur?"★ ":""}${esc(r.name)}<span class="tm">${esc(r.team)}</span></td><td class="val">${fmtV[cat](r.value)}</td></tr>`).join("");
+    if (!h.in_top) rows += `<tr class="gap"><td colspan="3"></td></tr><tr class="hv"><td class="rk">${h.rank}</td><td>★ ${esc(CUR.name)}<span class="tm">${esc(M.team)}</span></td><td class="val">${fmtV[cat](h.value)}</td></tr>`;
     const pts = hist.map(e => e.ranks[cat]).filter(v=>v!=null);
     const trendTxt = pts.length>1 ? (()=>{const d = pts[pts.length-2]-pts[pts.length-1]; return d>0?`up ${d} spot${d>1?"s":""} since last week`:d<0?`down ${-d} spot${d<-1?"s":""} since last week`:"unchanged from last week";})() : "weekly rank chart appears after next week's update";
     return `<div class="board">
-      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><h3>${b.label}</h3><span class="rankchip num" title="Hoover's national rank">${h.tied?"T":""}${ord(h.rank)}</span></div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><h3>${b.label}</h3><span class="rankchip num" title="${esc(CUR.short)}'s national rank">${h.tied?"T":""}${ord(h.rank)}</span></div>
       <table>${rows}</table>
-      <div class="spark" data-cat="${cat}" aria-label="Hoover's weekly national rank in ${b.label}"></div>
-      <div class="foot"><span>Hoover ${trendTxt}${b.qualified?" · qualified passers only":""}</span><a href="${b.source_url}" target="_blank" rel="noopener">Source</a></div>
+      <div class="spark" data-cat="${cat}" aria-label="${esc(CUR.short)}'s weekly national rank in ${b.label}"></div>
+      <div class="foot"><span>${esc(CUR.short)} ${trendTxt}${b.qualified?" · qualified passers only":""}</span><a href="${b.source_url}" target="_blank" rel="noopener">Source</a></div>
     </div>`;
   }).join("");
 }
@@ -674,17 +613,17 @@ function drawSparks(){
     const pts = hist.map((e,i) => ({i, y:e.ranks[cat] ?? null, d:e.through})).filter(p=>p.y!=null);
     host.innerHTML = "";
     if (pts.length < 2) return;
-    host.insertAdjacentHTML("beforeend", '<div class="small" style="margin:2px 0 4px">Hoover\'s national rank by week</div>');
+    host.insertAdjacentHTML("beforeend", `<div class="small" style="margin:2px 0 4px">${esc(CUR.short)}'s national rank by week</div>`);
     const W = Math.max(240, host.clientWidth || 280), H = 92, pl = 40, pr = 48, pt = 10, pb = 22;
     const n = Math.max(2, hist.length), hi = Math.max(10, Math.ceil(Math.max(...pts.map(p=>p.y))/10)*10);
     const x = i => pl + i/(n-1)*(W-pl-pr), y = r => pt + (r-1)/(hi-1)*(H-pt-pb);
-    const svg = el("svg",{viewBox:`0 0 ${W} ${H}`,width:W,height:H,style:"max-width:100%;height:auto;display:block;overflow:visible",role:"img","aria-label":`Hoover's weekly national rank: ${pts.map(p=>ord(p.y)+" through "+dateFmt(p.d)).join(", ")}`},host);
+    const svg = el("svg",{viewBox:`0 0 ${W} ${H}`,width:W,height:H,style:"max-width:100%;height:auto;display:block;overflow:visible",role:"img","aria-label":`${CUR.short}'s weekly national rank: ${pts.map(p=>ord(p.y)+" through "+dateFmt(p.d)).join(", ")}`},host);
     [1,hi].forEach(r => { el("line",{x1:pl,x2:W-pr,y1:y(r),y2:y(r),class:"gl"},svg); const t=el("text",{x:pl-6,y:y(r)+4,"text-anchor":"end",class:"ax"},svg); t.textContent = ord(r); });
     hist.forEach((e,i) => { if (i===0 || i===hist.length-1){ const t=el("text",{x:x(i),y:H-4,"text-anchor":i===0&&hist.length>1?"start":"middle",class:"ax"},svg); t.textContent = dateFmt(e.through); } });
     let d = "", pen = false; hist.forEach((e,i)=>{ const r = e.ranks[cat]; if (r==null){ pen = false; return; } d += (pen?"L":"M") + x(i) + " " + y(r); pen = true; });
-    el("path",{d,fill:"none",stroke:css("--hoover"),"stroke-width":2.5,"stroke-linejoin":"round"},svg);
-    pts.forEach(p => el("circle",{cx:x(p.i),cy:y(p.y),r:4,fill:css("--hoover"),stroke:css("--surface"),"stroke-width":2},svg));
-    const last = pts[pts.length-1]; const t = el("text",{x:x(last.i)+8,y:y(last.y)+4,class:"lbl",fill:css("--hoover"),"font-weight":"700"},svg); t.textContent = ord(last.y);
+    el("path",{d,fill:"none",stroke:css("--cur"),"stroke-width":2.5,"stroke-linejoin":"round"},svg);
+    pts.forEach(p => el("circle",{cx:x(p.i),cy:y(p.y),r:4,fill:css("--cur"),stroke:css("--surface"),"stroke-width":2},svg));
+    const last = pts[pts.length-1]; const t = el("text",{x:x(last.i)+8,y:y(last.y)+4,class:"lbl",fill:css("--cur"),"font-weight":"700"},svg); t.textContent = ord(last.y);
   });
 }
 
@@ -694,9 +633,10 @@ const FD = {
   yds:{t:"Pass yards",dp:0,cum:"cum_yds",qb:true}, td:{t:"Pass TD",dp:0,cum:"cum_td",qb:true}, rating:{t:"Rating",dp:1,cum:"cum_rating",qb:true} };
 let fdKey = "tot_yds", fdMode = "cum";
 {
-  const others = M.cohort.qbs.filter(q=>!q.is_hoover);
-  $("#field-lede").textContent = `${M.cohort.rule} Total yards and Total TD count passing, rushing and receiving, so every position compares fairly; the passing tabs show quarterbacks only. Hoover is in red, the others gray and labeled at the end of each line. Hover or tap a game number for everyone's value.`;
-  $("#fd-legend").innerHTML = `<span><i class="sw thick" style="background:var(--hoover)"></i>Josh Hoover, Indiana · QB</span>` + others.map(q=>`<span><i class="sw" style="background:var(--field)"></i>${esc(q.name)}, ${esc(q.school)} · ${esc(q.pos||"")}</span>`).join("");
+  const others = M.cohort.qbs.filter(q=>!q.is_cur);
+  $("#field-eyebrow").textContent = `${CUR.short} against the Heisman favorites`;
+  $("#field-lede").textContent = `${M.cohort.rule} Total yards and Total TD count passing, rushing and receiving, so every position compares fairly; the passing tabs show quarterbacks only. ${CUR.short} is in red, the others gray and labeled at the end of each line. Hover or tap a game number for everyone's value.`;
+  $("#fd-legend").innerHTML = `<span><i class="sw thick" style="background:var(--cur)"></i>${esc(CUR.name)}, ${esc(M.team)} · QB</span>` + others.map(q=>`<span><i class="sw" style="background:var(--field)"></i>${esc(q.name)}, ${esc(q.school)} · ${esc(q.pos||"")}</span>`).join("");
 }
 function drawField(){
   const d = FD[fdKey], key = fdMode==="cum" ? d.cum : fdKey;
@@ -705,12 +645,12 @@ function drawField(){
   const isR = fdKey==="rating";
   const hidden = M.cohort.qbs.filter(q => d.qb && q.pos!=="QB").map(q=>q.name);
   $("#fd-note").textContent = hidden.length ? `Not shown on passing stats: ${hidden.join(", ")} (not a quarterback).` : "";
-  lineChart($("#fd-chart"), {aria:`${d.t} ${fdMode==="cum"?"running total":"per game"} for Hoover and the Heisman field`, xMax: Math.max(2,xMax),
+  lineChart($("#fd-chart"), {aria:`${d.t} ${fdMode==="cum"?"running total":"per game"} for ${CUR.short} and the Heisman field`, xMax: Math.max(2,xMax),
     yMin: isR ? Math.floor(Math.min(...all)/20)*20 : 0, yMax: isR ? Math.ceil(Math.max(...all)/20)*20 : undefined,
     fmtY: v=>fmt(v,0), fmtTip: p => fmt(p.y, d.dp) + (p.opp?` <span class="small">${esc(p.opp)}</span>`:""), padR: 128,
-    series: qbs.map(q => ({name:q.name, color: q.is_hoover?css("--hoover"):css("--field"), width: q.is_hoover?3.5:1.75, z: q.is_hoover?2:1,
+    series: qbs.map(q => ({name:q.name, color: q.is_cur?css("--cur"):css("--field"), width: q.is_cur?3.5:1.75, z: q.is_cur?2:1,
       points: q.games.map(g=>({x:g.n, y:g[key], opp:g.opp})), endLabel: q.name.split(" ").slice(-1)[0] + " " + fmt(q.games[q.games.length-1][key], d.dp),
-      labelColor: q.is_hoover?css("--hoover"):css("--ink-2")}))});
+      labelColor: q.is_cur?css("--cur"):css("--ink-2")}))});
 }
 seg($("#fd-mode"), [["cum","Running total"],["pg","Per game"]], fdMode, k=>{fdMode=k; drawField();});
 seg($("#fd-seg"), Object.entries(FD).map(([k,v])=>[k,v.t]), fdKey, k=>{fdKey=k; drawField();});
@@ -718,12 +658,13 @@ seg($("#fd-seg"), Object.entries(FD).map(([k,v])=>[k,v.t]), fdKey, k=>{fdKey=k; 
 /* ---------- odds ---------- */
 {
   const Hs = M.heisman, books = Hs.books;
-  const hp = Hs.hoover;
-  $("#odds-lede").innerHTML = `Players are ranked by the median implied probability across the books listed. ${hp?`Hoover is <b class="h">${ord(hp.rank)}</b> in that consensus at about ${fmt(hp.prob*100,1)}%.`:""} ${esc(Hs.note)}${Hs.move?` Hoover's ${esc(Hs.move.book)} line moved from ${odds(Hs.move.from)} to ${odds(Hs.move.to)} on ${dateFmt(Hs.move.date)}.`:""}`;
+  const hp = Hs.cur;
+  $("#trail-head").textContent = `${CUR.short}'s odds trail`;
+  $("#odds-lede").innerHTML = `Players are ranked by the median implied probability across the books listed. ${hp?`${esc(CUR.short)} is <b class="h">${ord(hp.rank)}</b> in that consensus at about ${fmt(hp.prob*100,1)}%.`:""} ${esc(Hs.note)}${Hs.move?` ${esc(CUR.short)}'s ${esc(Hs.move.book)} line moved from ${odds(Hs.move.from)} to ${odds(Hs.move.to)} on ${dateFmt(Hs.move.date)}.`:""}`;
   const maxP = Math.max(...Hs.players.map(p=>p.prob));
   const cnt = {}; Hs.players.forEach(p=>cnt[p.rank]=(cnt[p.rank]||0)+1);
   const head = `<thead><tr><th>#</th><th>Player</th>${books.map(b=>`<th>${esc(b.book)}<small>${dateFmt(b.as_of)}</small></th>`).join("")}<th>Implied chance<small>median of books</small></th></tr></thead>`;
-  const body = Hs.players.map(p => `<tr class="${p.name==="Josh Hoover"?"hv":""}"><td class="num">${cnt[p.rank]>1?"T":""}${p.rank}</td><td>${p.name==="Josh Hoover"?"★ ":""}${esc(p.name)} <span class="small">${esc(p.school)} · ${p.pos}</span></td>${books.map(b=>`<td class="num">${odds(p.odds[b.book])}</td>`).join("")}<td class="num"><span class="probbar" style="width:${Math.max(2,p.prob/maxP*70)}px"></span>${fmt(p.prob*100,1)}%</td></tr>`).join("");
+  const body = Hs.players.map(p => `<tr class="${p.is_cur?"hv":""}"><td class="num">${cnt[p.rank]>1?"T":""}${p.rank}</td><td>${p.is_cur?"★ ":""}${esc(p.name)} <span class="small">${esc(p.school)} · ${p.pos}</span></td>${books.map(b=>`<td class="num">${odds(p.odds[b.book])}</td>`).join("")}<td class="num"><span class="probbar" style="width:${Math.max(2,p.prob/maxP*70)}px"></span>${fmt(p.prob*100,1)}%</td></tr>`).join("");
   $("#odds-table").innerHTML = head + `<tbody>${body}</tbody>`;
   $("#trail").innerHTML = Hs.trail.map(t => `<div class="step"><span>${t.date==="preseason"?"Preseason open":dateFmt(t.date)} · ${esc(t.book)}</span><b class="num">${odds(t.odds)}</b><span>${fmt(100/(t.odds+100)*100,1)}% implied</span></div>`).join("");
 }
@@ -731,7 +672,7 @@ seg($("#fd-seg"), Object.entries(FD).map(([k,v])=>[k,v.t]), fdKey, k=>{fdKey=k; 
 /* ---------- notes, sources, footer ---------- */
 {
   const notes = [
-    "Head-to-head numbers compare Hoover's first games of 2026 with Mendoza's first games of 2025, always the same count.",
+    `Every comparison lines the seasons up by game number: ${CUR.short}'s first ${N} games of ${CUR.season} against the first ${N} games of ${PREV.map(qlab).join(" and ")}${PREV.length?"":" (no earlier season stored)"}. Completed seasons also show full-season totals in the game logs and pace tiles.`,
     "Passer rating uses the NCAA formula (8.4 × yards + 330 × TD + 100 × completions − 200 × INT) ÷ attempts, on totals, never an average of game ratings.",
     "National ranks use competition ranking, so tied players share a rank and the next rank is skipped.",
     "Heisman odds are as reported by each outlet on the date shown, not live lines.",
