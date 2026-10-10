@@ -5,7 +5,7 @@
   "season": 2026,
   "espn_id": "4685401",
   "source_url": "https://site.web.api.espn.com/apis/common/v3/sports/football/college-football/athletes/4685401/gamelog?season=2026",
-  "retrieved_at": "2026-10-04T12:40+00:00",
+  "retrieved_at": "2026-10-10T23:17+00:00",
   "games": [
    {
     "date": "2026-09-05",
@@ -91,6 +91,23 @@
     "rush_yds": -3,
     "rush_td": 0,
     "sacks": 1
+   },
+   {
+    "date": "2026-10-10",
+    "espn_event": "401858481",
+    "opp": "Nebraska",
+    "site": "A",
+    "level": "FBS",
+    "result": "W 20-17",
+    "cmp": 12,
+    "att": 22,
+    "yds": 263,
+    "td": 2,
+    "int": 0,
+    "rush_att": 5,
+    "rush_yds": 24,
+    "rush_td": 0,
+    "sacks": 2
    }
   ]
  },
@@ -349,11 +366,11 @@
   ]
  },
  "next_game": {
-  "date": "2026-10-10",
-  "opp": "Nebraska",
-  "site": "A",
+  "date": "2026-10-17",
+  "opp": "Ohio State",
+  "site": "H",
   "source_url": "https://cfbstats.com/2026/team/306/index.html",
-  "kickoff": "2026-10-10T12:00-04:00",
+  "kickoff": "2026-10-17T12:00-04:00",
   "tv": "Fox"
  },
  "opp_pass_defense": {
@@ -385,7 +402,8 @@
     "Western Kentucky": 63,
     "Northwestern": 90,
     "Rutgers": 66,
-    "Nebraska": 22
+    "Nebraska": 22,
+    "Ohio State": 24
    },
    "source_url": "https://cfbstats.com/2026/leader/national/team/defense/split01/category02/sort01.html"
   },
