@@ -7,7 +7,8 @@ Authentication: Git Credential Manager (Windows Credential Manager).  No token i
 First push on a new PC: Git shows a GitHub sign-in window.  Choose "Token" and paste the fine-grained PAT
 (from LastPass).  Git Credential Manager stores it; later pushes do not prompt.
 -Patch  applies a patch file (git am) when the branch does not exist on GitHub yet.
--Run    starts the "Update report" workflow on the branch (it commits only to that branch; Pages serves main).
+-Run    starts the "Update report" workflow on the branch via run_workflow.ps1 (commits only to that branch; Pages serves main).
+Keep this script in the repo's tools\ folder next to run_workflow.ps1.
 #>
 param(
   [string]$Branch = "feature/cignetti-qbs",
@@ -48,15 +49,4 @@ git push -u origin $Branch
 Need ($LASTEXITCODE -eq 0) "push failed"
 Write-Host "Remote now has:" ; git ls-remote origin "refs/heads/$Branch"
 
-if ($Run) {
-  # Read the stored credential into memory only, for one API call.  Never printed or saved.
-  $fill = "protocol=https`nhost=github.com`n`n" | git credential fill
-  $pw = ($fill | Where-Object { $_ -like "password=*" }) -replace "^password=", ""
-  Need ($pw) "no stored GitHub credential; push once first"
-  try {
-    Invoke-RestMethod -Method Post -Uri "https://api.github.com/repos/$Repo/actions/workflows/update.yml/dispatches" `
-      -Headers @{ Authorization = "Bearer $pw"; Accept = "application/vnd.github+json" } `
-      -Body (@{ ref = $Branch } | ConvertTo-Json) | Out-Null
-    Write-Host "Started 'Update report' on $Branch.  Results: https://github.com/$Repo/actions"
-  } finally { Remove-Variable pw, fill -ErrorAction SilentlyContinue }
-}
+if ($Run) { & (Join-Path $PSScriptRoot "run_workflow.ps1") -Ref $Branch }
