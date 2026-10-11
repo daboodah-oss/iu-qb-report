@@ -407,21 +407,29 @@ def main():
     ap.add_argument("--as-of", default=datetime.datetime.now(ZoneInfo("America/Indiana/Indianapolis")).isoformat(timespec="minutes"))
     a = ap.parse_args()
     model = build(a.root, a.as_of)
+    if model is not None:  # RB, WR and Team tabs plus the site title (build_tabs.py)
+        import build_tabs
+        roster = json.load(open(os.path.join(a.root, "roster.json")))
+        model["tabs"] = build_tabs.build(a.root, roster, model["cur"]["season"], check, a.as_of)
+        for k in ("rb", "wr", "team"):
+            t = model["tabs"][k]
+            if t["status"] != "ok": model["notices"].append(t["message"])
     if ERRORS or model is None:
         print("VALIDATION FAILED - report not written:", file=sys.stderr)
         for e in ERRORS: print("  -", e, file=sys.stderr)
         sys.exit(1)
     tpl = open(os.path.join(a.root, "template.html")).read()
     blob = json.dumps(model, separators=(",", ":")).replace("</", "<\\/")
-    html = tpl.replace("/*__MODEL__*/null", blob)
+    site_title = model["tabs"]["site"]["title"]
+    html = tpl.replace("/*__MODEL__*/null", blob).replace("<title>IU QB Report</title>", f"<title>{escape(site_title)} · IU Football Report</title>")
     for bad in ("TODO", "lorem", "PLACEHOLDER", "ghp_", "Bearer "):
         if bad in html: print(f"VALIDATION FAILED - found '{bad}' in output", file=sys.stderr); sys.exit(1)
     if a.standalone:
         c, pv = model["cur"], model["prev"]
-        og_title = escape(f"IU QB Report: {c['short']} vs the Cignetti era")
-        og_desc = escape(f"{c['name']}'s {c['season']} season against " +
-                         (join([f"{p['name']} ({p['season']})" for p in pv]) if pv else "earlier Indiana starters") +
-                         ", game for game, plus national ranks and the Heisman race.")
+        og_title = escape(f"{site_title} · IU Football Report")
+        og_desc = escape(f"Indiana's {c['season']} season against the earlier Cignetti-era teams, game for game: "
+                         f"quarterbacks ({c['short']} vs " + (join([p['short'] for p in pv]) if pv else "earlier starters") +
+                         "), running backs, receivers and the team, plus national ranks, the AP Top 5 and the Heisman race.")
         html = ('<!doctype html>\n<html lang="en"><head><meta charset="utf-8">'
                 '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">'
                 '<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">'

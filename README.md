@@ -1,6 +1,13 @@
-# IU QB Report
+# IU Football Report ("Hoosiers 2026")
 
-The current Indiana starting quarterback against every earlier Cignetti-era starter, lined up by game number (Game 1 vs Game 1, and so on), plus national leaderboards, the Heisman field, and BetMGM Heisman odds.  In 2026 that is Josh Hoover (2026) against Fernando Mendoza (2025) and Kurtis Rourke (2024).  Completed seasons also show full-season totals in the game logs and pace tiles.
+Indiana's current season against the earlier Cignetti-era seasons, lined up by game number (Game 1 vs Game 1, and so on), on four tabs.  The site title is `site_title` in `roster.json` ("Hoosiers {season}"), so it becomes "Hoosiers 2027" on its own when the 2027 QB is added.
+
+- **QB:** the current starter against every earlier Cignetti-era starter (Hoover 2026 vs Mendoza 2025 and Rourke 2024), plus national leaderboards, the Heisman field, and BetMGM Heisman odds.
+- **RB:** the current season's named running backs (Beebe and Richard in 2026) against each earlier season's top 2 RBs by rushing yards.  Rushing yards, rushing TD, yards per carry, yards per game, plus national top-5 boards with both current backs' ranks.
+- **WR:** the current season's named receivers (Becker and Marsh in 2026) against each earlier season's top 2 WR/TE by receiving yards.  Receptions, receiving yards, receiving TD, yards per catch, yards per game, plus national top-5 boards.
+- **Team:** Indiana's current season against its earlier Cignetti-era seasons and the current AP Top 5 (the poll's week and release date are shown).  Record, points scored and allowed, total, rushing and passing yards, turnover margin, third-down %.
+
+Completed seasons also show full-season totals.  Colors: crimson for the current season (on RB/WR, the first named player solid and the second dashed), then blue, amber, teal and purple for earlier seasons, newest first (two players per season: solid then dashed).  AP Top 5 teams use dotted lines in teal, violet, green, slate and orchid by poll rank.
 
 Live page: https://qb.daboodah.com/ (the old https://daboodah-oss.github.io/iu-qb-report/ address redirects here)
 
@@ -17,13 +24,20 @@ To start a new season (for example 2027):
 
 A comparison QB whose game log is not stored yet is backfilled once, automatically, by the `backfill` step in `collect.py`: it reads ESPN's athlete game log for that season, checks every row against the NCAA passer-rating formula, joins it to that season's cfbstats schedule (ESPN's schedule fills any game cfbstats lacks), and stores it only if the season reconciles to `final_totals`.  It also stores that season's final opponent pass-defense ranks.  Until then the page shows the other QBs plus a Data note.  Chart colors: crimson for the current QB, then blue, amber, teal and purple for earlier starters, newest first.
 
+## RB, WR and Team tabs: roster.json "tabs"
+
+- `tabs.rb.current` / `tabs.wr.current` name the current season's players by season, for example `"2026": ["Lee Beebe Jr.", "Turbo Richard"]` (first = solid line, second = dashed).  A season with no entry uses Indiana's top `count` players at `positions` by yards.  Earlier seasons always use that top-by-yards rule, read from cfbstats.com's Indiana rushing and receiving pages.
+- Game lines come from ESPN box scores of every Indiana game (`data/team.json`), so no player IDs are needed.  A player's games are his appearances with at least one carry (RB) or catch (WR).
+- Checks before anything is stored (`collect_tabs.py` + `update.py`): each box score's player lines must add up to that box score's team total; total yards must equal rushing plus passing; the score must match ESPN's schedule; turnovers must equal fumbles lost plus interceptions; each player's season must match his cfbstats.com season row, and each team season must match cfbstats.com's season team statistics, once cfbstats has posted the same games (completed seasons must match before they are stored at all).
+- The AP Top 5 comes from ESPN's rankings feed (AP Top 25 entry).  If Indiana is in it, Indiana's own crimson line stands in for it.  Teams that drop out of the top 5 are removed from `data/team.json` on the next refresh.
+
 ## How it updates
 
-`.github/workflows/update.yml` runs a full refresh every Sunday and Wednesday at 10:47 Eastern (and on demand from the Actions tab, "Run workflow"). During game windows (Thursday/Friday/Saturday, 4 PM–2 AM Eastern) it also runs a lightweight check every 20 minutes: if ESPN shows an IU game has gone final since the last update, it runs the full pipeline; otherwise it exits in seconds without publishing anything.
+The schedule did not change for the new tabs.  `.github/workflows/update.yml` runs a full refresh every Sunday and Wednesday at 10:47 Eastern (and on demand from the Actions tab, "Run workflow"). During game windows (Thursday/Friday/Saturday, 4 PM–2 AM Eastern) it also runs a lightweight check every 20 minutes: if ESPN shows an IU game has gone final since the last update, it runs the full pipeline; otherwise it exits in seconds without publishing anything.
 
-1. `collect.py` pulls ESPN game logs (current QB, plus a one-time backfill of any earlier roster QB not yet stored), cfbstats.com schedule/leaderboards/pass defense, and the BetMGM Heisman odds table.  Each section is independent; a failure keeps that section's last verified data.
+1. `collect.py` pulls ESPN game logs (current QB, plus a one-time backfill of any earlier roster QB not yet stored), cfbstats.com schedule/leaderboards/pass defense, and the BetMGM Heisman odds table.  It then runs `collect_tabs.py`: the ESPN AP poll, ESPN box scores for every Indiana game and every AP Top 5 team's games (only games not already stored are fetched), cfbstats.com season cross-checks, and cfbstats.com national rushing and receiving leaderboards.  Each section is independent; a failure keeps that section's last verified data.
 2. `update.py` validates every row before it is stored (for example, each passer rating must match the NCAA formula).
-3. `build_report.py` recomputes everything from the stored rows and writes `index.html`.  If any check fails, nothing is published.
+3. `build_report.py` (with `build_tabs.py` for the RB, WR and Team tabs) recomputes everything from the stored rows and writes `index.html`.  If any check fails, nothing is published.  A tab whose data has not been collected yet shows a short notice instead.
 4. Changes are committed back to `main`, which GitHub Pages serves.
 
 If a source cannot be read, the run is marked failed (GitHub emails the owner) and `data/last_run.json` says which section.  The page still publishes with the last good data and a note.
