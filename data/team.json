@@ -3761,107 +3761,9 @@
       }
      ],
      "complete": false,
-     "retrieved_at": "2026-10-11T01:46+00:00",
-     "check": "not cross-checked yet: cfbstats has 5 games through 2026-10-09, ESPN 6",
-     "cfbstats_url": null
-    }
-   }
-  },
-  "251": {
-   "name": "Texas",
-   "seasons": {
-    "2026": {
-     "games": [
-      {
-       "event": "401856667",
-       "date": "2026-09-05",
-       "opp": "Texas State",
-       "opp_id": "326",
-       "site": "H",
-       "pf": 59,
-       "pa": 7,
-       "result": "W 59-7",
-       "total_yds": 516,
-       "rush_yds": 156,
-       "pass_yds": 360,
-       "to_lost": 1,
-       "to_gained": 3,
-       "third_conv": 11,
-       "third_att": 15
-      },
-      {
-       "event": "401856682",
-       "date": "2026-09-12",
-       "opp": "Ohio State",
-       "opp_id": "194",
-       "site": "H",
-       "pf": 24,
-       "pa": 23,
-       "result": "W 24-23",
-       "total_yds": 336,
-       "rush_yds": 141,
-       "pass_yds": 195,
-       "to_lost": 2,
-       "to_gained": 1,
-       "third_conv": 9,
-       "third_att": 16
-      },
-      {
-       "event": "401856693",
-       "date": "2026-09-19",
-       "opp": "UTSA",
-       "opp_id": "2636",
-       "site": "H",
-       "pf": 30,
-       "pa": 6,
-       "result": "W 30-6",
-       "total_yds": 400,
-       "rush_yds": 231,
-       "pass_yds": 169,
-       "to_lost": 0,
-       "to_gained": 1,
-       "third_conv": 7,
-       "third_att": 17
-      },
-      {
-       "event": "401856704",
-       "date": "2026-09-26",
-       "opp": "Tennessee",
-       "opp_id": "2633",
-       "site": "A",
-       "pf": 20,
-       "pa": 17,
-       "result": "W 20-17",
-       "total_yds": 262,
-       "rush_yds": 61,
-       "pass_yds": 201,
-       "to_lost": 2,
-       "to_gained": 0,
-       "third_conv": 3,
-       "third_att": 12
-      },
-      {
-       "event": "401856717",
-       "date": "2026-10-10",
-       "opp": "Oklahoma",
-       "opp_id": "201",
-       "site": "N",
-       "pf": 24,
-       "pa": 27,
-       "result": "L 24-27",
-       "total_yds": 382,
-       "rush_yds": 122,
-       "pass_yds": 260,
-       "to_lost": 2,
-       "to_gained": 0,
-       "third_conv": 3,
-       "third_att": 14
-      }
-     ],
-     "complete": false,
-     "retrieved_at": "2026-10-11T01:46+00:00",
-     "check": "not cross-checked yet: cfbstats has 4 games through 2026-10-09, ESPN 5",
-     "cfbstats_url": null
+     "retrieved_at": "2026-10-11T19:12+00:00",
+     "check": "cfbstats season totals matched through 2026-10-10",
+     "cfbstats_url": "https://cfbstats.com/2026/team/306/index.html"
     }
    }
   },
@@ -3954,11 +3856,28 @@
        "to_gained": 1,
        "third_conv": 7,
        "third_att": 10
+      },
+      {
+       "event": "401856712",
+       "date": "2026-10-10",
+       "opp": "Alabama",
+       "opp_id": "333",
+       "site": "A",
+       "pf": 20,
+       "pa": 17,
+       "result": "W 20-17",
+       "total_yds": 455,
+       "rush_yds": 206,
+       "pass_yds": 249,
+       "to_lost": 1,
+       "to_gained": 1,
+       "third_conv": 7,
+       "third_att": 13
       }
      ],
      "complete": false,
-     "retrieved_at": "2026-10-11T01:46+00:00",
-     "check": "cfbstats season totals matched through 2026-10-09",
+     "retrieved_at": "2026-10-11T19:12+00:00",
+     "check": "cfbstats season totals matched through 2026-10-10",
      "cfbstats_url": "https://cfbstats.com/2026/team/257/index.html"
     }
    }
@@ -4072,9 +3991,9 @@
       }
      ],
      "complete": false,
-     "retrieved_at": "2026-10-11T01:47+00:00",
-     "check": "not cross-checked yet: cfbstats has 5 games through 2026-10-09, ESPN 6",
-     "cfbstats_url": null
+     "retrieved_at": "2026-10-11T19:12+00:00",
+     "check": "cfbstats season totals matched through 2026-10-10",
+     "cfbstats_url": "https://cfbstats.com/2026/team/513/index.html"
     }
    }
   },
@@ -4170,8 +4089,8 @@
       }
      ],
      "complete": false,
-     "retrieved_at": "2026-10-11T01:47+00:00",
-     "check": "cfbstats season totals matched through 2026-10-09",
+     "retrieved_at": "2026-10-11T19:12+00:00",
+     "check": "cfbstats season totals matched through 2026-10-10",
      "cfbstats_url": "https://cfbstats.com/2026/team/415/index.html"
     }
    }
@@ -4285,49 +4204,40 @@
       }
      ],
      "complete": false,
-     "retrieved_at": "2026-10-11T01:47+00:00",
-     "check": "not cross-checked yet: cfbstats has 5 games through 2026-10-09, ESPN 6",
-     "cfbstats_url": null
+     "retrieved_at": "2026-10-11T19:12+00:00",
+     "check": "cfbstats season totals matched through 2026-10-10",
+     "cfbstats_url": "https://cfbstats.com/2026/team/518/index.html"
     }
    }
   }
  },
  "ap": {
   "poll": "AP Top 25",
-  "week": "Week 6",
-  "headline": "2026 NCAA Football Rankings - AP Poll Week 6",
-  "date": "2026-10-04",
+  "week": "Week 7",
+  "headline": "2026 NCAA Football Rankings - AP Poll Week 7",
+  "date": "2026-10-11",
   "season": 2026,
   "top": [
    {
     "rank": 1,
-    "team_id": "251",
-    "name": "Texas",
-    "nickname": "Longhorns",
-    "abbr": "TEX",
-    "record": "4-0",
-    "first_place": 61
-   },
-   {
-    "rank": 2,
     "team_id": "61",
     "name": "Georgia",
     "nickname": "Bulldogs",
     "abbr": "UGA",
-    "record": "5-0",
-    "first_place": 6
+    "record": "6-0",
+    "first_place": 66
    },
    {
-    "rank": 3,
+    "rank": 2,
     "team_id": "87",
     "name": "Notre Dame",
     "nickname": "Fighting Irish",
     "abbr": "ND",
-    "record": "5-0",
-    "first_place": 0
+    "record": "6-0",
+    "first_place": 1
    },
    {
-    "rank": 4,
+    "rank": 3,
     "team_id": "2390",
     "name": "Miami",
     "nickname": "Hurricanes",
@@ -4336,16 +4246,25 @@
     "first_place": 2
    },
    {
-    "rank": 5,
+    "rank": 4,
     "team_id": "194",
     "name": "Ohio State",
     "nickname": "Buckeyes",
     "abbr": "OSU",
-    "record": "4-1",
+    "record": "5-1",
     "first_place": 0
+   },
+   {
+    "rank": 5,
+    "team_id": "84",
+    "name": "Indiana",
+    "nickname": "Hoosiers",
+    "abbr": "IU",
+    "record": "6-0",
+    "first_place": 1
    }
   ],
   "source_url": "https://www.espn.com/college-football/rankings",
-  "retrieved_at": "2026-10-11T01:46+00:00"
+  "retrieved_at": "2026-10-11T19:12+00:00"
  }
 }

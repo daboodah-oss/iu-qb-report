@@ -1,17 +1,15 @@
 {
- "at": "2026-10-10T21:47-04:00",
+ "at": "2026-10-11T15:12-04:00",
  "failed": [],
  "log": [
-  "[schedule] 2026: 12 games, 5 played",
+  "[schedule] 2026: 12 games, 6 played",
   "[schedule] ESPN finals seen: 6, latest 2026-10-10 W 20-17",
-  "[schedule] 2026-10-10 Nebraska: final from ESPN (W 20-17)",
   "[games] next game kickoff: {'kickoff': '2026-10-17T12:00-04:00', 'tv': 'Fox'}",
-  "[team] Indiana 2026: 6 games; not cross-checked yet: cfbstats has 5 games through 2026-10-09, ESPN 6",
-  "[team] Texas 2026: 5 games; not cross-checked yet: cfbstats has 4 games through 2026-10-09, ESPN 5",
-  "[team] Georgia 2026: 5 games; matches cfbstats through 2026-10-09",
-  "[team] Notre Dame 2026: 6 games; not cross-checked yet: cfbstats has 5 games through 2026-10-09, ESPN 6",
-  "[team] Miami 2026: 5 games; matches cfbstats through 2026-10-09",
-  "[team] Ohio State 2026: 6 games; not cross-checked yet: cfbstats has 5 games through 2026-10-09, ESPN 6",
+  "[team] Indiana 2026: 6 games; matches cfbstats through 2026-10-10",
+  "[team] Georgia 2026: 6 games; matches cfbstats through 2026-10-10",
+  "[team] Notre Dame 2026: 6 games; matches cfbstats through 2026-10-10",
+  "[team] Miami 2026: 5 games; matches cfbstats through 2026-10-10",
+  "[team] Ohio State 2026: 6 games; matches cfbstats through 2026-10-10",
   "FAILED sections: none"
  ]
 }
