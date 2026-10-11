@@ -141,13 +141,31 @@ def cfb_players(C, season, page):
     t = pd.read_html(io.StringIO(html))[0]
     t.columns = [re.sub(r"\.", "", str(c)).strip().lower() for c in t.columns]
     first = "att" if page == "rushing" else "rec"
+    ids = {norm(m.group(2)): m.group(1) for m in re.finditer(rf'href="[^"]*/{season}/player/{IU_CFB}/(\d+)/index\.html"[^>]*>([^<]+)</a>', html)}
     rows = []
     for _, r in t.iterrows():
         nm = str(r.get("name", "")).strip()
         if not nm or nm.lower() in ("nan", "team", "total", "opponents"): continue
         rows.append({"name": nm, "pos": str(r.get("pos", "")).strip(), "g": C.ival(r["g"]), first: C.ival(r[first]),
-                     "yds": C.ival(r["yards"]), "td": C.ival(r["td"])})
+                     "yds": C.ival(r["yards"]), "td": C.ival(r["td"]), "cfb_id": ids.get(norm(nm))})
     return rows, C.through_date(html), url
+
+
+def cfb_gamelog(C, season, pid, page):
+    """A player's cfbstats game log: every game he played, including games with no carry or catch."""
+    url = f"https://cfbstats.com/{season}/player/{IU_CFB}/{pid}/{page}/gamelog.html"
+    html = C.get(url).text
+    t = pd.read_html(io.StringIO(html))[0]
+    t.columns = [re.sub(r"\.", "", str(c)).strip().lower() for c in t.columns]
+    first = "att" if page == "rushing" else "rec"
+    out = []
+    for _, r in t.iterrows():
+        m = re.match(r"(\d{2})/(\d{2})/(\d{2})", str(r.get("date", "")))
+        if not m: continue  # totals row
+        val = lambda k: 0 if str(r[k]).strip() in ("-", "nan", "") else C.ival(r[k])
+        out.append({"date": dt.date(2000 + int(m.group(3)), int(m.group(1)), int(m.group(2))).isoformat(),
+                    "n": val(first), "yds": val("yards"), "td": val("td")})
+    return out, C.through_date(html), url
 
 
 # ------------------------------------------------------------------ sections
@@ -228,14 +246,30 @@ def players(C, U):
                 names = [r["name"] for r in sorted(pool, key=lambda r: -r["yds"])[:tc.get("count", 2)]]
             for nm in names:
                 cf = next((r for r in rows if norm(r["name"]) == norm(nm)), None)
+                # games played come from the cfbstats game log (it lists games with no carry or catch too);
+                # each game's numbers come from the ESPN box score and must agree with the game log
+                gl, gthrough = None, None
+                if cf and cf.get("cfb_id"):
+                    gl, gthrough, _ = cfb_gamelog(C, season, cf["cfb_id"], spec["page"])
+                    gl = {r["date"]: r for r in gl}
                 lines, pid = [], None
                 for g in games:
                     hit = next((a for a in g.get("rush" if tab == "rb" else "rec", []) if (pid and a["id"] == pid) or norm(a["name"]) == norm(nm)), None)
-                    if not hit: continue
-                    pid = pid or hit["id"]
+                    logged = gl.get(g["date"]) if gl is not None else None
+                    tag = f"{nm} {g['date']} vs {g['opp']}"
+                    if gl is not None and gthrough and g["date"] <= gthrough:
+                        if not logged:
+                            if hit: raise ValueError(f"{tag}: ESPN box score has a line but the cfbstats game log has no game")
+                            continue  # did not play
+                        if not hit and (logged["n"] or logged["yds"] or logged["td"]): raise ValueError(f"{tag}: cfbstats shows {logged} but ESPN has no line")
+                        if hit and (hit["n"], hit["td"]) != (logged["n"], logged["td"]): raise ValueError(f"{tag}: ESPN {hit['n']}/{hit['td']} TD vs cfbstats {logged['n']}/{logged['td']} TD")
+                    elif not hit: continue  # beyond the game log's date (or no game log): count games with a line
+                    if hit: pid = pid or hit["id"]
                     lines.append({"date": g["date"], "event": g["event"], "opp": g["opp"], "site": g["site"], "result": g["result"],
-                                  key: hit["n"], "yds": hit["yds"], "td": hit["td"]})
+                                  key: hit["n"] if hit else 0, "yds": hit["yds"] if hit else 0, "td": hit["td"] if hit else 0,
+                                  **({} if hit else {"no_stat": True})})
                 if not lines: C.log(f"[{tab}] {nm} {season}: no box-score lines found"); continue
+                if gl is not None and season < C.SEASON and len(lines) != cf["g"]: raise ValueError(f"{nm} {season}: {len(lines)} games vs cfbstats G {cf['g']}")
                 checked = cf if (cf and through and through >= lines[-1]["date"] and season <= C.SEASON) else None
                 if season < C.SEASON and not cf: raise ValueError(f"{nm} {season}: not found on cfbstats {spec['page']} page")
                 if season < C.SEASON and through and through < games[-1]["date"]: raise ValueError(f"cfbstats {season} {spec['page']} page is incomplete")
