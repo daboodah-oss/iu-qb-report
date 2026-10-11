@@ -8,16 +8,24 @@ SKIPPED: snapshot exists for BetMGM 2026-10-10
 UPDATED cohort: Jeremiah Smith, Darian Mensah, Keelon Russell, CJ Carr
 UPDATED opponent pass-D ranks
 STORED AP Top 25 2026-10-04 1 Texas, 2 Georgia, 3 Notre Dame, 4 Miami, 5 Ohio State
-REFUSED: team-season Indiana 2024: ESPN box scores disagree with cfbstats season totals {'rush_yds': (2148, 2146), 'total_yds': (5545, 5543)}
-[team] REFUSED by validator (exit 2)
-[rb] 2026: no Indiana box scores stored yet
-[rb] 2025: no Indiana box scores stored yet
-[rb] 2024: no Indiana box scores stored yet
-[rb] nothing to store yet
-[wr] 2026: no Indiana box scores stored yet
-[wr] 2025: no Indiana box scores stored yet
-[wr] 2024: no Indiana box scores stored yet
-[wr] nothing to store yet
+STORED team Indiana 2024: 13 games
+[team] Indiana 2024: 13 games; matches cfbstats through 2025-01-20
+STORED team Indiana 2025: 16 games
+[team] Indiana 2025: 16 games; matches cfbstats through 2026-01-19
+STORED team Indiana 2026: 6 games
+[team] Indiana 2026: 6 games; not cross-checked yet: cfbstats has 5 games through 2026-10-09, ESPN 6
+STORED team Texas 2026: 5 games
+[team] Texas 2026: 5 games; not cross-checked yet: cfbstats has 4 games through 2026-10-09, ESPN 5
+STORED team Georgia 2026: 5 games
+[team] Georgia 2026: 5 games; matches cfbstats through 2026-10-09
+STORED team Notre Dame 2026: 6 games
+[team] Notre Dame 2026: 6 games; not cross-checked yet: cfbstats has 5 games through 2026-10-09, ESPN 6
+STORED team Miami 2026: 5 games
+[team] Miami 2026: 5 games; matches cfbstats through 2026-10-09
+STORED team Ohio State 2026: 6 games
+[team] Ohio State 2026: 6 games; not cross-checked yet: cfbstats has 5 games through 2026-10-09, ESPN 6
+STORED rb: Lee Beebe Jr. 2026 (6 g), Turbo Richard 2026 (6 g), Roman Hemby 2025 (16 g), Kaelon Black 2025 (16 g), Justice Ellison 2024 (13 g), Ty Son Lawton 2024 (13 g)
+STORED wr: Charlie Becker 2026 (6 g), Nick Marsh 2026 (6 g), Omar Cooper Jr. 2025 (15 g), Elijah Sarratt 2025 (13 g), Elijah Sarratt 2024 (13 g), Omar Cooper Jr. 2024 (12 g)
 STORED rb national boards through 2026-10-09
 STORED wr national boards through 2026-10-09
-FAILED sections: team
+FAILED sections: none

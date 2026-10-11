@@ -1,5 +1,4297 @@
 {
- "teams": {},
+ "teams": {
+  "84": {
+   "name": "Indiana",
+   "seasons": {
+    "2024": {
+     "games": [
+      {
+       "event": "401628449",
+       "date": "2024-08-31",
+       "opp": "Florida International",
+       "opp_id": "2229",
+       "site": "H",
+       "pf": 31,
+       "pa": 7,
+       "result": "W 31-7",
+       "total_yds": 414,
+       "rush_yds": 234,
+       "pass_yds": 180,
+       "to_lost": 0,
+       "to_gained": 1,
+       "third_conv": 4,
+       "third_att": 10,
+       "rush": [
+        {
+         "id": "4688817",
+         "name": "Elijah Green",
+         "n": 5,
+         "yds": 82,
+         "td": 1
+        },
+        {
+         "id": "4367069",
+         "name": "Ty Son Lawton",
+         "n": 16,
+         "yds": 74,
+         "td": 2
+        },
+        {
+         "id": "4429618",
+         "name": "Justice Ellison",
+         "n": 10,
+         "yds": 68,
+         "td": 0
+        },
+        {
+         "id": "4430656",
+         "name": "Myles Price",
+         "n": 1,
+         "yds": 12,
+         "td": 0
+        },
+        {
+         "id": "4696044",
+         "name": "Kaelon Black",
+         "n": 1,
+         "yds": 7,
+         "td": 0
+        },
+        {
+         "id": "4430431",
+         "name": "Kurtis Rourke",
+         "n": 6,
+         "yds": 3,
+         "td": 0
+        }
+       ],
+       "rec": [
+        {
+         "id": "4723820",
+         "name": "Omar Cooper Jr.",
+         "n": 3,
+         "yds": 45,
+         "td": 0
+        },
+        {
+         "id": "4877824",
+         "name": "Zach Horton",
+         "n": 3,
+         "yds": 36,
+         "td": 1
+        },
+        {
+         "id": "4685230",
+         "name": "Miles Cross",
+         "n": 1,
+         "yds": 30,
+         "td": 0
+        },
+        {
+         "id": "4430656",
+         "name": "Myles Price",
+         "n": 4,
+         "yds": 29,
+         "td": 0
+        },
+        {
+         "id": "4429618",
+         "name": "Justice Ellison",
+         "n": 1,
+         "yds": 19,
+         "td": 0
+        },
+        {
+         "id": "5088338",
+         "name": "Elijah Sarratt",
+         "n": 2,
+         "yds": 12,
+         "td": 0
+        },
+        {
+         "id": "4596347",
+         "name": "Donaven McCulley",
+         "n": 1,
+         "yds": 9,
+         "td": 0
+        }
+       ]
+      },
+      {
+       "event": "401628463",
+       "date": "2024-09-06",
+       "opp": "Western Illinois",
+       "opp_id": "2710",
+       "site": "H",
+       "pf": 77,
+       "pa": 3,
+       "result": "W 77-3",
+       "total_yds": 701,
+       "rush_yds": 323,
+       "pass_yds": 378,
+       "to_lost": 0,
+       "to_gained": 3,
+       "third_conv": 7,
+       "third_att": 9,
+       "rush": [
+        {
+         "id": "4429618",
+         "name": "Justice Ellison",
+         "n": 9,
+         "yds": 117,
+         "td": 2
+        },
+        {
+         "id": "5142140",
+         "name": "Khobie Martin",
+         "n": 8,
+         "yds": 57,
+         "td": 0
+        },
+        {
+         "id": "4367069",
+         "name": "Ty Son Lawton",
+         "n": 6,
+         "yds": 42,
+         "td": 1
+        },
+        {
+         "id": "4688817",
+         "name": "Elijah Green",
+         "n": 5,
+         "yds": 31,
+         "td": 1
+        },
+        {
+         "id": "4696044",
+         "name": "Kaelon Black",
+         "n": 5,
+         "yds": 30,
+         "td": 0
+        },
+        {
+         "id": "4801307",
+         "name": "Tayven Jackson",
+         "n": 2,
+         "yds": 19,
+         "td": 1
+        },
+        {
+         "id": "5098645",
+         "name": "Daniel Weems",
+         "n": 4,
+         "yds": 19,
+         "td": 0
+        },
+        {
+         "id": "4430431",
+         "name": "Kurtis Rourke",
+         "n": 3,
+         "yds": 13,
+         "td": 1
+        },
+        {
+         "id": "5146735",
+         "name": "Charlie Becker",
+         "n": 1,
+         "yds": 3,
+         "td": 1
+        },
+        {
+         "id": "5191162",
+         "name": "Alberto Mendoza",
+         "n": 2,
+         "yds": -3,
+         "td": 0
+        },
+        {
+         "id": "4430656",
+         "name": "Myles Price",
+         "n": 1,
+         "yds": -3,
+         "td": 0
+        }
+       ],
+       "rec": [
+        {
+         "id": "5088338",
+         "name": "Elijah Sarratt",
+         "n": 6,
+         "yds": 137,
+         "td": 1
+        },
+        {
+         "id": "4723820",
+         "name": "Omar Cooper Jr.",
+         "n": 4,
+         "yds": 131,
+         "td": 1
+        },
+        {
+         "id": "4875209",
+         "name": "Andison Coby",
+         "n": 1,
+         "yds": 38,
+         "td": 1
+        },
+        {
+         "id": "4430656",
+         "name": "Myles Price",
+         "n": 4,
+         "yds": 38,
+         "td": 0
+        },
+        {
+         "id": "4366640",
+         "name": "Solomon Vanhorse",
+         "n": 1,
+         "yds": 14,
+         "td": 0
+        },
+        {
+         "id": "4570738",
+         "name": "Ke'Shawn Williams",
+         "n": 1,
+         "yds": 12,
+         "td": 0
+        },
+        {
+         "id": "5104821",
+         "name": "Brady Simmons",
+         "n": 1,
+         "yds": 6,
+         "td": 0
+        },
+        {
+         "id": "4565878",
+         "name": "James Bomba",
+         "n": 1,
+         "yds": 2,
+         "td": 0
+        }
+       ]
+      },
+      {
+       "event": "401628476",
+       "date": "2024-09-14",
+       "opp": "UCLA",
+       "opp_id": "26",
+       "site": "A",
+       "pf": 42,
+       "pa": 13,
+       "result": "W 42-13",
+       "total_yds": 430,
+       "rush_yds": 123,
+       "pass_yds": 307,
+       "to_lost": 0,
+       "to_gained": 2,
+       "third_conv": 9,
+       "third_att": 12,
+       "rush": [
+        {
+         "id": "4429618",
+         "name": "Justice Ellison",
+         "n": 10,
+         "yds": 47,
+         "td": 1
+        },
+        {
+         "id": "4367069",
+         "name": "Ty Son Lawton",
+         "n": 10,
+         "yds": 33,
+         "td": 0
+        },
+        {
+         "id": "4696044",
+         "name": "Kaelon Black",
+         "n": 5,
+         "yds": 21,
+         "td": 0
+        },
+        {
+         "id": "4688817",
+         "name": "Elijah Green",
+         "n": 3,
+         "yds": 15,
+         "td": 1
+        },
+        {
+         "id": "4430431",
+         "name": "Kurtis Rourke",
+         "n": 1,
+         "yds": 7,
+         "td": 0
+        }
+       ],
+       "rec": [
+        {
+         "id": "4685230",
+         "name": "Miles Cross",
+         "n": 6,
+         "yds": 90,
+         "td": 1
+        },
+        {
+         "id": "4723820",
+         "name": "Omar Cooper Jr.",
+         "n": 4,
+         "yds": 58,
+         "td": 1
+        },
+        {
+         "id": "5088338",
+         "name": "Elijah Sarratt",
+         "n": 4,
+         "yds": 54,
+         "td": 0
+        },
+        {
+         "id": "4430656",
+         "name": "Myles Price",
+         "n": 3,
+         "yds": 39,
+         "td": 0
+        },
+        {
+         "id": "4570738",
+         "name": "Ke'Shawn Williams",
+         "n": 3,
+         "yds": 31,
+         "td": 2
+        },
+        {
+         "id": "4877824",
+         "name": "Zach Horton",
+         "n": 4,
+         "yds": 31,
+         "td": 0
+        },
+        {
+         "id": "4367069",
+         "name": "Ty Son Lawton",
+         "n": 1,
+         "yds": 4,
+         "td": 0
+        }
+       ]
+      },
+      {
+       "event": "401628486",
+       "date": "2024-09-21",
+       "opp": "Charlotte",
+       "opp_id": "2429",
+       "site": "H",
+       "pf": 52,
+       "pa": 14,
+       "result": "W 52-14",
+       "total_yds": 510,
+       "rush_yds": 222,
+       "pass_yds": 288,
+       "to_lost": 0,
+       "to_gained": 1,
+       "third_conv": 4,
+       "third_att": 10,
+       "rush": [
+        {
+         "id": "4429618",
+         "name": "Justice Ellison",
+         "n": 9,
+         "yds": 58,
+         "td": 1
+        },
+        {
+         "id": "4696044",
+         "name": "Kaelon Black",
+         "n": 7,
+         "yds": 55,
+         "td": 1
+        },
+        {
+         "id": "4367069",
+         "name": "Ty Son Lawton",
+         "n": 7,
+         "yds": 35,
+         "td": 2
+        },
+        {
+         "id": "4430431",
+         "name": "Kurtis Rourke",
+         "n": 4,
+         "yds": 32,
+         "td": 1
+        },
+        {
+         "id": "4688817",
+         "name": "Elijah Green",
+         "n": 4,
+         "yds": 29,
+         "td": 1
+        },
+        {
+         "id": "5142140",
+         "name": "Khobie Martin",
+         "n": 6,
+         "yds": 16,
+         "td": 0
+        },
+        {
+         "id": "4430656",
+         "name": "Myles Price",
+         "n": 1,
+         "yds": 4,
+         "td": 0
+        },
+        {
+         "id": "4801307",
+         "name": "Tayven Jackson",
+         "n": 2,
+         "yds": -4,
+         "td": 0
+        }
+       ],
+       "rec": [
+        {
+         "id": "4430656",
+         "name": "Myles Price",
+         "n": 3,
+         "yds": 77,
+         "td": 0
+        },
+        {
+         "id": "5088338",
+         "name": "Elijah Sarratt",
+         "n": 3,
+         "yds": 47,
+         "td": 0
+        },
+        {
+         "id": "4570738",
+         "name": "Ke'Shawn Williams",
+         "n": 4,
+         "yds": 46,
+         "td": 1
+        },
+        {
+         "id": "4685230",
+         "name": "Miles Cross",
+         "n": 5,
+         "yds": 46,
+         "td": 0
+        },
+        {
+         "id": "4920164",
+         "name": "Sam West",
+         "n": 1,
+         "yds": 37,
+         "td": 0
+        },
+        {
+         "id": "4875209",
+         "name": "Andison Coby",
+         "n": 1,
+         "yds": 24,
+         "td": 0
+        },
+        {
+         "id": "4723820",
+         "name": "Omar Cooper Jr.",
+         "n": 1,
+         "yds": 11,
+         "td": 0
+        }
+       ]
+      },
+      {
+       "event": "401628496",
+       "date": "2024-09-28",
+       "opp": "Maryland",
+       "opp_id": "120",
+       "site": "H",
+       "pf": 42,
+       "pa": 28,
+       "result": "W 42-28",
+       "total_yds": 510,
+       "rush_yds": 151,
+       "pass_yds": 359,
+       "to_lost": 4,
+       "to_gained": 0,
+       "third_conv": 7,
+       "third_att": 13,
+       "rush": [
+        {
+         "id": "4367069",
+         "name": "Ty Son Lawton",
+         "n": 19,
+         "yds": 93,
+         "td": 1
+        },
+        {
+         "id": "4429618",
+         "name": "Justice Ellison",
+         "n": 12,
+         "yds": 51,
+         "td": 1
+        },
+        {
+         "id": "4696044",
+         "name": "Kaelon Black",
+         "n": 3,
+         "yds": 17,
+         "td": 0
+        },
+        {
+         "id": "4430656",
+         "name": "Myles Price",
+         "n": 1,
+         "yds": 1,
+         "td": 1
+        },
+        {
+         "id": "4430431",
+         "name": "Kurtis Rourke",
+         "n": 5,
+         "yds": -9,
+         "td": 0
+        }
+       ],
+       "rec": [
+        {
+         "id": "5088338",
+         "name": "Elijah Sarratt",
+         "n": 7,
+         "yds": 128,
+         "td": 1
+        },
+        {
+         "id": "4723820",
+         "name": "Omar Cooper Jr.",
+         "n": 4,
+         "yds": 83,
+         "td": 1
+        },
+        {
+         "id": "4430656",
+         "name": "Myles Price",
+         "n": 2,
+         "yds": 63,
+         "td": 0
+        },
+        {
+         "id": "4685230",
+         "name": "Miles Cross",
+         "n": 1,
+         "yds": 18,
+         "td": 0
+        },
+        {
+         "id": "4877824",
+         "name": "Zach Horton",
+         "n": 1,
+         "yds": 18,
+         "td": 0
+        },
+        {
+         "id": "4367069",
+         "name": "Ty Son Lawton",
+         "n": 2,
+         "yds": 18,
+         "td": 0
+        },
+        {
+         "id": "4596347",
+         "name": "Donaven McCulley",
+         "n": 1,
+         "yds": 12,
+         "td": 1
+        },
+        {
+         "id": "4570738",
+         "name": "Ke'Shawn Williams",
+         "n": 1,
+         "yds": 7,
+         "td": 0
+        },
+        {
+         "id": "4696044",
+         "name": "Kaelon Black",
+         "n": 2,
+         "yds": 7,
+         "td": 0
+        },
+        {
+         "id": "4429618",
+         "name": "Justice Ellison",
+         "n": 1,
+         "yds": 5,
+         "td": 0
+        }
+       ]
+      },
+      {
+       "event": "401628503",
+       "date": "2024-10-05",
+       "opp": "Northwestern",
+       "opp_id": "77",
+       "site": "A",
+       "pf": 41,
+       "pa": 24,
+       "result": "W 41-24",
+       "total_yds": 529,
+       "rush_yds": 149,
+       "pass_yds": 380,
+       "to_lost": 0,
+       "to_gained": 0,
+       "third_conv": 3,
+       "third_att": 9,
+       "rush": [
+        {
+         "id": "4429618",
+         "name": "Justice Ellison",
+         "n": 14,
+         "yds": 68,
+         "td": 1
+        },
+        {
+         "id": "4367069",
+         "name": "Ty Son Lawton",
+         "n": 10,
+         "yds": 52,
+         "td": 1
+        },
+        {
+         "id": "4696044",
+         "name": "Kaelon Black",
+         "n": 5,
+         "yds": 33,
+         "td": 0
+        },
+        {
+         "id": "4723820",
+         "name": "Omar Cooper Jr.",
+         "n": 1,
+         "yds": 7,
+         "td": 0
+        },
+        {
+         "id": "4430431",
+         "name": "Kurtis Rourke",
+         "n": 2,
+         "yds": -2,
+         "td": 0
+        }
+       ],
+       "rec": [
+        {
+         "id": "5088338",
+         "name": "Elijah Sarratt",
+         "n": 7,
+         "yds": 135,
+         "td": 0
+        },
+        {
+         "id": "4570738",
+         "name": "Ke'Shawn Williams",
+         "n": 4,
+         "yds": 87,
+         "td": 1
+        },
+        {
+         "id": "4723820",
+         "name": "Omar Cooper Jr.",
+         "n": 2,
+         "yds": 47,
+         "td": 0
+        },
+        {
+         "id": "4686093",
+         "name": "E.J. Williams Jr.",
+         "n": 1,
+         "yds": 37,
+         "td": 0
+        },
+        {
+         "id": "4367069",
+         "name": "Ty Son Lawton",
+         "n": 2,
+         "yds": 26,
+         "td": 0
+        },
+        {
+         "id": "4685230",
+         "name": "Miles Cross",
+         "n": 4,
+         "yds": 24,
+         "td": 1
+        },
+        {
+         "id": "4430656",
+         "name": "Myles Price",
+         "n": 4,
+         "yds": 20,
+         "td": 0
+        },
+        {
+         "id": "4877824",
+         "name": "Zach Horton",
+         "n": 1,
+         "yds": 4,
+         "td": 1
+        }
+       ]
+      },
+      {
+       "event": "401628519",
+       "date": "2024-10-19",
+       "opp": "Nebraska",
+       "opp_id": "158",
+       "site": "H",
+       "pf": 56,
+       "pa": 7,
+       "result": "W 56-7",
+       "total_yds": 495,
+       "rush_yds": 215,
+       "pass_yds": 280,
+       "to_lost": 1,
+       "to_gained": 5,
+       "third_conv": 5,
+       "third_att": 9,
+       "rush": [
+        {
+         "id": "4429618",
+         "name": "Justice Ellison",
+         "n": 9,
+         "yds": 105,
+         "td": 2
+        },
+        {
+         "id": "4367069",
+         "name": "Ty Son Lawton",
+         "n": 8,
+         "yds": 64,
+         "td": 1
+        },
+        {
+         "id": "4696044",
+         "name": "Kaelon Black",
+         "n": 4,
+         "yds": 22,
+         "td": 1
+        },
+        {
+         "id": "4801307",
+         "name": "Tayven Jackson",
+         "n": 2,
+         "yds": 21,
+         "td": 0
+        },
+        {
+         "id": "4688817",
+         "name": "Elijah Green",
+         "n": 4,
+         "yds": 11,
+         "td": 1
+        },
+        {
+         "id": "4430431",
+         "name": "Kurtis Rourke",
+         "n": 3,
+         "yds": 1,
+         "td": 0
+        }
+       ],
+       "rec": [
+        {
+         "id": "5088338",
+         "name": "Elijah Sarratt",
+         "n": 3,
+         "yds": 65,
+         "td": 1
+        },
+        {
+         "id": "4685230",
+         "name": "Miles Cross",
+         "n": 7,
+         "yds": 65,
+         "td": 1
+        },
+        {
+         "id": "4723820",
+         "name": "Omar Cooper Jr.",
+         "n": 1,
+         "yds": 36,
+         "td": 0
+        },
+        {
+         "id": "4367069",
+         "name": "Ty Son Lawton",
+         "n": 1,
+         "yds": 35,
+         "td": 0
+        },
+        {
+         "id": "4430656",
+         "name": "Myles Price",
+         "n": 3,
+         "yds": 23,
+         "td": 1
+        },
+        {
+         "id": "4877824",
+         "name": "Zach Horton",
+         "n": 4,
+         "yds": 21,
+         "td": 0
+        },
+        {
+         "id": "4429618",
+         "name": "Justice Ellison",
+         "n": 2,
+         "yds": 16,
+         "td": 0
+        },
+        {
+         "id": "4686093",
+         "name": "E.J. Williams Jr.",
+         "n": 1,
+         "yds": 12,
+         "td": 0
+        },
+        {
+         "id": "4875209",
+         "name": "Andison Coby",
+         "n": 1,
+         "yds": 8,
+         "td": 0
+        },
+        {
+         "id": "4570738",
+         "name": "Ke'Shawn Williams",
+         "n": 1,
+         "yds": -1,
+         "td": 0
+        }
+       ]
+      },
+      {
+       "event": "401628526",
+       "date": "2024-10-26",
+       "opp": "Washington",
+       "opp_id": "264",
+       "site": "H",
+       "pf": 31,
+       "pa": 17,
+       "result": "W 31-17",
+       "total_yds": 312,
+       "rush_yds": 188,
+       "pass_yds": 124,
+       "to_lost": 1,
+       "to_gained": 2,
+       "third_conv": 8,
+       "third_att": 15,
+       "rush": [
+        {
+         "id": "4429618",
+         "name": "Justice Ellison",
+         "n": 29,
+         "yds": 123,
+         "td": 1
+        },
+        {
+         "id": "4367069",
+         "name": "Ty Son Lawton",
+         "n": 12,
+         "yds": 41,
+         "td": 0
+        },
+        {
+         "id": "4801307",
+         "name": "Tayven Jackson",
+         "n": 6,
+         "yds": 17,
+         "td": 1
+        },
+        {
+         "id": "4696044",
+         "name": "Kaelon Black",
+         "n": 3,
+         "yds": 13,
+         "td": 0
+        }
+       ],
+       "rec": [
+        {
+         "id": "4723820",
+         "name": "Omar Cooper Jr.",
+         "n": 1,
+         "yds": 42,
+         "td": 1
+        },
+        {
+         "id": "4430656",
+         "name": "Myles Price",
+         "n": 2,
+         "yds": 30,
+         "td": 0
+        },
+        {
+         "id": "4685230",
+         "name": "Miles Cross",
+         "n": 1,
+         "yds": 16,
+         "td": 0
+        },
+        {
+         "id": "4877824",
+         "name": "Zach Horton",
+         "n": 2,
+         "yds": 14,
+         "td": 0
+        },
+        {
+         "id": "5088338",
+         "name": "Elijah Sarratt",
+         "n": 1,
+         "yds": 12,
+         "td": 0
+        },
+        {
+         "id": "4570738",
+         "name": "Ke'Shawn Williams",
+         "n": 1,
+         "yds": 3,
+         "td": 0
+        },
+        {
+         "id": "4696044",
+         "name": "Kaelon Black",
+         "n": 1,
+         "yds": 3,
+         "td": 0
+        },
+        {
+         "id": "4367069",
+         "name": "Ty Son Lawton",
+         "n": 1,
+         "yds": 2,
+         "td": 0
+        },
+        {
+         "id": "4429618",
+         "name": "Justice Ellison",
+         "n": 1,
+         "yds": 2,
+         "td": 0
+        }
+       ]
+      },
+      {
+       "event": "401628534",
+       "date": "2024-11-02",
+       "opp": "Michigan State",
+       "opp_id": "127",
+       "site": "A",
+       "pf": 47,
+       "pa": 10,
+       "result": "W 47-10",
+       "total_yds": 385,
+       "rush_yds": 122,
+       "pass_yds": 263,
+       "to_lost": 0,
+       "to_gained": 2,
+       "third_conv": 2,
+       "third_att": 10,
+       "rush": [
+        {
+         "id": "4429618",
+         "name": "Justice Ellison",
+         "n": 9,
+         "yds": 32,
+         "td": 0
+        },
+        {
+         "id": "4430656",
+         "name": "Myles Price",
+         "n": 1,
+         "yds": 25,
+         "td": 0
+        },
+        {
+         "id": "4367069",
+         "name": "Ty Son Lawton",
+         "n": 6,
+         "yds": 19,
+         "td": 1
+        },
+        {
+         "id": "4696044",
+         "name": "Kaelon Black",
+         "n": 6,
+         "yds": 19,
+         "td": 0
+        },
+        {
+         "id": "4688817",
+         "name": "Elijah Green",
+         "n": 5,
+         "yds": 18,
+         "td": 0
+        },
+        {
+         "id": "4723820",
+         "name": "Omar Cooper Jr.",
+         "n": 1,
+         "yds": 16,
+         "td": 1
+        },
+        {
+         "id": "4430431",
+         "name": "Kurtis Rourke",
+         "n": 1,
+         "yds": 0,
+         "td": 0
+        }
+       ],
+       "rec": [
+        {
+         "id": "4570738",
+         "name": "Ke'Shawn Williams",
+         "n": 6,
+         "yds": 86,
+         "td": 0
+        },
+        {
+         "id": "5088338",
+         "name": "Elijah Sarratt",
+         "n": 4,
+         "yds": 59,
+         "td": 2
+        },
+        {
+         "id": "4430656",
+         "name": "Myles Price",
+         "n": 3,
+         "yds": 42,
+         "td": 1
+        },
+        {
+         "id": "4429618",
+         "name": "Justice Ellison",
+         "n": 3,
+         "yds": 22,
+         "td": 0
+        },
+        {
+         "id": "4723820",
+         "name": "Omar Cooper Jr.",
+         "n": 1,
+         "yds": 21,
+         "td": 0
+        },
+        {
+         "id": "4877824",
+         "name": "Zach Horton",
+         "n": 1,
+         "yds": 17,
+         "td": 1
+        },
+        {
+         "id": "4367069",
+         "name": "Ty Son Lawton",
+         "n": 1,
+         "yds": 16,
+         "td": 0
+        }
+       ]
+      },
+      {
+       "event": "401628541",
+       "date": "2024-11-09",
+       "opp": "Michigan",
+       "opp_id": "130",
+       "site": "H",
+       "pf": 20,
+       "pa": 15,
+       "result": "W 20-15",
+       "total_yds": 246,
+       "rush_yds": 40,
+       "pass_yds": 206,
+       "to_lost": 1,
+       "to_gained": 1,
+       "third_conv": 4,
+       "third_att": 11,
+       "rush": [
+        {
+         "id": "4367069",
+         "name": "Ty Son Lawton",
+         "n": 12,
+         "yds": 55,
+         "td": 0
+        },
+        {
+         "id": "4429618",
+         "name": "Justice Ellison",
+         "n": 9,
+         "yds": 17,
+         "td": 0
+        },
+        {
+         "id": "4430431",
+         "name": "Kurtis Rourke",
+         "n": 5,
+         "yds": -28,
+         "td": 0
+        }
+       ],
+       "rec": [
+        {
+         "id": "4570738",
+         "name": "Ke'Shawn Williams",
+         "n": 6,
+         "yds": 70,
+         "td": 0
+        },
+        {
+         "id": "4723820",
+         "name": "Omar Cooper Jr.",
+         "n": 3,
+         "yds": 53,
+         "td": 1
+        },
+        {
+         "id": "5088338",
+         "name": "Elijah Sarratt",
+         "n": 1,
+         "yds": 36,
+         "td": 1
+        },
+        {
+         "id": "4429618",
+         "name": "Justice Ellison",
+         "n": 3,
+         "yds": 20,
+         "td": 0
+        },
+        {
+         "id": "4430656",
+         "name": "Myles Price",
+         "n": 2,
+         "yds": 16,
+         "td": 0
+        },
+        {
+         "id": "4877824",
+         "name": "Zach Horton",
+         "n": 1,
+         "yds": 15,
+         "td": 0
+        },
+        {
+         "id": "4696044",
+         "name": "Kaelon Black",
+         "n": 1,
+         "yds": -4,
+         "td": 0
+        }
+       ]
+      },
+      {
+       "event": "401628555",
+       "date": "2024-11-23",
+       "opp": "Ohio State",
+       "opp_id": "194",
+       "site": "A",
+       "pf": 15,
+       "pa": 38,
+       "result": "L 15-38",
+       "total_yds": 153,
+       "rush_yds": 85,
+       "pass_yds": 68,
+       "to_lost": 1,
+       "to_gained": 1,
+       "third_conv": 6,
+       "third_att": 14,
+       "rush": [
+        {
+         "id": "4367069",
+         "name": "Ty Son Lawton",
+         "n": 15,
+         "yds": 79,
+         "td": 2
+        },
+        {
+         "id": "4429618",
+         "name": "Justice Ellison",
+         "n": 17,
+         "yds": 62,
+         "td": 0
+        },
+        {
+         "id": "4683393",
+         "name": "James Evans",
+         "n": 1,
+         "yds": -23,
+         "td": 0
+        },
+        {
+         "id": "4430431",
+         "name": "Kurtis Rourke",
+         "n": 7,
+         "yds": -33,
+         "td": 0
+        }
+       ],
+       "rec": [
+        {
+         "id": "5088338",
+         "name": "Elijah Sarratt",
+         "n": 3,
+         "yds": 40,
+         "td": 0
+        },
+        {
+         "id": "4430656",
+         "name": "Myles Price",
+         "n": 1,
+         "yds": 13,
+         "td": 0
+        },
+        {
+         "id": "4367069",
+         "name": "Ty Son Lawton",
+         "n": 2,
+         "yds": 9,
+         "td": 0
+        },
+        {
+         "id": "4570738",
+         "name": "Ke'Shawn Williams",
+         "n": 2,
+         "yds": 6,
+         "td": 0
+        }
+       ]
+      },
+      {
+       "event": "401628564",
+       "date": "2024-11-30",
+       "opp": "Purdue",
+       "opp_id": "2509",
+       "site": "H",
+       "pf": 66,
+       "pa": 0,
+       "result": "W 66-0",
+       "total_yds": 582,
+       "rush_yds": 233,
+       "pass_yds": 349,
+       "to_lost": 0,
+       "to_gained": 5,
+       "third_conv": 5,
+       "third_att": 10,
+       "rush": [
+        {
+         "id": "4429618",
+         "name": "Justice Ellison",
+         "n": 11,
+         "yds": 63,
+         "td": 1
+        },
+        {
+         "id": "4367069",
+         "name": "Ty Son Lawton",
+         "n": 10,
+         "yds": 47,
+         "td": 1
+        },
+        {
+         "id": "4696044",
+         "name": "Kaelon Black",
+         "n": 7,
+         "yds": 34,
+         "td": 0
+        },
+        {
+         "id": "4570738",
+         "name": "Ke'Shawn Williams",
+         "n": 2,
+         "yds": 27,
+         "td": 0
+        },
+        {
+         "id": "4430656",
+         "name": "Myles Price",
+         "n": 1,
+         "yds": 22,
+         "td": 0
+        },
+        {
+         "id": "4801307",
+         "name": "Tayven Jackson",
+         "n": 3,
+         "yds": 20,
+         "td": 1
+        },
+        {
+         "id": "4579591",
+         "name": "James Carpenter",
+         "n": 1,
+         "yds": 18,
+         "td": 0
+        },
+        {
+         "id": "4688817",
+         "name": "Elijah Green",
+         "n": 3,
+         "yds": 15,
+         "td": 0
+        },
+        {
+         "id": "4430431",
+         "name": "Kurtis Rourke",
+         "n": 4,
+         "yds": -9,
+         "td": 0
+        }
+       ],
+       "rec": [
+        {
+         "id": "5088338",
+         "name": "Elijah Sarratt",
+         "n": 8,
+         "yds": 165,
+         "td": 2
+        },
+        {
+         "id": "4570738",
+         "name": "Ke'Shawn Williams",
+         "n": 5,
+         "yds": 56,
+         "td": 1
+        },
+        {
+         "id": "4723820",
+         "name": "Omar Cooper Jr.",
+         "n": 3,
+         "yds": 44,
+         "td": 1
+        },
+        {
+         "id": "4685230",
+         "name": "Miles Cross",
+         "n": 1,
+         "yds": 34,
+         "td": 1
+        },
+        {
+         "id": "4877824",
+         "name": "Zach Horton",
+         "n": 3,
+         "yds": 26,
+         "td": 1
+        },
+        {
+         "id": "4430656",
+         "name": "Myles Price",
+         "n": 2,
+         "yds": 20,
+         "td": 0
+        },
+        {
+         "id": "4367069",
+         "name": "Ty Son Lawton",
+         "n": 1,
+         "yds": 4,
+         "td": 0
+        }
+       ]
+      },
+      {
+       "event": "401677179",
+       "date": "2024-12-20",
+       "opp": "Notre Dame",
+       "opp_id": "87",
+       "site": "A",
+       "pf": 17,
+       "pa": 27,
+       "result": "L 17-27",
+       "total_yds": 278,
+       "rush_yds": 63,
+       "pass_yds": 215,
+       "to_lost": 1,
+       "to_gained": 1,
+       "third_conv": 4,
+       "third_att": 12,
+       "rush": [
+        {
+         "id": "4429618",
+         "name": "Justice Ellison",
+         "n": 11,
+         "yds": 37,
+         "td": 0
+        },
+        {
+         "id": "4367069",
+         "name": "Ty Son Lawton",
+         "n": 10,
+         "yds": 34,
+         "td": 0
+        },
+        {
+         "id": "4430656",
+         "name": "Myles Price",
+         "n": 1,
+         "yds": 2,
+         "td": 0
+        },
+        {
+         "id": "4430431",
+         "name": "Kurtis Rourke",
+         "n": 5,
+         "yds": -10,
+         "td": 0
+        }
+       ],
+       "rec": [
+        {
+         "id": "5088338",
+         "name": "Elijah Sarratt",
+         "n": 4,
+         "yds": 67,
+         "td": 0
+        },
+        {
+         "id": "4430656",
+         "name": "Myles Price",
+         "n": 5,
+         "yds": 56,
+         "td": 1
+        },
+        {
+         "id": "4570738",
+         "name": "Ke'Shawn Williams",
+         "n": 5,
+         "yds": 45,
+         "td": 0
+        },
+        {
+         "id": "4723820",
+         "name": "Omar Cooper Jr.",
+         "n": 1,
+         "yds": 23,
+         "td": 1
+        },
+        {
+         "id": "4367069",
+         "name": "Ty Son Lawton",
+         "n": 1,
+         "yds": 10,
+         "td": 0
+        },
+        {
+         "id": "4877824",
+         "name": "Zach Horton",
+         "n": 1,
+         "yds": 7,
+         "td": 0
+        },
+        {
+         "id": "4429618",
+         "name": "Justice Ellison",
+         "n": 2,
+         "yds": 6,
+         "td": 0
+        },
+        {
+         "id": "4685230",
+         "name": "Miles Cross",
+         "n": 1,
+         "yds": 1,
+         "td": 0
+        }
+       ]
+      }
+     ],
+     "complete": true,
+     "retrieved_at": "2026-10-11T01:29+00:00",
+     "check": "cfbstats season totals matched through 2025-01-20, except rushing yards 2,148 in ESPN box scores vs 2,146 on cfbstats; total yards 5,545 in ESPN box scores vs 5,543 on cfbstats",
+     "cfbstats_url": "https://cfbstats.com/2024/team/306/index.html"
+    },
+    "2025": {
+     "games": [
+      {
+       "event": "401752806",
+       "date": "2025-08-30",
+       "opp": "Old Dominion",
+       "opp_id": "295",
+       "site": "H",
+       "pf": 27,
+       "pa": 14,
+       "result": "W 27-14",
+       "total_yds": 502,
+       "rush_yds": 309,
+       "pass_yds": 193,
+       "to_lost": 1,
+       "to_gained": 3,
+       "third_conv": 10,
+       "third_att": 17,
+       "rush": [
+        {
+         "id": "4688835",
+         "name": "Roman Hemby",
+         "n": 23,
+         "yds": 111,
+         "td": 0
+        },
+        {
+         "id": "4696044",
+         "name": "Kaelon Black",
+         "n": 17,
+         "yds": 92,
+         "td": 1
+        },
+        {
+         "id": "5091725",
+         "name": "Lee Beebe Jr.",
+         "n": 11,
+         "yds": 73,
+         "td": 0
+        },
+        {
+         "id": "4837248",
+         "name": "Fernando Mendoza",
+         "n": 6,
+         "yds": 33,
+         "td": 1
+        }
+       ],
+       "rec": [
+        {
+         "id": "4723820",
+         "name": "Omar Cooper Jr.",
+         "n": 2,
+         "yds": 52,
+         "td": 0
+        },
+        {
+         "id": "4686093",
+         "name": "E.J. Williams Jr.",
+         "n": 5,
+         "yds": 45,
+         "td": 0
+        },
+        {
+         "id": "5088338",
+         "name": "Elijah Sarratt",
+         "n": 3,
+         "yds": 44,
+         "td": 0
+        },
+        {
+         "id": "4693370",
+         "name": "Riley Nowakowski",
+         "n": 2,
+         "yds": 15,
+         "td": 0
+        },
+        {
+         "id": "5209424",
+         "name": "Lebron Bond",
+         "n": 1,
+         "yds": 12,
+         "td": 0
+        },
+        {
+         "id": "4688835",
+         "name": "Roman Hemby",
+         "n": 1,
+         "yds": 9,
+         "td": 0
+        },
+        {
+         "id": "4832806",
+         "name": "Jonathan Brady",
+         "n": 2,
+         "yds": 8,
+         "td": 0
+        },
+        {
+         "id": "4685573",
+         "name": "Holden Staes",
+         "n": 1,
+         "yds": 4,
+         "td": 0
+        },
+        {
+         "id": "5146735",
+         "name": "Charlie Becker",
+         "n": 1,
+         "yds": 4,
+         "td": 0
+        }
+       ]
+      },
+      {
+       "event": "401752812",
+       "date": "2025-09-06",
+       "opp": "Kennesaw State",
+       "opp_id": "338",
+       "site": "H",
+       "pf": 56,
+       "pa": 9,
+       "result": "W 56-9",
+       "total_yds": 593,
+       "rush_yds": 313,
+       "pass_yds": 280,
+       "to_lost": 0,
+       "to_gained": 2,
+       "third_conv": 5,
+       "third_att": 9,
+       "rush": [
+        {
+         "id": "5091725",
+         "name": "Lee Beebe Jr.",
+         "n": 11,
+         "yds": 90,
+         "td": 1
+        },
+        {
+         "id": "4723820",
+         "name": "Omar Cooper Jr.",
+         "n": 1,
+         "yds": 75,
+         "td": 1
+        },
+        {
+         "id": "4688835",
+         "name": "Roman Hemby",
+         "n": 9,
+         "yds": 64,
+         "td": 0
+        },
+        {
+         "id": "4696044",
+         "name": "Kaelon Black",
+         "n": 10,
+         "yds": 57,
+         "td": 0
+        },
+        {
+         "id": "4837248",
+         "name": "Fernando Mendoza",
+         "n": 3,
+         "yds": 20,
+         "td": 0
+        },
+        {
+         "id": "5142140",
+         "name": "Khobie Martin",
+         "n": 2,
+         "yds": 6,
+         "td": 0
+        },
+        {
+         "id": "4366640",
+         "name": "Solomon Vanhorse",
+         "n": 1,
+         "yds": 3,
+         "td": 0
+        },
+        {
+         "id": "4693370",
+         "name": "Riley Nowakowski",
+         "n": 1,
+         "yds": 1,
+         "td": 1
+        }
+       ],
+       "rec": [
+        {
+         "id": "5088338",
+         "name": "Elijah Sarratt",
+         "n": 9,
+         "yds": 97,
+         "td": 3
+        },
+        {
+         "id": "4723820",
+         "name": "Omar Cooper Jr.",
+         "n": 1,
+         "yds": 40,
+         "td": 0
+        },
+        {
+         "id": "5146735",
+         "name": "Charlie Becker",
+         "n": 2,
+         "yds": 35,
+         "td": 1
+        },
+        {
+         "id": "4686093",
+         "name": "E.J. Williams Jr.",
+         "n": 3,
+         "yds": 27,
+         "td": 1
+        },
+        {
+         "id": "4688835",
+         "name": "Roman Hemby",
+         "n": 1,
+         "yds": 25,
+         "td": 0
+        },
+        {
+         "id": "5104817",
+         "name": "Jackson Wasserstrom",
+         "n": 1,
+         "yds": 17,
+         "td": 0
+        },
+        {
+         "id": "4693370",
+         "name": "Riley Nowakowski",
+         "n": 1,
+         "yds": 14,
+         "td": 0
+        },
+        {
+         "id": "4832806",
+         "name": "Jonathan Brady",
+         "n": 1,
+         "yds": 12,
+         "td": 0
+        },
+        {
+         "id": "4685573",
+         "name": "Holden Staes",
+         "n": 1,
+         "yds": 7,
+         "td": 0
+        },
+        {
+         "id": "5209424",
+         "name": "Lebron Bond",
+         "n": 1,
+         "yds": 6,
+         "td": 0
+        }
+       ]
+      },
+      {
+       "event": "401752836",
+       "date": "2025-09-12",
+       "opp": "Indiana State",
+       "opp_id": "282",
+       "site": "H",
+       "pf": 73,
+       "pa": 0,
+       "result": "W 73-0",
+       "total_yds": 680,
+       "rush_yds": 301,
+       "pass_yds": 379,
+       "to_lost": 0,
+       "to_gained": 0,
+       "third_conv": 6,
+       "third_att": 8,
+       "rush": [
+        {
+         "id": "5142140",
+         "name": "Khobie Martin",
+         "n": 11,
+         "yds": 109,
+         "td": 2
+        },
+        {
+         "id": "4696044",
+         "name": "Kaelon Black",
+         "n": 7,
+         "yds": 68,
+         "td": 0
+        },
+        {
+         "id": "5091725",
+         "name": "Lee Beebe Jr.",
+         "n": 5,
+         "yds": 46,
+         "td": 0
+        },
+        {
+         "id": "4688835",
+         "name": "Roman Hemby",
+         "n": 4,
+         "yds": 25,
+         "td": 0
+        },
+        {
+         "id": "4837248",
+         "name": "Fernando Mendoza",
+         "n": 6,
+         "yds": 19,
+         "td": 1
+        },
+        {
+         "id": "5164320",
+         "name": "Sean Cuono",
+         "n": 2,
+         "yds": 17,
+         "td": 0
+        },
+        {
+         "id": "5191162",
+         "name": "Alberto Mendoza",
+         "n": 2,
+         "yds": 17,
+         "td": 0
+        }
+       ],
+       "rec": [
+        {
+         "id": "4723820",
+         "name": "Omar Cooper Jr.",
+         "n": 10,
+         "yds": 207,
+         "td": 4
+        },
+        {
+         "id": "4685573",
+         "name": "Holden Staes",
+         "n": 2,
+         "yds": 31,
+         "td": 1
+        },
+        {
+         "id": "5146735",
+         "name": "Charlie Becker",
+         "n": 1,
+         "yds": 31,
+         "td": 0
+        },
+        {
+         "id": "4832806",
+         "name": "Jonathan Brady",
+         "n": 3,
+         "yds": 27,
+         "td": 2
+        },
+        {
+         "id": "4686093",
+         "name": "E.J. Williams Jr.",
+         "n": 2,
+         "yds": 27,
+         "td": 0
+        },
+        {
+         "id": "5088338",
+         "name": "Elijah Sarratt",
+         "n": 3,
+         "yds": 23,
+         "td": 0
+        },
+        {
+         "id": "5088336",
+         "name": "Makai Jackson",
+         "n": 3,
+         "yds": 15,
+         "td": 0
+        },
+        {
+         "id": "5209424",
+         "name": "Lebron Bond",
+         "n": 1,
+         "yds": 11,
+         "td": 0
+        },
+        {
+         "id": "5091725",
+         "name": "Lee Beebe Jr.",
+         "n": 1,
+         "yds": 7,
+         "td": 0
+        }
+       ]
+      },
+      {
+       "event": "401752843",
+       "date": "2025-09-20",
+       "opp": "Illinois",
+       "opp_id": "356",
+       "site": "H",
+       "pf": 63,
+       "pa": 10,
+       "result": "W 63-10",
+       "total_yds": 579,
+       "rush_yds": 312,
+       "pass_yds": 267,
+       "to_lost": 0,
+       "to_gained": 1,
+       "third_conv": 8,
+       "third_att": 11,
+       "rush": [
+        {
+         "id": "5142140",
+         "name": "Khobie Martin",
+         "n": 12,
+         "yds": 107,
+         "td": 2
+        },
+        {
+         "id": "4696044",
+         "name": "Kaelon Black",
+         "n": 10,
+         "yds": 89,
+         "td": 1
+        },
+        {
+         "id": "4688835",
+         "name": "Roman Hemby",
+         "n": 14,
+         "yds": 65,
+         "td": 0
+        },
+        {
+         "id": "4366640",
+         "name": "Solomon Vanhorse",
+         "n": 4,
+         "yds": 27,
+         "td": 0
+        },
+        {
+         "id": "5191162",
+         "name": "Alberto Mendoza",
+         "n": 1,
+         "yds": 14,
+         "td": 0
+        },
+        {
+         "id": "4695867",
+         "name": "Grant Wilson",
+         "n": 1,
+         "yds": 6,
+         "td": 0
+        },
+        {
+         "id": "4837248",
+         "name": "Fernando Mendoza",
+         "n": 7,
+         "yds": 4,
+         "td": 0
+        }
+       ],
+       "rec": [
+        {
+         "id": "5088338",
+         "name": "Elijah Sarratt",
+         "n": 9,
+         "yds": 92,
+         "td": 2
+        },
+        {
+         "id": "4723820",
+         "name": "Omar Cooper Jr.",
+         "n": 6,
+         "yds": 78,
+         "td": 1
+        },
+        {
+         "id": "4693370",
+         "name": "Riley Nowakowski",
+         "n": 1,
+         "yds": 43,
+         "td": 1
+        },
+        {
+         "id": "4688835",
+         "name": "Roman Hemby",
+         "n": 2,
+         "yds": 37,
+         "td": 0
+        },
+        {
+         "id": "4686093",
+         "name": "E.J. Williams Jr.",
+         "n": 3,
+         "yds": 17,
+         "td": 1
+        }
+       ]
+      },
+      {
+       "event": "401752853",
+       "date": "2025-09-27",
+       "opp": "Iowa",
+       "opp_id": "2294",
+       "site": "A",
+       "pf": 20,
+       "pa": 15,
+       "result": "W 20-15",
+       "total_yds": 337,
+       "rush_yds": 104,
+       "pass_yds": 233,
+       "to_lost": 1,
+       "to_gained": 2,
+       "third_conv": 6,
+       "third_att": 15,
+       "rush": [
+        {
+         "id": "4688835",
+         "name": "Roman Hemby",
+         "n": 15,
+         "yds": 86,
+         "td": 0
+        },
+        {
+         "id": "4696044",
+         "name": "Kaelon Black",
+         "n": 11,
+         "yds": 38,
+         "td": 0
+        },
+        {
+         "id": "4837248",
+         "name": "Fernando Mendoza",
+         "n": 8,
+         "yds": 26,
+         "td": 0
+        },
+        {
+         "id": "4723820",
+         "name": "Omar Cooper Jr.",
+         "n": 1,
+         "yds": 3,
+         "td": 0
+        }
+       ],
+       "rec": [
+        {
+         "id": "5088338",
+         "name": "Elijah Sarratt",
+         "n": 7,
+         "yds": 156,
+         "td": 1
+        },
+        {
+         "id": "4686093",
+         "name": "E.J. Williams Jr.",
+         "n": 1,
+         "yds": 37,
+         "td": 0
+        },
+        {
+         "id": "4723820",
+         "name": "Omar Cooper Jr.",
+         "n": 3,
+         "yds": 31,
+         "td": 1
+        },
+        {
+         "id": "4688835",
+         "name": "Roman Hemby",
+         "n": 1,
+         "yds": 5,
+         "td": 0
+        },
+        {
+         "id": "4693370",
+         "name": "Riley Nowakowski",
+         "n": 1,
+         "yds": 4,
+         "td": 0
+        }
+       ]
+      },
+      {
+       "event": "401752870",
+       "date": "2025-10-11",
+       "opp": "Oregon",
+       "opp_id": "2483",
+       "site": "A",
+       "pf": 30,
+       "pa": 20,
+       "result": "W 30-20",
+       "total_yds": 326,
+       "rush_yds": 111,
+       "pass_yds": 215,
+       "to_lost": 1,
+       "to_gained": 2,
+       "third_conv": 5,
+       "third_att": 14,
+       "rush": [
+        {
+         "id": "4688835",
+         "name": "Roman Hemby",
+         "n": 19,
+         "yds": 70,
+         "td": 2
+        },
+        {
+         "id": "4837248",
+         "name": "Fernando Mendoza",
+         "n": 6,
+         "yds": 31,
+         "td": 0
+        },
+        {
+         "id": "4696044",
+         "name": "Kaelon Black",
+         "n": 7,
+         "yds": 31,
+         "td": 0
+        },
+        {
+         "id": "4723820",
+         "name": "Omar Cooper Jr.",
+         "n": 1,
+         "yds": -4,
+         "td": 0
+        }
+       ],
+       "rec": [
+        {
+         "id": "5088338",
+         "name": "Elijah Sarratt",
+         "n": 8,
+         "yds": 121,
+         "td": 1
+        },
+        {
+         "id": "4723820",
+         "name": "Omar Cooper Jr.",
+         "n": 7,
+         "yds": 58,
+         "td": 0
+        },
+        {
+         "id": "4688835",
+         "name": "Roman Hemby",
+         "n": 2,
+         "yds": 25,
+         "td": 0
+        },
+        {
+         "id": "4693370",
+         "name": "Riley Nowakowski",
+         "n": 3,
+         "yds": 11,
+         "td": 0
+        }
+       ]
+      },
+      {
+       "event": "401752878",
+       "date": "2025-10-18",
+       "opp": "Michigan State",
+       "opp_id": "127",
+       "site": "H",
+       "pf": 38,
+       "pa": 13,
+       "result": "W 38-13",
+       "total_yds": 464,
+       "rush_yds": 132,
+       "pass_yds": 332,
+       "to_lost": 0,
+       "to_gained": 0,
+       "third_conv": 5,
+       "third_att": 8,
+       "rush": [
+        {
+         "id": "4696044",
+         "name": "Kaelon Black",
+         "n": 10,
+         "yds": 64,
+         "td": 1
+        },
+        {
+         "id": "5142140",
+         "name": "Khobie Martin",
+         "n": 6,
+         "yds": 40,
+         "td": 0
+        },
+        {
+         "id": "4837248",
+         "name": "Fernando Mendoza",
+         "n": 5,
+         "yds": 18,
+         "td": 0
+        },
+        {
+         "id": "4688835",
+         "name": "Roman Hemby",
+         "n": 6,
+         "yds": 11,
+         "td": 0
+        }
+       ],
+       "rec": [
+        {
+         "id": "4723820",
+         "name": "Omar Cooper Jr.",
+         "n": 8,
+         "yds": 115,
+         "td": 1
+        },
+        {
+         "id": "5088338",
+         "name": "Elijah Sarratt",
+         "n": 4,
+         "yds": 70,
+         "td": 2
+        },
+        {
+         "id": "4686093",
+         "name": "E.J. Williams Jr.",
+         "n": 5,
+         "yds": 59,
+         "td": 1
+        },
+        {
+         "id": "4693370",
+         "name": "Riley Nowakowski",
+         "n": 3,
+         "yds": 54,
+         "td": 0
+        },
+        {
+         "id": "4688835",
+         "name": "Roman Hemby",
+         "n": 2,
+         "yds": 19,
+         "td": 0
+        },
+        {
+         "id": "4832806",
+         "name": "Jonathan Brady",
+         "n": 2,
+         "yds": 15,
+         "td": 0
+        }
+       ]
+      },
+      {
+       "event": "401752885",
+       "date": "2025-10-25",
+       "opp": "UCLA",
+       "opp_id": "26",
+       "site": "H",
+       "pf": 56,
+       "pa": 6,
+       "result": "W 56-6",
+       "total_yds": 475,
+       "rush_yds": 262,
+       "pass_yds": 213,
+       "to_lost": 2,
+       "to_gained": 3,
+       "third_conv": 12,
+       "third_att": 16,
+       "rush": [
+        {
+         "id": "4688835",
+         "name": "Roman Hemby",
+         "n": 17,
+         "yds": 81,
+         "td": 2
+        },
+        {
+         "id": "4696044",
+         "name": "Kaelon Black",
+         "n": 10,
+         "yds": 70,
+         "td": 0
+        },
+        {
+         "id": "4837248",
+         "name": "Fernando Mendoza",
+         "n": 5,
+         "yds": 45,
+         "td": 1
+        },
+        {
+         "id": "5191162",
+         "name": "Alberto Mendoza",
+         "n": 4,
+         "yds": 39,
+         "td": 1
+        },
+        {
+         "id": "5142140",
+         "name": "Khobie Martin",
+         "n": 9,
+         "yds": 26,
+         "td": 0
+        },
+        {
+         "id": "4366640",
+         "name": "Solomon Vanhorse",
+         "n": 1,
+         "yds": 2,
+         "td": 0
+        }
+       ],
+       "rec": [
+        {
+         "id": "4686093",
+         "name": "E.J. Williams Jr.",
+         "n": 5,
+         "yds": 109,
+         "td": 2
+        },
+        {
+         "id": "5146735",
+         "name": "Charlie Becker",
+         "n": 2,
+         "yds": 35,
+         "td": 0
+        },
+        {
+         "id": "4693370",
+         "name": "Riley Nowakowski",
+         "n": 3,
+         "yds": 17,
+         "td": 0
+        },
+        {
+         "id": "5142140",
+         "name": "Khobie Martin",
+         "n": 1,
+         "yds": 14,
+         "td": 0
+        },
+        {
+         "id": "4688835",
+         "name": "Roman Hemby",
+         "n": 1,
+         "yds": 11,
+         "td": 0
+        },
+        {
+         "id": "4696044",
+         "name": "Kaelon Black",
+         "n": 1,
+         "yds": 10,
+         "td": 0
+        },
+        {
+         "id": "5088338",
+         "name": "Elijah Sarratt",
+         "n": 2,
+         "yds": 6,
+         "td": 1
+        },
+        {
+         "id": "4832806",
+         "name": "Jonathan Brady",
+         "n": 1,
+         "yds": 5,
+         "td": 0
+        },
+        {
+         "id": "5104817",
+         "name": "Jackson Wasserstrom",
+         "n": 1,
+         "yds": 4,
+         "td": 0
+        },
+        {
+         "id": "4723820",
+         "name": "Omar Cooper Jr.",
+         "n": 2,
+         "yds": 2,
+         "td": 0
+        }
+       ]
+      },
+      {
+       "event": "401752887",
+       "date": "2025-11-01",
+       "opp": "Maryland",
+       "opp_id": "120",
+       "site": "A",
+       "pf": 55,
+       "pa": 10,
+       "result": "W 55-10",
+       "total_yds": 588,
+       "rush_yds": 367,
+       "pass_yds": 221,
+       "to_lost": 1,
+       "to_gained": 5,
+       "third_conv": 8,
+       "third_att": 13,
+       "rush": [
+        {
+         "id": "4696044",
+         "name": "Kaelon Black",
+         "n": 14,
+         "yds": 110,
+         "td": 1
+        },
+        {
+         "id": "4688835",
+         "name": "Roman Hemby",
+         "n": 18,
+         "yds": 88,
+         "td": 1
+        },
+        {
+         "id": "5142140",
+         "name": "Khobie Martin",
+         "n": 11,
+         "yds": 80,
+         "td": 1
+        },
+        {
+         "id": "5191162",
+         "name": "Alberto Mendoza",
+         "n": 1,
+         "yds": 53,
+         "td": 0
+        },
+        {
+         "id": "4837248",
+         "name": "Fernando Mendoza",
+         "n": 4,
+         "yds": 24,
+         "td": 1
+        },
+        {
+         "id": "4366640",
+         "name": "Solomon Vanhorse",
+         "n": 2,
+         "yds": 14,
+         "td": 0
+        }
+       ],
+       "rec": [
+        {
+         "id": "4723820",
+         "name": "Omar Cooper Jr.",
+         "n": 7,
+         "yds": 86,
+         "td": 1
+        },
+        {
+         "id": "5146735",
+         "name": "Charlie Becker",
+         "n": 1,
+         "yds": 52,
+         "td": 0
+        },
+        {
+         "id": "4693370",
+         "name": "Riley Nowakowski",
+         "n": 2,
+         "yds": 22,
+         "td": 0
+        },
+        {
+         "id": "4686093",
+         "name": "E.J. Williams Jr.",
+         "n": 2,
+         "yds": 15,
+         "td": 0
+        },
+        {
+         "id": "5209424",
+         "name": "Lebron Bond",
+         "n": 1,
+         "yds": 14,
+         "td": 0
+        },
+        {
+         "id": "4685573",
+         "name": "Holden Staes",
+         "n": 1,
+         "yds": 13,
+         "td": 0
+        },
+        {
+         "id": "4688835",
+         "name": "Roman Hemby",
+         "n": 1,
+         "yds": 13,
+         "td": 0
+        },
+        {
+         "id": "4832806",
+         "name": "Jonathan Brady",
+         "n": 1,
+         "yds": 6,
+         "td": 1
+        }
+       ]
+      },
+      {
+       "event": "401752893",
+       "date": "2025-11-08",
+       "opp": "Penn State",
+       "opp_id": "213",
+       "site": "A",
+       "pf": 27,
+       "pa": 24,
+       "result": "W 27-24",
+       "total_yds": 326,
+       "rush_yds": 108,
+       "pass_yds": 218,
+       "to_lost": 1,
+       "to_gained": 2,
+       "third_conv": 5,
+       "third_att": 12,
+       "rush": [
+        {
+         "id": "4688835",
+         "name": "Roman Hemby",
+         "n": 12,
+         "yds": 55,
+         "td": 0
+        },
+        {
+         "id": "4696044",
+         "name": "Kaelon Black",
+         "n": 12,
+         "yds": 32,
+         "td": 1
+        },
+        {
+         "id": "4837248",
+         "name": "Fernando Mendoza",
+         "n": 6,
+         "yds": 20,
+         "td": 1
+        },
+        {
+         "id": "5142140",
+         "name": "Khobie Martin",
+         "n": 1,
+         "yds": 1,
+         "td": 0
+        }
+       ],
+       "rec": [
+        {
+         "id": "5146735",
+         "name": "Charlie Becker",
+         "n": 7,
+         "yds": 118,
+         "td": 0
+        },
+        {
+         "id": "4693370",
+         "name": "Riley Nowakowski",
+         "n": 3,
+         "yds": 51,
+         "td": 0
+        },
+        {
+         "id": "4723820",
+         "name": "Omar Cooper Jr.",
+         "n": 6,
+         "yds": 32,
+         "td": 1
+        },
+        {
+         "id": "4686093",
+         "name": "E.J. Williams Jr.",
+         "n": 2,
+         "yds": 16,
+         "td": 0
+        },
+        {
+         "id": "4688835",
+         "name": "Roman Hemby",
+         "n": 1,
+         "yds": 1,
+         "td": 0
+        }
+       ]
+      },
+      {
+       "event": "401752901",
+       "date": "2025-11-15",
+       "opp": "Wisconsin",
+       "opp_id": "275",
+       "site": "H",
+       "pf": 31,
+       "pa": 7,
+       "result": "W 31-7",
+       "total_yds": 388,
+       "rush_yds": 83,
+       "pass_yds": 305,
+       "to_lost": 0,
+       "to_gained": 2,
+       "third_conv": 7,
+       "third_att": 12,
+       "rush": [
+        {
+         "id": "4688835",
+         "name": "Roman Hemby",
+         "n": 14,
+         "yds": 58,
+         "td": 0
+        },
+        {
+         "id": "5142140",
+         "name": "Khobie Martin",
+         "n": 9,
+         "yds": 33,
+         "td": 0
+        },
+        {
+         "id": "4696044",
+         "name": "Kaelon Black",
+         "n": 6,
+         "yds": 12,
+         "td": 0
+        },
+        {
+         "id": "4366640",
+         "name": "Solomon Vanhorse",
+         "n": 1,
+         "yds": 2,
+         "td": 0
+        },
+        {
+         "id": "5191162",
+         "name": "Alberto Mendoza",
+         "n": 1,
+         "yds": 2,
+         "td": 0
+        },
+        {
+         "id": "4837248",
+         "name": "Fernando Mendoza",
+         "n": 6,
+         "yds": -24,
+         "td": 0
+        }
+       ],
+       "rec": [
+        {
+         "id": "5146735",
+         "name": "Charlie Becker",
+         "n": 5,
+         "yds": 108,
+         "td": 1
+        },
+        {
+         "id": "4693370",
+         "name": "Riley Nowakowski",
+         "n": 4,
+         "yds": 65,
+         "td": 1
+        },
+        {
+         "id": "4686093",
+         "name": "E.J. Williams Jr.",
+         "n": 5,
+         "yds": 52,
+         "td": 0
+        },
+        {
+         "id": "4723820",
+         "name": "Omar Cooper Jr.",
+         "n": 3,
+         "yds": 39,
+         "td": 1
+        },
+        {
+         "id": "4832806",
+         "name": "Jonathan Brady",
+         "n": 1,
+         "yds": 11,
+         "td": 0
+        },
+        {
+         "id": "4696044",
+         "name": "Kaelon Black",
+         "n": 1,
+         "yds": 9,
+         "td": 0
+        },
+        {
+         "id": "4688835",
+         "name": "Roman Hemby",
+         "n": 1,
+         "yds": 8,
+         "td": 0
+        },
+        {
+         "id": "4685573",
+         "name": "Holden Staes",
+         "n": 2,
+         "yds": 7,
+         "td": 1
+        },
+        {
+         "id": "5209424",
+         "name": "Lebron Bond",
+         "n": 1,
+         "yds": 6,
+         "td": 0
+        }
+       ]
+      },
+      {
+       "event": "401752924",
+       "date": "2025-11-28",
+       "opp": "Purdue",
+       "opp_id": "2509",
+       "site": "A",
+       "pf": 56,
+       "pa": 3,
+       "result": "W 56-3",
+       "total_yds": 548,
+       "rush_yds": 355,
+       "pass_yds": 193,
+       "to_lost": 0,
+       "to_gained": 2,
+       "third_conv": 4,
+       "third_att": 8,
+       "rush": [
+        {
+         "id": "4688835",
+         "name": "Roman Hemby",
+         "n": 12,
+         "yds": 152,
+         "td": 1
+        },
+        {
+         "id": "4696044",
+         "name": "Kaelon Black",
+         "n": 12,
+         "yds": 67,
+         "td": 2
+        },
+        {
+         "id": "5191162",
+         "name": "Alberto Mendoza",
+         "n": 2,
+         "yds": 59,
+         "td": 0
+        },
+        {
+         "id": "5142140",
+         "name": "Khobie Martin",
+         "n": 9,
+         "yds": 50,
+         "td": 1
+        },
+        {
+         "id": "4837248",
+         "name": "Fernando Mendoza",
+         "n": 2,
+         "yds": 27,
+         "td": 1
+        }
+       ],
+       "rec": [
+        {
+         "id": "5205460",
+         "name": "Davion Chandler",
+         "n": 1,
+         "yds": 65,
+         "td": 1
+        },
+        {
+         "id": "4723820",
+         "name": "Omar Cooper Jr.",
+         "n": 3,
+         "yds": 64,
+         "td": 1
+        },
+        {
+         "id": "5088338",
+         "name": "Elijah Sarratt",
+         "n": 3,
+         "yds": 41,
+         "td": 1
+        },
+        {
+         "id": "4832806",
+         "name": "Jonathan Brady",
+         "n": 1,
+         "yds": 11,
+         "td": 0
+        },
+        {
+         "id": "4696044",
+         "name": "Kaelon Black",
+         "n": 1,
+         "yds": 6,
+         "td": 0
+        },
+        {
+         "id": "5146735",
+         "name": "Charlie Becker",
+         "n": 1,
+         "yds": 6,
+         "td": 0
+        }
+       ]
+      },
+      {
+       "event": "401777353",
+       "date": "2025-12-06",
+       "opp": "Ohio State",
+       "opp_id": "194",
+       "site": "N",
+       "pf": 13,
+       "pa": 10,
+       "result": "W 13-10",
+       "total_yds": 340,
+       "rush_yds": 118,
+       "pass_yds": 222,
+       "to_lost": 1,
+       "to_gained": 1,
+       "third_conv": 6,
+       "third_att": 13,
+       "rush": [
+        {
+         "id": "4696044",
+         "name": "Kaelon Black",
+         "n": 16,
+         "yds": 69,
+         "td": 0
+        },
+        {
+         "id": "4688835",
+         "name": "Roman Hemby",
+         "n": 13,
+         "yds": 52,
+         "td": 0
+        },
+        {
+         "id": "4837248",
+         "name": "Fernando Mendoza",
+         "n": 5,
+         "yds": -3,
+         "td": 0
+        }
+       ],
+       "rec": [
+        {
+         "id": "5146735",
+         "name": "Charlie Becker",
+         "n": 6,
+         "yds": 126,
+         "td": 0
+        },
+        {
+         "id": "5088338",
+         "name": "Elijah Sarratt",
+         "n": 3,
+         "yds": 37,
+         "td": 1
+        },
+        {
+         "id": "4693370",
+         "name": "Riley Nowakowski",
+         "n": 2,
+         "yds": 20,
+         "td": 0
+        },
+        {
+         "id": "4832806",
+         "name": "Jonathan Brady",
+         "n": 2,
+         "yds": 20,
+         "td": 0
+        },
+        {
+         "id": "4686093",
+         "name": "E.J. Williams Jr.",
+         "n": 1,
+         "yds": 12,
+         "td": 0
+        },
+        {
+         "id": "4688835",
+         "name": "Roman Hemby",
+         "n": 1,
+         "yds": 7,
+         "td": 0
+        }
+       ]
+      },
+      {
+       "event": "401769072",
+       "date": "2026-01-01",
+       "opp": "Alabama",
+       "opp_id": "333",
+       "site": "N",
+       "pf": 38,
+       "pa": 3,
+       "result": "W 38-3",
+       "total_yds": 407,
+       "rush_yds": 215,
+       "pass_yds": 192,
+       "to_lost": 0,
+       "to_gained": 1,
+       "third_conv": 9,
+       "third_att": 14,
+       "rush": [
+        {
+         "id": "4696044",
+         "name": "Kaelon Black",
+         "n": 15,
+         "yds": 99,
+         "td": 1
+        },
+        {
+         "id": "4688835",
+         "name": "Roman Hemby",
+         "n": 18,
+         "yds": 89,
+         "td": 1
+        },
+        {
+         "id": "4837248",
+         "name": "Fernando Mendoza",
+         "n": 8,
+         "yds": 16,
+         "td": 0
+        },
+        {
+         "id": "5142140",
+         "name": "Khobie Martin",
+         "n": 4,
+         "yds": 11,
+         "td": 0
+        },
+        {
+         "id": "5191162",
+         "name": "Alberto Mendoza",
+         "n": 2,
+         "yds": 6,
+         "td": 0
+        }
+       ],
+       "rec": [
+        {
+         "id": "5146735",
+         "name": "Charlie Becker",
+         "n": 2,
+         "yds": 51,
+         "td": 1
+        },
+        {
+         "id": "4723820",
+         "name": "Omar Cooper Jr.",
+         "n": 3,
+         "yds": 45,
+         "td": 1
+        },
+        {
+         "id": "5088338",
+         "name": "Elijah Sarratt",
+         "n": 4,
+         "yds": 40,
+         "td": 1
+        },
+        {
+         "id": "4693370",
+         "name": "Riley Nowakowski",
+         "n": 3,
+         "yds": 36,
+         "td": 0
+        },
+        {
+         "id": "4696044",
+         "name": "Kaelon Black",
+         "n": 1,
+         "yds": 11,
+         "td": 0
+        },
+        {
+         "id": "4686093",
+         "name": "E.J. Williams Jr.",
+         "n": 1,
+         "yds": 9,
+         "td": 0
+        }
+       ]
+      },
+      {
+       "event": "401769074",
+       "date": "2026-01-09",
+       "opp": "Oregon",
+       "opp_id": "2483",
+       "site": "N",
+       "pf": 56,
+       "pa": 22,
+       "result": "W 56-22",
+       "total_yds": 362,
+       "rush_yds": 185,
+       "pass_yds": 177,
+       "to_lost": 0,
+       "to_gained": 3,
+       "third_conv": 11,
+       "third_att": 14,
+       "rush": [
+        {
+         "id": "4696044",
+         "name": "Kaelon Black",
+         "n": 12,
+         "yds": 63,
+         "td": 2
+        },
+        {
+         "id": "4688835",
+         "name": "Roman Hemby",
+         "n": 17,
+         "yds": 53,
+         "td": 0
+        },
+        {
+         "id": "5142140",
+         "name": "Khobie Martin",
+         "n": 4,
+         "yds": 42,
+         "td": 0
+        },
+        {
+         "id": "4837248",
+         "name": "Fernando Mendoza",
+         "n": 6,
+         "yds": 28,
+         "td": 0
+        }
+       ],
+       "rec": [
+        {
+         "id": "5088338",
+         "name": "Elijah Sarratt",
+         "n": 7,
+         "yds": 75,
+         "td": 2
+        },
+        {
+         "id": "5146735",
+         "name": "Charlie Becker",
+         "n": 2,
+         "yds": 48,
+         "td": 1
+        },
+        {
+         "id": "4693370",
+         "name": "Riley Nowakowski",
+         "n": 2,
+         "yds": 18,
+         "td": 0
+        },
+        {
+         "id": "4723820",
+         "name": "Omar Cooper Jr.",
+         "n": 3,
+         "yds": 17,
+         "td": 1
+        },
+        {
+         "id": "4686093",
+         "name": "E.J. Williams Jr.",
+         "n": 1,
+         "yds": 13,
+         "td": 1
+        },
+        {
+         "id": "5118340",
+         "name": "D'Angelo Ponds",
+         "n": 1,
+         "yds": 6,
+         "td": 0
+        },
+        {
+         "id": "4688835",
+         "name": "Roman Hemby",
+         "n": 1,
+         "yds": 0,
+         "td": 0
+        }
+       ]
+      },
+      {
+       "event": "401769076",
+       "date": "2026-01-19",
+       "opp": "Miami",
+       "opp_id": "2390",
+       "site": "H",
+       "pf": 27,
+       "pa": 21,
+       "result": "W 27-21",
+       "total_yds": 317,
+       "rush_yds": 131,
+       "pass_yds": 186,
+       "to_lost": 0,
+       "to_gained": 1,
+       "third_conv": 6,
+       "third_att": 16,
+       "rush": [
+        {
+         "id": "4696044",
+         "name": "Kaelon Black",
+         "n": 17,
+         "yds": 79,
+         "td": 0
+        },
+        {
+         "id": "4688835",
+         "name": "Roman Hemby",
+         "n": 19,
+         "yds": 60,
+         "td": 0
+        },
+        {
+         "id": "4693370",
+         "name": "Riley Nowakowski",
+         "n": 1,
+         "yds": 1,
+         "td": 1
+        },
+        {
+         "id": "4837248",
+         "name": "Fernando Mendoza",
+         "n": 7,
+         "yds": -8,
+         "td": 1
+        }
+       ],
+       "rec": [
+        {
+         "id": "4723820",
+         "name": "Omar Cooper Jr.",
+         "n": 5,
+         "yds": 71,
+         "td": 0
+        },
+        {
+         "id": "5146735",
+         "name": "Charlie Becker",
+         "n": 4,
+         "yds": 65,
+         "td": 0
+        },
+        {
+         "id": "5088338",
+         "name": "Elijah Sarratt",
+         "n": 3,
+         "yds": 28,
+         "td": 0
+        },
+        {
+         "id": "4693370",
+         "name": "Riley Nowakowski",
+         "n": 2,
+         "yds": 17,
+         "td": 0
+        },
+        {
+         "id": "4688835",
+         "name": "Roman Hemby",
+         "n": 2,
+         "yds": 5,
+         "td": 0
+        }
+       ]
+      }
+     ],
+     "complete": true,
+     "retrieved_at": "2026-10-11T01:29+00:00",
+     "check": "cfbstats season totals matched through 2026-01-19",
+     "cfbstats_url": "https://cfbstats.com/2025/team/306/index.html"
+    },
+    "2026": {
+     "games": [
+      {
+       "event": "401858425",
+       "date": "2026-09-05",
+       "opp": "North Texas",
+       "opp_id": "249",
+       "site": "H",
+       "pf": 52,
+       "pa": 16,
+       "result": "W 52-16",
+       "total_yds": 365,
+       "rush_yds": 134,
+       "pass_yds": 231,
+       "to_lost": 0,
+       "to_gained": 1,
+       "third_conv": 5,
+       "third_att": 9,
+       "rush": [
+        {
+         "id": "5146724",
+         "name": "Turbo Richard",
+         "n": 15,
+         "yds": 58,
+         "td": 2
+        },
+        {
+         "id": "4695867",
+         "name": "Grant Wilson",
+         "n": 1,
+         "yds": 43,
+         "td": 1
+        },
+        {
+         "id": "5091725",
+         "name": "Lee Beebe Jr.",
+         "n": 14,
+         "yds": 33,
+         "td": 0
+        }
+       ],
+       "rec": [
+        {
+         "id": "5146735",
+         "name": "Charlie Becker",
+         "n": 4,
+         "yds": 64,
+         "td": 2
+        },
+        {
+         "id": "5205460",
+         "name": "Davion Chandler",
+         "n": 1,
+         "yds": 42,
+         "td": 1
+        },
+        {
+         "id": "5146724",
+         "name": "Turbo Richard",
+         "n": 1,
+         "yds": 38,
+         "td": 0
+        },
+        {
+         "id": "4685464",
+         "name": "Tyler Morris",
+         "n": 3,
+         "yds": 35,
+         "td": 0
+        },
+        {
+         "id": "5142604",
+         "name": "Brock Schott",
+         "n": 1,
+         "yds": 25,
+         "td": 0
+        },
+        {
+         "id": "5079600",
+         "name": "Nick Marsh",
+         "n": 2,
+         "yds": 17,
+         "td": 1
+        },
+        {
+         "id": "4685516",
+         "name": "Shazz Preston",
+         "n": 1,
+         "yds": 10,
+         "td": 0
+        }
+       ]
+      },
+      {
+       "event": "401858439",
+       "date": "2026-09-12",
+       "opp": "Howard",
+       "opp_id": "47",
+       "site": "H",
+       "pf": 55,
+       "pa": 0,
+       "result": "W 55-0",
+       "total_yds": 505,
+       "rush_yds": 296,
+       "pass_yds": 209,
+       "to_lost": 1,
+       "to_gained": 1,
+       "third_conv": 7,
+       "third_att": 10,
+       "rush": [
+        {
+         "id": "5091725",
+         "name": "Lee Beebe Jr.",
+         "n": 16,
+         "yds": 112,
+         "td": 0
+        },
+        {
+         "id": "5146724",
+         "name": "Turbo Richard",
+         "n": 11,
+         "yds": 108,
+         "td": 1
+        },
+        {
+         "id": "5214648",
+         "name": "Jayreon Campbell",
+         "n": 5,
+         "yds": 36,
+         "td": 0
+        },
+        {
+         "id": "4685401",
+         "name": "Josh Hoover",
+         "n": 6,
+         "yds": 18,
+         "td": 0
+        },
+        {
+         "id": "5164320",
+         "name": "Sean Cuono",
+         "n": 6,
+         "yds": 16,
+         "td": 0
+        },
+        {
+         "id": "4695867",
+         "name": "Grant Wilson",
+         "n": 2,
+         "yds": 6,
+         "td": 0
+        }
+       ],
+       "rec": [
+        {
+         "id": "5146735",
+         "name": "Charlie Becker",
+         "n": 3,
+         "yds": 81,
+         "td": 3
+        },
+        {
+         "id": "5079600",
+         "name": "Nick Marsh",
+         "n": 2,
+         "yds": 71,
+         "td": 1
+        },
+        {
+         "id": "4685516",
+         "name": "Shazz Preston",
+         "n": 1,
+         "yds": 39,
+         "td": 1
+        },
+        {
+         "id": "5104817",
+         "name": "Jackson Wasserstrom",
+         "n": 1,
+         "yds": 10,
+         "td": 0
+        },
+        {
+         "id": "5146724",
+         "name": "Turbo Richard",
+         "n": 1,
+         "yds": 5,
+         "td": 0
+        },
+        {
+         "id": "5205460",
+         "name": "Davion Chandler",
+         "n": 1,
+         "yds": 3,
+         "td": 1
+        }
+       ]
+      },
+      {
+       "event": "401858449",
+       "date": "2026-09-19",
+       "opp": "Western Kentucky",
+       "opp_id": "98",
+       "site": "H",
+       "pf": 38,
+       "pa": 0,
+       "result": "W 38-0",
+       "total_yds": 513,
+       "rush_yds": 233,
+       "pass_yds": 280,
+       "to_lost": 0,
+       "to_gained": 1,
+       "third_conv": 2,
+       "third_att": 10,
+       "rush": [
+        {
+         "id": "5146724",
+         "name": "Turbo Richard",
+         "n": 15,
+         "yds": 149,
+         "td": 1
+        },
+        {
+         "id": "5091725",
+         "name": "Lee Beebe Jr.",
+         "n": 17,
+         "yds": 50,
+         "td": 2
+        },
+        {
+         "id": "5164320",
+         "name": "Sean Cuono",
+         "n": 5,
+         "yds": 29,
+         "td": 0
+        },
+        {
+         "id": "5214648",
+         "name": "Jayreon Campbell",
+         "n": 1,
+         "yds": 7,
+         "td": 0
+        },
+        {
+         "id": "4685401",
+         "name": "Josh Hoover",
+         "n": 2,
+         "yds": 2,
+         "td": 0
+        },
+        {
+         "id": "4695867",
+         "name": "Grant Wilson",
+         "n": 1,
+         "yds": -4,
+         "td": 0
+        }
+       ],
+       "rec": [
+        {
+         "id": "5146735",
+         "name": "Charlie Becker",
+         "n": 5,
+         "yds": 127,
+         "td": 1
+        },
+        {
+         "id": "5079600",
+         "name": "Nick Marsh",
+         "n": 7,
+         "yds": 81,
+         "td": 0
+        },
+        {
+         "id": "4685516",
+         "name": "Shazz Preston",
+         "n": 3,
+         "yds": 32,
+         "td": 0
+        },
+        {
+         "id": "5205460",
+         "name": "Davion Chandler",
+         "n": 2,
+         "yds": 24,
+         "td": 1
+        },
+        {
+         "id": "4685464",
+         "name": "Tyler Morris",
+         "n": 1,
+         "yds": 14,
+         "td": 0
+        },
+        {
+         "id": "5091725",
+         "name": "Lee Beebe Jr.",
+         "n": 1,
+         "yds": 2,
+         "td": 0
+        }
+       ]
+      },
+      {
+       "event": "401858461",
+       "date": "2026-09-25",
+       "opp": "Northwestern",
+       "opp_id": "77",
+       "site": "H",
+       "pf": 29,
+       "pa": 23,
+       "result": "W 29-23",
+       "total_yds": 472,
+       "rush_yds": 271,
+       "pass_yds": 201,
+       "to_lost": 0,
+       "to_gained": 0,
+       "third_conv": 9,
+       "third_att": 15,
+       "rush": [
+        {
+         "id": "5091725",
+         "name": "Lee Beebe Jr.",
+         "n": 24,
+         "yds": 203,
+         "td": 1
+        },
+        {
+         "id": "5146724",
+         "name": "Turbo Richard",
+         "n": 9,
+         "yds": 68,
+         "td": 0
+        },
+        {
+         "id": "4685401",
+         "name": "Josh Hoover",
+         "n": 6,
+         "yds": 1,
+         "td": 1
+        }
+       ],
+       "rec": [
+        {
+         "id": "5146735",
+         "name": "Charlie Becker",
+         "n": 7,
+         "yds": 98,
+         "td": 0
+        },
+        {
+         "id": "5079600",
+         "name": "Nick Marsh",
+         "n": 5,
+         "yds": 52,
+         "td": 1
+        },
+        {
+         "id": "5205460",
+         "name": "Davion Chandler",
+         "n": 2,
+         "yds": 20,
+         "td": 0
+        },
+        {
+         "id": "4685516",
+         "name": "Shazz Preston",
+         "n": 2,
+         "yds": 18,
+         "td": 0
+        },
+        {
+         "id": "5216524",
+         "name": "Andrew Barker",
+         "n": 1,
+         "yds": 6,
+         "td": 0
+        },
+        {
+         "id": "4685464",
+         "name": "Tyler Morris",
+         "n": 1,
+         "yds": 5,
+         "td": 0
+        },
+        {
+         "id": "5091725",
+         "name": "Lee Beebe Jr.",
+         "n": 1,
+         "yds": 2,
+         "td": 0
+        }
+       ]
+      },
+      {
+       "event": "401858477",
+       "date": "2026-10-03",
+       "opp": "Rutgers",
+       "opp_id": "164",
+       "site": "A",
+       "pf": 47,
+       "pa": 15,
+       "result": "W 47-15",
+       "total_yds": 593,
+       "rush_yds": 329,
+       "pass_yds": 264,
+       "to_lost": 0,
+       "to_gained": 0,
+       "third_conv": 5,
+       "third_att": 10,
+       "rush": [
+        {
+         "id": "5146724",
+         "name": "Turbo Richard",
+         "n": 13,
+         "yds": 204,
+         "td": 1
+        },
+        {
+         "id": "5091725",
+         "name": "Lee Beebe Jr.",
+         "n": 18,
+         "yds": 122,
+         "td": 1
+        },
+        {
+         "id": "5214648",
+         "name": "Jayreon Campbell",
+         "n": 2,
+         "yds": 7,
+         "td": 0
+        },
+        {
+         "id": "5164320",
+         "name": "Sean Cuono",
+         "n": 2,
+         "yds": 1,
+         "td": 0
+        },
+        {
+         "id": "4685401",
+         "name": "Josh Hoover",
+         "n": 3,
+         "yds": -3,
+         "td": 0
+        }
+       ],
+       "rec": [
+        {
+         "id": "5079600",
+         "name": "Nick Marsh",
+         "n": 7,
+         "yds": 120,
+         "td": 1
+        },
+        {
+         "id": "5146735",
+         "name": "Charlie Becker",
+         "n": 8,
+         "yds": 107,
+         "td": 2
+        },
+        {
+         "id": "4685516",
+         "name": "Shazz Preston",
+         "n": 2,
+         "yds": 24,
+         "td": 0
+        },
+        {
+         "id": "5205460",
+         "name": "Davion Chandler",
+         "n": 2,
+         "yds": 7,
+         "td": 1
+        },
+        {
+         "id": "5146724",
+         "name": "Turbo Richard",
+         "n": 1,
+         "yds": 4,
+         "td": 0
+        },
+        {
+         "id": "4685464",
+         "name": "Tyler Morris",
+         "n": 1,
+         "yds": 2,
+         "td": 0
+        }
+       ]
+      },
+      {
+       "event": "401858481",
+       "date": "2026-10-10",
+       "opp": "Nebraska",
+       "opp_id": "158",
+       "site": "A",
+       "pf": 20,
+       "pa": 17,
+       "result": "W 20-17",
+       "total_yds": 328,
+       "rush_yds": 65,
+       "pass_yds": 263,
+       "to_lost": 0,
+       "to_gained": 1,
+       "third_conv": 1,
+       "third_att": 10,
+       "rush": [
+        {
+         "id": "5091725",
+         "name": "Lee Beebe Jr.",
+         "n": 9,
+         "yds": 31,
+         "td": 0
+        },
+        {
+         "id": "4685401",
+         "name": "Josh Hoover",
+         "n": 5,
+         "yds": 24,
+         "td": 0
+        },
+        {
+         "id": "5146724",
+         "name": "Turbo Richard",
+         "n": 8,
+         "yds": 10,
+         "td": 0
+        }
+       ],
+       "rec": [
+        {
+         "id": "5079600",
+         "name": "Nick Marsh",
+         "n": 6,
+         "yds": 187,
+         "td": 2
+        },
+        {
+         "id": "5146735",
+         "name": "Charlie Becker",
+         "n": 3,
+         "yds": 52,
+         "td": 0
+        },
+        {
+         "id": "5276970",
+         "name": "Trevor Gibbs",
+         "n": 2,
+         "yds": 21,
+         "td": 0
+        },
+        {
+         "id": "5205460",
+         "name": "Davion Chandler",
+         "n": 1,
+         "yds": 3,
+         "td": 0
+        }
+       ]
+      }
+     ],
+     "complete": false,
+     "retrieved_at": "2026-10-11T01:29+00:00",
+     "check": "not cross-checked yet: cfbstats has 5 games through 2026-10-09, ESPN 6",
+     "cfbstats_url": null
+    }
+   }
+  },
+  "251": {
+   "name": "Texas",
+   "seasons": {
+    "2026": {
+     "games": [
+      {
+       "event": "401856667",
+       "date": "2026-09-05",
+       "opp": "Texas State",
+       "opp_id": "326",
+       "site": "H",
+       "pf": 59,
+       "pa": 7,
+       "result": "W 59-7",
+       "total_yds": 516,
+       "rush_yds": 156,
+       "pass_yds": 360,
+       "to_lost": 1,
+       "to_gained": 3,
+       "third_conv": 11,
+       "third_att": 15
+      },
+      {
+       "event": "401856682",
+       "date": "2026-09-12",
+       "opp": "Ohio State",
+       "opp_id": "194",
+       "site": "H",
+       "pf": 24,
+       "pa": 23,
+       "result": "W 24-23",
+       "total_yds": 336,
+       "rush_yds": 141,
+       "pass_yds": 195,
+       "to_lost": 2,
+       "to_gained": 1,
+       "third_conv": 9,
+       "third_att": 16
+      },
+      {
+       "event": "401856693",
+       "date": "2026-09-19",
+       "opp": "UTSA",
+       "opp_id": "2636",
+       "site": "H",
+       "pf": 30,
+       "pa": 6,
+       "result": "W 30-6",
+       "total_yds": 400,
+       "rush_yds": 231,
+       "pass_yds": 169,
+       "to_lost": 0,
+       "to_gained": 1,
+       "third_conv": 7,
+       "third_att": 17
+      },
+      {
+       "event": "401856704",
+       "date": "2026-09-26",
+       "opp": "Tennessee",
+       "opp_id": "2633",
+       "site": "A",
+       "pf": 20,
+       "pa": 17,
+       "result": "W 20-17",
+       "total_yds": 262,
+       "rush_yds": 61,
+       "pass_yds": 201,
+       "to_lost": 2,
+       "to_gained": 0,
+       "third_conv": 3,
+       "third_att": 12
+      },
+      {
+       "event": "401856717",
+       "date": "2026-10-10",
+       "opp": "Oklahoma",
+       "opp_id": "201",
+       "site": "N",
+       "pf": 24,
+       "pa": 27,
+       "result": "L 24-27",
+       "total_yds": 382,
+       "rush_yds": 122,
+       "pass_yds": 260,
+       "to_lost": 2,
+       "to_gained": 0,
+       "third_conv": 3,
+       "third_att": 14
+      }
+     ],
+     "complete": false,
+     "retrieved_at": "2026-10-11T01:29+00:00",
+     "check": "not cross-checked yet: cfbstats has 4 games through 2026-10-09, ESPN 5",
+     "cfbstats_url": null
+    }
+   }
+  },
+  "61": {
+   "name": "Georgia",
+   "seasons": {
+    "2026": {
+     "games": [
+      {
+       "event": "401856658",
+       "date": "2026-09-05",
+       "opp": "Tennessee State",
+       "opp_id": "2634",
+       "site": "H",
+       "pf": 63,
+       "pa": 3,
+       "result": "W 63-3",
+       "total_yds": 660,
+       "rush_yds": 272,
+       "pass_yds": 388,
+       "to_lost": 0,
+       "to_gained": 0,
+       "third_conv": 4,
+       "third_att": 6
+      },
+      {
+       "event": "401856673",
+       "date": "2026-09-12",
+       "opp": "Western Kentucky",
+       "opp_id": "98",
+       "site": "H",
+       "pf": 70,
+       "pa": 20,
+       "result": "W 70-20",
+       "total_yds": 493,
+       "rush_yds": 234,
+       "pass_yds": 259,
+       "to_lost": 2,
+       "to_gained": 4,
+       "third_conv": 7,
+       "third_att": 12
+      },
+      {
+       "event": "401856686",
+       "date": "2026-09-19",
+       "opp": "Arkansas",
+       "opp_id": "8",
+       "site": "A",
+       "pf": 45,
+       "pa": 17,
+       "result": "W 45-17",
+       "total_yds": 464,
+       "rush_yds": 254,
+       "pass_yds": 210,
+       "to_lost": 0,
+       "to_gained": 1,
+       "third_conv": 7,
+       "third_att": 11
+      },
+      {
+       "event": "401856700",
+       "date": "2026-09-26",
+       "opp": "Oklahoma",
+       "opp_id": "201",
+       "site": "H",
+       "pf": 41,
+       "pa": 13,
+       "result": "W 41-13",
+       "total_yds": 306,
+       "rush_yds": 129,
+       "pass_yds": 177,
+       "to_lost": 2,
+       "to_gained": 4,
+       "third_conv": 3,
+       "third_att": 12
+      },
+      {
+       "event": "401856705",
+       "date": "2026-10-03",
+       "opp": "Vanderbilt",
+       "opp_id": "238",
+       "site": "H",
+       "pf": 38,
+       "pa": 14,
+       "result": "W 38-14",
+       "total_yds": 471,
+       "rush_yds": 176,
+       "pass_yds": 295,
+       "to_lost": 0,
+       "to_gained": 1,
+       "third_conv": 7,
+       "third_att": 10
+      }
+     ],
+     "complete": false,
+     "retrieved_at": "2026-10-11T01:29+00:00",
+     "check": "cfbstats season totals matched through 2026-10-09",
+     "cfbstats_url": "https://cfbstats.com/2026/team/257/index.html"
+    }
+   }
+  },
+  "87": {
+   "name": "Notre Dame",
+   "seasons": {
+    "2026": {
+     "games": [
+      {
+       "event": "401858438",
+       "date": "2026-09-06",
+       "opp": "Wisconsin",
+       "opp_id": "275",
+       "site": "N",
+       "pf": 41,
+       "pa": 13,
+       "result": "W 41-13",
+       "total_yds": 350,
+       "rush_yds": 111,
+       "pass_yds": 239,
+       "to_lost": 0,
+       "to_gained": 2,
+       "third_conv": 3,
+       "third_att": 9
+      },
+      {
+       "event": "401859184",
+       "date": "2026-09-12",
+       "opp": "Rice",
+       "opp_id": "242",
+       "site": "H",
+       "pf": 52,
+       "pa": 0,
+       "result": "W 52-0",
+       "total_yds": 478,
+       "rush_yds": 118,
+       "pass_yds": 360,
+       "to_lost": 0,
+       "to_gained": 4,
+       "third_conv": 7,
+       "third_att": 12
+      },
+      {
+       "event": "401858453",
+       "date": "2026-09-19",
+       "opp": "Michigan State",
+       "opp_id": "127",
+       "site": "H",
+       "pf": 27,
+       "pa": 10,
+       "result": "W 27-10",
+       "total_yds": 395,
+       "rush_yds": 161,
+       "pass_yds": 234,
+       "to_lost": 0,
+       "to_gained": 2,
+       "third_conv": 4,
+       "third_att": 12
+      },
+      {
+       "event": "401858467",
+       "date": "2026-09-26",
+       "opp": "Purdue",
+       "opp_id": "2509",
+       "site": "A",
+       "pf": 49,
+       "pa": 10,
+       "result": "W 49-10",
+       "total_yds": 444,
+       "rush_yds": 177,
+       "pass_yds": 267,
+       "to_lost": 1,
+       "to_gained": 1,
+       "third_conv": 3,
+       "third_att": 8
+      },
+      {
+       "event": "401858250",
+       "date": "2026-10-03",
+       "opp": "North Carolina",
+       "opp_id": "153",
+       "site": "A",
+       "pf": 37,
+       "pa": 26,
+       "result": "W 37-26",
+       "total_yds": 475,
+       "rush_yds": 241,
+       "pass_yds": 234,
+       "to_lost": 0,
+       "to_gained": 2,
+       "third_conv": 4,
+       "third_att": 11
+      },
+      {
+       "event": "401858257",
+       "date": "2026-10-10",
+       "opp": "Stanford",
+       "opp_id": "24",
+       "site": "H",
+       "pf": 58,
+       "pa": 7,
+       "result": "W 58-7",
+       "total_yds": 598,
+       "rush_yds": 361,
+       "pass_yds": 237,
+       "to_lost": 0,
+       "to_gained": 3,
+       "third_conv": 8,
+       "third_att": 13
+      }
+     ],
+     "complete": false,
+     "retrieved_at": "2026-10-11T01:29+00:00",
+     "check": "not cross-checked yet: cfbstats has 5 games through 2026-10-09, ESPN 6",
+     "cfbstats_url": null
+    }
+   }
+  },
+  "2390": {
+   "name": "Miami",
+   "seasons": {
+    "2026": {
+     "games": [
+      {
+       "event": "401858206",
+       "date": "2026-09-04",
+       "opp": "Stanford",
+       "opp_id": "24",
+       "site": "A",
+       "pf": 45,
+       "pa": 6,
+       "result": "W 45-6",
+       "total_yds": 549,
+       "rush_yds": 121,
+       "pass_yds": 428,
+       "to_lost": 1,
+       "to_gained": 0,
+       "third_conv": 8,
+       "third_att": 11
+      },
+      {
+       "event": "401858213",
+       "date": "2026-09-10",
+       "opp": "Florida A&M",
+       "opp_id": "50",
+       "site": "H",
+       "pf": 77,
+       "pa": 7,
+       "result": "W 77-7",
+       "total_yds": 856,
+       "rush_yds": 430,
+       "pass_yds": 426,
+       "to_lost": 1,
+       "to_gained": 0,
+       "third_conv": 1,
+       "third_att": 3
+      },
+      {
+       "event": "401858226",
+       "date": "2026-09-18",
+       "opp": "Wake Forest",
+       "opp_id": "154",
+       "site": "A",
+       "pf": 33,
+       "pa": 20,
+       "result": "W 33-20",
+       "total_yds": 378,
+       "rush_yds": 158,
+       "pass_yds": 220,
+       "to_lost": 0,
+       "to_gained": 1,
+       "third_conv": 5,
+       "third_att": 13
+      },
+      {
+       "event": "401858238",
+       "date": "2026-09-26",
+       "opp": "Central Michigan",
+       "opp_id": "2117",
+       "site": "H",
+       "pf": 52,
+       "pa": 3,
+       "result": "W 52-3",
+       "total_yds": 572,
+       "rush_yds": 201,
+       "pass_yds": 371,
+       "to_lost": 0,
+       "to_gained": 3,
+       "third_conv": 6,
+       "third_att": 9
+      },
+      {
+       "event": "401858249",
+       "date": "2026-10-03",
+       "opp": "Clemson",
+       "opp_id": "228",
+       "site": "A",
+       "pf": 41,
+       "pa": 13,
+       "result": "W 41-13",
+       "total_yds": 419,
+       "rush_yds": 192,
+       "pass_yds": 227,
+       "to_lost": 0,
+       "to_gained": 2,
+       "third_conv": 4,
+       "third_att": 11
+      }
+     ],
+     "complete": false,
+     "retrieved_at": "2026-10-11T01:29+00:00",
+     "check": "cfbstats season totals matched through 2026-10-09",
+     "cfbstats_url": "https://cfbstats.com/2026/team/415/index.html"
+    }
+   }
+  },
+  "194": {
+   "name": "Ohio State",
+   "seasons": {
+    "2026": {
+     "games": [
+      {
+       "event": "401858432",
+       "date": "2026-09-05",
+       "opp": "Ball State",
+       "opp_id": "2050",
+       "site": "H",
+       "pf": 56,
+       "pa": 3,
+       "result": "W 56-3",
+       "total_yds": 671,
+       "rush_yds": 237,
+       "pass_yds": 434,
+       "to_lost": 1,
+       "to_gained": 1,
+       "third_conv": 5,
+       "third_att": 11
+      },
+      {
+       "event": "401856682",
+       "date": "2026-09-12",
+       "opp": "Texas",
+       "opp_id": "251",
+       "site": "A",
+       "pf": 23,
+       "pa": 24,
+       "result": "L 23-24",
+       "total_yds": 372,
+       "rush_yds": 94,
+       "pass_yds": 278,
+       "to_lost": 1,
+       "to_gained": 2,
+       "third_conv": 6,
+       "third_att": 14
+      },
+      {
+       "event": "401858454",
+       "date": "2026-09-19",
+       "opp": "Kent State",
+       "opp_id": "2309",
+       "site": "H",
+       "pf": 59,
+       "pa": 3,
+       "result": "W 59-3",
+       "total_yds": 527,
+       "rush_yds": 145,
+       "pass_yds": 382,
+       "to_lost": 2,
+       "to_gained": 3,
+       "third_conv": 1,
+       "third_att": 8
+      },
+      {
+       "event": "401858465",
+       "date": "2026-09-26",
+       "opp": "Illinois",
+       "opp_id": "356",
+       "site": "H",
+       "pf": 42,
+       "pa": 19,
+       "result": "W 42-19",
+       "total_yds": 518,
+       "rush_yds": 151,
+       "pass_yds": 367,
+       "to_lost": 0,
+       "to_gained": 0,
+       "third_conv": 8,
+       "third_att": 12
+      },
+      {
+       "event": "401858473",
+       "date": "2026-10-03",
+       "opp": "Iowa",
+       "opp_id": "2294",
+       "site": "A",
+       "pf": 31,
+       "pa": 14,
+       "result": "W 31-14",
+       "total_yds": 484,
+       "rush_yds": 160,
+       "pass_yds": 324,
+       "to_lost": 0,
+       "to_gained": 2,
+       "third_conv": 8,
+       "third_att": 15
+      },
+      {
+       "event": "401858483",
+       "date": "2026-10-10",
+       "opp": "Maryland",
+       "opp_id": "120",
+       "site": "H",
+       "pf": 45,
+       "pa": 16,
+       "result": "W 45-16",
+       "total_yds": 449,
+       "rush_yds": 207,
+       "pass_yds": 242,
+       "to_lost": 2,
+       "to_gained": 0,
+       "third_conv": 5,
+       "third_att": 13
+      }
+     ],
+     "complete": false,
+     "retrieved_at": "2026-10-11T01:29+00:00",
+     "check": "not cross-checked yet: cfbstats has 5 games through 2026-10-09, ESPN 6",
+     "cfbstats_url": null
+    }
+   }
+  }
+ },
  "ap": {
   "poll": "AP Top 25",
   "week": "Week 6",
@@ -54,6 +4346,6 @@
    }
   ],
   "source_url": "https://www.espn.com/college-football/rankings",
-  "retrieved_at": "2026-10-11T01:09+00:00"
+  "retrieved_at": "2026-10-11T01:29+00:00"
  }
 }
