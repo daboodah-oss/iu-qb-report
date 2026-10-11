@@ -78,7 +78,7 @@ def skill_tab(tab, sk, nat, check, cur_season, fresh):
             players.append({"name": p["name"], "short": short_name(p["name"]), "season": season, "role": p["role"],
                             "slot": slot, "dash": di % 2 == 1, "rows": skill_rows(p["games"], ck),
                             "games": len(p["games"]), "full": skill_totals(p["games"], ck), "chosen": p.get("chosen", ""),
-                            "checked": (f"matches cfbstats season totals through {p['cfbstats_through']}" if row else
+                            "checked": (f"matches cfbstats season totals through {p['cfbstats_through']}" + (f", except {'; '.join(p['check_diff'])}" if p.get("check_diff") else "") if row else
                                         f"cfbstats not caught up yet (through {p.get('cfbstats_through')})"),
                             "source_url": p.get("cfbstats_url")})
     cur = [p for p in players if p["season"] == cur_season]

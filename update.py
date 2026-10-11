@@ -243,6 +243,25 @@ def check_team_game(g, tag):
     if g.get("result") != f"{wl} {g['pf']}-{g['pa']}": die(f"{tag}: result '{g.get('result')}' disagrees with the score")
 
 
+YARD_KEYS = {"rush_yds", "pass_yds", "total_yds", "yds"}
+LABEL = {"rush_yds": "rushing yards", "pass_yds": "passing yards", "total_yds": "total yards", "yds": "yards"}
+
+
+def compare(got, want, tag):
+    """Counts (games, points, turnovers, third downs, carries, catches, TD) must match exactly.  Season yardage may
+    differ by a hair (a late stat correction on one side): up to max(5, 0.2%) for teams or max(3, 0.5%) for players.
+    Any such difference is returned as a note that is shown on the page; anything larger is refused."""
+    notes, bad = [], {}
+    for k, v in want.items():
+        g = got.get(k)
+        if g == v: continue
+        tol = max(5, round(0.002 * abs(v))) if k in ("rush_yds", "pass_yds", "total_yds") else max(3, round(0.005 * abs(v))) if k == "yds" else 0
+        if k in YARD_KEYS and abs(g - v) <= tol: notes.append(f"{LABEL[k]} {g:,} in ESPN box scores vs {v:,} on cfbstats")
+        else: bad[k] = (g, v)
+    if bad: die(f"{tag}: ESPN box scores disagree with cfbstats season totals {bad} (ESPN, cfbstats)")
+    return notes
+
+
 def season_sums(games):
     return {"games": len(games), **{k: sum(g[k] for g in games) for k in TEAM_KEYS}}
 
@@ -257,13 +276,12 @@ def team_season(x):
     cf = x.get("cfbstats")
     if cf:
         got = season_sums(games)
-        bad = {k: (got[k], v) for k, v in cf["totals"].items() if got.get(k) != v}
-        if bad: die(f"team-season {x.get('name')} {season}: ESPN box scores disagree with cfbstats season totals {bad}")
+        diffs = compare(got, cf["totals"], f"team-season {x.get('name')} {season}")
     d = load_or("team.json", {"teams": {}, "ap": None})
     t = d["teams"].setdefault(tid, {"name": x.get("name"), "seasons": {}})
     t["name"] = x.get("name") or t.get("name")
     t["seasons"][season] = {"games": games, "complete": bool(x.get("complete")), "retrieved_at": now_iso(),
-                            "check": f"cfbstats season totals matched through {cf['through']}" if cf else x.get("check_note", "not cross-checked"),
+                            "check": (f"cfbstats season totals matched through {cf['through']}" + (f", except {'; '.join(diffs)}" if diffs else "")) if cf else x.get("check_note", "not cross-checked"),
                             "cfbstats_url": cf.get("url") if cf else None}
     keep = set(map(str, x.get("keep_teams") or [])) | {tid}
     if x.get("keep_teams") is not None: d["teams"] = {k: v for k, v in d["teams"].items() if k in keep}
@@ -297,8 +315,7 @@ def skill(x):
         row = p.get("cfbstats_row")
         if row:
             got = {k: sum(g[k] for g in p["games"]) for k in keys}
-            want = {k: row[k] for k in keys}
-            if got != want: die(f"{tag}: ESPN box scores {got} disagree with cfbstats season row {want}")
+            p["check_diff"] = compare(got, {k: row[k] for k in keys}, tag)
         out.append(p)
     d = load_or("skill.json", {})
     d[tab] = {"players": out, "retrieved_at": now_iso(), "rule": x.get("rule", "")}

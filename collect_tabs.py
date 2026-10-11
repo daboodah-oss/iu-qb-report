@@ -179,28 +179,36 @@ def team_seasons(C, U):
         cfb = ids.get(ESPN_TO_CFB.get(t["name"], t["name"]))
         jobs.append((t["team_id"], t["name"], C.SEASON, cfb))
     keep = [j[0] for j in jobs]
-    for tid, name, season, cfb in jobs:
-        stored = d["teams"].get(tid, {}).get("seasons", {}).get(str(season))
-        if stored and stored.get("complete") and str(stored.get("check", "")).startswith("cfbstats"):
-            continue  # a finished season that matched cfbstats never changes
-        have = {g["event"]: g for g in (stored or {}).get("games", [])}
-        rows = []
-        for g in espn_completed(C, tid, season):
-            old = have.get(g["event"])
-            rows.append(old if old and (tid != IU_ESPN or "rush" in old) else box_row(C, g, tid, with_players=(tid == IU_ESPN)))
-        if not rows: C.log(f"[team] {name} {season}: no completed games yet"); continue
-        cf, note = None, "not cross-checked: no cfbstats page found for this team"
-        if cfb:
-            try:
-                tt = cfb_team_totals(C, season, cfb)
-                if tt["totals"]["games"] == len(rows): cf = tt
-                else: note = f"not cross-checked yet: cfbstats has {tt['totals']['games']} games through {tt['through']}, ESPN {len(rows)}"
-            except Exception as e:
-                note = f"not cross-checked: cfbstats season totals unreadable ({e})"
-                if season < C.SEASON: raise
-        U.team_season({"team_id": tid, "name": name, "season": season, "games": rows, "cfbstats": cf, "check_note": note,
-                       "complete": season < C.SEASON, "keep_teams": keep})
-        C.log(f"[team] {name} {season}: {len(rows)} games; " + (f"matches cfbstats through {cf['through']}" if cf else note))
+    failed = []
+    for job in jobs:
+        try: team_job(C, U, d, keep, *job)
+        except SystemExit as e: failed.append(f"{job[1]} {job[2]} (refused)")
+        except Exception as e: failed.append(f"{job[1]} {job[2]} ({e})"); C.log(f"[team] {job[1]} {job[2]} FAILED: {e}")
+    if failed: raise ValueError("team seasons not stored: " + "; ".join(failed))
+
+
+def team_job(C, U, d, keep, tid, name, season, cfb):
+    stored = d["teams"].get(tid, {}).get("seasons", {}).get(str(season))
+    if stored and stored.get("complete") and str(stored.get("check", "")).startswith("cfbstats"):
+        return  # a finished season that matched cfbstats never changes
+    have = {g["event"]: g for g in (stored or {}).get("games", [])}
+    rows = []
+    for g in espn_completed(C, tid, season):
+        old = have.get(g["event"])
+        rows.append(old if old and (tid != IU_ESPN or "rush" in old) else box_row(C, g, tid, with_players=(tid == IU_ESPN)))
+    if not rows: C.log(f"[team] {name} {season}: no completed games yet"); return
+    cf, note = None, "not cross-checked: no cfbstats page found for this team"
+    if cfb:
+        try:
+            tt = cfb_team_totals(C, season, cfb)
+            if tt["totals"]["games"] == len(rows): cf = tt
+            else: note = f"not cross-checked yet: cfbstats has {tt['totals']['games']} games through {tt['through']}, ESPN {len(rows)}"
+        except Exception as e:
+            note = f"not cross-checked: cfbstats season totals unreadable ({e})"
+            if season < C.SEASON: raise
+    U.team_season({"team_id": tid, "name": name, "season": season, "games": rows, "cfbstats": cf, "check_note": note,
+                   "complete": season < C.SEASON, "keep_teams": keep})
+    C.log(f"[team] {name} {season}: {len(rows)} games; " + (f"matches cfbstats through {cf['through']}" if cf else note))
 
 
 def players(C, U):
