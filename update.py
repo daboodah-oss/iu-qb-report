@@ -13,6 +13,10 @@ and merges it into data/*.json. Run `python3 update.py status` first on every ru
   cohort        {"qbs":[...]}    replace the Heisman field game logs
   opp-d         {"2026":{...}}   replace one season's opponent pass-D ranks
   next-game     {game} | null    set or clear the next scheduled IU game
+  team-season   {season block}   store one team's box-score season (must match cfbstats totals when given)
+  ap-poll       {poll}           store the latest AP Top 5 (poll name, date, teams)
+  skill         {tab, players}   store RB or WR player game logs (must match cfbstats season rows)
+  skill-national {tab, boards}   replace RB or WR national boards; upsert weekly rank history
 
 The quarterbacks come from roster.json: the newest season is the current QB,
 earlier seasons are comparison QBs. National/odds fields named hoover_* in
@@ -214,10 +218,135 @@ def next_game(x):
     g = load("games.json"); g["next_game"] = x; save("games.json", g); print("UPDATED next game:", x)
 
 
+
+# ================================================================ RB, WR and Team tabs
+TEAM_KEYS = ["pf", "pa", "total_yds", "rush_yds", "pass_yds", "to_lost", "to_gained", "third_conv", "third_att"]
+SKILL_KEYS = {"rb": ["att", "yds", "td"], "wr": ["rec", "yds", "td"]}
+
+
+def load_or(f, default):
+    return json.load(open(P(f))) if os.path.exists(P(f)) else default
+
+
+def now_iso():
+    return datetime.datetime.now().astimezone().isoformat(timespec="minutes")
+
+
+def check_team_game(g, tag):
+    need_ints(dict(g, cmp=0, att=0), TEAM_KEYS, tag)
+    datetime.date.fromisoformat(g["date"])
+    if g.get("site") not in ("H", "A", "N"): die(f"{tag}: bad site")
+    if g["total_yds"] != g["rush_yds"] + g["pass_yds"]: die(f"{tag}: total yards {g['total_yds']} != rushing {g['rush_yds']} + passing {g['pass_yds']}")
+    if not 0 <= g["third_conv"] <= g["third_att"]: die(f"{tag}: third-down conversions exceed attempts")
+    if min(g["to_lost"], g["to_gained"], g["pf"], g["pa"]) < 0: die(f"{tag}: negative count")
+    wl = "W" if g["pf"] > g["pa"] else "L" if g["pf"] < g["pa"] else "T"
+    if g.get("result") != f"{wl} {g['pf']}-{g['pa']}": die(f"{tag}: result '{g.get('result')}' disagrees with the score")
+
+
+YARD_KEYS = {"rush_yds", "pass_yds", "total_yds", "yds"}
+LABEL = {"rush_yds": "rushing yards", "pass_yds": "passing yards", "total_yds": "total yards", "yds": "yards"}
+
+
+def compare(got, want, tag):
+    """Counts (games, points, turnovers, third downs, carries, catches, TD) must match exactly.  Season yardage may
+    differ by a hair (a late stat correction on one side): up to max(5, 0.2%) for teams or max(3, 0.5%) for players.
+    Any such difference is returned as a note that is shown on the page; anything larger is refused."""
+    notes, bad = [], {}
+    for k, v in want.items():
+        g = got.get(k)
+        if g == v: continue
+        tol = max(5, round(0.002 * abs(v))) if k in ("rush_yds", "pass_yds", "total_yds") else max(3, round(0.005 * abs(v))) if k == "yds" else 0
+        if k in YARD_KEYS and abs(g - v) <= tol: notes.append(f"{LABEL[k]} {g:,} in ESPN box scores vs {v:,} on cfbstats")
+        else: bad[k] = (g, v)
+    if bad: die(f"{tag}: ESPN box scores disagree with cfbstats season totals {bad} (ESPN, cfbstats)")
+    return notes
+
+
+def season_sums(games):
+    return {"games": len(games), **{k: sum(g[k] for g in games) for k in TEAM_KEYS}}
+
+
+def team_season(x):
+    """Store one team's season of box-score rows: {team_id, name, season, games, cfbstats|None, complete}.
+    If cfbstats season totals are given they must match the sums exactly, or nothing is stored."""
+    tid, season, games = str(x["team_id"]), str(x["season"]), x.get("games") or die("team-season: no games")
+    for g in games: check_team_game(g, f"team {x.get('name')} {season} {g.get('date')}")
+    dates = [g["date"] for g in games]
+    if dates != sorted(dates) or len(set(g["event"] for g in games)) != len(games): die("team-season: games out of order or duplicated")
+    cf = x.get("cfbstats")
+    if cf:
+        got = season_sums(games)
+        diffs = compare(got, cf["totals"], f"team-season {x.get('name')} {season}")
+    d = load_or("team.json", {"teams": {}, "ap": None})
+    t = d["teams"].setdefault(tid, {"name": x.get("name"), "seasons": {}})
+    t["name"] = x.get("name") or t.get("name")
+    t["seasons"][season] = {"games": games, "complete": bool(x.get("complete")), "retrieved_at": now_iso(),
+                            "check": (f"cfbstats season totals matched through {cf['through']}" + (f", except {'; '.join(diffs)}" if diffs else "")) if cf else x.get("check_note", "not cross-checked"),
+                            "cfbstats_url": cf.get("url") if cf else None}
+    keep = set(map(str, x.get("keep_teams") or [])) | {tid}
+    if x.get("keep_teams") is not None: d["teams"] = {k: v for k, v in d["teams"].items() if k in keep}
+    save("team.json", d); print(f"STORED team {x.get('name')} {season}: {len(games)} games")
+
+
+def ap_poll(p):
+    for k in ("poll", "date", "top"):
+        if not p.get(k): die(f"ap-poll: '{k}' required")
+    datetime.date.fromisoformat(p["date"][:10])
+    ranks = [t["rank"] for t in p["top"]]
+    if ranks != sorted(ranks) or ranks[0] != 1 or len(p["top"]) < 5: die("ap-poll: need ranks 1..5 in order")
+    for t in p["top"]:
+        if not t.get("team_id") or not t.get("name"): die("ap-poll: team id and name required")
+    d = load_or("team.json", {"teams": {}, "ap": None})
+    d["ap"] = dict(p, retrieved_at=now_iso()); save("team.json", d)
+    print("STORED", p["poll"], p["date"][:10], ", ".join(f"{t['rank']} {t['name']}" for t in p["top"]))
+
+
+def skill(x):
+    """Store one tab's players: {tab, players:[{name, season, role, games, cfbstats_row|None}]}.
+    Each player's game rows must sum exactly to the cfbstats season row when one is given."""
+    tab = x.get("tab"); keys = SKILL_KEYS.get(tab) or die("skill: tab must be rb or wr")
+    out = []
+    for p in x.get("players") or die("skill: no players"):
+        tag = f"skill {tab} {p.get('name')} {p.get('season')}"
+        if not p.get("games"): die(f"{tag}: no games")
+        for g in p["games"]:
+            need_ints(dict(g, cmp=0, att=g.get("att", 0)), keys, tag)
+            datetime.date.fromisoformat(g["date"])
+        row = p.get("cfbstats_row")
+        if row:
+            got = {k: sum(g[k] for g in p["games"]) for k in keys}
+            p["check_diff"] = compare(got, {k: row[k] for k in keys}, tag)
+        out.append(p)
+    d = load_or("skill.json", {})
+    d[tab] = {"players": out, "retrieved_at": now_iso(), "rule": x.get("rule", "")}
+    save("skill.json", d); print(f"STORED {tab}: " + ", ".join(f"{p['name']} {p['season']} ({len(p['games'])} g)" for p in out))
+
+
+def skill_national(x):
+    """Replace one tab's national boards and upsert its weekly rank history."""
+    tab = x.get("tab")
+    if tab not in SKILL_KEYS: die("skill-national: tab must be rb or wr")
+    for cat, b in (x.get("boards") or die("skill-national: no boards")).items():
+        if len(b.get("top", [])) < 5: die(f"skill-national {tab} {cat}: need at least five leaders")
+        for r in b["top"]:
+            if not isinstance(r.get("rank"), int) or r["rank"] < 1: die(f"skill-national {tab} {cat}: bad rank for {r.get('name')}")
+    d = load_or("skill_national.json", {})
+    t = d.setdefault(tab, {"latest": None, "rank_history": []})
+    t["latest"] = {k: x[k] for k in ("data_through", "boards", "players")}
+    t["latest"]["retrieved_at"] = now_iso()
+    entry = {"through": x["data_through"], "ranks": {n: {c: b["players"].get(n, {}).get("rank") for c, b in x["boards"].items()} for n in x["players"]}}
+    def wk(s):
+        s = datetime.date.fromisoformat(s); return (s - datetime.timedelta(days=(s.weekday() - 1) % 7)).isoformat()
+    keep = {}
+    for e in sorted(t["rank_history"] + [entry], key=lambda e: e["through"]): keep[wk(e["through"])] = e
+    t["rank_history"] = [keep[k] for k in sorted(keep)]
+    save("skill_national.json", d); print(f"STORED {tab} national boards through {x['data_through']}")
+
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else "status"
     fn = {"status": None, "qb-game": qb_game, "hoover-game": qb_game, "backfill": backfill, "national": national, "heisman": heisman,
-          "cohort": cohort, "opp-d": opp_d, "next-game": next_game}.get(cmd)
+          "cohort": cohort, "opp-d": opp_d, "next-game": next_game,
+          "team-season": team_season, "ap-poll": ap_poll, "skill": skill, "skill-national": skill_national}.get(cmd)
     if cmd == "status": status()
     elif fn: fn(arg())
     else: print(__doc__); sys.exit(1)

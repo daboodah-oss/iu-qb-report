@@ -15,6 +15,7 @@ Sources
   opponent pass D ...... cfbstats.com team passing defense
   Heisman odds ......... BetMGM Heisman odds page (table)
   Heisman QB field ..... ESPN athlete gamelog JSON (+ ESPN search for new names)
+  RB / WR / Team tabs .. collect_tabs.py (ESPN box scores and AP poll, cfbstats cross-checks and boards)
 """
 import datetime as dt, io, json, os, re, sys, traceback
 from zoneinfo import ZoneInfo
@@ -433,6 +434,8 @@ def main():
         log(f"[schedule] ESPN finals not available: {e}")
     if os.environ.get("QUICK"):  # game-window check: do nothing unless a new IU game has gone final
         have = {x["date"] for x in U.load("games.json").get(CUR["key"], {}).get("games", [])}
+        iu = U.load_or("team.json", {"teams": {}})["teams"].get("84", {}).get("seasons", {}).get(str(SEASON), {})
+        have |= {x["date"] for x in iu.get("games", [])}  # a game the QB missed still counts as handled
         new = [g for g in (sched or []) if g["result"] and g["date"] not in have]
         if not new:
             print("quick check: no new final"); open(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".nochange"), "w").write("1")
@@ -447,6 +450,8 @@ def main():
     heisman()
     cohort()
     opp_d()
+    import collect_tabs  # RB, WR and Team tabs: AP poll, box scores, player lines, national boards
+    collect_tabs.run(sys.modules[__name__], U)
     log("FAILED sections: " + (", ".join(FAILED) if FAILED else "none"))
     open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "last_run.json"), "w").write(
         json.dumps({"at": dt.datetime.now(ET).isoformat(timespec="minutes"), "failed": FAILED, "log": LOG}, indent=1))

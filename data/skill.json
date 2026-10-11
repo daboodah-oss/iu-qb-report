@@ -1,0 +1,1613 @@
+{
+ "rb": {
+  "players": [
+   {
+    "name": "Lee Beebe Jr.",
+    "season": 2026,
+    "role": "current",
+    "espn_id": "5091725",
+    "games": [
+     {
+      "date": "2026-09-05",
+      "event": "401858425",
+      "opp": "North Texas",
+      "site": "H",
+      "result": "W 52-16",
+      "att": 14,
+      "yds": 33,
+      "td": 0
+     },
+     {
+      "date": "2026-09-12",
+      "event": "401858439",
+      "opp": "Howard",
+      "site": "H",
+      "result": "W 55-0",
+      "att": 16,
+      "yds": 112,
+      "td": 0
+     },
+     {
+      "date": "2026-09-19",
+      "event": "401858449",
+      "opp": "Western Kentucky",
+      "site": "H",
+      "result": "W 38-0",
+      "att": 17,
+      "yds": 50,
+      "td": 2
+     },
+     {
+      "date": "2026-09-25",
+      "event": "401858461",
+      "opp": "Northwestern",
+      "site": "H",
+      "result": "W 29-23",
+      "att": 24,
+      "yds": 203,
+      "td": 1
+     },
+     {
+      "date": "2026-10-03",
+      "event": "401858477",
+      "opp": "Rutgers",
+      "site": "A",
+      "result": "W 47-15",
+      "att": 18,
+      "yds": 122,
+      "td": 1
+     },
+     {
+      "date": "2026-10-10",
+      "event": "401858481",
+      "opp": "Nebraska",
+      "site": "A",
+      "result": "W 20-17",
+      "att": 9,
+      "yds": 31,
+      "td": 0
+     }
+    ],
+    "cfbstats_row": null,
+    "cfbstats_through": "2026-10-09",
+    "cfbstats_url": "https://cfbstats.com/2026/team/306/rushing/index.html",
+    "chosen": "named in roster.json"
+   },
+   {
+    "name": "Turbo Richard",
+    "season": 2026,
+    "role": "current",
+    "espn_id": "5146724",
+    "games": [
+     {
+      "date": "2026-09-05",
+      "event": "401858425",
+      "opp": "North Texas",
+      "site": "H",
+      "result": "W 52-16",
+      "att": 15,
+      "yds": 58,
+      "td": 2
+     },
+     {
+      "date": "2026-09-12",
+      "event": "401858439",
+      "opp": "Howard",
+      "site": "H",
+      "result": "W 55-0",
+      "att": 11,
+      "yds": 108,
+      "td": 1
+     },
+     {
+      "date": "2026-09-19",
+      "event": "401858449",
+      "opp": "Western Kentucky",
+      "site": "H",
+      "result": "W 38-0",
+      "att": 15,
+      "yds": 149,
+      "td": 1
+     },
+     {
+      "date": "2026-09-25",
+      "event": "401858461",
+      "opp": "Northwestern",
+      "site": "H",
+      "result": "W 29-23",
+      "att": 9,
+      "yds": 68,
+      "td": 0
+     },
+     {
+      "date": "2026-10-03",
+      "event": "401858477",
+      "opp": "Rutgers",
+      "site": "A",
+      "result": "W 47-15",
+      "att": 13,
+      "yds": 204,
+      "td": 1
+     },
+     {
+      "date": "2026-10-10",
+      "event": "401858481",
+      "opp": "Nebraska",
+      "site": "A",
+      "result": "W 20-17",
+      "att": 8,
+      "yds": 10,
+      "td": 0
+     }
+    ],
+    "cfbstats_row": null,
+    "cfbstats_through": "2026-10-09",
+    "cfbstats_url": "https://cfbstats.com/2026/team/306/rushing/index.html",
+    "chosen": "named in roster.json"
+   },
+   {
+    "name": "Roman Hemby",
+    "season": 2025,
+    "role": "comparison",
+    "espn_id": "4688835",
+    "games": [
+     {
+      "date": "2025-08-30",
+      "event": "401752806",
+      "opp": "Old Dominion",
+      "site": "H",
+      "result": "W 27-14",
+      "att": 23,
+      "yds": 111,
+      "td": 0
+     },
+     {
+      "date": "2025-09-06",
+      "event": "401752812",
+      "opp": "Kennesaw State",
+      "site": "H",
+      "result": "W 56-9",
+      "att": 9,
+      "yds": 64,
+      "td": 0
+     },
+     {
+      "date": "2025-09-12",
+      "event": "401752836",
+      "opp": "Indiana State",
+      "site": "H",
+      "result": "W 73-0",
+      "att": 4,
+      "yds": 25,
+      "td": 0
+     },
+     {
+      "date": "2025-09-20",
+      "event": "401752843",
+      "opp": "Illinois",
+      "site": "H",
+      "result": "W 63-10",
+      "att": 14,
+      "yds": 65,
+      "td": 0
+     },
+     {
+      "date": "2025-09-27",
+      "event": "401752853",
+      "opp": "Iowa",
+      "site": "A",
+      "result": "W 20-15",
+      "att": 15,
+      "yds": 86,
+      "td": 0
+     },
+     {
+      "date": "2025-10-11",
+      "event": "401752870",
+      "opp": "Oregon",
+      "site": "A",
+      "result": "W 30-20",
+      "att": 19,
+      "yds": 70,
+      "td": 2
+     },
+     {
+      "date": "2025-10-18",
+      "event": "401752878",
+      "opp": "Michigan State",
+      "site": "H",
+      "result": "W 38-13",
+      "att": 6,
+      "yds": 11,
+      "td": 0
+     },
+     {
+      "date": "2025-10-25",
+      "event": "401752885",
+      "opp": "UCLA",
+      "site": "H",
+      "result": "W 56-6",
+      "att": 17,
+      "yds": 81,
+      "td": 2
+     },
+     {
+      "date": "2025-11-01",
+      "event": "401752887",
+      "opp": "Maryland",
+      "site": "A",
+      "result": "W 55-10",
+      "att": 18,
+      "yds": 88,
+      "td": 1
+     },
+     {
+      "date": "2025-11-08",
+      "event": "401752893",
+      "opp": "Penn State",
+      "site": "A",
+      "result": "W 27-24",
+      "att": 12,
+      "yds": 55,
+      "td": 0
+     },
+     {
+      "date": "2025-11-15",
+      "event": "401752901",
+      "opp": "Wisconsin",
+      "site": "H",
+      "result": "W 31-7",
+      "att": 14,
+      "yds": 58,
+      "td": 0
+     },
+     {
+      "date": "2025-11-28",
+      "event": "401752924",
+      "opp": "Purdue",
+      "site": "A",
+      "result": "W 56-3",
+      "att": 12,
+      "yds": 152,
+      "td": 1
+     },
+     {
+      "date": "2025-12-06",
+      "event": "401777353",
+      "opp": "Ohio State",
+      "site": "N",
+      "result": "W 13-10",
+      "att": 13,
+      "yds": 52,
+      "td": 0
+     },
+     {
+      "date": "2026-01-01",
+      "event": "401769072",
+      "opp": "Alabama",
+      "site": "N",
+      "result": "W 38-3",
+      "att": 18,
+      "yds": 89,
+      "td": 1
+     },
+     {
+      "date": "2026-01-09",
+      "event": "401769074",
+      "opp": "Oregon",
+      "site": "N",
+      "result": "W 56-22",
+      "att": 17,
+      "yds": 53,
+      "td": 0
+     },
+     {
+      "date": "2026-01-19",
+      "event": "401769076",
+      "opp": "Miami",
+      "site": "H",
+      "result": "W 27-21",
+      "att": 19,
+      "yds": 60,
+      "td": 0
+     }
+    ],
+    "cfbstats_row": {
+     "name": "Roman Hemby",
+     "pos": "RB",
+     "g": 16,
+     "att": 230,
+     "yds": 1120,
+     "td": 7,
+     "cfb_id": "1125052"
+    },
+    "cfbstats_through": "2026-01-19",
+    "cfbstats_url": "https://cfbstats.com/2025/team/306/rushing/index.html",
+    "chosen": "top 2 by rushing yards",
+    "check_diff": []
+   },
+   {
+    "name": "Kaelon Black",
+    "season": 2025,
+    "role": "comparison",
+    "espn_id": "4696044",
+    "games": [
+     {
+      "date": "2025-08-30",
+      "event": "401752806",
+      "opp": "Old Dominion",
+      "site": "H",
+      "result": "W 27-14",
+      "att": 17,
+      "yds": 92,
+      "td": 1
+     },
+     {
+      "date": "2025-09-06",
+      "event": "401752812",
+      "opp": "Kennesaw State",
+      "site": "H",
+      "result": "W 56-9",
+      "att": 10,
+      "yds": 57,
+      "td": 0
+     },
+     {
+      "date": "2025-09-12",
+      "event": "401752836",
+      "opp": "Indiana State",
+      "site": "H",
+      "result": "W 73-0",
+      "att": 7,
+      "yds": 68,
+      "td": 0
+     },
+     {
+      "date": "2025-09-20",
+      "event": "401752843",
+      "opp": "Illinois",
+      "site": "H",
+      "result": "W 63-10",
+      "att": 10,
+      "yds": 89,
+      "td": 1
+     },
+     {
+      "date": "2025-09-27",
+      "event": "401752853",
+      "opp": "Iowa",
+      "site": "A",
+      "result": "W 20-15",
+      "att": 11,
+      "yds": 38,
+      "td": 0
+     },
+     {
+      "date": "2025-10-11",
+      "event": "401752870",
+      "opp": "Oregon",
+      "site": "A",
+      "result": "W 30-20",
+      "att": 7,
+      "yds": 31,
+      "td": 0
+     },
+     {
+      "date": "2025-10-18",
+      "event": "401752878",
+      "opp": "Michigan State",
+      "site": "H",
+      "result": "W 38-13",
+      "att": 10,
+      "yds": 64,
+      "td": 1
+     },
+     {
+      "date": "2025-10-25",
+      "event": "401752885",
+      "opp": "UCLA",
+      "site": "H",
+      "result": "W 56-6",
+      "att": 10,
+      "yds": 70,
+      "td": 0
+     },
+     {
+      "date": "2025-11-01",
+      "event": "401752887",
+      "opp": "Maryland",
+      "site": "A",
+      "result": "W 55-10",
+      "att": 14,
+      "yds": 110,
+      "td": 1
+     },
+     {
+      "date": "2025-11-08",
+      "event": "401752893",
+      "opp": "Penn State",
+      "site": "A",
+      "result": "W 27-24",
+      "att": 12,
+      "yds": 32,
+      "td": 1
+     },
+     {
+      "date": "2025-11-15",
+      "event": "401752901",
+      "opp": "Wisconsin",
+      "site": "H",
+      "result": "W 31-7",
+      "att": 6,
+      "yds": 12,
+      "td": 0
+     },
+     {
+      "date": "2025-11-28",
+      "event": "401752924",
+      "opp": "Purdue",
+      "site": "A",
+      "result": "W 56-3",
+      "att": 12,
+      "yds": 67,
+      "td": 2
+     },
+     {
+      "date": "2025-12-06",
+      "event": "401777353",
+      "opp": "Ohio State",
+      "site": "N",
+      "result": "W 13-10",
+      "att": 16,
+      "yds": 69,
+      "td": 0
+     },
+     {
+      "date": "2026-01-01",
+      "event": "401769072",
+      "opp": "Alabama",
+      "site": "N",
+      "result": "W 38-3",
+      "att": 15,
+      "yds": 99,
+      "td": 1
+     },
+     {
+      "date": "2026-01-09",
+      "event": "401769074",
+      "opp": "Oregon",
+      "site": "N",
+      "result": "W 56-22",
+      "att": 12,
+      "yds": 63,
+      "td": 2
+     },
+     {
+      "date": "2026-01-19",
+      "event": "401769076",
+      "opp": "Miami",
+      "site": "H",
+      "result": "W 27-21",
+      "att": 17,
+      "yds": 79,
+      "td": 0
+     }
+    ],
+    "cfbstats_row": {
+     "name": "Kaelon Black",
+     "pos": "RB",
+     "g": 16,
+     "att": 186,
+     "yds": 1040,
+     "td": 10,
+     "cfb_id": "1118154"
+    },
+    "cfbstats_through": "2026-01-19",
+    "cfbstats_url": "https://cfbstats.com/2025/team/306/rushing/index.html",
+    "chosen": "top 2 by rushing yards",
+    "check_diff": []
+   },
+   {
+    "name": "Justice Ellison",
+    "season": 2024,
+    "role": "comparison",
+    "espn_id": "4429618",
+    "games": [
+     {
+      "date": "2024-08-31",
+      "event": "401628449",
+      "opp": "Florida International",
+      "site": "H",
+      "result": "W 31-7",
+      "att": 10,
+      "yds": 68,
+      "td": 0
+     },
+     {
+      "date": "2024-09-06",
+      "event": "401628463",
+      "opp": "Western Illinois",
+      "site": "H",
+      "result": "W 77-3",
+      "att": 9,
+      "yds": 117,
+      "td": 2
+     },
+     {
+      "date": "2024-09-14",
+      "event": "401628476",
+      "opp": "UCLA",
+      "site": "A",
+      "result": "W 42-13",
+      "att": 10,
+      "yds": 47,
+      "td": 1
+     },
+     {
+      "date": "2024-09-21",
+      "event": "401628486",
+      "opp": "Charlotte",
+      "site": "H",
+      "result": "W 52-14",
+      "att": 9,
+      "yds": 58,
+      "td": 1
+     },
+     {
+      "date": "2024-09-28",
+      "event": "401628496",
+      "opp": "Maryland",
+      "site": "H",
+      "result": "W 42-28",
+      "att": 12,
+      "yds": 51,
+      "td": 1
+     },
+     {
+      "date": "2024-10-05",
+      "event": "401628503",
+      "opp": "Northwestern",
+      "site": "A",
+      "result": "W 41-24",
+      "att": 14,
+      "yds": 68,
+      "td": 1
+     },
+     {
+      "date": "2024-10-19",
+      "event": "401628519",
+      "opp": "Nebraska",
+      "site": "H",
+      "result": "W 56-7",
+      "att": 9,
+      "yds": 105,
+      "td": 2
+     },
+     {
+      "date": "2024-10-26",
+      "event": "401628526",
+      "opp": "Washington",
+      "site": "H",
+      "result": "W 31-17",
+      "att": 29,
+      "yds": 123,
+      "td": 1
+     },
+     {
+      "date": "2024-11-02",
+      "event": "401628534",
+      "opp": "Michigan State",
+      "site": "A",
+      "result": "W 47-10",
+      "att": 9,
+      "yds": 32,
+      "td": 0
+     },
+     {
+      "date": "2024-11-09",
+      "event": "401628541",
+      "opp": "Michigan",
+      "site": "H",
+      "result": "W 20-15",
+      "att": 9,
+      "yds": 17,
+      "td": 0
+     },
+     {
+      "date": "2024-11-23",
+      "event": "401628555",
+      "opp": "Ohio State",
+      "site": "A",
+      "result": "L 15-38",
+      "att": 17,
+      "yds": 62,
+      "td": 0
+     },
+     {
+      "date": "2024-11-30",
+      "event": "401628564",
+      "opp": "Purdue",
+      "site": "H",
+      "result": "W 66-0",
+      "att": 11,
+      "yds": 63,
+      "td": 1
+     },
+     {
+      "date": "2024-12-20",
+      "event": "401677179",
+      "opp": "Notre Dame",
+      "site": "A",
+      "result": "L 17-27",
+      "att": 11,
+      "yds": 37,
+      "td": 0
+     }
+    ],
+    "cfbstats_row": {
+     "name": "Justice Ellison",
+     "pos": "RB",
+     "g": 13,
+     "att": 159,
+     "yds": 848,
+     "td": 10,
+     "cfb_id": "1114074"
+    },
+    "cfbstats_through": "2025-01-20",
+    "cfbstats_url": "https://cfbstats.com/2024/team/306/rushing/index.html",
+    "chosen": "top 2 by rushing yards",
+    "check_diff": []
+   },
+   {
+    "name": "Ty Son Lawton",
+    "season": 2024,
+    "role": "comparison",
+    "espn_id": "4367069",
+    "games": [
+     {
+      "date": "2024-08-31",
+      "event": "401628449",
+      "opp": "Florida International",
+      "site": "H",
+      "result": "W 31-7",
+      "att": 16,
+      "yds": 74,
+      "td": 2
+     },
+     {
+      "date": "2024-09-06",
+      "event": "401628463",
+      "opp": "Western Illinois",
+      "site": "H",
+      "result": "W 77-3",
+      "att": 6,
+      "yds": 42,
+      "td": 1
+     },
+     {
+      "date": "2024-09-14",
+      "event": "401628476",
+      "opp": "UCLA",
+      "site": "A",
+      "result": "W 42-13",
+      "att": 10,
+      "yds": 33,
+      "td": 0
+     },
+     {
+      "date": "2024-09-21",
+      "event": "401628486",
+      "opp": "Charlotte",
+      "site": "H",
+      "result": "W 52-14",
+      "att": 7,
+      "yds": 35,
+      "td": 2
+     },
+     {
+      "date": "2024-09-28",
+      "event": "401628496",
+      "opp": "Maryland",
+      "site": "H",
+      "result": "W 42-28",
+      "att": 19,
+      "yds": 93,
+      "td": 1
+     },
+     {
+      "date": "2024-10-05",
+      "event": "401628503",
+      "opp": "Northwestern",
+      "site": "A",
+      "result": "W 41-24",
+      "att": 10,
+      "yds": 52,
+      "td": 1
+     },
+     {
+      "date": "2024-10-19",
+      "event": "401628519",
+      "opp": "Nebraska",
+      "site": "H",
+      "result": "W 56-7",
+      "att": 8,
+      "yds": 64,
+      "td": 1
+     },
+     {
+      "date": "2024-10-26",
+      "event": "401628526",
+      "opp": "Washington",
+      "site": "H",
+      "result": "W 31-17",
+      "att": 12,
+      "yds": 41,
+      "td": 0
+     },
+     {
+      "date": "2024-11-02",
+      "event": "401628534",
+      "opp": "Michigan State",
+      "site": "A",
+      "result": "W 47-10",
+      "att": 6,
+      "yds": 19,
+      "td": 1
+     },
+     {
+      "date": "2024-11-09",
+      "event": "401628541",
+      "opp": "Michigan",
+      "site": "H",
+      "result": "W 20-15",
+      "att": 12,
+      "yds": 55,
+      "td": 0
+     },
+     {
+      "date": "2024-11-23",
+      "event": "401628555",
+      "opp": "Ohio State",
+      "site": "A",
+      "result": "L 15-38",
+      "att": 15,
+      "yds": 79,
+      "td": 2
+     },
+     {
+      "date": "2024-11-30",
+      "event": "401628564",
+      "opp": "Purdue",
+      "site": "H",
+      "result": "W 66-0",
+      "att": 10,
+      "yds": 47,
+      "td": 1
+     },
+     {
+      "date": "2024-12-20",
+      "event": "401677179",
+      "opp": "Notre Dame",
+      "site": "A",
+      "result": "L 17-27",
+      "att": 10,
+      "yds": 34,
+      "td": 0
+     }
+    ],
+    "cfbstats_row": {
+     "name": "Ty Son Lawton",
+     "pos": "RB",
+     "g": 13,
+     "att": 141,
+     "yds": 668,
+     "td": 12,
+     "cfb_id": "1099874"
+    },
+    "cfbstats_through": "2025-01-20",
+    "cfbstats_url": "https://cfbstats.com/2024/team/306/rushing/index.html",
+    "chosen": "top 2 by rushing yards",
+    "check_diff": []
+   }
+  ],
+  "retrieved_at": "2026-10-11T01:47+00:00",
+  "rule": "Current season: players named in roster.json. Earlier seasons: Indiana's top 2 RB by rushing yards (cfbstats.com)."
+ },
+ "wr": {
+  "players": [
+   {
+    "name": "Charlie Becker",
+    "season": 2026,
+    "role": "current",
+    "espn_id": "5146735",
+    "games": [
+     {
+      "date": "2026-09-05",
+      "event": "401858425",
+      "opp": "North Texas",
+      "site": "H",
+      "result": "W 52-16",
+      "rec": 4,
+      "yds": 64,
+      "td": 2
+     },
+     {
+      "date": "2026-09-12",
+      "event": "401858439",
+      "opp": "Howard",
+      "site": "H",
+      "result": "W 55-0",
+      "rec": 3,
+      "yds": 81,
+      "td": 3
+     },
+     {
+      "date": "2026-09-19",
+      "event": "401858449",
+      "opp": "Western Kentucky",
+      "site": "H",
+      "result": "W 38-0",
+      "rec": 5,
+      "yds": 127,
+      "td": 1
+     },
+     {
+      "date": "2026-09-25",
+      "event": "401858461",
+      "opp": "Northwestern",
+      "site": "H",
+      "result": "W 29-23",
+      "rec": 7,
+      "yds": 98,
+      "td": 0
+     },
+     {
+      "date": "2026-10-03",
+      "event": "401858477",
+      "opp": "Rutgers",
+      "site": "A",
+      "result": "W 47-15",
+      "rec": 8,
+      "yds": 107,
+      "td": 2
+     },
+     {
+      "date": "2026-10-10",
+      "event": "401858481",
+      "opp": "Nebraska",
+      "site": "A",
+      "result": "W 20-17",
+      "rec": 3,
+      "yds": 52,
+      "td": 0
+     }
+    ],
+    "cfbstats_row": null,
+    "cfbstats_through": "2026-10-09",
+    "cfbstats_url": "https://cfbstats.com/2026/team/306/receiving/index.html",
+    "chosen": "named in roster.json"
+   },
+   {
+    "name": "Nick Marsh",
+    "season": 2026,
+    "role": "current",
+    "espn_id": "5079600",
+    "games": [
+     {
+      "date": "2026-09-05",
+      "event": "401858425",
+      "opp": "North Texas",
+      "site": "H",
+      "result": "W 52-16",
+      "rec": 2,
+      "yds": 17,
+      "td": 1
+     },
+     {
+      "date": "2026-09-12",
+      "event": "401858439",
+      "opp": "Howard",
+      "site": "H",
+      "result": "W 55-0",
+      "rec": 2,
+      "yds": 71,
+      "td": 1
+     },
+     {
+      "date": "2026-09-19",
+      "event": "401858449",
+      "opp": "Western Kentucky",
+      "site": "H",
+      "result": "W 38-0",
+      "rec": 7,
+      "yds": 81,
+      "td": 0
+     },
+     {
+      "date": "2026-09-25",
+      "event": "401858461",
+      "opp": "Northwestern",
+      "site": "H",
+      "result": "W 29-23",
+      "rec": 5,
+      "yds": 52,
+      "td": 1
+     },
+     {
+      "date": "2026-10-03",
+      "event": "401858477",
+      "opp": "Rutgers",
+      "site": "A",
+      "result": "W 47-15",
+      "rec": 7,
+      "yds": 120,
+      "td": 1
+     },
+     {
+      "date": "2026-10-10",
+      "event": "401858481",
+      "opp": "Nebraska",
+      "site": "A",
+      "result": "W 20-17",
+      "rec": 6,
+      "yds": 187,
+      "td": 2
+     }
+    ],
+    "cfbstats_row": null,
+    "cfbstats_through": "2026-10-09",
+    "cfbstats_url": "https://cfbstats.com/2026/team/306/receiving/index.html",
+    "chosen": "named in roster.json"
+   },
+   {
+    "name": "Omar Cooper Jr.",
+    "season": 2025,
+    "role": "comparison",
+    "espn_id": "4723820",
+    "games": [
+     {
+      "date": "2025-08-30",
+      "event": "401752806",
+      "opp": "Old Dominion",
+      "site": "H",
+      "result": "W 27-14",
+      "rec": 2,
+      "yds": 52,
+      "td": 0
+     },
+     {
+      "date": "2025-09-06",
+      "event": "401752812",
+      "opp": "Kennesaw State",
+      "site": "H",
+      "result": "W 56-9",
+      "rec": 1,
+      "yds": 40,
+      "td": 0
+     },
+     {
+      "date": "2025-09-12",
+      "event": "401752836",
+      "opp": "Indiana State",
+      "site": "H",
+      "result": "W 73-0",
+      "rec": 10,
+      "yds": 207,
+      "td": 4
+     },
+     {
+      "date": "2025-09-20",
+      "event": "401752843",
+      "opp": "Illinois",
+      "site": "H",
+      "result": "W 63-10",
+      "rec": 6,
+      "yds": 78,
+      "td": 1
+     },
+     {
+      "date": "2025-09-27",
+      "event": "401752853",
+      "opp": "Iowa",
+      "site": "A",
+      "result": "W 20-15",
+      "rec": 3,
+      "yds": 31,
+      "td": 1
+     },
+     {
+      "date": "2025-10-11",
+      "event": "401752870",
+      "opp": "Oregon",
+      "site": "A",
+      "result": "W 30-20",
+      "rec": 7,
+      "yds": 58,
+      "td": 0
+     },
+     {
+      "date": "2025-10-18",
+      "event": "401752878",
+      "opp": "Michigan State",
+      "site": "H",
+      "result": "W 38-13",
+      "rec": 8,
+      "yds": 115,
+      "td": 1
+     },
+     {
+      "date": "2025-10-25",
+      "event": "401752885",
+      "opp": "UCLA",
+      "site": "H",
+      "result": "W 56-6",
+      "rec": 2,
+      "yds": 2,
+      "td": 0
+     },
+     {
+      "date": "2025-11-01",
+      "event": "401752887",
+      "opp": "Maryland",
+      "site": "A",
+      "result": "W 55-10",
+      "rec": 7,
+      "yds": 86,
+      "td": 1
+     },
+     {
+      "date": "2025-11-08",
+      "event": "401752893",
+      "opp": "Penn State",
+      "site": "A",
+      "result": "W 27-24",
+      "rec": 6,
+      "yds": 32,
+      "td": 1
+     },
+     {
+      "date": "2025-11-15",
+      "event": "401752901",
+      "opp": "Wisconsin",
+      "site": "H",
+      "result": "W 31-7",
+      "rec": 3,
+      "yds": 39,
+      "td": 1
+     },
+     {
+      "date": "2025-11-28",
+      "event": "401752924",
+      "opp": "Purdue",
+      "site": "A",
+      "result": "W 56-3",
+      "rec": 3,
+      "yds": 64,
+      "td": 1
+     },
+     {
+      "date": "2025-12-06",
+      "event": "401777353",
+      "opp": "Ohio State",
+      "site": "N",
+      "result": "W 13-10",
+      "rec": 0,
+      "yds": 0,
+      "td": 0,
+      "no_stat": true
+     },
+     {
+      "date": "2026-01-01",
+      "event": "401769072",
+      "opp": "Alabama",
+      "site": "N",
+      "result": "W 38-3",
+      "rec": 3,
+      "yds": 45,
+      "td": 1
+     },
+     {
+      "date": "2026-01-09",
+      "event": "401769074",
+      "opp": "Oregon",
+      "site": "N",
+      "result": "W 56-22",
+      "rec": 3,
+      "yds": 17,
+      "td": 1
+     },
+     {
+      "date": "2026-01-19",
+      "event": "401769076",
+      "opp": "Miami",
+      "site": "H",
+      "result": "W 27-21",
+      "rec": 5,
+      "yds": 71,
+      "td": 0
+     }
+    ],
+    "cfbstats_row": {
+     "name": "Omar Cooper Jr.",
+     "pos": "WR",
+     "g": 16,
+     "rec": 69,
+     "yds": 937,
+     "td": 13,
+     "cfb_id": "1174514"
+    },
+    "cfbstats_through": "2026-01-19",
+    "cfbstats_url": "https://cfbstats.com/2025/team/306/receiving/index.html",
+    "chosen": "top 2 by receiving yards",
+    "check_diff": []
+   },
+   {
+    "name": "Elijah Sarratt",
+    "season": 2025,
+    "role": "comparison",
+    "espn_id": "5088338",
+    "games": [
+     {
+      "date": "2025-08-30",
+      "event": "401752806",
+      "opp": "Old Dominion",
+      "site": "H",
+      "result": "W 27-14",
+      "rec": 3,
+      "yds": 44,
+      "td": 0
+     },
+     {
+      "date": "2025-09-06",
+      "event": "401752812",
+      "opp": "Kennesaw State",
+      "site": "H",
+      "result": "W 56-9",
+      "rec": 9,
+      "yds": 97,
+      "td": 3
+     },
+     {
+      "date": "2025-09-12",
+      "event": "401752836",
+      "opp": "Indiana State",
+      "site": "H",
+      "result": "W 73-0",
+      "rec": 3,
+      "yds": 23,
+      "td": 0
+     },
+     {
+      "date": "2025-09-20",
+      "event": "401752843",
+      "opp": "Illinois",
+      "site": "H",
+      "result": "W 63-10",
+      "rec": 9,
+      "yds": 92,
+      "td": 2
+     },
+     {
+      "date": "2025-09-27",
+      "event": "401752853",
+      "opp": "Iowa",
+      "site": "A",
+      "result": "W 20-15",
+      "rec": 7,
+      "yds": 156,
+      "td": 1
+     },
+     {
+      "date": "2025-10-11",
+      "event": "401752870",
+      "opp": "Oregon",
+      "site": "A",
+      "result": "W 30-20",
+      "rec": 8,
+      "yds": 121,
+      "td": 1
+     },
+     {
+      "date": "2025-10-18",
+      "event": "401752878",
+      "opp": "Michigan State",
+      "site": "H",
+      "result": "W 38-13",
+      "rec": 4,
+      "yds": 70,
+      "td": 2
+     },
+     {
+      "date": "2025-10-25",
+      "event": "401752885",
+      "opp": "UCLA",
+      "site": "H",
+      "result": "W 56-6",
+      "rec": 2,
+      "yds": 6,
+      "td": 1
+     },
+     {
+      "date": "2025-11-01",
+      "event": "401752887",
+      "opp": "Maryland",
+      "site": "A",
+      "result": "W 55-10",
+      "rec": 0,
+      "yds": 0,
+      "td": 0,
+      "no_stat": true
+     },
+     {
+      "date": "2025-11-28",
+      "event": "401752924",
+      "opp": "Purdue",
+      "site": "A",
+      "result": "W 56-3",
+      "rec": 3,
+      "yds": 41,
+      "td": 1
+     },
+     {
+      "date": "2025-12-06",
+      "event": "401777353",
+      "opp": "Ohio State",
+      "site": "N",
+      "result": "W 13-10",
+      "rec": 3,
+      "yds": 37,
+      "td": 1
+     },
+     {
+      "date": "2026-01-01",
+      "event": "401769072",
+      "opp": "Alabama",
+      "site": "N",
+      "result": "W 38-3",
+      "rec": 4,
+      "yds": 40,
+      "td": 1
+     },
+     {
+      "date": "2026-01-09",
+      "event": "401769074",
+      "opp": "Oregon",
+      "site": "N",
+      "result": "W 56-22",
+      "rec": 7,
+      "yds": 75,
+      "td": 2
+     },
+     {
+      "date": "2026-01-19",
+      "event": "401769076",
+      "opp": "Miami",
+      "site": "H",
+      "result": "W 27-21",
+      "rec": 3,
+      "yds": 28,
+      "td": 0
+     }
+    ],
+    "cfbstats_row": {
+     "name": "Elijah Sarratt",
+     "pos": "WR",
+     "g": 14,
+     "rec": 65,
+     "yds": 830,
+     "td": 15,
+     "cfb_id": "1176682"
+    },
+    "cfbstats_through": "2026-01-19",
+    "cfbstats_url": "https://cfbstats.com/2025/team/306/receiving/index.html",
+    "chosen": "top 2 by receiving yards",
+    "check_diff": []
+   },
+   {
+    "name": "Elijah Sarratt",
+    "season": 2024,
+    "role": "comparison",
+    "espn_id": "5088338",
+    "games": [
+     {
+      "date": "2024-08-31",
+      "event": "401628449",
+      "opp": "Florida International",
+      "site": "H",
+      "result": "W 31-7",
+      "rec": 2,
+      "yds": 12,
+      "td": 0
+     },
+     {
+      "date": "2024-09-06",
+      "event": "401628463",
+      "opp": "Western Illinois",
+      "site": "H",
+      "result": "W 77-3",
+      "rec": 6,
+      "yds": 137,
+      "td": 1
+     },
+     {
+      "date": "2024-09-14",
+      "event": "401628476",
+      "opp": "UCLA",
+      "site": "A",
+      "result": "W 42-13",
+      "rec": 4,
+      "yds": 54,
+      "td": 0
+     },
+     {
+      "date": "2024-09-21",
+      "event": "401628486",
+      "opp": "Charlotte",
+      "site": "H",
+      "result": "W 52-14",
+      "rec": 3,
+      "yds": 47,
+      "td": 0
+     },
+     {
+      "date": "2024-09-28",
+      "event": "401628496",
+      "opp": "Maryland",
+      "site": "H",
+      "result": "W 42-28",
+      "rec": 7,
+      "yds": 128,
+      "td": 1
+     },
+     {
+      "date": "2024-10-05",
+      "event": "401628503",
+      "opp": "Northwestern",
+      "site": "A",
+      "result": "W 41-24",
+      "rec": 7,
+      "yds": 135,
+      "td": 0
+     },
+     {
+      "date": "2024-10-19",
+      "event": "401628519",
+      "opp": "Nebraska",
+      "site": "H",
+      "result": "W 56-7",
+      "rec": 3,
+      "yds": 65,
+      "td": 1
+     },
+     {
+      "date": "2024-10-26",
+      "event": "401628526",
+      "opp": "Washington",
+      "site": "H",
+      "result": "W 31-17",
+      "rec": 1,
+      "yds": 12,
+      "td": 0
+     },
+     {
+      "date": "2024-11-02",
+      "event": "401628534",
+      "opp": "Michigan State",
+      "site": "A",
+      "result": "W 47-10",
+      "rec": 4,
+      "yds": 59,
+      "td": 2
+     },
+     {
+      "date": "2024-11-09",
+      "event": "401628541",
+      "opp": "Michigan",
+      "site": "H",
+      "result": "W 20-15",
+      "rec": 1,
+      "yds": 36,
+      "td": 1
+     },
+     {
+      "date": "2024-11-23",
+      "event": "401628555",
+      "opp": "Ohio State",
+      "site": "A",
+      "result": "L 15-38",
+      "rec": 3,
+      "yds": 40,
+      "td": 0
+     },
+     {
+      "date": "2024-11-30",
+      "event": "401628564",
+      "opp": "Purdue",
+      "site": "H",
+      "result": "W 66-0",
+      "rec": 8,
+      "yds": 165,
+      "td": 2
+     },
+     {
+      "date": "2024-12-20",
+      "event": "401677179",
+      "opp": "Notre Dame",
+      "site": "A",
+      "result": "L 17-27",
+      "rec": 4,
+      "yds": 67,
+      "td": 0
+     }
+    ],
+    "cfbstats_row": {
+     "name": "Elijah Sarratt",
+     "pos": "WR",
+     "g": 13,
+     "rec": 53,
+     "yds": 957,
+     "td": 8,
+     "cfb_id": "1176682"
+    },
+    "cfbstats_through": "2025-01-20",
+    "cfbstats_url": "https://cfbstats.com/2024/team/306/receiving/index.html",
+    "chosen": "top 2 by receiving yards",
+    "check_diff": []
+   },
+   {
+    "name": "Omar Cooper Jr.",
+    "season": 2024,
+    "role": "comparison",
+    "espn_id": "4723820",
+    "games": [
+     {
+      "date": "2024-08-31",
+      "event": "401628449",
+      "opp": "Florida International",
+      "site": "H",
+      "result": "W 31-7",
+      "rec": 3,
+      "yds": 45,
+      "td": 0
+     },
+     {
+      "date": "2024-09-06",
+      "event": "401628463",
+      "opp": "Western Illinois",
+      "site": "H",
+      "result": "W 77-3",
+      "rec": 4,
+      "yds": 131,
+      "td": 1
+     },
+     {
+      "date": "2024-09-14",
+      "event": "401628476",
+      "opp": "UCLA",
+      "site": "A",
+      "result": "W 42-13",
+      "rec": 4,
+      "yds": 58,
+      "td": 1
+     },
+     {
+      "date": "2024-09-21",
+      "event": "401628486",
+      "opp": "Charlotte",
+      "site": "H",
+      "result": "W 52-14",
+      "rec": 1,
+      "yds": 11,
+      "td": 0
+     },
+     {
+      "date": "2024-09-28",
+      "event": "401628496",
+      "opp": "Maryland",
+      "site": "H",
+      "result": "W 42-28",
+      "rec": 4,
+      "yds": 83,
+      "td": 1
+     },
+     {
+      "date": "2024-10-05",
+      "event": "401628503",
+      "opp": "Northwestern",
+      "site": "A",
+      "result": "W 41-24",
+      "rec": 2,
+      "yds": 47,
+      "td": 0
+     },
+     {
+      "date": "2024-10-19",
+      "event": "401628519",
+      "opp": "Nebraska",
+      "site": "H",
+      "result": "W 56-7",
+      "rec": 1,
+      "yds": 36,
+      "td": 0
+     },
+     {
+      "date": "2024-10-26",
+      "event": "401628526",
+      "opp": "Washington",
+      "site": "H",
+      "result": "W 31-17",
+      "rec": 1,
+      "yds": 42,
+      "td": 1
+     },
+     {
+      "date": "2024-11-02",
+      "event": "401628534",
+      "opp": "Michigan State",
+      "site": "A",
+      "result": "W 47-10",
+      "rec": 1,
+      "yds": 21,
+      "td": 0
+     },
+     {
+      "date": "2024-11-09",
+      "event": "401628541",
+      "opp": "Michigan",
+      "site": "H",
+      "result": "W 20-15",
+      "rec": 3,
+      "yds": 53,
+      "td": 1
+     },
+     {
+      "date": "2024-11-23",
+      "event": "401628555",
+      "opp": "Ohio State",
+      "site": "A",
+      "result": "L 15-38",
+      "rec": 0,
+      "yds": 0,
+      "td": 0,
+      "no_stat": true
+     },
+     {
+      "date": "2024-11-30",
+      "event": "401628564",
+      "opp": "Purdue",
+      "site": "H",
+      "result": "W 66-0",
+      "rec": 3,
+      "yds": 44,
+      "td": 1
+     },
+     {
+      "date": "2024-12-20",
+      "event": "401677179",
+      "opp": "Notre Dame",
+      "site": "A",
+      "result": "L 17-27",
+      "rec": 1,
+      "yds": 23,
+      "td": 1
+     }
+    ],
+    "cfbstats_row": {
+     "name": "Omar Cooper Jr.",
+     "pos": "WR",
+     "g": 13,
+     "rec": 28,
+     "yds": 594,
+     "td": 7,
+     "cfb_id": "1174514"
+    },
+    "cfbstats_through": "2025-01-20",
+    "cfbstats_url": "https://cfbstats.com/2024/team/306/receiving/index.html",
+    "chosen": "top 2 by receiving yards",
+    "check_diff": []
+   }
+  ],
+  "retrieved_at": "2026-10-11T01:47+00:00",
+  "rule": "Current season: players named in roster.json. Earlier seasons: Indiana's top 2 WR/TE by receiving yards (cfbstats.com)."
+ }
+}

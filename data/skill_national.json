@@ -1,0 +1,568 @@
+{
+ "rb": {
+  "latest": {
+   "data_through": "2026-10-09",
+   "boards": {
+    "yds": {
+     "label": "Rushing yards",
+     "source_url": "https://cfbstats.com/2026/leader/national/player/split01/category01/sort03.html",
+     "qualified": false,
+     "top": [
+      {
+       "rank": 1,
+       "name": "Dylan Riley",
+       "team": "Boise St",
+       "g": 5,
+       "value": 685.0
+      },
+      {
+       "rank": 2,
+       "name": "Aiden Flora",
+       "team": "Iowa State",
+       "g": 6,
+       "value": 680.0
+      },
+      {
+       "rank": 3,
+       "name": "Cam Cook",
+       "team": "WVU",
+       "g": 5,
+       "value": 652.0
+      },
+      {
+       "rank": 4,
+       "name": "Nate Sheppard",
+       "team": "Duke",
+       "g": 4,
+       "value": 644.0
+      },
+      {
+       "rank": 5,
+       "name": "Torrance Burgess Jr.",
+       "team": "Texas St",
+       "g": 5,
+       "value": 614.0
+      }
+     ],
+     "players": {
+      "Lee Beebe Jr.": {
+       "rank": 17,
+       "value": 520.0,
+       "g": 5
+      },
+      "Turbo Richard": {
+       "rank": 9,
+       "value": 587.0,
+       "g": 5
+      }
+     }
+    },
+    "td": {
+     "label": "Rushing TD",
+     "source_url": "https://cfbstats.com/2026/leader/national/player/split01/category01/sort06.html",
+     "qualified": false,
+     "top": [
+      {
+       "rank": 1,
+       "name": "Jadan Baugh",
+       "team": "Florida",
+       "g": 5,
+       "value": 11.0
+      },
+      {
+       "rank": 1,
+       "name": "Michael Hawkins Jr.",
+       "team": "WVU",
+       "g": 5,
+       "value": 11.0
+      },
+      {
+       "rank": 3,
+       "name": "Ashton Daniels",
+       "team": "FSU",
+       "g": 6,
+       "value": 10.0
+      },
+      {
+       "rank": 4,
+       "name": "Wayne Knight",
+       "team": "UCLA",
+       "g": 4,
+       "value": 9.0
+      },
+      {
+       "rank": 5,
+       "name": "Jahiem White",
+       "team": "North Texas",
+       "g": 5,
+       "value": 8.0
+      },
+      {
+       "rank": 5,
+       "name": "Lincoln Kienholz",
+       "team": "Louisville",
+       "g": 6,
+       "value": 8.0
+      }
+     ],
+     "players": {
+      "Lee Beebe Jr.": {
+       "rank": 55,
+       "value": 4.0,
+       "g": 5
+      },
+      "Turbo Richard": {
+       "rank": 30,
+       "value": 5.0,
+       "g": 5
+      }
+     }
+    },
+    "ypc": {
+     "label": "Yards per carry",
+     "source_url": "https://cfbstats.com/2026/leader/national/player/split01/category01/sort02.html",
+     "qualified": true,
+     "top": [
+      {
+       "rank": 1,
+       "name": "Joseph Himon II",
+       "team": "Northwestern",
+       "g": 4,
+       "value": 13.85
+      },
+      {
+       "rank": 2,
+       "name": "Samari Howard",
+       "team": "Army",
+       "g": 4,
+       "value": 10.85
+      },
+      {
+       "rank": 3,
+       "name": "Maurice Turner",
+       "team": "Tulane",
+       "g": 4,
+       "value": 10.65
+      },
+      {
+       "rank": 4,
+       "name": "Dylone Brooks",
+       "team": "La Tech",
+       "g": 4,
+       "value": 10.56
+      },
+      {
+       "rank": 5,
+       "name": "Antwan Roberts Jr.",
+       "team": "Arizona",
+       "g": 4,
+       "value": 10.13
+      }
+     ],
+     "players": {
+      "Lee Beebe Jr.": {
+       "rank": 95,
+       "value": 5.84,
+       "g": 5
+      },
+      "Turbo Richard": {
+       "rank": 11,
+       "value": 9.32,
+       "g": 5
+      }
+     }
+    },
+    "ypg": {
+     "label": "Yards per game",
+     "source_url": "https://cfbstats.com/2026/leader/national/player/split01/category01/sort01.html",
+     "qualified": true,
+     "top": [
+      {
+       "rank": 1,
+       "name": "Nate Sheppard",
+       "team": "Duke",
+       "g": 4,
+       "value": 161.0
+      },
+      {
+       "rank": 2,
+       "name": "Dylan Riley",
+       "team": "Boise St",
+       "g": 5,
+       "value": 137.0
+      },
+      {
+       "rank": 3,
+       "name": "Cam Cook",
+       "team": "WVU",
+       "g": 5,
+       "value": 130.4
+      },
+      {
+       "rank": 4,
+       "name": "Torrance Burgess Jr.",
+       "team": "Texas St",
+       "g": 5,
+       "value": 122.8
+      },
+      {
+       "rank": 5,
+       "name": "Jadan Baugh",
+       "team": "Florida",
+       "g": 5,
+       "value": 122.6
+      }
+     ],
+     "players": {
+      "Lee Beebe Jr.": {
+       "rank": 14,
+       "value": 104.0,
+       "g": 5
+      },
+      "Turbo Richard": {
+       "rank": 7,
+       "value": 117.4,
+       "g": 5
+      }
+     }
+    }
+   },
+   "players": [
+    "Lee Beebe Jr.",
+    "Turbo Richard"
+   ],
+   "retrieved_at": "2026-10-11T01:47+00:00"
+  },
+  "rank_history": [
+   {
+    "through": "2026-10-09",
+    "ranks": {
+     "Lee Beebe Jr.": {
+      "yds": 17,
+      "td": 55,
+      "ypc": 95,
+      "ypg": 14
+     },
+     "Turbo Richard": {
+      "yds": 9,
+      "td": 30,
+      "ypc": 11,
+      "ypg": 7
+     }
+    }
+   }
+  ]
+ },
+ "wr": {
+  "latest": {
+   "data_through": "2026-10-09",
+   "boards": {
+    "rec": {
+     "label": "Receptions",
+     "source_url": "https://cfbstats.com/2026/leader/national/player/split01/category03/sort04.html",
+     "qualified": false,
+     "top": [
+      {
+       "rank": 1,
+       "name": "Jeremiah Smith",
+       "team": "Ohio State",
+       "g": 5,
+       "value": 44.0
+      },
+      {
+       "rank": 2,
+       "name": "Dezmen Roebuck",
+       "team": "Washington",
+       "g": 6,
+       "value": 43.0
+      },
+      {
+       "rank": 3,
+       "name": "Gavin Freeman",
+       "team": "Baylor",
+       "g": 5,
+       "value": 42.0
+      },
+      {
+       "rank": 3,
+       "name": "Chris Durr Jr.",
+       "team": "Maryland",
+       "g": 5,
+       "value": 42.0
+      },
+      {
+       "rank": 5,
+       "name": "Anthony Evans III",
+       "team": "Mississippi State",
+       "g": 5,
+       "value": 40.0
+      },
+      {
+       "rank": 5,
+       "name": "Collin Dixon",
+       "team": "Illinois",
+       "g": 5,
+       "value": 40.0
+      },
+      {
+       "rank": 5,
+       "name": "Kelby Valsin",
+       "team": "FAU",
+       "g": 5,
+       "value": 40.0
+      }
+     ],
+     "players": {
+      "Charlie Becker": {
+       "rank": 38,
+       "value": 27.0,
+       "g": 5
+      },
+      "Nick Marsh": {
+       "rank": 78,
+       "value": 23.0,
+       "g": 5
+      }
+     }
+    },
+    "yds": {
+     "label": "Receiving yards",
+     "source_url": "https://cfbstats.com/2026/leader/national/player/split01/category03/sort03.html",
+     "qualified": false,
+     "top": [
+      {
+       "rank": 1,
+       "name": "Jeremiah Smith",
+       "team": "Ohio State",
+       "g": 5,
+       "value": 823.0
+      },
+      {
+       "rank": 2,
+       "name": "Jesse Legree",
+       "team": "Oregon State",
+       "g": 5,
+       "value": 741.0
+      },
+      {
+       "rank": 3,
+       "name": "KJ Duff",
+       "team": "Rutgers",
+       "g": 5,
+       "value": 628.0
+      },
+      {
+       "rank": 4,
+       "name": "Malachi Toney",
+       "team": "Miami",
+       "g": 5,
+       "value": 604.0
+      },
+      {
+       "rank": 5,
+       "name": "Carlos Hernandez",
+       "team": "Wake Forest",
+       "g": 5,
+       "value": 603.0
+      }
+     ],
+     "players": {
+      "Charlie Becker": {
+       "rank": 14,
+       "value": 477.0,
+       "g": 5
+      },
+      "Nick Marsh": {
+       "rank": 61,
+       "value": 341.0,
+       "g": 5
+      }
+     }
+    },
+    "td": {
+     "label": "Receiving TD",
+     "source_url": "https://cfbstats.com/2026/leader/national/player/split01/category03/sort06.html",
+     "qualified": false,
+     "top": [
+      {
+       "rank": 1,
+       "name": "Jeremiah Smith",
+       "team": "Ohio State",
+       "g": 5,
+       "value": 9.0
+      },
+      {
+       "rank": 1,
+       "name": "Jesse Legree",
+       "team": "Oregon State",
+       "g": 5,
+       "value": 9.0
+      },
+      {
+       "rank": 3,
+       "name": "Collin Dixon",
+       "team": "Illinois",
+       "g": 5,
+       "value": 8.0
+      },
+      {
+       "rank": 3,
+       "name": "Charlie Becker",
+       "team": "Indiana",
+       "g": 5,
+       "value": 8.0
+      },
+      {
+       "rank": 5,
+       "name": "KJ Duff",
+       "team": "Rutgers",
+       "g": 5,
+       "value": 7.0
+      }
+     ],
+     "players": {
+      "Charlie Becker": {
+       "rank": 3,
+       "value": 8.0,
+       "g": 5
+      },
+      "Nick Marsh": {
+       "rank": 23,
+       "value": 4.0,
+       "g": 5
+      }
+     }
+    },
+    "ypr": {
+     "label": "Yards per catch",
+     "source_url": "https://cfbstats.com/2026/leader/national/player/split01/category03/sort05.html",
+     "qualified": true,
+     "top": [
+      {
+       "rank": 1,
+       "name": "DJ Epps",
+       "team": "WVU",
+       "g": 5,
+       "value": 28.07
+      },
+      {
+       "rank": 2,
+       "name": "Jesse Legree",
+       "team": "Oregon State",
+       "g": 5,
+       "value": 26.46
+      },
+      {
+       "rank": 3,
+       "name": "Kayden McGee",
+       "team": "UNLV",
+       "g": 4,
+       "value": 23.5
+      },
+      {
+       "rank": 4,
+       "name": "Makai Jackson",
+       "team": "Liberty",
+       "g": 6,
+       "value": 23.41
+      },
+      {
+       "rank": 5,
+       "name": "Damarion Witten",
+       "team": "Miami (Oh)",
+       "g": 5,
+       "value": 22.83
+      }
+     ],
+     "players": {
+      "Charlie Becker": {
+       "rank": 39,
+       "value": 17.67,
+       "g": 5
+      }
+     }
+    },
+    "ypg": {
+     "label": "Yards per game",
+     "source_url": "https://cfbstats.com/2026/leader/national/player/split01/category03/sort01.html",
+     "qualified": true,
+     "top": [
+      {
+       "rank": 1,
+       "name": "Jeremiah Smith",
+       "team": "Ohio State",
+       "g": 5,
+       "value": 164.6
+      },
+      {
+       "rank": 2,
+       "name": "Jesse Legree",
+       "team": "Oregon State",
+       "g": 5,
+       "value": 148.2
+      },
+      {
+       "rank": 3,
+       "name": "KJ Duff",
+       "team": "Rutgers",
+       "g": 5,
+       "value": 125.6
+      },
+      {
+       "rank": 4,
+       "name": "Reed Harris",
+       "team": "Arizona State",
+       "g": 4,
+       "value": 124.8
+      },
+      {
+       "rank": 5,
+       "name": "Malachi Toney",
+       "team": "Miami",
+       "g": 5,
+       "value": 120.8
+      }
+     ],
+     "players": {
+      "Charlie Becker": {
+       "rank": 16,
+       "value": 95.4,
+       "g": 5
+      },
+      "Nick Marsh": {
+       "rank": 59,
+       "value": 68.2,
+       "g": 5
+      }
+     }
+    }
+   },
+   "players": [
+    "Charlie Becker",
+    "Nick Marsh"
+   ],
+   "retrieved_at": "2026-10-11T01:47+00:00"
+  },
+  "rank_history": [
+   {
+    "through": "2026-10-09",
+    "ranks": {
+     "Charlie Becker": {
+      "rec": 38,
+      "yds": 14,
+      "td": 3,
+      "ypr": 39,
+      "ypg": 16
+     },
+     "Nick Marsh": {
+      "rec": 78,
+      "yds": 61,
+      "td": 23,
+      "ypr": null,
+      "ypg": 59
+     }
+    }
+   }
+  ]
+ }
+}

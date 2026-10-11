@@ -3,12 +3,70 @@
  "team": "Indiana",
  "coach": "Curt Cignetti",
  "qbs": [
-  {"key": "rourke", "name": "Kurtis Rourke", "short": "Rourke", "season": 2024, "espn_id": "4430431",
+  {
+   "key": "rourke",
+   "name": "Kurtis Rourke",
+   "short": "Rourke",
+   "season": 2024,
+   "espn_id": "4430431",
    "note": "led Indiana to its first College Football Playoff",
-   "final_totals": {"yds": 3042, "td": 29, "int": 5}},
-  {"key": "mendoza", "name": "Fernando Mendoza", "short": "Mendoza", "season": 2025, "espn_id": "4837248",
+   "final_totals": {
+    "yds": 3042,
+    "td": 29,
+    "int": 5
+   }
+  },
+  {
+   "key": "mendoza",
+   "name": "Fernando Mendoza",
+   "short": "Mendoza",
+   "season": 2025,
+   "espn_id": "4837248",
    "note": "won the Heisman and the national title",
-   "final_totals": {"yds": 3535, "td": 41, "int": 6}},
-  {"key": "hoover", "name": "Josh Hoover", "short": "Hoover", "season": 2026, "espn_id": "4685401"}
- ]
+   "final_totals": {
+    "yds": 3535,
+    "td": 41,
+    "int": 6
+   }
+  },
+  {
+   "key": "hoover",
+   "name": "Josh Hoover",
+   "short": "Hoover",
+   "season": 2026,
+   "espn_id": "4685401"
+  }
+ ],
+ "site_title": "Hoosiers {season}",
+ "tabs": {
+  "about": "RB and WR tabs: 'current' names the current season's players per season (in display order: the first is drawn solid, the second dashed). A season without an entry uses Indiana's top 'count' players at 'positions' by yards. Earlier seasons always use that top-by-yards rule. Team tab: Indiana's seasons from the QB list above, plus the current AP Top 5.",
+  "rb": {
+   "current": {
+    "2026": [
+     "Lee Beebe Jr.",
+     "Turbo Richard"
+    ]
+   },
+   "count": 2,
+   "positions": [
+    "RB"
+   ]
+  },
+  "wr": {
+   "current": {
+    "2026": [
+     "Charlie Becker",
+     "Nick Marsh"
+    ]
+   },
+   "count": 2,
+   "positions": [
+    "WR",
+    "TE"
+   ]
+  },
+  "team": {
+   "ap_top": 5
+  }
+ }
 }
