@@ -318,7 +318,8 @@
      "g": 16,
      "att": 230,
      "yds": 1120,
-     "td": 7
+     "td": 7,
+     "cfb_id": "1125052"
     },
     "cfbstats_through": "2026-01-19",
     "cfbstats_url": "https://cfbstats.com/2025/team/306/rushing/index.html",
@@ -498,7 +499,8 @@
      "g": 16,
      "att": 186,
      "yds": 1040,
-     "td": 10
+     "td": 10,
+     "cfb_id": "1118154"
     },
     "cfbstats_through": "2026-01-19",
     "cfbstats_url": "https://cfbstats.com/2025/team/306/rushing/index.html",
@@ -648,7 +650,8 @@
      "g": 13,
      "att": 159,
      "yds": 848,
-     "td": 10
+     "td": 10,
+     "cfb_id": "1114074"
     },
     "cfbstats_through": "2025-01-20",
     "cfbstats_url": "https://cfbstats.com/2024/team/306/rushing/index.html",
@@ -798,7 +801,8 @@
      "g": 13,
      "att": 141,
      "yds": 668,
-     "td": 12
+     "td": 12,
+     "cfb_id": "1099874"
     },
     "cfbstats_through": "2025-01-20",
     "cfbstats_url": "https://cfbstats.com/2024/team/306/rushing/index.html",
@@ -806,7 +810,7 @@
     "check_diff": []
    }
   ],
-  "retrieved_at": "2026-10-11T01:30+00:00",
+  "retrieved_at": "2026-10-11T01:40+00:00",
   "rule": "Current season: players named in roster.json. Earlier seasons: Indiana's top 2 RB by rushing yards (cfbstats.com)."
  },
  "wr": {

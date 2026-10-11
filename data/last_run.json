@@ -1,6 +1,8 @@
 {
- "at": "2026-10-10T21:30-04:00",
- "failed": [],
+ "at": "2026-10-10T21:41-04:00",
+ "failed": [
+  "players"
+ ],
  "log": [
   "[schedule] 2026: 12 games, 5 played",
   "[schedule] ESPN finals seen: 6, latest 2026-10-10 W 20-17",
@@ -12,6 +14,7 @@
   "[team] Notre Dame 2026: 6 games; not cross-checked yet: cfbstats has 5 games through 2026-10-09, ESPN 6",
   "[team] Miami 2026: 5 games; matches cfbstats through 2026-10-09",
   "[team] Ohio State 2026: 6 games; not cross-checked yet: cfbstats has 5 games through 2026-10-09, ESPN 6",
-  "FAILED sections: none"
+  "[players] FAILED: invalid literal for int() with base 10: 'Did not play'",
+  "FAILED sections: players"
  ]
 }
