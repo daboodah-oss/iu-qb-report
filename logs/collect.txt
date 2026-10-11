@@ -8,10 +8,6 @@ SKIPPED: snapshot exists for BetMGM 2026-10-10
 UPDATED cohort: Jeremiah Smith, Darian Mensah, Keelon Russell, CJ Carr
 UPDATED opponent pass-D ranks
 STORED AP Top 25 2026-10-04 1 Texas, 2 Georgia, 3 Notre Dame, 4 Miami, 5 Ohio State
-STORED team Indiana 2024: 13 games
-[team] Indiana 2024: 13 games; matches cfbstats through 2025-01-20
-STORED team Indiana 2025: 16 games
-[team] Indiana 2025: 16 games; matches cfbstats through 2026-01-19
 STORED team Indiana 2026: 6 games
 [team] Indiana 2026: 6 games; not cross-checked yet: cfbstats has 5 games through 2026-10-09, ESPN 6
 STORED team Texas 2026: 5 games
