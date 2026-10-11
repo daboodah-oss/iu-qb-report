@@ -163,6 +163,7 @@ def cfb_gamelog(C, season, pid, page):
         m = re.match(r"(\d{2})/(\d{2})/(\d{2})", str(r.get("date", "")))
         if not m: continue  # totals row
         val = lambda k: 0 if str(r[k]).strip() in ("-", "nan", "") else C.ival(r[k])
+        if not re.fullmatch(r"-?[\d,]+|-|nan|", str(r[first]).strip()): continue  # e.g. "Did not play" spans the row
         out.append({"date": dt.date(2000 + int(m.group(3)), int(m.group(1)), int(m.group(2))).isoformat(),
                     "n": val(first), "yds": val("yards"), "td": val("td")})
     return out, C.through_date(html), url
