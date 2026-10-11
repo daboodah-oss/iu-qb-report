@@ -1,13 +1,23 @@
 [schedule] 2026: 12 games, 5 played
 [schedule] ESPN finals seen: 6, latest 2026-10-10 W 20-17
 [schedule] 2026-10-10 Nebraska: final from ESPN (W 20-17)
-quick check: new final 2026-10-10 Nebraska W 20-17
-ADDED Hoover game 6: Nebraska W 20-17
-[games] added Hoover 2026-10-10 Nebraska W 20-17
 [games] next game kickoff: {'kickoff': '2026-10-17T12:00-04:00', 'tv': 'Fox'}
 UPDATED next game: {'date': '2026-10-17', 'opp': 'Ohio State', 'site': 'H', 'source_url': 'https://cfbstats.com/2026/team/306/index.html', 'kickoff': '2026-10-17T12:00-04:00', 'tv': 'Fox'}
 UPDATED national through 2026-10-09 {'yds': 53, 'td': 3, 'pct': 15, 'rating': 2, 'ypa': 6}
-ADDED BetMGM 2026-10-10 Hoover: None
+SKIPPED: snapshot exists for BetMGM 2026-10-10
 UPDATED cohort: Jeremiah Smith, Darian Mensah, Keelon Russell, CJ Carr
 UPDATED opponent pass-D ranks
-FAILED sections: none
+STORED AP Top 25 2026-10-04 1 Texas, 2 Georgia, 3 Notre Dame, 4 Miami, 5 Ohio State
+REFUSED: team-season Indiana 2024: ESPN box scores disagree with cfbstats season totals {'rush_yds': (2148, 2146), 'total_yds': (5545, 5543)}
+[team] REFUSED by validator (exit 2)
+[rb] 2026: no Indiana box scores stored yet
+[rb] 2025: no Indiana box scores stored yet
+[rb] 2024: no Indiana box scores stored yet
+[rb] nothing to store yet
+[wr] 2026: no Indiana box scores stored yet
+[wr] 2025: no Indiana box scores stored yet
+[wr] 2024: no Indiana box scores stored yet
+[wr] nothing to store yet
+STORED rb national boards through 2026-10-09
+STORED wr national boards through 2026-10-09
+FAILED sections: team

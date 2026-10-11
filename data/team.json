@@ -1,0 +1,59 @@
+{
+ "teams": {},
+ "ap": {
+  "poll": "AP Top 25",
+  "week": "Week 6",
+  "headline": "2026 NCAA Football Rankings - AP Poll Week 6",
+  "date": "2026-10-04",
+  "season": 2026,
+  "top": [
+   {
+    "rank": 1,
+    "team_id": "251",
+    "name": "Texas",
+    "nickname": "Longhorns",
+    "abbr": "TEX",
+    "record": "4-0",
+    "first_place": 61
+   },
+   {
+    "rank": 2,
+    "team_id": "61",
+    "name": "Georgia",
+    "nickname": "Bulldogs",
+    "abbr": "UGA",
+    "record": "5-0",
+    "first_place": 6
+   },
+   {
+    "rank": 3,
+    "team_id": "87",
+    "name": "Notre Dame",
+    "nickname": "Fighting Irish",
+    "abbr": "ND",
+    "record": "5-0",
+    "first_place": 0
+   },
+   {
+    "rank": 4,
+    "team_id": "2390",
+    "name": "Miami",
+    "nickname": "Hurricanes",
+    "abbr": "MIA",
+    "record": "5-0",
+    "first_place": 2
+   },
+   {
+    "rank": 5,
+    "team_id": "194",
+    "name": "Ohio State",
+    "nickname": "Buckeyes",
+    "abbr": "OSU",
+    "record": "4-1",
+    "first_place": 0
+   }
+  ],
+  "source_url": "https://www.espn.com/college-football/rankings",
+  "retrieved_at": "2026-10-11T01:09+00:00"
+ }
+}

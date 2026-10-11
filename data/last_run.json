@@ -1,13 +1,22 @@
 {
- "at": "2026-10-10T19:18-04:00",
- "failed": [],
+ "at": "2026-10-10T21:09-04:00",
+ "failed": [
+  "team"
+ ],
  "log": [
   "[schedule] 2026: 12 games, 5 played",
   "[schedule] ESPN finals seen: 6, latest 2026-10-10 W 20-17",
   "[schedule] 2026-10-10 Nebraska: final from ESPN (W 20-17)",
-  "quick check: new final 2026-10-10 Nebraska W 20-17",
-  "[games] added Hoover 2026-10-10 Nebraska W 20-17",
   "[games] next game kickoff: {'kickoff': '2026-10-17T12:00-04:00', 'tv': 'Fox'}",
-  "FAILED sections: none"
+  "[team] REFUSED by validator (exit 2)",
+  "[rb] 2026: no Indiana box scores stored yet",
+  "[rb] 2025: no Indiana box scores stored yet",
+  "[rb] 2024: no Indiana box scores stored yet",
+  "[rb] nothing to store yet",
+  "[wr] 2026: no Indiana box scores stored yet",
+  "[wr] 2025: no Indiana box scores stored yet",
+  "[wr] 2024: no Indiana box scores stored yet",
+  "[wr] nothing to store yet",
+  "FAILED sections: team"
  ]
 }
