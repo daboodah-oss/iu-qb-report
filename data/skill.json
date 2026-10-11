@@ -810,7 +810,7 @@
     "check_diff": []
    }
   ],
-  "retrieved_at": "2026-10-11T01:40+00:00",
+  "retrieved_at": "2026-10-11T01:47+00:00",
   "rule": "Current season: players named in roster.json. Earlier seasons: Indiana's top 2 RB by rushing yards (cfbstats.com)."
  },
  "wr": {
@@ -1086,6 +1086,17 @@
       "td": 1
      },
      {
+      "date": "2025-12-06",
+      "event": "401777353",
+      "opp": "Ohio State",
+      "site": "N",
+      "result": "W 13-10",
+      "rec": 0,
+      "yds": 0,
+      "td": 0,
+      "no_stat": true
+     },
+     {
       "date": "2026-01-01",
       "event": "401769072",
       "opp": "Alabama",
@@ -1122,7 +1133,8 @@
      "g": 16,
      "rec": 69,
      "yds": 937,
-     "td": 13
+     "td": 13,
+     "cfb_id": "1174514"
     },
     "cfbstats_through": "2026-01-19",
     "cfbstats_url": "https://cfbstats.com/2025/team/306/receiving/index.html",
@@ -1216,6 +1228,17 @@
       "td": 1
      },
      {
+      "date": "2025-11-01",
+      "event": "401752887",
+      "opp": "Maryland",
+      "site": "A",
+      "result": "W 55-10",
+      "rec": 0,
+      "yds": 0,
+      "td": 0,
+      "no_stat": true
+     },
+     {
       "date": "2025-11-28",
       "event": "401752924",
       "opp": "Purdue",
@@ -1272,7 +1295,8 @@
      "g": 14,
      "rec": 65,
      "yds": 830,
-     "td": 15
+     "td": 15,
+     "cfb_id": "1176682"
     },
     "cfbstats_through": "2026-01-19",
     "cfbstats_url": "https://cfbstats.com/2025/team/306/receiving/index.html",
@@ -1422,7 +1446,8 @@
      "g": 13,
      "rec": 53,
      "yds": 957,
-     "td": 8
+     "td": 8,
+     "cfb_id": "1176682"
     },
     "cfbstats_through": "2025-01-20",
     "cfbstats_url": "https://cfbstats.com/2024/team/306/receiving/index.html",
@@ -1536,6 +1561,17 @@
       "td": 1
      },
      {
+      "date": "2024-11-23",
+      "event": "401628555",
+      "opp": "Ohio State",
+      "site": "A",
+      "result": "L 15-38",
+      "rec": 0,
+      "yds": 0,
+      "td": 0,
+      "no_stat": true
+     },
+     {
       "date": "2024-11-30",
       "event": "401628564",
       "opp": "Purdue",
@@ -1562,7 +1598,8 @@
      "g": 13,
      "rec": 28,
      "yds": 594,
-     "td": 7
+     "td": 7,
+     "cfb_id": "1174514"
     },
     "cfbstats_through": "2025-01-20",
     "cfbstats_url": "https://cfbstats.com/2024/team/306/receiving/index.html",
@@ -1570,7 +1607,7 @@
     "check_diff": []
    }
   ],
-  "retrieved_at": "2026-10-11T01:30+00:00",
+  "retrieved_at": "2026-10-11T01:47+00:00",
   "rule": "Current season: players named in roster.json. Earlier seasons: Indiana's top 2 WR/TE by receiving yards (cfbstats.com)."
  }
 }
