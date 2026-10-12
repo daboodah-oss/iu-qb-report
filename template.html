@@ -245,6 +245,7 @@ footer{margin-top:36px;padding-top:14px;border-top:3px solid var(--ink);font-siz
 .tabhead h2{font-size:clamp(30px,6.5vw,54px);line-height:.95;margin-top:4px}
 .tabhead .lede{font-size:16.5px;max-width:70ch;margin-top:12px;color:var(--ink)}
 .lsw{display:inline-block;vertical-align:middle;flex:none}
+.un{border-bottom:3px solid;padding-bottom:1px}
 .legend.big{font-size:14px;gap:6px 18px;margin-top:12px}
 table.cmp{width:100%;border-collapse:collapse;font-size:14px}
 table.cmp th,table.cmp td{padding:8px 8px;border-bottom:1px solid var(--grid);text-align:right;white-space:nowrap;vertical-align:middle}
@@ -408,7 +409,7 @@ const dateFmt = d => { const [y,m,dd] = d.split("-").map(Number); return new Dat
 const dateFmtY = d => { const [y,m,dd] = d.split("-").map(Number); return new Date(y,m-1,dd).toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"}); };
 const CUR = M.cur, PREV = M.prev, ALL = [CUR, ...PREV];   // current QB first, then earlier starters newest first
 const qvar = q => `var(--${q.slot})`, qcol = q => css("--"+q.slot), qlab = q => `${q.short} ${q.season}`;
-const legendHTML = () => ALL.map(q => `<span><i class="sw${q===CUR?" thick":""}" style="background:${qvar(q)}"></i>${esc(q.name)} ${q.season}</span>`).join("");
+const legendHTML = () => ALL.map(q => `<span>${un(q.slot, "", `${esc(q.name)} ${q.season}`)}</span>`).join("");
 const N = M.N, ord = n => n+(["th","st","nd","rd"][(n%100-20)%10]||["th","st","nd","rd"][n%100]||"th");
 
 
@@ -582,7 +583,7 @@ function lineChart(host, o){
     const r = f.svg.getBoundingClientRect(), sx = (ev.clientX - r.left)/r.width*f.W;
     const n = Math.min(xs, Math.max(1, Math.round((sx - f.pad.l)/f.iw*(xs-1))+1));
     guide.setAttribute("x1",x(n)); guide.setAttribute("x2",x(n)); guide.setAttribute("opacity",.6);
-    const lines = o.series.map(s => { const p = s.points.find(q=>q.x===n); return p&&p.y!=null ? `<div class="r"><span><i class="sw" style="background:${s.color}"></i> ${esc(s.name)}</span><b class="num" style="font-family:var(--body);font-size:13px">${o.fmtTip(p)}</b></div>` : ""; }).join("");
+    const lines = o.series.map(s => { const p = s.points.find(q=>q.x===n); return p&&p.y!=null ? `<div class="r"><span><span class="un" style="border-bottom-color:${s.color}${s.dash?";border-bottom-style:dashed":""}">${esc(s.name)}</span></span><b class="num" style="font-family:var(--body);font-size:13px">${o.fmtTip(p)}</b></div>` : ""; }).join("");
     if (!lines) { tip.hidden = true; return; }
     showTip(host, x(n)/f.W*r.width, (ev.clientY-r.top), `<b>${o.xLabel?o.xLabel(n):"Game "+n}</b>${lines}`);
   };
@@ -658,7 +659,7 @@ function logTable(q){
   const foot = `<tfoot>${line(`${esc(q.short)} total${rows.length>upto?", first "+upto:""}`, q.totals)}${q.season_totals && rows.length>upto ? line(`${q.season} season, all ${rows.length}`, q.season_totals) : ""}</tfoot>`;
   return head + `<tbody>${body}</tbody>` + foot;
 }
-$("#logs").innerHTML = ALL.map(q => `<div><h3><i class="sw thick" style="background:${qvar(q)}"></i>${esc(q.short)} ${q.season} game log</h3><div class="panel tscroll"><table class="log">${logTable(q)}</table></div></div>`).join("");
+$("#logs").innerHTML = ALL.map(q => `<div><h3>${un(q.slot, "", `${esc(q.short)} ${q.season}`)} game log</h3><div class="panel tscroll"><table class="log">${logTable(q)}</table></div></div>`).join("");
 $("#oppd-note").textContent = "Opp pass D: " + (M.opp_d_method || "") + ` Rows below the dashed line are games ${CUR.short} has not reached yet.`;
 
 /* ---------- national ---------- */
@@ -709,15 +710,26 @@ const FD = {
   tot_yds:{t:"Total yards",dp:0,cum:"cum_tot_yds"}, tot_td:{t:"Total TD",dp:0,cum:"cum_tot_td"},
   yds:{t:"Pass yards",dp:0,cum:"cum_yds",qb:true}, td:{t:"Pass TD",dp:0,cum:"cum_td",qb:true}, rating:{t:"Rating",dp:1,cum:"cum_rating",qb:true} };
 let fdKey = "tot_yds", fdMode = "cum";
+const fdOff = new Set();
 {
   const others = M.cohort.qbs.filter(q=>!q.is_cur);
   $("#field-eyebrow").textContent = `${CUR.short} against the Heisman favorites`;
   $("#field-lede").textContent = `${M.cohort.rule} Total yards and Total TD count passing, rushing and receiving, so every position compares fairly; the passing tabs show quarterbacks only. ${CUR.short} is in red, the others gray and labeled at the end of each line. Hover or tap a game number for everyone's value.`;
-  $("#fd-legend").innerHTML = `<span><i class="sw thick" style="background:var(--cur)"></i>${esc(CUR.name)}, ${esc(M.team)} · QB</span>` + others.map(q=>`<span><i class="sw" style="background:var(--field)"></i>${esc(q.name)}, ${esc(q.school)} · ${esc(q.pos||"")}</span>`).join("");
+  const fdPlayers = [{name:CUR.name, label:`${CUR.name}, ${M.team} · QB`, slot:"cur"}, ...others.map(q=>({name:q.name, label:`${q.name}, ${q.school} · ${q.pos||""}`, slot:"field"}))];
+  $("#fd-legend").innerHTML = `<div class="pills" id="fd-pills" style="padding:2px 0 12px;width:100%">${fdPlayers.map(p=>`<button type="button" class="pc" data-fd="${esc(p.name)}" aria-pressed="true"><span class="pu" style="border-bottom-color:var(--${p.slot})">${esc(p.label)}</span></button>`).join("")}</div>`;
+  $("#fd-legend").addEventListener("click", e => {
+    const b = e.target.closest(".pc"); if (!b) return;
+    const name = b.dataset.fd, on = b.getAttribute("aria-pressed")==="true";
+    b.setAttribute("aria-pressed", String(!on));
+    on ? fdOff.add(name) : fdOff.delete(name);
+    drawField();
+  });
 }
 function drawField(){
   const d = FD[fdKey], key = fdMode==="cum" ? d.cum : fdKey;
-  const qbs = M.cohort.qbs.filter(q => !d.qb || q.pos==="QB"), xMax = Math.max(...qbs.map(q=>q.games.length));
+  const qbs = M.cohort.qbs.filter(q => !d.qb || q.pos==="QB").filter(q => !fdOff.has(q.name));
+  if (!qbs.length) { $("#fd-chart").innerHTML = `<p class="caption" style="padding:20px 4px">All players are toggled off — turn one back on above to see the chart.</p>`; $("#fd-note").textContent = ""; return; }
+  const xMax = Math.max(...qbs.map(q=>q.games.length));
   const all = qbs.flatMap(q=>q.games.map(g=>g[key])).filter(v=>v!=null);
   const isR = fdKey==="rating";
   const hidden = M.cohort.qbs.filter(q => d.qb && q.pos!=="QB").map(q=>q.name);
@@ -769,6 +781,7 @@ let curTab = "qb";
 const tabOf = h => TABS.includes(h) ? h : TABS.includes(h.split("-")[0]) ? h.split("-")[0] : "qb";
 const DASH = "7 4", APDASH = "1.5 4";
 const sw = (slot, dash, w=3) => `<svg class="lsw" width="26" height="10" aria-hidden="true"><line x1="2" y1="5" x2="24" y2="5" stroke="var(--${slot})" stroke-width="${w}" stroke-linecap="round"${dash?` stroke-dasharray="${dash}"`:""}/></svg>`;
+const un = (slot, dash, inner) => `<span class="un" style="border-bottom-color:var(--${slot})${dash?";border-bottom-style:dashed":""}">${inner}</span>`;
 const freshLine = f => f && f.checked ? `<p class="fresh">${esc(f.what)}. Last checked ${fmtWhen(f.checked)}.</p>` : "";
 const secHead = (eyebrow, title, extra="") => `<div class="sec-head"><div><div class="eyebrow">${eyebrow}</div><h2>${title}</h2>${extra}</div></div>`;
 const jump = (k, items) => `<nav class="jump" aria-label="Sections">${items.map(([id,t])=>`<a href="#${k}-${id}">${t}</a>`).join("")}</nav>`;
@@ -788,7 +801,7 @@ function renderSkill(k){
   if (T.status !== "ok") { host.innerHTML = pending(T); return; }
   const P = T.players, N = T.N, cur = P.filter(p=>p.season===SEASON), ck = T.count[0];
   const lab = p => `${esc(p.short)} <span class="yr">${p.season}</span>`;
-  const legend = `<div class="legend big">${P.map(p=>`<span>${sw(p.slot, p.dash?DASH:"", p.slot==="cur"?3.5:2.5)}${esc(p.name)} ${p.season}</span>`).join("")}</div>`;
+  const legend = `<div class="legend big">${P.map(p=>`<span>${un(p.slot, p.dash?DASH:"", `${esc(p.name)} ${p.season}`)}</span>`).join("")}</div>`;
   const cmpChips = `<details class="cat" open id="${k}-catchips"><summary>IU players<span class="chev">▾</span></summary><div class="pills">${
     P.map((p,i)=>`<button type="button" class="pc" data-i="${i}" aria-pressed="true"><span class="pu" style="border-bottom-color:var(--${p.slot})${p.dash?";border-bottom-style:dashed":""}">${esc(p.name)} ${p.season}</span></button>`).join("")
   }</div></details>`;
@@ -813,7 +826,7 @@ function renderSkill(k){
       const byRank = (a,b) => ((a.rank==null)-(b.rank==null)) || a.rank-b.rank;
       const out = b.players.filter(x => !(x.rank && x.rank<=5)).sort(byRank);
       if (out.length) rows += `<tr class="gap"><td colspan="3"></td></tr>` + out.map(x => `<tr class="hv"><td class="rk">${x.rank||"–"}</td><td>★ ${esc(x.name)}<span class="tm">Indiana</span></td><td class="val">${x.rank?fv(b.key, x.value):'<span class="small">not ranked</span>'}</td></tr>`).join("");
-      const chips = [...b.players].sort(byRank).map(x => `<span class="rankchip num" title="${esc(x.short)}'s national rank" style="display:inline-flex;align-items:center;gap:4px">${sw("cur", x.dash?DASH:"", 3)}<span class="small" style="font-family:var(--body)">${esc(x.short)}</span> ${x.rank?ord(x.rank):"–"}</span>`).join(" ");
+      const chips = [...b.players].sort(byRank).map(x => `<span class="rankchip num" title="${esc(x.short)}'s national rank" style="display:inline-flex;align-items:center;gap:4px">${un("cur", x.dash?DASH:"", `<span class="small" style="font-family:var(--body)">${esc(x.short)}</span>`)} ${x.rank?ord(x.rank):"–"}</span>`).join(" ");
       return `<div class="board"><div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap"><h3>${esc(b.label)}</h3><span>${chips}</span></div><table>${rows}</table>
         <div class="spark" data-tab="${k}" data-cat="${b.key}"></div>
         <div class="foot"><span>${b.qualified?"Qualified players only":"All players"}${b.players.some(x=>!x.rank)?" · not ranked = outside the listed top 100 or not qualified":""}</span><a href="${b.source_url}" target="_blank" rel="noopener">Source</a></div></div>`; }).join("")}</div></section>`;
@@ -823,7 +836,7 @@ function renderSkill(k){
     const tr = p.rows.map(r => `<tr class="${r.n>N?"future":""} ${r.n===N && p.rows.length>N?"cut":""}"><td class="num">${r.n}</td><td>${site(r.site)}${esc(r.opp)}</td><td>${esc(r.result)}</td><td class="num">${r[ck]}</td><td class="num">${r.yds}</td><td class="num">${r.per==null?"–":fmt(r.per,1)}</td><td class="num">${r.td}</td></tr>`).join("");
     const line = (label, t) => `<tr><td></td><td>${label}</td><td></td><td class="num">${fmt(t[ck])}</td><td class="num">${fmt(t.yds)}</td><td class="num">${t[ck]?fmt(t.yds/t[ck],1):"–"}</td><td class="num">${t.td}</td></tr>`;
     const foot = line(`${esc(p.short)} total${p.rows.length>N?", first "+N:""}`, p.totals) + (p.full && p.rows.length>N ? line(`${p.season} season, all ${p.games}`, p.full) : "");
-    return `<details class="logd"${p.season===SEASON?" open":""}><summary>${sw(p.slot, p.dash?DASH:"", 3.5)} ${esc(p.name)} ${p.season}</summary><div class="tscroll"><table class="log" style="min-width:480px"><thead><tr><th>#</th><th>Opponent</th><th>Result</th><th>${esc(T.count[1])}</th><th>Yds</th><th>Avg</th><th>TD</th></tr></thead><tbody>${tr}</tbody><tfoot>${foot}</tfoot></table></div></details>`;
+    return `<details class="logd"${p.season===SEASON?" open":""}><summary>${un(p.slot, p.dash?DASH:"", `${esc(p.name)} ${p.season}`)}</summary><div class="tscroll"><table class="log" style="min-width:480px"><thead><tr><th>#</th><th>Opponent</th><th>Result</th><th>${esc(T.count[1])}</th><th>Yds</th><th>Avg</th><th>TD</th></tr></thead><tbody>${tr}</tbody><tfoot>${foot}</tfoot></table></div></details>`;
   }).join("");
   const notes = [
     `Each player's games are the games he played, from his cfbstats.com game log, including games without a ${k==="rb"?"carry":"catch"} (those show as 0).  Game 3 is his third game played.  Head-to-head totals stop at ${N} games, the most any ${SEASON} player has played.`,
@@ -895,7 +908,7 @@ function renderTeam(){
   const E = T.teams, N = T.N, P = T.poll;
   const swE = e => sw(e.slot, e.kind==="ap"?APDASH:"", e.kind==="cur"?3.5:e.kind==="ap"?3:2.5);
   const lab = e => e.kind==="ap" ? `${esc(e.label)}` : `Indiana <span class="yr">${e.season}</span>`;
-  const legend = `<div class="legend big">${E.map(e=>`<span>${swE(e)}${esc(e.label)}${e.ap_rank?` (AP #${e.ap_rank})`:""}</span>`).join("")}</div>`;
+  const legend = `<div class="legend big">${E.map(e=>`<span>${un(e.slot, e.kind==="ap"?APDASH:"", esc(e.label))}${e.ap_rank?` (AP #${e.ap_rank})`:""}</span>`).join("")}</div>`;
   const pollTxt = P ? `AP Top 5 from the ${esc(P.name)}${P.week?`, ${esc(P.week)}`:""}, released ${dateFmtY(P.date)}.` : "AP poll not collected yet.";
   const iuRank = P && P.top.find(t=>t.is_iu);
   const pollChips = P ? `<div class="poll">${P.top.map(t=>`<span>#${t.rank} ${esc(t.name)}${t.record?` (${esc(t.record)})`:""}${t.is_iu?" ★":""}</span>`).join("")}</div>` : "";
@@ -910,7 +923,7 @@ function renderTeam(){
     const tr = e.rows.map(r => `<tr class="${r.n>N?"future":""} ${r.n===N && e.rows.length>N?"cut":""}"><td class="num">${r.n}</td><td>${site(r.site)}${esc(r.opp)}</td><td>${esc(r.result)}</td><td class="num">${r.total_yds}</td><td class="num">${r.rush_yds}</td><td class="num">${r.pass_yds}</td><td class="num">${r.to_margin>0?"+":""}${r.to_margin}</td><td class="num">${r.third_conv}/${r.third_att}</td></tr>`).join("");
     const line = (label, t) => `<tr><td></td><td>${label}</td><td>${t.record}, ${fmt(t.pf)}-${fmt(t.pa)}</td><td class="num">${fmt(t.total_yds)}</td><td class="num">${fmt(t.rush_yds)}</td><td class="num">${fmt(t.pass_yds)}</td><td class="num">${t.to_margin>0?"+":""}${t.to_margin}</td><td class="num">${t.third_conv}/${t.third_att}</td></tr>`;
     const foot = line(`Total${e.rows.length>N?", first "+N:""}`, e.totals) + (e.full && e.rows.length>N ? line(`${e.season} season, all ${e.games}`, e.full) : "");
-    return `<details class="logd"${e.kind==="cur"?" open":""}><summary>${swE(e)} ${esc(e.label)}${e.kind==="ap"?` <span class="small" style="font-family:var(--body);text-transform:none;letter-spacing:0">${SEASON}</span>`:""}</summary><div class="tscroll"><table class="log" style="min-width:600px"><thead><tr><th>#</th><th>Opponent</th><th>Result</th><th>Total yds</th><th>Rush yds</th><th>Pass yds</th><th>TO +/-</th><th>3rd down</th></tr></thead><tbody>${tr}</tbody><tfoot>${foot}</tfoot></table></div></details>`;
+    return `<details class="logd"${e.kind==="cur"?" open":""}><summary>${un(e.slot, e.kind==="ap"?APDASH:"", esc(e.label))}${e.kind==="ap"?` <span class="small" style="font-family:var(--body);text-transform:none;letter-spacing:0">${SEASON}</span>`:""}</summary><div class="tscroll"><table class="log" style="min-width:600px"><thead><tr><th>#</th><th>Opponent</th><th>Result</th><th>Total yds</th><th>Rush yds</th><th>Pass yds</th><th>TO +/-</th><th>3rd down</th></tr></thead><tbody>${tr}</tbody><tfoot>${foot}</tfoot></table></div></details>`;
   }).join("");
   const notes = [
     `Every team's games are numbered in order, so game 3 is each team's third game of its season.  Head-to-head totals stop at ${N} games, Indiana's ${SEASON} count; a team with fewer games shows its season so far in italics and is left out of the leader boxes.`,
