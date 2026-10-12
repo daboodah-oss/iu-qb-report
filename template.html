@@ -290,7 +290,7 @@ details.logd .tscroll{padding:0 14px 14px}
   <header class="mast">
     <div>
       <div class="eyebrow mast-top"><span id="mast-eyebrow">IU Report · Indiana football</span></div>
-      <h2 class="mast-title"><span class="h" id="h1-cur"></span> <span class="era"><span class="vs">vs</span> the Cignetti era</span></h2>
+      <h2 class="mast-title"><span id="h1-cur"></span> <span class="era"><span class="vs">vs</span> the Cignetti era</span></h2>
       <p class="mast-sub" id="mast-sub"></p>
       <div class="stamp" id="stamp"></div>
       <p class="verdict" id="verdict"></p>
@@ -428,7 +428,7 @@ function drawFresh(){
 drawFresh();
 
 /* ---------- masthead ---------- */
-$("#mast-eyebrow").textContent = `IU Report · ${M.team} football ${CUR.season}`;
+$("#mast-eyebrow").textContent = `Quarterbacks · ${M.team} football ${CUR.season}`;
 $("#h1-cur").textContent = CUR.short;
 $("#mast-sub").innerHTML = legendHTML();
 const asof = new Date(M.as_of);
