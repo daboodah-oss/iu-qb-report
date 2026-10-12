@@ -789,9 +789,10 @@ function renderSkill(k){
       const mine = new Set(b.players.filter(x=>x.rank).map(x=>x.name.toLowerCase()));
       let rows = b.top.map(r => { const me = r.team==="Indiana" && mine.has(r.name.toLowerCase());
         return `<tr class="${me?"hv":""}"><td class="rk">${cnt[r.rank]>1?"T":""}${r.rank}</td><td>${me?"★ ":""}${esc(r.name)}<span class="tm">${esc(r.team)}</span></td><td class="val">${fv(b.key, r.value)}</td></tr>`; }).join("");
-      const out = b.players.filter(x => !(x.rank && x.rank<=5));
+      const byRank = (a,b) => ((a.rank==null)-(b.rank==null)) || a.rank-b.rank;
+      const out = b.players.filter(x => !(x.rank && x.rank<=5)).sort(byRank);
       if (out.length) rows += `<tr class="gap"><td colspan="3"></td></tr>` + out.map(x => `<tr class="hv"><td class="rk">${x.rank||"–"}</td><td>★ ${esc(x.name)}<span class="tm">Indiana</span></td><td class="val">${x.rank?fv(b.key, x.value):'<span class="small">not ranked</span>'}</td></tr>`).join("");
-      const chips = b.players.map(x => `<span class="rankchip num" title="${esc(x.short)}'s national rank" style="display:inline-flex;align-items:center;gap:4px">${sw("cur", x.dash?DASH:"", 3)}<span class="small" style="font-family:var(--body)">${esc(x.short)}</span> ${x.rank?ord(x.rank):"–"}</span>`).join(" ");
+      const chips = [...b.players].sort(byRank).map(x => `<span class="rankchip num" title="${esc(x.short)}'s national rank" style="display:inline-flex;align-items:center;gap:4px">${sw("cur", x.dash?DASH:"", 3)}<span class="small" style="font-family:var(--body)">${esc(x.short)}</span> ${x.rank?ord(x.rank):"–"}</span>`).join(" ");
       return `<div class="board"><div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap"><h3>${esc(b.label)}</h3><span>${chips}</span></div><table>${rows}</table>
         <div class="spark" data-tab="${k}" data-cat="${b.key}"></div>
         <div class="foot"><span>${b.qualified?"Qualified players only":"All players"}${b.players.some(x=>!x.rank)?" · not ranked = outside the listed top 100 or not qualified":""}</span><a href="${b.source_url}" target="_blank" rel="noopener">Source</a></div></div>`; }).join("")}</div></section>`;
