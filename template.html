@@ -109,6 +109,15 @@ section{padding-top:40px;scroll-margin-top:48px}
 .barpair i{display:block;height:8px;border-radius:0 4px 4px 0;min-width:2px}
 .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--ink-2)}
 .legend span{display:inline-flex;align-items:center;gap:6px}
+.cat{border:1px solid var(--rule);border-radius:12px;background:var(--surface);margin:0 0 12px}
+.cat>summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:10px 14px;font:600 13px/1.2 var(--body);color:var(--ink)}
+.cat>summary::-webkit-details-marker{display:none}
+.cat>summary .chev{margin-left:auto;color:var(--muted);font-size:11px;transition:transform .15s}
+.cat[open]>summary .chev{transform:rotate(180deg)}
+.pills{display:flex;flex-wrap:wrap;gap:8px;padding:2px 14px 12px}
+.pc{font:500 13px/1.3 var(--body);color:var(--ink);background:var(--surface-2);border:1px solid var(--rule);border-radius:999px;padding:7px 14px;cursor:pointer}
+.pc .pu{border-bottom:3px solid;padding-bottom:1px}
+.pc[aria-pressed="false"]{opacity:.4}
 .sw{width:14px;height:4px;border-radius:2px;display:inline-block}
 .sw.thick{height:6px}
 
@@ -605,15 +614,26 @@ function cmpSeries(rows){
   });
 }
 $("#cmp-lede").textContent = `One chart for every view, lined up by game number.  Earlier seasons run their full length; the dashed marker is ${CUR.short}'s latest game.`;
-$("#cmp-legend").innerHTML = legendHTML();
+$("#cmp-legend").innerHTML = `<details class="cat" open><summary>IU players<span class="chev">▾</span></summary><div class="pills">${
+  ALL.map((q,i)=>`<button type="button" class="pc" data-i="${i}" aria-pressed="true"><span class="pu" style="border-bottom-color:${qvar(q)}">${esc(q.name)} ${q.season}</span></button>`).join("")
+}</div></details>`;
+const offQ = new Set();
+$("#cmp-legend").addEventListener("click", e => {
+  const b = e.target.closest(".pc"); if (!b) return;
+  const i = +b.dataset.i, on = b.getAttribute("aria-pressed")==="true";
+  b.setAttribute("aria-pressed", String(!on));
+  on ? offQ.add(i) : offQ.delete(i);
+  drawCompare();
+});
 function drawCompare(){
-  const d = CMP[cmpKey], S = ALL.map(q => ({q, pts: cmpSeries(q.rows)}));
+  const d = CMP[cmpKey], S = ALL.map((q,i) => ({q, i})).filter(({i}) => !offQ.has(i)).map(({q}) => ({q, pts: cmpSeries(q.rows)}));
+  if (!S.length) { $("#cmp-chart").innerHTML = `<p class="caption" style="padding:20px 4px">All players are toggled off — turn one back on above to see the chart.</p>`; $("#cmp-cap").textContent = ""; return; }
   const all = S.flatMap(s => s.pts.map(p=>p.y)).filter(v=>v!=null);
   const rate = cmpKey==="rating" || cmpKey==="pct";
   const lo = rate ? Math.floor(Math.min(...all)/20)*20 : 0; let hi = rate ? Math.ceil(Math.max(...all)/20)*20 : undefined; if (rate) hi = lo + Math.ceil((hi-lo)/20)*20;
   if (!rate) { const m = Math.max(...all); if (m <= 40) hi = Math.max(4, Math.ceil(m/4)*4); }  // whole-number ticks for small counts like INT
   lineChart($("#cmp-chart"), {
-    aria:`${d.t}, ${cmpMode==="cum"?"running total":"per game"}, ${ALL.map(qlab).join(" versus ")}`,
+    aria:`${d.t}, ${cmpMode==="cum"?"running total":"per game"}, ${S.map(({q})=>qlab(q)).join(" versus ")}`,
     xMax: Math.max(...ALL.map(q=>q.rows.length)), marker: N, yMin: lo, yMax: hi, padR: 44,
     fmtY: v => fmt(v,0), fmtTip: p => fmt(p.y, d.dp) + (p.opp?` <span class="small">${esc(p.opp)}</span>`:""),
     series: S.map(({q, pts}) => ({name: qlab(q), color: qcol(q), width: q===CUR?3.5:2, z: q===CUR?2:1, points: pts,
@@ -771,6 +791,9 @@ function renderSkill(k){
   const P = T.players, N = T.N, cur = P.filter(p=>p.season===SEASON), ck = T.count[0];
   const lab = p => `${esc(p.short)} <span class="yr">${p.season}</span>`;
   const legend = `<div class="legend big">${P.map(p=>`<span>${sw(p.slot, p.dash?DASH:"", p.slot==="cur"?3.5:2.5)}${esc(p.name)} ${p.season}</span>`).join("")}</div>`;
+  const cmpChips = `<details class="cat" open id="${k}-catchips"><summary>IU players<span class="chev">▾</span></summary><div class="pills">${
+    P.map((p,i)=>`<button type="button" class="pc" data-i="${i}" aria-pressed="true"><span class="pu" style="border-bottom-color:var(--${p.slot})${p.dash?";border-bottom-style:dashed":""}">${esc(p.name)} ${p.season}</span></button>`).join("")
+  }</div></details>`;
   // head to head: one row per player, one column per stat
   const head = `<tr><th>Through ${N} games</th><th>G</th>${T.stats.map(s=>`<th title="${esc(s.label)}">${esc(s.short||s.label)}</th>`).join("")}</tr>`;
   const body = P.map((p,i) => `<tr class="${i && P[i-1].season!==p.season?"sep":""}"><td class="who">${sw(p.slot, p.dash?DASH:"", 3)} ${lab(p)}</td><td class="num">${p.totals.games}${p.short_of_n?"*":""}</td>${T.h2h.map(h => {
@@ -815,18 +838,26 @@ function renderSkill(k){
     ${full}
     <section id="${k}-compare">${secHead("Running total or each game, any stat", "Compare chart")}
       <div class="controls stack" style="margin-bottom:10px"><div class="seg toggle" id="${k}-mode" role="group" aria-label="View: running total or per game"></div><div class="seg chips" id="${k}-seg" role="group" aria-label="Stat"></div></div>
-      <div class="panel">${legend.replace("legend big","legend")}<div class="chart" id="${k}-chart"></div><p class="caption" id="${k}-cap"></p></div></section>
+      <div class="panel">${cmpChips}<div class="chart" id="${k}-chart"></div><p class="caption" id="${k}-cap"></p></div></section>
     ${nat}
     <section id="${k}-games">${secHead("Every game, every season", "Game logs")}${logs}</section>
     <section id="${k}-method">${secHead("How the numbers are built", "Method and sources")}<div class="notes"><div><h3>Notes</h3><ul>${notes.map(n=>`<li>${esc(n)}</li>`).join("")}</ul></div><div><h3>Sources</h3><ul>${T.sources.map(s=>`<li><a href="${s.url}" target="_blank" rel="noopener">${esc(s.label)}</a></li>`).join("")}${NT?NT.boards.map(b=>`<li><a href="${b.source_url}" target="_blank" rel="noopener">cfbstats.com: ${SEASON} national ${esc(b.label.toLowerCase())}</a></li>`).join(""):""}<li>ESPN box scores for every Indiana game</li></ul></div></div></section>`;
-  SK[k] = {key: T.chart[0].key, mode: "cum"};
+  SK[k] = {key: T.chart[0].key, mode: "cum", off: new Set()};
   seg($(`#${k}-mode`), [["cum","Running total"],["pg","Per game"]], "cum", m=>{SK[k].mode=m; drawSkill(k);});
   seg($(`#${k}-seg`), T.chart.map(c=>[c.key, c.label]), SK[k].key, v=>{SK[k].key=v; drawSkill(k);});
+  document.getElementById(`${k}-catchips`).addEventListener("click", e => {
+    const b = e.target.closest(".pc"); if (!b) return;
+    const i = +b.dataset.i, on = b.getAttribute("aria-pressed")==="true";
+    b.setAttribute("aria-pressed", String(!on));
+    on ? SK[k].off.add(i) : SK[k].off.delete(i);
+    drawSkill(k);
+  });
 }
 function drawSkill(k){
   const T = TB[k]; if (T.status!=="ok") return;
   const st = SK[k], c = T.chart.find(c=>c.key===st.key), dp = (st.key==="ypc"||st.key==="ypr") ? 2 : st.key==="ypg" ? 1 : 0;
-  const S = T.players.map(p => ({p, pts: skillSeries(T, p, st.key, st.mode)}));
+  const S = T.players.map((p,i) => ({p, i})).filter(({i}) => !st.off.has(i)).map(({p}) => ({p, pts: skillSeries(T, p, st.key, st.mode)}));
+  if (!S.length) { $(`#${k}-chart`).innerHTML = `<p class="caption" style="padding:20px 4px">All players are toggled off — turn one back on above to see the chart.</p>`; $(`#${k}-cap`).textContent = ""; return; }
   const all = S.flatMap(s=>s.pts.map(q=>q.y)).filter(v=>v!=null);
   const m = Math.max(...all, 1), hi = m <= 40 ? Math.max(4, Math.ceil(m/4)*4) : undefined;
   lineChart($(`#${k}-chart`), {aria:`${c.label}, ${st.mode==="cum"?"running total":"per game"}, ${T.players.map(p=>p.short+" "+p.season).join(", ")}`,
