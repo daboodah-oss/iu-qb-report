@@ -1,7 +1,7 @@
 {
  "rb": {
   "latest": {
-   "data_through": "2026-10-10",
+   "data_through": "2026-10-13",
    "boards": {
     "yds": {
      "label": "Rushing yards",
@@ -226,11 +226,28 @@
     "Lee Beebe Jr.",
     "Turbo Richard"
    ],
-   "retrieved_at": "2026-10-12T00:01+00:00"
+   "retrieved_at": "2026-10-14T18:57+00:00"
   },
   "rank_history": [
    {
     "through": "2026-10-10",
+    "ranks": {
+     "Lee Beebe Jr.": {
+      "yds": 19,
+      "td": 63,
+      "ypc": null,
+      "ypg": 28
+     },
+     "Turbo Richard": {
+      "yds": 14,
+      "td": 39,
+      "ypc": 12,
+      "ypg": 21
+     }
+    }
+   },
+   {
+    "through": "2026-10-13",
     "ranks": {
      "Lee Beebe Jr.": {
       "yds": 19,
@@ -250,7 +267,7 @@
  },
  "wr": {
   "latest": {
-   "data_through": "2026-10-10",
+   "data_through": "2026-10-13",
    "boards": {
     "rec": {
      "label": "Receptions",
@@ -295,12 +312,12 @@
      ],
      "players": {
       "Charlie Becker": {
-       "rank": 39,
+       "rank": 40,
        "value": 30.0,
        "g": 6
       },
       "Nick Marsh": {
-       "rank": 41,
+       "rank": 42,
        "value": 29.0,
        "g": 6
       }
@@ -349,12 +366,12 @@
      ],
      "players": {
       "Charlie Becker": {
-       "rank": 12,
+       "rank": 13,
        "value": 529.0,
        "g": 6
       },
       "Nick Marsh": {
-       "rank": 14,
+       "rank": 15,
        "value": 528.0,
        "g": 6
       }
@@ -518,12 +535,12 @@
      ],
      "players": {
       "Charlie Becker": {
-       "rank": 20,
+       "rank": 21,
        "value": 88.2,
        "g": 6
       },
       "Nick Marsh": {
-       "rank": 22,
+       "rank": 23,
        "value": 88.0,
        "g": 6
       }
@@ -534,7 +551,7 @@
     "Charlie Becker",
     "Nick Marsh"
    ],
-   "retrieved_at": "2026-10-12T00:01+00:00"
+   "retrieved_at": "2026-10-14T18:57+00:00"
   },
   "rank_history": [
    {
@@ -553,6 +570,25 @@
       "td": 7,
       "ypr": 32,
       "ypg": 22
+     }
+    }
+   },
+   {
+    "through": "2026-10-13",
+    "ranks": {
+     "Charlie Becker": {
+      "rec": 40,
+      "yds": 13,
+      "td": 4,
+      "ypr": 44,
+      "ypg": 21
+     },
+     "Nick Marsh": {
+      "rec": 42,
+      "yds": 15,
+      "td": 7,
+      "ypr": 32,
+      "ypg": 23
      }
     }
    }

@@ -1,2 +1,2 @@
 OK  games=6  verdict: Through 6 games, Hoover leads Mendoza's 2025 line in 2 of 5 (1 tied) and Rourke's 2024 line in 2 of 5 headline passing measures. At the same point he is even with Mendoza on passing TD and 59 yards behind and 388 yards behind Rourke but 3 passing TD ahead.
-    sha256=1650a1eced63ca83  bytes=201305
+    sha256=59c55d69d464243a  bytes=206288

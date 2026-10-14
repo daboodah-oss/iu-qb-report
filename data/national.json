@@ -3,7 +3,7 @@
  "source": "cfbstats.com national player leaders, passing, all games (FBS)",
  "qualifier_note": "Completion %, passer rating and yards per attempt require 15 pass attempts per game played and 75% of team games (cfbstats/NCAA rule). Yards and TD have no qualifier.",
  "latest": {
-  "data_through": "2026-10-10",
+  "data_through": "2026-10-13",
   "boards": {
    "yds": {
     "rows": [
@@ -63,7 +63,7 @@
       "src_rating": 173.98
      }
     ],
-    "hoover_rank": 37,
+    "hoover_rank": 38,
     "label": "Passing yards",
     "source_url": "https://cfbstats.com/2026/leader/national/player/split01/category02/sort08.html"
    },
@@ -176,15 +176,15 @@
       "src_rating": 161.98
      },
      {
-      "name": "Noah Fifita",
-      "team": "Arizona",
+      "name": "Ethan Grunkemeyer",
+      "team": "Virginia Tech",
       "g": 6,
-      "cmp": 140,
-      "att": 191,
-      "yds": 1756,
-      "td": 16,
-      "int": 4,
-      "src_rating": 173.98
+      "cmp": 152,
+      "att": 207,
+      "yds": 1734,
+      "td": 12,
+      "int": 2,
+      "src_rating": 161.0
      }
     ],
     "hoover_rank": 31,
@@ -341,7 +341,7 @@
    "int": 0,
    "src_rating": 200.53
   },
-  "retrieved_at": "2026-10-12T00:01+00:00"
+  "retrieved_at": "2026-10-14T18:57+00:00"
  },
  "rank_history": [
   {
@@ -379,6 +379,17 @@
    "games": 6,
    "ranks": {
     "yds": 37,
+    "td": 3,
+    "pct": 31,
+    "rating": 2,
+    "ypa": 4
+   }
+  },
+  {
+   "through": "2026-10-13",
+   "games": 6,
+   "ranks": {
+    "yds": 38,
     "td": 3,
     "pct": 31,
     "rating": 2,

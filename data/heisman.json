@@ -53,6 +53,10 @@
   "Jadan Baugh": {
    "school": "Florida",
    "pos": "RB"
+  },
+  "Drew Mestemaker": {
+   "school": "Oklahoma State",
+   "pos": "QB"
   }
  },
  "hoover_opening": {
@@ -230,6 +234,26 @@
     "Malachi Toney": 3500,
     "Julian Sayin": 4000,
     "Kamario Taylor": 4000
+   }
+  },
+  {
+   "book": "BetMGM",
+   "as_of": "2026-10-12",
+   "outlet": "BetMGM",
+   "url": "https://sports.betmgm.com/en/blog/college-football/heisman-trohpy-odds-favorites-to-win-bm06/",
+   "odds": {
+    "Jeremiah Smith": -220,
+    "CJ Carr": 1200,
+    "Darian Mensah": 1000,
+    "Gunner Stockton": 1500,
+    "Keelon Russell": 1500,
+    "Trinidad Chambliss": 1500,
+    "Julian Sayin": 3500,
+    "Arch Manning": 4000,
+    "Drew Mestemaker": 4000,
+    "Kamario Taylor": 4000,
+    "Malachi Toney": 5000,
+    "Josh Hoover": 5000
    }
   }
  ]
