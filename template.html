@@ -409,6 +409,7 @@ const dateFmt = d => { const [y,m,dd] = d.split("-").map(Number); return new Dat
 const dateFmtY = d => { const [y,m,dd] = d.split("-").map(Number); return new Date(y,m-1,dd).toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"}); };
 const CUR = M.cur, PREV = M.prev, ALL = [CUR, ...PREV];   // current QB first, then earlier starters newest first
 const qvar = q => `var(--${q.slot})`, qcol = q => css("--"+q.slot), qlab = q => `${q.short} ${q.season}`;
+const un = (slot, dash, inner) => `<span class="un" style="border-bottom-color:var(--${slot})${dash?";border-bottom-style:dashed":""}">${inner}</span>`;
 const legendHTML = () => ALL.map(q => `<span>${un(q.slot, "", `${esc(q.name)} ${q.season}`)}</span>`).join("");
 const N = M.N, ord = n => n+(["th","st","nd","rd"][(n%100-20)%10]||["th","st","nd","rd"][n%100]||"th");
 
@@ -781,7 +782,6 @@ let curTab = "qb";
 const tabOf = h => TABS.includes(h) ? h : TABS.includes(h.split("-")[0]) ? h.split("-")[0] : "qb";
 const DASH = "7 4", APDASH = "1.5 4";
 const sw = (slot, dash, w=3) => `<svg class="lsw" width="26" height="10" aria-hidden="true"><line x1="2" y1="5" x2="24" y2="5" stroke="var(--${slot})" stroke-width="${w}" stroke-linecap="round"${dash?` stroke-dasharray="${dash}"`:""}/></svg>`;
-const un = (slot, dash, inner) => `<span class="un" style="border-bottom-color:var(--${slot})${dash?";border-bottom-style:dashed":""}">${inner}</span>`;
 const freshLine = f => f && f.checked ? `<p class="fresh">${esc(f.what)}. Last checked ${fmtWhen(f.checked)}.</p>` : "";
 const secHead = (eyebrow, title, extra="") => `<div class="sec-head"><div><div class="eyebrow">${eyebrow}</div><h2>${title}</h2>${extra}</div></div>`;
 const jump = (k, items) => `<nav class="jump" aria-label="Sections">${items.map(([id,t])=>`<a href="#${k}-${id}">${t}</a>`).join("")}</nav>`;
