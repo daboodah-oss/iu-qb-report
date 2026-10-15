@@ -1,20 +1,10 @@
-Traceback (most recent call last):
-  File "/home/runner/work/iu-qb-report/iu-qb-report/collect.py", line 84, in run
-    out = fn(*a, **k)
-          ^^^^^^^^^^^
-  File "/home/runner/work/iu-qb-report/iu-qb-report/collect.py", line 415, in cohort
-    games = espn_gamelog(q["espn_id"])
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/iu-qb-report/iu-qb-report/collect.py", line 173, in espn_gamelog
-    raise ValueError(f"ESPN row {r['date']} rating {r['rtg']} != computed {calc:.1f}")
-ValueError: ESPN row 2026-10-10 rating 152.7 != computed 152.6
 [schedule] 2026: 12 games, 6 played
 [schedule] ESPN finals seen: 6, latest 2026-10-10 W 20-17
 [games] next game kickoff: {'kickoff': '2026-10-17T12:00-04:00', 'tv': 'Fox'}
 UPDATED next game: {'date': '2026-10-17', 'opp': 'Ohio State', 'site': 'H', 'source_url': 'https://cfbstats.com/2026/team/306/index.html', 'kickoff': '2026-10-17T12:00-04:00', 'tv': 'Fox'}
 UPDATED national through 2026-10-13 {'yds': 38, 'td': 3, 'pct': 31, 'rating': 2, 'ypa': 4}
 SKIPPED: snapshot exists for BetMGM 2026-10-14
-[cohort] FAILED: ESPN row 2026-10-10 rating 152.7 != computed 152.6
+UPDATED cohort: Jeremiah Smith, Darian Mensah, CJ Carr, Trinidad Chambliss
 UPDATED opponent pass-D ranks
 STORED AP Top 25 2026-10-11 1 Georgia, 2 Notre Dame, 3 Miami, 4 Ohio State, 5 Indiana
 STORED team Indiana 2026: 6 games
@@ -31,4 +21,10 @@ STORED rb: Lee Beebe Jr. 2026 (6 g), Turbo Richard 2026 (6 g), Roman Hemby 2025 
 STORED wr: Charlie Becker 2026 (6 g), Nick Marsh 2026 (6 g), Omar Cooper Jr. 2025 (16 g), Elijah Sarratt 2025 (14 g), Elijah Sarratt 2024 (13 g), Omar Cooper Jr. 2024 (13 g)
 STORED rb national boards through 2026-10-13
 STORED wr national boards through 2026-10-13
-FAILED sections: cohort
+[natref] qb: 50 players stored (50 game logs fetched, 0 unchanged)
+STORED natref qb: 50 players through 2026-10-13
+[natref] rb: 52 players stored (52 game logs fetched, 0 unchanged)
+STORED natref rb: 52 players through 2026-10-13
+[natref] wr: 56 players stored (56 game logs fetched, 0 unchanged)
+STORED natref wr: 56 players through 2026-10-13
+FAILED sections: none

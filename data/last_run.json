@@ -1,18 +1,18 @@
 {
- "at": "2026-10-14T19:28-04:00",
- "failed": [
-  "cohort"
- ],
+ "at": "2026-10-14T21:42-04:00",
+ "failed": [],
  "log": [
   "[schedule] 2026: 12 games, 6 played",
   "[schedule] ESPN finals seen: 6, latest 2026-10-10 W 20-17",
   "[games] next game kickoff: {'kickoff': '2026-10-17T12:00-04:00', 'tv': 'Fox'}",
-  "[cohort] FAILED: ESPN row 2026-10-10 rating 152.7 != computed 152.6",
   "[team] Indiana 2026: 6 games; matches cfbstats through 2026-10-13",
   "[team] Georgia 2026: 6 games; matches cfbstats through 2026-10-13",
   "[team] Notre Dame 2026: 6 games; matches cfbstats through 2026-10-13",
   "[team] Miami 2026: 5 games; matches cfbstats through 2026-10-13",
   "[team] Ohio State 2026: 6 games; matches cfbstats through 2026-10-13",
-  "FAILED sections: cohort"
+  "[natref] qb: 50 players stored (50 game logs fetched, 0 unchanged)",
+  "[natref] rb: 52 players stored (52 game logs fetched, 0 unchanged)",
+  "[natref] wr: 56 players stored (56 game logs fetched, 0 unchanged)",
+  "FAILED sections: none"
  ]
 }

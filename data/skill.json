@@ -828,7 +828,7 @@
     "check_diff": []
    }
   ],
-  "retrieved_at": "2026-10-14T23:28+00:00",
+  "retrieved_at": "2026-10-15T01:40+00:00",
   "rule": "Current season: players named in roster.json. Earlier seasons: Indiana's top 2 RB by rushing yards (cfbstats.com)."
  },
  "wr": {
@@ -1643,7 +1643,7 @@
     "check_diff": []
    }
   ],
-  "retrieved_at": "2026-10-14T23:28+00:00",
+  "retrieved_at": "2026-10-15T01:40+00:00",
   "rule": "Current season: players named in roster.json. Earlier seasons: Indiana's top 2 WR/TE by receiving yards (cfbstats.com)."
  }
 }
