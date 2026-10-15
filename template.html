@@ -900,7 +900,7 @@ function drawSkillSparks(k){
 }
 
 /* ---------- Team ---------- */
-const TM = {key: "pf", mode: "cum"};
+const TM = {key: "pf", mode: "cum", off: new Set()};
 function teamVal(r, key, mode){ if (mode==="cum") return r.cum[key]; return key==="third_pct" ? r.third_pct : r[key]; }
 function renderTeam(){
   const T = TB.team, host = $("#tab-team");
@@ -936,16 +936,24 @@ function renderTeam(){
     ${full}
     <section id="team-compare">${secHead("Running total or each game, any stat", "Compare chart")}
       <div class="controls stack" style="margin-bottom:10px"><div class="seg toggle" id="team-mode" role="group" aria-label="View: running total or per game"></div><div class="seg chips" id="team-seg" role="group" aria-label="Stat"></div></div>
-      <div class="panel">${legend.replace("legend big","legend")}<div class="chart" id="team-chart"></div><p class="caption" id="team-cap"></p></div></section>
+      <div class="panel"><div class="pills" id="team-catchips" style="padding:2px 0 12px">${E.map((e,i)=>`<button type="button" class="pc" data-i="${i}" aria-pressed="true"><span class="pu" style="border-bottom-color:var(--${e.slot})${e.kind==="ap"?";border-bottom-style:dashed":""}">${esc(e.label)}${e.ap_rank?` (AP #${e.ap_rank})`:""}</span></button>`).join("")}</div><div class="chart" id="team-chart"></div><p class="caption" id="team-cap"></p></div></section>
     <section id="team-games">${secHead("Every game", "Game logs")}${logs}</section>
     <section id="team-method">${secHead("How the numbers are built", "Method and sources")}<div class="notes"><div><h3>Notes</h3><ul>${notes.map(n=>`<li>${esc(n)}</li>`).join("")}</ul></div><div><h3>Sources</h3><ul><li><a href="${P&&P.source_url||"https://www.espn.com/college-football/rankings"}" target="_blank" rel="noopener">ESPN: AP Top 25</a></li><li>ESPN box scores for every game shown</li>${E.filter(e=>e.url).map(e=>`<li><a href="${e.url}" target="_blank" rel="noopener">cfbstats.com: ${esc(e.kind==="ap"?e.label.replace(/^#\d+ /,""):"Indiana")} ${e.season} team statistics</a></li>`).join("")}</ul></div></div></section>`;
   seg($("#team-mode"), [["cum","Running total"],["pg","Per game"]], "cum", m=>{TM.mode=m; drawTeam();});
   seg($("#team-seg"), T.chart.map(c=>[c.key, c.label]), TM.key, v=>{TM.key=v; drawTeam();});
+  document.getElementById("team-catchips").addEventListener("click", e => {
+    const b = e.target.closest(".pc"); if (!b) return;
+    const i = +b.dataset.i, on = b.getAttribute("aria-pressed")==="true";
+    b.setAttribute("aria-pressed", String(!on));
+    on ? TM.off.add(i) : TM.off.delete(i);
+    drawTeam();
+  });
 }
 function drawTeam(){
   const T = TB.team; if (T.status!=="ok") return;
   const c = T.chart.find(c=>c.key===TM.key), mode = TM.key==="wins" ? "cum" : TM.mode, dp = TM.key==="third_pct" ? 1 : 0;
-  const S = T.teams.map(e => ({e, pts: e.rows.map(r => ({x:r.n, opp:r.opp, y: teamVal(r, TM.key, mode)}))}));
+  const S = T.teams.map(e => ({e, pts: e.rows.map(r => ({x:r.n, opp:r.opp, y: teamVal(r, TM.key, mode)}))})).filter((s, i) => !TM.off.has(i));
+  if (!S.length) { $("#team-chart").innerHTML = `<p class="caption" style="padding:20px 4px">All teams are toggled off — turn one back on above to see the chart.</p>`; $("#team-cap").textContent = ""; return; }
   const all = S.flatMap(s=>s.pts.map(q=>q.y)).filter(v=>v!=null);
   let lo = Math.min(0, ...all), hi = Math.max(...all, 1);
   if (TM.key==="third_pct") { lo = Math.floor(Math.min(...all)/10)*10; hi = Math.ceil(Math.max(...all)/10)*10; if (hi===lo) hi = lo+10; }
