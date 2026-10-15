@@ -116,6 +116,16 @@ section{padding-top:40px;scroll-margin-top:48px}
 .pc .pu{border-bottom:3px solid;padding-bottom:1px}
 .pc[aria-pressed="false"]{opacity:.4}
 #cmp-legend{display:block}
+/* national reference lines (National Top 3, Individual player) */
+.nrnote{margin:0;padding:0 14px 10px;max-width:75ch}
+.nrsearch{display:block;font:400 14px/1.3 var(--body);width:calc(100% - 28px);max-width:340px;margin:0 14px 8px;padding:8px 14px;border:1px solid var(--rule);border-radius:999px;background:var(--surface);color:var(--ink)}
+.nrres{display:flex;flex-wrap:wrap;gap:6px;padding:0 14px 8px}
+.nrres:empty{display:none}
+.nrhit{font:500 13px/1.3 var(--body);color:var(--ink);background:var(--surface);border:1px dashed var(--rule);border-radius:999px;padding:6px 12px;cursor:pointer}
+.nrhit .small{margin-left:4px}
+.pc.nrpick{display:inline-flex;align-items:center;gap:2px;padding:0 4px 0 0}
+.nrpick button{border:0;background:none;font:inherit;color:inherit;cursor:pointer;padding:7px 4px 7px 14px}
+.nrpick .nr-x{padding:4px 8px;color:var(--muted);font-size:16px;line-height:1}
 .sw{width:14px;height:4px;border-radius:2px;display:inline-block}
 .sw.thick{height:6px}
 
@@ -597,6 +607,84 @@ function seg(host, items, current, onPick, label){
   host.addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; host.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed", x===b)); onPick(b.dataset.k); });
 }
 
+/* ---------- national reference lines: National Top 3 + Individual player (QB, RB, WR compare charts) ---------- */
+const NR = M.natref || {}, NRST = {}, NRDASH = ["", "7 4", "1.5 4"], NRBORDER = ["solid", "dashed", "dotted"];
+const NRLAB = {qb:{yds:"pass yards", td:"pass TD", rating:"passer rating", pct:"completion %", att:"pass attempts", int:"interceptions", total_td:"total TD"},
+  rb:{yds:"rushing yards", td:"rushing TD", ypc:"yards per carry", ypg:"rushing yards per game", att:"carries"},
+  wr:{yds:"receiving yards", rec:"receptions", td:"receiving TD", ypr:"yards per catch", ypg:"receiving yards per game"}};
+const nrPill = (R, pid, i, on) => `<button type="button" class="pc" data-nrtop="${i}" aria-pressed="${on}" title="${esc(R.players[pid].name)}, ${esc(R.players[pid].team)}"><span class="pu" style="border-bottom-color:var(--field);border-bottom-style:${NRBORDER[i%3]}">${esc(R.players[pid].name)}</span></button>`;
+function nrHTML(tab){
+  NRST[tab] = {top: new Set(), picks: [], off: new Set()};
+  const R = NR[tab] || {};
+  const pend = R.status!=="ok" ? `<p class="small nrnote">${esc(R.message || "National players have not been collected yet.")}</p>` : "";
+  return `<details class="cat" id="${tab}-nrtop"><summary>National Top 3<span class="chev">▾</span></summary>${pend || `<div class="pills" id="${tab}-nrtop-pills"></div><p class="small nrnote" id="${tab}-nrtop-note"></p>`}</details>
+    <details class="cat" id="${tab}-nrind"><summary>Individual player<span class="chev">▾</span></summary>${pend || `<input type="search" class="nrsearch" id="${tab}-nrq" placeholder="Search ${R.pool.length} national ${esc(R.label)}" aria-label="Search national ${esc(R.label)} by name or team" autocomplete="off"><div class="nrres" id="${tab}-nrres"></div><div class="pills" id="${tab}-nrpicks"></div><p class="small nrnote">Gray lines.  The pool is the top 20 ${esc(R.positions.join("/"))} on each cfbstats.com national leaderboard this chart tracks (Indiana players excluded; they are already on the chart in color), refreshed with every update.  Each player is lined up by his own games played.</p>`}</details>`;
+}
+function nrRefresh(tab, key){
+  const R = NR[tab]; if (!R || R.status!=="ok") return;
+  const st = NRST[tab], b = R.stats[key], host = document.getElementById(`${tab}-nrtop-pills`), note = document.getElementById(`${tab}-nrtop-note`);
+  if (!b) { host.innerHTML = ""; note.textContent = "No national leaderboard for this stat."; return; }
+  host.innerHTML = b.top.map((pid,i) => nrPill(R, pid, i, st.top.has(i))).join("");
+  note.innerHTML = `Gray lines.  The top ${b.top.length===3?"three":b.top.length} ${esc(R.positions.join("/"))} in ${esc(NRLAB[tab][key])} on the <a href="${b.source_url}" target="_blank" rel="noopener">cfbstats.com national leaderboard</a> through ${dateFmtY(R.data_through)}, Indiana players excluded (they are already on the chart in color).  Tap a name to draw his line; each is lined up by his own games played.`
+    + (b.top_dropped.length ? `  Not shown: ${b.top_dropped.map(esc).join(", ")} (game log could not be verified against the leaderboard).` : "")
+    + (R.draw.includes(key) ? "" : "  This stat cannot be drawn for national players.");
+}
+function nrPicks(tab){
+  const st = NRST[tab]; document.getElementById(`${tab}-nrpicks`).innerHTML = st.picks.map((pid,i) => {
+    const p = NR[tab].players[pid];
+    return `<span class="pc nrpick" aria-pressed="${!st.off.has(pid)}"><button type="button" data-nrpick="${esc(pid)}" title="${esc(p.name)}, ${esc(p.team)}"><span class="pu" style="border-bottom-color:var(--muted);border-bottom-style:${NRBORDER[i%3]}">${esc(p.name)}</span></button><button type="button" class="nr-x" data-nrx="${esc(pid)}" aria-label="Remove ${esc(p.name)}">×</button></span>`; }).join("");
+}
+function nrWire(tab, getKey, redraw){
+  const R = NR[tab]; if (!R || R.status!=="ok") return;
+  const st = NRST[tab], q = document.getElementById(`${tab}-nrq`), res = document.getElementById(`${tab}-nrres`);
+  nrRefresh(tab, getKey());
+  document.getElementById(`${tab}-nrtop`).addEventListener("click", e => {
+    const b = e.target.closest("[data-nrtop]"); if (!b) return;
+    const i = +b.dataset.nrtop, on = st.top.has(i);
+    on ? st.top.delete(i) : st.top.add(i); b.setAttribute("aria-pressed", String(!on)); redraw();
+  });
+  const search = () => {
+    const v = q.value.trim().toLowerCase();
+    if (!v) { res.innerHTML = ""; return; }
+    const hits = R.pool.filter(pid => { const p = R.players[pid]; return (p.name+" "+p.team).toLowerCase().includes(v); }).slice(0, 8);
+    res.innerHTML = hits.length ? hits.map(pid => `<button type="button" class="nrhit" data-nradd="${esc(pid)}">${esc(R.players[pid].name)}<span class="small">${esc(R.players[pid].team)}</span></button>`).join("")
+      : `<span class="small">No match in the pool.</span>`;
+  };
+  q.addEventListener("input", search);
+  document.getElementById(`${tab}-nrind`).addEventListener("click", e => {
+    const add = e.target.closest("[data-nradd]"), x = e.target.closest("[data-nrx]"), t = e.target.closest("[data-nrpick]");
+    if (add) { const pid = add.dataset.nradd; if (!st.picks.includes(pid)) st.picks.push(pid); st.off.delete(pid); q.value = ""; search(); }
+    else if (x) { st.picks = st.picks.filter(p => p!==x.dataset.nrx); st.off.delete(x.dataset.nrx); }
+    else if (t) { const pid = t.dataset.nrpick; st.off.has(pid) ? st.off.delete(pid) : st.off.add(pid); }
+    else return;
+    nrPicks(tab); redraw();
+  });
+}
+function nrPoints(tab, rows, key, mode){
+  const c = {n:0, att:0, cmp:0, yds:0, td:0, int:0, rec:0};
+  return rows.map((r,i) => {
+    for (const k in c) if (k!=="n") c[k] += r[k]||0;
+    const g = i+1, n = tab==="wr" ? r.rec : r.att, cn = tab==="wr" ? c.rec : c.att, src = mode==="cum" ? c : r;
+    let y;
+    if (tab==="qb") y = key==="pct" ? (src.att ? 100*src.cmp/src.att : null) : key==="rating" ? (src.att ? (8.4*src.yds+330*src.td+100*src.cmp-200*src.int)/src.att : null) : src[key];
+    else if (key==="ypc" || key==="ypr") y = mode==="cum" ? (cn ? c.yds/cn : null) : (n ? r.yds/n : null);
+    else if (key==="ypg") y = mode==="cum" ? c.yds/g : r.yds;
+    else y = src[key];
+    return {x:g, opp:r.opp, y};
+  });
+}
+function nrSeries(tab, key, mode){
+  const R = NR[tab]; if (!R || R.status!=="ok" || !R.draw.includes(key)) return [];
+  const st = NRST[tab], b = R.stats[key], out = [], seen = new Set();
+  const add = (pid, i, slot) => { if (seen.has(pid)) return; seen.add(pid); const p = R.players[pid], pts = nrPoints(tab, p.rows, key, mode), last = pts[pts.length-1];
+    out.push({nr:true, p, name:`${p.name} (${p.team})`, color:css("--"+slot), width:1.75, z:0, dash:NRDASH[i%3], r:2.5, points:pts,
+      endLabel:`${p.name.split(" ").filter(w=>!/^(jr\.?|sr\.?|ii|iii|iv)$/i.test(w)).slice(-1)[0]} ${last && last.y!=null ? fmt(last.y, key==="ypc"||key==="ypr"?2:key==="ypg"||key==="rating"||key==="pct"?1:0) : ""}`, labelColor:css("--ink-2")}); };
+  if (b) b.top.forEach((pid,i) => { if (st.top.has(i)) add(pid, i, "field"); });
+  st.picks.forEach((pid,i) => { if (!st.off.has(pid)) add(pid, i, "muted"); });
+  return out;
+}
+const nrCap = X => X.length ? `  Gray: ${X.map(s=>esc(s.p.name)).join(", ")} (national, by each player's own games played).` : "";
+
 /* ---------- compare chart (running total or per game) ---------- */
 const CMP = {
   yds:{t:"Pass yards",dp:0}, td:{t:"Pass TD",dp:0}, total_td:{t:"Total TD",dp:0},
@@ -616,10 +704,10 @@ function cmpSeries(rows){
 $("#cmp-lede").textContent = `One chart for every view, lined up by game number.  Earlier seasons run their full length; the dashed marker is ${CUR.short}'s latest game.`;
 $("#cmp-legend").innerHTML = `<details class="cat" open><summary>IU players<span class="chev">▾</span></summary><div class="pills">${
   ALL.map((q,i)=>`<button type="button" class="pc" data-i="${i}" aria-pressed="true"><span class="pu" style="border-bottom-color:${qvar(q)}">${esc(q.name)} ${q.season}</span></button>`).join("")
-}</div></details>`;
+}</div></details>${nrHTML("qb")}`;
 const offQ = new Set();
 $("#cmp-legend").addEventListener("click", e => {
-  const b = e.target.closest(".pc"); if (!b) return;
+  const b = e.target.closest(".pc[data-i]"); if (!b) return;
   const i = +b.dataset.i, on = b.getAttribute("aria-pressed")==="true";
   b.setAttribute("aria-pressed", String(!on));
   on ? offQ.add(i) : offQ.delete(i);
@@ -627,22 +715,24 @@ $("#cmp-legend").addEventListener("click", e => {
 });
 function drawCompare(){
   const d = CMP[cmpKey], S = ALL.map((q,i) => ({q, i})).filter(({i}) => !offQ.has(i)).map(({q}) => ({q, pts: cmpSeries(q.rows)}));
-  if (!S.length) { $("#cmp-chart").innerHTML = `<p class="caption" style="padding:20px 4px">All players are toggled off — turn one back on above to see the chart.</p>`; $("#cmp-cap").textContent = ""; return; }
-  const all = S.flatMap(s => s.pts.map(p=>p.y)).filter(v=>v!=null);
+  const X = nrSeries("qb", cmpKey, cmpMode);
+  if (!S.length && !X.length) { $("#cmp-chart").innerHTML = `<p class="caption" style="padding:20px 4px">All players are toggled off — turn one back on above to see the chart.</p>`; $("#cmp-cap").textContent = ""; return; }
+  const all = [...S.flatMap(s => s.pts), ...X.flatMap(s => s.points)].map(p=>p.y).filter(v=>v!=null);
   const rate = cmpKey==="rating" || cmpKey==="pct";
   const lo = rate ? Math.floor(Math.min(...all)/20)*20 : 0; let hi = rate ? Math.ceil(Math.max(...all)/20)*20 : undefined; if (rate) hi = lo + Math.ceil((hi-lo)/20)*20;
   if (!rate) { const m = Math.max(...all); if (m <= 40) hi = Math.max(4, Math.ceil(m/4)*4); }  // whole-number ticks for small counts like INT
   lineChart($("#cmp-chart"), {
     aria:`${d.t}, ${cmpMode==="cum"?"running total":"per game"}, ${S.map(({q})=>qlab(q)).join(" versus ")}`,
-    xMax: Math.max(...ALL.map(q=>q.rows.length)), marker: N, yMin: lo, yMax: hi, padR: 44,
+    xMax: Math.max(...ALL.map(q=>q.rows.length), ...X.map(s=>s.points.length)), marker: N, yMin: lo, yMax: hi, padR: X.length?96:44,
     fmtY: v => fmt(v,0), fmtTip: p => fmt(p.y, d.dp) + (p.opp?` <span class="small">${esc(p.opp)}</span>`:""),
     series: S.map(({q, pts}) => ({name: qlab(q), color: qcol(q), width: q===CUR?3.5:2, z: q===CUR?2:1, points: pts,
-      endLabel: fmt(pts[pts.length-1].y, d.dp), labelColor: qcol(q)}))});
+      endLabel: fmt(pts[pts.length-1].y, d.dp), labelColor: qcol(q)})).concat(X)});
   const what = cmpMode==="cum" ? (rate ? `Season ${d.t.toLowerCase()} on totals after each game` : `Total ${d.cap||d.t.toLowerCase()} after each game`) : `${d.cap ? d.cap[0].toUpperCase()+d.cap.slice(1) : d.t} in each game`;
-  $("#cmp-cap").textContent = `${what}.  Game ${N}: ` + S.map(({q, pts}) => `${q.short} ${pts[N-1] ? fmt(pts[N-1].y, d.dp) : `n/a (${q.games}-game season)`}`).join(", ") + ".";
+  $("#cmp-cap").innerHTML = esc(`${what}.`) + (S.length ? esc(`  Game ${N}: ` + S.map(({q, pts}) => `${q.short} ${pts[N-1] ? fmt(pts[N-1].y, d.dp) : `n/a (${q.games}-game season)`}`).join(", ") + ".") : "") + nrCap(X);
 }
 seg($("#cmp-mode"), [["cum","Running total"],["pg","Per game"]], cmpMode, k=>{cmpMode=k; drawCompare();});
-seg($("#cmp-seg"), Object.entries(CMP).map(([k,v])=>[k,v.t]), cmpKey, k=>{cmpKey=k; drawCompare();});
+seg($("#cmp-seg"), Object.entries(CMP).map(([k,v])=>[k,v.t]), cmpKey, k=>{cmpKey=k; nrRefresh("qb", k); drawCompare();});
+nrWire("qb", () => cmpKey, () => drawCompare());
 
 
 /* ---------- game logs ---------- */
@@ -804,7 +894,7 @@ function renderSkill(k){
   const legend = `<div class="legend big">${P.map(p=>`<span>${un(p.slot, p.dash?DASH:"", `${esc(p.name)} ${p.season}`)}</span>`).join("")}</div>`;
   const cmpChips = `<details class="cat" open id="${k}-catchips"><summary>IU players<span class="chev">▾</span></summary><div class="pills">${
     P.map((p,i)=>`<button type="button" class="pc" data-i="${i}" aria-pressed="true"><span class="pu" style="border-bottom-color:var(--${p.slot})${p.dash?";border-bottom-style:dashed":""}">${esc(p.name)} ${p.season}</span></button>`).join("")
-  }</div></details>`;
+  }</div></details>${nrHTML(k)}`;
   // head to head: one row per player, one column per stat
   const head = `<tr><th>Through ${N} games</th><th>G</th>${T.stats.map(s=>`<th title="${esc(s.label)}">${esc(s.short||s.label)}</th>`).join("")}</tr>`;
   const body = P.map((p,i) => `<tr class="${i && P[i-1].season!==p.season?"sep":""}"><td class="who">${sw(p.slot, p.dash?DASH:"", 3)} ${lab(p)}</td><td class="num">${p.totals.games}${p.short_of_n?"*":""}</td>${T.h2h.map(h => {
@@ -855,7 +945,8 @@ function renderSkill(k){
     <section id="${k}-method">${secHead("How the numbers are built", "Method and sources")}<div class="notes"><div><h3>Notes</h3><ul>${notes.map(n=>`<li>${esc(n)}</li>`).join("")}</ul></div><div><h3>Sources</h3><ul>${T.sources.map(s=>`<li><a href="${s.url}" target="_blank" rel="noopener">${esc(s.label)}</a></li>`).join("")}${NT?NT.boards.map(b=>`<li><a href="${b.source_url}" target="_blank" rel="noopener">cfbstats.com: ${SEASON} national ${esc(b.label.toLowerCase())}</a></li>`).join(""):""}<li>ESPN box scores for every Indiana game</li></ul></div></div></section>`;
   SK[k] = {key: T.chart[0].key, mode: "cum", off: new Set()};
   seg($(`#${k}-mode`), [["cum","Running total"],["pg","Per game"]], "cum", m=>{SK[k].mode=m; drawSkill(k);});
-  seg($(`#${k}-seg`), T.chart.map(c=>[c.key, c.label]), SK[k].key, v=>{SK[k].key=v; drawSkill(k);});
+  seg($(`#${k}-seg`), T.chart.map(c=>[c.key, c.label]), SK[k].key, v=>{SK[k].key=v; nrRefresh(k, v); drawSkill(k);});
+  nrWire(k, () => SK[k].key, () => drawSkill(k));
   document.getElementById(`${k}-catchips`).addEventListener("click", e => {
     const b = e.target.closest(".pc"); if (!b) return;
     const i = +b.dataset.i, on = b.getAttribute("aria-pressed")==="true";
@@ -868,16 +959,17 @@ function drawSkill(k){
   const T = TB[k]; if (T.status!=="ok") return;
   const st = SK[k], c = T.chart.find(c=>c.key===st.key), dp = (st.key==="ypc"||st.key==="ypr") ? 2 : st.key==="ypg" ? 1 : 0;
   const S = T.players.map((p,i) => ({p, i})).filter(({i}) => !st.off.has(i)).map(({p}) => ({p, pts: skillSeries(T, p, st.key, st.mode)}));
-  if (!S.length) { $(`#${k}-chart`).innerHTML = `<p class="caption" style="padding:20px 4px">All players are toggled off — turn one back on above to see the chart.</p>`; $(`#${k}-cap`).textContent = ""; return; }
-  const all = S.flatMap(s=>s.pts.map(q=>q.y)).filter(v=>v!=null);
+  const X = nrSeries(k, st.key, st.mode);
+  if (!S.length && !X.length) { $(`#${k}-chart`).innerHTML = `<p class="caption" style="padding:20px 4px">All players are toggled off — turn one back on above to see the chart.</p>`; $(`#${k}-cap`).textContent = ""; return; }
+  const all = [...S.flatMap(s=>s.pts), ...X.flatMap(s=>s.points)].map(q=>q.y).filter(v=>v!=null);
   const m = Math.max(...all, 1), hi = m <= 40 ? Math.max(4, Math.ceil(m/4)*4) : undefined;
   lineChart($(`#${k}-chart`), {aria:`${c.label}, ${st.mode==="cum"?"running total":"per game"}, ${T.players.map(p=>p.short+" "+p.season).join(", ")}`,
-    xMax: Math.max(2, ...T.players.map(p=>p.rows.length)), marker: T.N, yMin: 0, yMax: hi, padR: 64,
+    xMax: Math.max(2, ...T.players.map(p=>p.rows.length), ...X.map(s=>s.points.length)), marker: T.N, yMin: 0, yMax: hi, padR: X.length?96:64,
     fmtY: v=>fmt(v, 0), fmtTip: q => fmt(q.y, dp) + (q.opp?` <span class="small">${esc(q.opp)}</span>`:""),
     series: S.map(({p, pts}) => ({name:`${p.short} ${p.season}`, color: css("--"+p.slot), width: p.slot==="cur"?3.25:2, z: p.slot==="cur"?2:1, dash: p.dash?DASH:"", hollow: p.dash,
-      points: pts, endLabel: `${p.short} ${fmt(pts[pts.length-1].y, dp)}`, labelColor: css("--"+p.slot)}))});
-  $(`#${k}-cap`).textContent = `${st.mode==="cum" ? (dp ? `${c.label} on season totals after each game` : `Total ${c.label.toLowerCase()} after each game`) : `${c.label} in each game`}.  Game ${T.N}: ` +
-    S.map(({p, pts}) => `${p.short} ${p.season} ${pts[T.N-1] && pts[T.N-1].y!=null ? fmt(pts[T.N-1].y, dp) : "n/a"}`).join(", ") + ".";
+      points: pts, endLabel: `${p.short} ${fmt(pts[pts.length-1].y, dp)}`, labelColor: css("--"+p.slot)})).concat(X)});
+  $(`#${k}-cap`).innerHTML = esc(`${st.mode==="cum" ? (dp ? `${c.label} on season totals after each game` : `Total ${c.label.toLowerCase()} after each game`) : `${c.label} in each game`}.`) + (S.length ? esc(`  Game ${T.N}: ` +
+    S.map(({p, pts}) => `${p.short} ${p.season} ${pts[T.N-1] && pts[T.N-1].y!=null ? fmt(pts[T.N-1].y, dp) : "n/a"}`).join(", ") + ".") : "") + nrCap(X);
 }
 function drawSkillSparks(k){
   const T = TB[k]; if (T.status!=="ok" || !T.national) return;

@@ -61,12 +61,14 @@ No AI or paid service is involved in the scheduled run. Keep it that way.
 - `roster.json` — Cignetti-era starters, one per season; drives every name on the page
 - `collect.py` — data fetching (network), including the one-time season backfill
 - `collect_tabs.py` — RB, WR and Team tab data (ESPN AP poll and box scores, cfbstats cross-checks and national boards); run by `collect.py`
-- `build_tabs.py` — RB, WR and Team tab models and the site title; run by `build_report.py`
+- `collect_natref.py` — national reference players for the QB, RB and WR compare charts (cfbstats national boards plus each listed player's linked game log); run by `collect.py`
+- `build_tabs.py` — RB, WR and Team tab models, the national reference model (`natref`) and the site title; run by `build_report.py`
 - `update.py` — row validation before storage
 - `build_report.py` — validation + model + render (no network)
 - `template.html` — page; the model is injected at `/*__MODEL__*/null`
 - `data/` — stored rows: `games.json`, `national.json`, `heisman.json`,
-  `cohort.json`, `freshness.json`, `last_run.json`
+  `cohort.json`, `freshness.json`, `last_run.json`, `team.json`, `skill.json`,
+  `skill_national.json`, `national_logs.json`
 - `icons/`, `assets/` — PWA icons, trident logo, link-preview card
 - `logs/` — per-run logs, force-added to git
 
@@ -74,6 +76,9 @@ No AI or paid service is involved in the scheduled run. Keep it that way.
 
 - The page is "Hoosiers {season}" (`roster.json` `site_title`) with four tabs: QB, RB, WR, Team.  The tab shows in the URL hash (`#rb`, `#team`; section links are `#rb-h2h` and so on), so links can open a tab directly.  Charts draw only for the visible tab and redraw when a tab opens.
 - RB/WR/Team colors: crimson for the current season (second current player dashed), predecessor slots `--p1`.. newest first (second player dashed), AP Top 5 teams dotted in `--a1`..`--a5` by rank.
+- Compare charts (QB, RB, WR) have three collapsible sections, in order: "IU players" (open), "National Top 3" and "Individual player" (both collapsed).  National Top 3 chips are the first 3 non-Indiana players at the tab's positions on the cfbstats national leaderboard for the viewed stat; they change with the stat and start off (opening the section draws nothing until a chip is tapped; a chip that is on stays on for the new stat's player in that slot).  Individual player searches a pool = union of the top 20 per tracked stat; a pick adds a removable pill (x).  National lines are gray (`--field` for Top 3, `--muted` for picks; solid/dashed/dotted by slot), labeled at the line end, and lined up by each player's own games played.  QB Total TD and INT have no national leaderboard ("No national leaderboard for this stat."); Total TD cannot be drawn for national QBs because the passing log has no rushing TD.
+- National reference data (`data/national_logs.json`, written only by `collect_natref.py` through `update.py natref`): a player is stored only if the game log his leaderboard row links to has exactly his leaderboard G games and sums exactly to his leaderboard line (QBs: every game's listed rating must also match the NCAA formula).  Failures are dropped and named in the run log and in the file's `dropped` list, never estimated; a dropped Top 3 player is named on the page, not replaced by #4.  A stored log is reused until that player's leaderboard line changes.  Each tab is its own section (`natref_qb`, `natref_rb`, `natref_wr`).
+- ESPN game-log passer ratings (collect.py `espn_gamelog`) may differ from the formula by up to 0.15 (ESPN's one-decimal rounding; 2026-10-10 Hoover was 152.7 vs 152.6).  Every other rating check stays at 0.06.
 - New data files: `data/team.json` (box-score rows by ESPN team id and season, plus the AP poll), `data/skill.json` (RB and WR players' game lines), `data/skill_national.json` (RB and WR national boards and weekly rank history).  All written only by `collect_tabs.py` through `update.py`.
 
 - Comparisons always line seasons up by game number through the current QB's

@@ -16,6 +16,7 @@ Sources
   Heisman odds ......... BetMGM Heisman odds page (table)
   Heisman QB field ..... ESPN athlete gamelog JSON (+ ESPN search for new names)
   RB / WR / Team tabs .. collect_tabs.py (ESPN box scores and AP poll, cfbstats cross-checks and boards)
+  national reference ... collect_natref.py (cfbstats national boards + each listed player's linked game log)
 """
 import datetime as dt, io, json, os, re, sys, traceback
 from zoneinfo import ZoneInfo
@@ -169,7 +170,7 @@ def espn_gamelog(athlete_id, seasontype=None, season=SEASON):
     for r in out:  # the listed rating must match the formula, or the row was misread
         if not r["att"]: continue
         calc = U.rating(r)
-        if abs(calc - r["rtg"]) > 0.06:
+        if abs(calc - r["rtg"]) > 0.15:  # ESPN rounds its one-decimal rating its own way (2026-10-10: ESPN 152.7, formula 152.6)
             raise ValueError(f"ESPN row {r['date']} rating {r['rtg']} != computed {calc:.1f}")
     return out
 
@@ -452,6 +453,8 @@ def main():
     opp_d()
     import collect_tabs  # RB, WR and Team tabs: AP poll, box scores, player lines, national boards
     collect_tabs.run(sys.modules[__name__], U)
+    import collect_natref  # National Top 3 and Individual player lines on the QB, RB and WR compare charts
+    collect_natref.run(sys.modules[__name__], U)
     log("FAILED sections: " + (", ".join(FAILED) if FAILED else "none"))
     open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "last_run.json"), "w").write(
         json.dumps({"at": dt.datetime.now(ET).isoformat(timespec="minutes"), "failed": FAILED, "log": LOG}, indent=1))

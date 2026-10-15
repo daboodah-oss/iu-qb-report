@@ -17,6 +17,7 @@ and merges it into data/*.json. Run `python3 update.py status` first on every ru
   ap-poll       {poll}           store the latest AP Top 5 (poll name, date, teams)
   skill         {tab, players}   store RB or WR player game logs (must match cfbstats season rows)
   skill-national {tab, boards}   replace RB or WR national boards; upsert weekly rank history
+  natref        {tab, players}   replace one tab's national reference players (game logs must match leaderboard lines)
 
 The quarterbacks come from roster.json: the newest season is the current QB,
 earlier seasons are comparison QBs. National/odds fields named hoover_* in
@@ -342,11 +343,54 @@ def skill_national(x):
     t["rank_history"] = [keep[k] for k in sorted(keep)]
     save("skill_national.json", d); print(f"STORED {tab} national boards through {x['data_through']}")
 
+NATREF_KEYS = {"qb": ["att", "cmp", "yds", "td", "int"], "rb": ["att", "yds", "td"], "wr": ["rec", "yds", "td"]}
+
+
+def natref_check(tab, name, line, games, die=die):
+    """A national player's game log must have exactly his leaderboard G games and sum exactly to his leaderboard
+    line; for QBs every game's listed passer rating must match the NCAA formula.  Refuses otherwise."""
+    keys = NATREF_KEYS.get(tab) or die(f"natref: unknown tab {tab}")
+    tag = f"natref {tab} {name}"
+    if not games: die(f"{tag}: no games")
+    for g in games:
+        need_ints(dict(g, cmp=g.get("cmp", 0), att=g.get("att", g.get("cmp", 0))), keys, f"{tag} {g.get('date')}")
+        datetime.date.fromisoformat(g["date"])
+        if min(g[k] for k in keys if k != "yds") < 0: die(f"{tag} {g['date']}: negative count")
+        if tab == "qb" and g["att"]:
+            if g.get("src_rating") is None or abs(rating(g) - g["src_rating"]) > 0.06:
+                die(f"{tag} {g['date']}: listed rating {g.get('src_rating')} != NCAA formula {rating(g):.2f}")
+    dates = [g["date"] for g in games]
+    if dates != sorted(dates) or len(set(dates)) != len(dates): die(f"{tag}: games out of order or duplicated")
+    if len(games) != line.get("g"): die(f"{tag}: {len(games)} games in the log vs G {line.get('g')} on the leaderboard")
+    got = {k: sum(g[k] for g in games) for k in keys}
+    want = {k: line.get(k) for k in keys}
+    if got != want: die(f"{tag}: game log totals {got} != leaderboard line {want}")
+
+
+def natref(x):
+    """Replace one tab's national reference players: {tab, season, data_through, stats, players, dropped}."""
+    tab = x.get("tab")
+    if tab not in NATREF_KEYS: die("natref: tab must be qb, rb or wr")
+    datetime.date.fromisoformat(x.get("data_through") or die("natref: data_through required"))
+    players = x.get("players") or die("natref: no players")
+    for pid, p in players.items():
+        if p.get("team") == "Indiana": die(f"natref {tab}: {p.get('name')} is an Indiana player")
+        natref_check(tab, p.get("name"), p.get("line") or {}, p.get("games"))
+    for key, s in (x.get("stats") or die("natref: no stats")).items():
+        if len(s.get("top", [])) > 3: die(f"natref {tab} {key}: more than three in the Top 3")
+        for pid in s.get("order", []) + s.get("top", []):
+            if pid not in players: die(f"natref {tab} {key}: {pid} has no stored game log")
+    d = load_or("national_logs.json", {})
+    d[tab] = {k: x[k] for k in ("season", "data_through", "positions", "stats", "players", "dropped") if k in x}
+    d[tab]["retrieved_at"] = now_iso()
+    save("national_logs.json", d); print(f"STORED natref {tab}: {len(players)} players through {x['data_through']}")
+
+
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else "status"
     fn = {"status": None, "qb-game": qb_game, "hoover-game": qb_game, "backfill": backfill, "national": national, "heisman": heisman,
           "cohort": cohort, "opp-d": opp_d, "next-game": next_game,
-          "team-season": team_season, "ap-poll": ap_poll, "skill": skill, "skill-national": skill_national}.get(cmd)
+          "team-season": team_season, "ap-poll": ap_poll, "skill": skill, "skill-national": skill_national, "natref": natref}.get(cmd)
     if cmd == "status": status()
     elif fn: fn(arg())
     else: print(__doc__); sys.exit(1)

@@ -231,3 +231,41 @@ def build(root, roster, cur_season, check, as_of):
         out[tab] = skill_tab(tab, sk, nat, check, cur_season, f(["players", "team"], "Box scores and cfbstats season rows"))
     out["team"] = team_tab(td, check, cur_season, f(["team", "ap_poll"], "ESPN box scores and AP poll"))
     return out
+
+
+# ------------------------------------------------------------------ national reference players (compare charts)
+NATREF = {  # compare-chart stats each tab can draw for a national player (QB Total TD needs rushing TD, which the passing log lacks)
+    "qb": {"label": "quarterbacks", "draw": ["yds", "td", "int", "rating", "pct", "att"], "keys": ["att", "cmp", "yds", "td", "int"]},
+    "rb": {"label": "running backs", "draw": ["yds", "td", "ypc", "ypg", "att"], "keys": ["att", "yds", "td"]},
+    "wr": {"label": "receivers", "draw": ["yds", "rec", "td", "ypr", "ypg"], "keys": ["rec", "yds", "td"]},
+}
+
+
+def natref(root, check, cur_season):
+    """National Top 3 and the Individual-player pool for each compare chart, from data/national_logs.json."""
+    d = load(root, "national_logs.json", {})
+    out = {}
+    for tab, spec in NATREF.items():
+        t = d.get(tab)
+        if not t or t.get("season") != cur_season:
+            out[tab] = {"status": "pending", "message": "National players have not been collected yet; the next full refresh adds them."}
+            continue
+        players = {}
+        for pid, p in t["players"].items():
+            tag = f"natref {tab} {p['name']}"
+            check(p.get("team") != "Indiana", f"{tag}: Indiana player in the national list")
+            g = p["games"]
+            check(len(g) == p["line"]["g"], f"{tag}: {len(g)} games vs leaderboard G {p['line']['g']}")
+            check(all(sum(x[k] for x in g) == p["line"][k] for k in spec["keys"]), f"{tag}: game log no longer matches the leaderboard line")
+            dates = [x["date"] for x in g]
+            check(dates == sorted(dates) and len(set(dates)) == len(dates), f"{tag}: games out of order or duplicated")
+            players[pid] = {"name": p["name"], "team": p["team"], "pos": p.get("pos", ""),
+                            "rows": [{"opp": x["opp"], **{k: x[k] for k in spec["keys"]}} for x in g]}
+        stats = {}
+        for key, s in t["stats"].items():
+            check(all(p in players for p in s["top"] + s["order"]), f"natref {tab} {key}: list names a player with no stored game log")
+            stats[key] = {"top": s["top"], "top_dropped": s.get("top_dropped", []), "source_url": s["source_url"]}
+        out[tab] = {"status": "ok", "data_through": t["data_through"], "label": spec["label"], "draw": spec["draw"],
+                    "positions": t.get("positions", []), "stats": stats, "players": players,
+                    "pool": sorted(players, key=lambda p: players[p]["name"]), "dropped": t.get("dropped", [])}
+    return out

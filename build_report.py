@@ -411,6 +411,7 @@ def main():
         import build_tabs
         roster = json.load(open(os.path.join(a.root, "roster.json")))
         model["tabs"] = build_tabs.build(a.root, roster, model["cur"]["season"], check, a.as_of)
+        model["natref"] = build_tabs.natref(a.root, check, model["cur"]["season"])
         for k in ("rb", "wr", "team"):
             t = model["tabs"][k]
             if t["status"] != "ok": model["notices"].append(t["message"])
