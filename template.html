@@ -52,14 +52,15 @@ h3{font-size:19px;text-transform:uppercase;letter-spacing:.04em}
 .h{color:var(--cur)}
 
 /* masthead */
-.mast{display:grid;grid-template-columns:1.35fr 1fr;gap:28px;align-items:end;padding-bottom:22px;border-bottom:3px solid var(--ink)}
+.mast{display:grid;grid-template-columns:1.35fr 1fr;gap:0 28px;align-items:end;padding-bottom:22px;border-bottom:3px solid var(--ink)}
 .mast>*{min-width:0}
+.mast .mast-head{grid-column:1/-1}
 .mast-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
 .theme-toggle{flex:none;width:34px;height:34px;border-radius:50%;border:1px solid var(--rule);background:var(--surface);color:var(--ink-2);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:0}
 .theme-toggle:hover{color:var(--ink);border-color:var(--ink-2)}
 .theme-toggle:focus-visible{outline:2px solid var(--p1);outline-offset:2px}
 .theme-toggle svg{width:17px;height:17px}
-.mast .mast-title{font-size:clamp(30px,6.5vw,54px);text-transform:uppercase;line-height:.95;margin-top:4px}
+.mast .mast-title{font-size:clamp(30px,6.5vw,54px);line-height:.95;margin-top:4px}
 .mast-sub{margin:10px 0 0;font-size:15px;color:var(--ink-2);display:flex;flex-wrap:wrap;gap:4px 14px}
 .mast-sub span{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
 .stamp{display:inline-flex;gap:10px;align-items:center;margin-top:10px;flex-wrap:wrap}
@@ -226,6 +227,7 @@ footer{margin-top:36px;padding-top:14px;border-top:3px solid var(--ink);font-siz
 
 @media (max-width:820px){
   .mast{grid-template-columns:minmax(0,1fr)}
+  .mast .scorecard{margin-top:28px}
   .pace{grid-template-columns:1fr 1fr}
   .notes{grid-template-columns:1fr}
   .h2h .bars{display:none}
@@ -296,9 +298,11 @@ details.logd .tscroll{padding:0 14px 14px}
 
   <div class="tabpanel" id="tab-qb" role="tabpanel" aria-label="Quarterbacks">
   <header class="mast">
-    <div>
+    <div class="mast-head">
       <div class="eyebrow mast-top"><span id="mast-eyebrow">IU Report · Indiana football</span></div>
       <h2 class="mast-title"><span id="h1-cur"></span> vs the Cignetti era</h2>
+    </div>
+    <div>
       <p class="mast-sub" id="mast-sub"></p>
       <div class="stamp" id="stamp"></div>
       <p class="verdict" id="verdict"></p>
@@ -529,6 +533,10 @@ paintThemeBtn();
 
 /* ---------- chart engine ---------- */
 const tip = (() => { const d = document.createElement("div"); d.className="tip"; d.hidden=true; return d; })();
+/* sticky tooltip: a tap/click in a chart pins the tip; it stays until a tap/click lands outside any chart */
+const tipGuides = new Set();
+function hideTip(){ tip.hidden = true; tipGuides.forEach(g => g.setAttribute("opacity",0)); }
+document.addEventListener("pointerdown", ev => { if (!ev.target.closest || !ev.target.closest("[data-hit]")) hideTip(); });
 function el(tag, attrs, parent){ const e = document.createElementNS(SVGNS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
 function niceMax(v){ if (v<=0) return 1; const p = Math.pow(10, Math.floor(Math.log10(v))); for (const m of [1,1.2,1.5,2,2.5,3,4,5,6,8,10]) if (m*p >= v) return m*p; return 10*p; }
 function ticks(max, n=4){ const step = max/n; return Array.from({length:n+1},(_,i)=>i*step); }
@@ -591,6 +599,7 @@ function lineChart(host, o){
   const hit = el("rect",{x:f.pad.l-10,y:f.pad.t,width:f.iw+20,height:f.ih,fill:"transparent"},f.svg);
   const guide = el("line",{y1:f.pad.t,y2:f.pad.t+f.ih,stroke:css("--muted"),"stroke-width":1,opacity:0},f.svg);
   const move = ev => {
+    tipGuides.forEach(g => { if (g!==guide) g.setAttribute("opacity",0); });
     const r = f.svg.getBoundingClientRect(), sx = (ev.clientX - r.left)/r.width*f.W;
     const n = Math.min(xs, Math.max(1, Math.round((sx - f.pad.l)/f.iw*(xs-1))+1));
     guide.setAttribute("x1",x(n)); guide.setAttribute("x2",x(n)); guide.setAttribute("opacity",.6);
@@ -598,8 +607,8 @@ function lineChart(host, o){
     if (!lines) { tip.hidden = true; return; }
     showTip(host, x(n)/f.W*r.width, (ev.clientY-r.top), `<b>${o.xLabel?o.xLabel(n):"Game "+n}</b>${lines}`);
   };
+  hit.setAttribute("data-hit","1"); tipGuides.add(guide);
   hit.addEventListener("pointermove", move); hit.addEventListener("pointerdown", move);
-  hit.addEventListener("pointerleave", ()=>{ tip.hidden = true; guide.setAttribute("opacity",0); });
 }
 
 function seg(host, items, current, onPick, label){
