@@ -70,6 +70,8 @@ No AI or paid service is involved in the scheduled run. Keep it that way.
   `cohort.json`, `freshness.json`, `last_run.json`, `team.json`, `skill.json`,
   `skill_national.json`, `national_logs.json`
 - `icons/`, `assets/` — PWA icons, trident logo, link-preview card
+- `manifest.webmanifest` — web app manifest (installed-app name, colours, icons); checked by `build_report.py --standalone`
+- `tools/make_icons.py` — draws `icons/icon-512.png` and `icons/icon-maskable-512.png` from the trident SVG (one-time, needs Pillow)
 - `logs/` — per-run logs, force-added to git
 
 ## Page behavior notes

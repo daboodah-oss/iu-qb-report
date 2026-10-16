@@ -42,6 +42,10 @@ The schedule did not change for the new tabs.  `.github/workflows/update.yml` ru
 3. `build_report.py` (with `build_tabs.py` for the RB, WR and Team tabs) recomputes everything from the stored rows and writes `index.html`.  If any check fails, nothing is published.  A tab whose data has not been collected yet shows a short notice instead.
 4. Changes are committed back to `main`, which GitHub Pages serves.
 
+## Installed app
+
+The page can be installed from the browser menu ("Install app" or "Add to Home screen").  `manifest.webmanifest` at the repo root gives the installed app its name, its colours (`theme_color` #990000, the page's theme-color; `background_color` #111216, the dark theme's `--bg`, the theme Jeff runs) and its icons in `icons/`.  `build_report.py` refuses to publish if the manifest link, a member, or an icon does not resolve, or if `theme_color` drifts from the page's theme-color tag.  The 512px icons are drawn from `assets/iu-trident.svg` by `tools/make_icons.py`; rerun it if the logo changes.  There is no service worker: Chrome installs from the menu without one, and the page has no install button that would need one.  An installed copy picks up a changed manifest on Chrome's own cycle (about daily, on launch), not on publish; delete and re-add the app to force it.
+
 If a source cannot be read, the run is marked failed (GitHub emails the owner) and `data/last_run.json` says which section.  The page still publishes with the last good data and a note.
 
 No AI or paid service is involved in the weekly run.
