@@ -1,7 +1,7 @@
 {
  "rb": {
   "latest": {
-   "data_through": "2026-10-13",
+   "data_through": "2026-10-14",
    "boards": {
     "yds": {
      "label": "Rushing yards",
@@ -107,7 +107,7 @@
      ],
      "players": {
       "Lee Beebe Jr.": {
-       "rank": 63,
+       "rank": 64,
        "value": 4.0,
        "g": 6
       },
@@ -226,7 +226,7 @@
     "Lee Beebe Jr.",
     "Turbo Richard"
    ],
-   "retrieved_at": "2026-10-15T01:40+00:00"
+   "retrieved_at": "2026-10-16T05:13+00:00"
   },
   "rank_history": [
    {
@@ -247,11 +247,11 @@
     }
    },
    {
-    "through": "2026-10-13",
+    "through": "2026-10-14",
     "ranks": {
      "Lee Beebe Jr.": {
       "yds": 19,
-      "td": 63,
+      "td": 64,
       "ypc": null,
       "ypg": 28
      },
@@ -267,7 +267,7 @@
  },
  "wr": {
   "latest": {
-   "data_through": "2026-10-13",
+   "data_through": "2026-10-14",
    "boards": {
     "rec": {
      "label": "Receptions",
@@ -366,12 +366,12 @@
      ],
      "players": {
       "Charlie Becker": {
-       "rank": 13,
+       "rank": 14,
        "value": 529.0,
        "g": 6
       },
       "Nick Marsh": {
-       "rank": 15,
+       "rank": 16,
        "value": 528.0,
        "g": 6
       }
@@ -481,12 +481,12 @@
      ],
      "players": {
       "Charlie Becker": {
-       "rank": 44,
+       "rank": 43,
        "value": 17.63,
        "g": 6
       },
       "Nick Marsh": {
-       "rank": 32,
+       "rank": 31,
        "value": 18.21,
        "g": 6
       }
@@ -535,12 +535,12 @@
      ],
      "players": {
       "Charlie Becker": {
-       "rank": 21,
+       "rank": 22,
        "value": 88.2,
        "g": 6
       },
       "Nick Marsh": {
-       "rank": 23,
+       "rank": 24,
        "value": 88.0,
        "g": 6
       }
@@ -551,7 +551,7 @@
     "Charlie Becker",
     "Nick Marsh"
    ],
-   "retrieved_at": "2026-10-15T01:40+00:00"
+   "retrieved_at": "2026-10-16T05:13+00:00"
   },
   "rank_history": [
    {
@@ -574,21 +574,21 @@
     }
    },
    {
-    "through": "2026-10-13",
+    "through": "2026-10-14",
     "ranks": {
      "Charlie Becker": {
       "rec": 40,
-      "yds": 13,
+      "yds": 14,
       "td": 4,
-      "ypr": 44,
-      "ypg": 21
+      "ypr": 43,
+      "ypg": 22
      },
      "Nick Marsh": {
       "rec": 42,
-      "yds": 15,
+      "yds": 16,
       "td": 7,
-      "ypr": 32,
-      "ypg": 23
+      "ypr": 31,
+      "ypg": 24
      }
     }
    }

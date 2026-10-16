@@ -1,7 +1,7 @@
 {
  "qb": {
   "season": 2026,
-  "data_through": "2026-10-13",
+  "data_through": "2026-10-14",
   "positions": [
    "QB"
   ],
@@ -120,8 +120,8 @@
      "128-2002289",
      "433-1136057",
      "404-2003393",
-     "255-50312109",
-     "140-1179971"
+     "1157-2001020",
+     "255-50312109"
     ],
     "top": [
      "415-2000040",
@@ -141,6 +141,7 @@
      "392-50311887",
      "630-1237351",
      "742-50310484",
+     "624-50215636",
      "231-2000776",
      "497-1175381",
      "428-50216959",
@@ -151,8 +152,7 @@
      "709-1175505",
      "419-50216301",
      "697-2001279",
-     "648-2002443",
-     "463-2001513"
+     "648-2002443"
     ],
     "top": [
      "277-50292486",
@@ -3527,6 +3527,94 @@
      }
     ]
    },
+   "1157-2001020": {
+    "name": "Rickie Collins",
+    "team": "KSU",
+    "pos": "QB",
+    "line": {
+     "g": 6,
+     "att": 184,
+     "cmp": 129,
+     "yds": 1302,
+     "td": 4,
+     "int": 3
+    },
+    "url": "https://cfbstats.com/2026/player/1157/2001020/passing/gamelog.html",
+    "games": [
+     {
+      "date": "2026-09-03",
+      "opp": "West Georgia",
+      "site": "H",
+      "result": "W 47-0",
+      "att": 23,
+      "cmp": 18,
+      "yds": 171,
+      "td": 1,
+      "int": 0,
+      "src_rating": 155.06
+     },
+     {
+      "date": "2026-09-12",
+      "opp": "Georgia State",
+      "site": "H",
+      "result": "L 17-31",
+      "att": 35,
+      "cmp": 22,
+      "yds": 260,
+      "td": 1,
+      "int": 1,
+      "src_rating": 128.98
+     },
+     {
+      "date": "2026-09-19",
+      "opp": "Tennessee",
+      "site": "A",
+      "result": "L 9-42",
+      "att": 34,
+      "cmp": 22,
+      "yds": 189,
+      "td": 0,
+      "int": 0,
+      "src_rating": 111.41
+     },
+     {
+      "date": "2026-09-26",
+      "opp": "Arkansas State",
+      "site": "A",
+      "result": "L 14-17",
+      "att": 24,
+      "cmp": 17,
+      "yds": 129,
+      "td": 0,
+      "int": 0,
+      "src_rating": 115.98
+     },
+     {
+      "date": "2026-10-07",
+      "opp": "Jacksonville State",
+      "site": "H",
+      "result": "L 26-27",
+      "att": 34,
+      "cmp": 24,
+      "yds": 293,
+      "td": 1,
+      "int": 2,
+      "src_rating": 140.93
+     },
+     {
+      "date": "2026-10-14",
+      "opp": "Missouri State",
+      "site": "A",
+      "result": "L 21-24",
+      "att": 34,
+      "cmp": 26,
+      "yds": 260,
+      "td": 1,
+      "int": 0,
+      "src_rating": 150.41
+     }
+    ]
+   },
    "255-50312109": {
     "name": "Alberto Mendoza",
     "team": "Georgia Tech",
@@ -3600,82 +3688,6 @@
       "td": 1,
       "int": 0,
       "src_rating": 148.71
-     }
-    ]
-   },
-   "140-1179971": {
-    "name": "JC French IV",
-    "team": "Cincinnati",
-    "pos": "QB",
-    "line": {
-     "g": 5,
-     "att": 123,
-     "cmp": 86,
-     "yds": 949,
-     "td": 6,
-     "int": 0
-    },
-    "url": "https://cfbstats.com/2026/player/140/1179971/passing/gamelog.html",
-    "games": [
-     {
-      "date": "2026-09-05",
-      "opp": "Boston College",
-      "site": "H",
-      "result": "W 34-15",
-      "att": 14,
-      "cmp": 10,
-      "yds": 77,
-      "td": 1,
-      "int": 0,
-      "src_rating": 141.2
-     },
-     {
-      "date": "2026-09-12",
-      "opp": "Western Carolina",
-      "site": "H",
-      "result": "W 62-10",
-      "att": 24,
-      "cmp": 21,
-      "yds": 245,
-      "td": 2,
-      "int": 0,
-      "src_rating": 200.75
-     },
-     {
-      "date": "2026-09-19",
-      "opp": "Miami (OH)",
-      "site": "N",
-      "result": "W 35-31",
-      "att": 43,
-      "cmp": 31,
-      "yds": 309,
-      "td": 2,
-      "int": 0,
-      "src_rating": 147.8
-     },
-     {
-      "date": "2026-09-26",
-      "opp": "Kansas State",
-      "site": "H",
-      "result": "W 31-26",
-      "att": 13,
-      "cmp": 8,
-      "yds": 165,
-      "td": 1,
-      "int": 0,
-      "src_rating": 193.53
-     },
-     {
-      "date": "2026-10-03",
-      "opp": "Arizona",
-      "site": "A",
-      "result": "L 7-34",
-      "att": 29,
-      "cmp": 16,
-      "yds": 153,
-      "td": 0,
-      "int": 0,
-      "src_rating": 99.49
      }
     ]
    },
@@ -3864,6 +3876,94 @@
       "td": 0,
       "int": 0,
       "src_rating": 69.5
+     }
+    ]
+   },
+   "624-50215636": {
+    "name": "Landyn Locke",
+    "team": "Sam Houston",
+    "pos": "QB",
+    "line": {
+     "g": 6,
+     "att": 205,
+     "cmp": 129,
+     "yds": 1418,
+     "td": 11,
+     "int": 4
+    },
+    "url": "https://cfbstats.com/2026/player/624/50215636/passing/gamelog.html",
+    "games": [
+     {
+      "date": "2026-09-05",
+      "opp": "Troy",
+      "site": "A",
+      "result": "L 21-24",
+      "att": 46,
+      "cmp": 30,
+      "yds": 335,
+      "td": 3,
+      "int": 1,
+      "src_rating": 143.57
+     },
+     {
+      "date": "2026-09-12",
+      "opp": "Tulsa",
+      "site": "H",
+      "result": "L 17-23",
+      "att": 34,
+      "cmp": 24,
+      "yds": 316,
+      "td": 2,
+      "int": 0,
+      "src_rating": 168.07
+     },
+     {
+      "date": "2026-09-19",
+      "opp": "Nicholls State",
+      "site": "H",
+      "result": "W 59-0",
+      "att": 28,
+      "cmp": 19,
+      "yds": 322,
+      "td": 4,
+      "int": 0,
+      "src_rating": 211.6
+     },
+     {
+      "date": "2026-09-26",
+      "opp": "Texas Tech",
+      "site": "A",
+      "result": "L 14-49",
+      "att": 37,
+      "cmp": 23,
+      "yds": 195,
+      "td": 2,
+      "int": 2,
+      "src_rating": 113.46
+     },
+     {
+      "date": "2026-10-08",
+      "opp": "Liberty",
+      "site": "A",
+      "result": "L 3-35",
+      "att": 30,
+      "cmp": 20,
+      "yds": 138,
+      "td": 0,
+      "int": 0,
+      "src_rating": 105.31
+     },
+     {
+      "date": "2026-10-14",
+      "opp": "Western Kentucky",
+      "site": "H",
+      "result": "L 3-16",
+      "att": 30,
+      "cmp": 13,
+      "yds": 112,
+      "td": 0,
+      "int": 1,
+      "src_rating": 68.02
      }
     ]
    },
@@ -4397,11 +4497,11 @@
    }
   },
   "dropped": [],
-  "retrieved_at": "2026-10-15T01:41+00:00"
+  "retrieved_at": "2026-10-16T05:13+00:00"
  },
  "rb": {
   "season": 2026,
-  "data_through": "2026-10-13",
+  "data_through": "2026-10-14",
   "positions": [
    "RB"
   ],
@@ -7885,11 +7985,11 @@
    }
   },
   "dropped": [],
-  "retrieved_at": "2026-10-15T01:42+00:00"
+  "retrieved_at": "2026-10-16T05:13+00:00"
  },
  "wr": {
   "season": 2026,
-  "data_through": "2026-10-13",
+  "data_through": "2026-10-14",
   "positions": [
    "WR",
    "TE"
@@ -7909,6 +8009,7 @@
      "28-2000413",
      "430-2002349",
      "688-1127550",
+     "669-1238956",
      "231-1127378",
      "736-2000820",
      "355-1176676",
@@ -7916,8 +8017,7 @@
      "433-2001072",
      "51-1177895",
      "392-50281408",
-     "731-1175612",
-     "559-2001503"
+     "731-1175612"
     ],
     "top": [
      "528-50341534",
@@ -7938,6 +8038,7 @@
      "31-1180365",
      "51-1177895",
      "742-50310486",
+     "772-50287926",
      "430-2002349",
      "229-2001308",
      "742-1202486",
@@ -7947,8 +8048,7 @@
      "503-1188575",
      "688-1127550",
      "630-50311021",
-     "253-1179842",
-     "731-1175612"
+     "253-1179842"
     ],
     "top": [
      "749-2000598",
@@ -7976,10 +8076,10 @@
      "434-2002189",
      "229-2001308",
      "433-2001072",
+     "669-1238956",
      "657-50304579",
      "157-50292529",
-     "521-1178652",
-     "355-1176676"
+     "521-1178652"
     ],
     "top": [
      "528-50341534",
@@ -8037,11 +8137,11 @@
      "433-2001072",
      "51-1177895",
      "521-50212082",
+     "669-1238956",
      "157-50292529",
      "418-50317928",
      "229-1178330",
-     "231-1127378",
-     "521-1178652"
+     "231-1127378"
     ],
     "top": [
      "528-50341534",
@@ -8755,6 +8855,74 @@
      }
     ]
    },
+   "669-1238956": {
+    "name": "Isaiah Myers",
+    "team": "MO State",
+    "pos": "WR",
+    "line": {
+     "g": 6,
+     "rec": 27,
+     "yds": 554,
+     "td": 5
+    },
+    "url": "https://cfbstats.com/2026/player/669/1238956/receiving/gamelog.html",
+    "games": [
+     {
+      "date": "2026-09-05",
+      "opp": "Texas A&M",
+      "site": "A",
+      "result": "L 0-50",
+      "rec": 0,
+      "yds": 0,
+      "td": 0
+     },
+     {
+      "date": "2026-09-12",
+      "opp": "Lindenwood",
+      "site": "H",
+      "result": "W 48-14",
+      "rec": 5,
+      "yds": 155,
+      "td": 1
+     },
+     {
+      "date": "2026-09-19",
+      "opp": "Marshall",
+      "site": "H",
+      "result": "L 24-30",
+      "rec": 7,
+      "yds": 141,
+      "td": 0
+     },
+     {
+      "date": "2026-09-26",
+      "opp": "SMU",
+      "site": "A",
+      "result": "L 24-34",
+      "rec": 5,
+      "yds": 46,
+      "td": 1
+     },
+     {
+      "date": "2026-10-08",
+      "opp": "Western Kentucky",
+      "site": "A",
+      "result": "L 13-34",
+      "rec": 3,
+      "yds": 77,
+      "td": 1
+     },
+     {
+      "date": "2026-10-14",
+      "opp": "Kennesaw State",
+      "site": "H",
+      "result": "W 24-21",
+      "rec": 7,
+      "yds": 135,
+      "td": 2
+     }
+    ]
+   },
    "231-1127378": {
     "name": "Maguire Anderson",
     "team": "FIU",
@@ -9272,74 +9440,6 @@
      }
     ]
    },
-   "559-2001503": {
-    "name": "Asaad Waseem",
-    "team": "Purdue",
-    "pos": "WR",
-    "line": {
-     "g": 6,
-     "rec": 29,
-     "yds": 472,
-     "td": 1
-    },
-    "url": "https://cfbstats.com/2026/player/559/2001503/receiving/gamelog.html",
-    "games": [
-     {
-      "date": "2026-09-04",
-      "opp": "Indiana State",
-      "site": "H",
-      "result": "W 44-19",
-      "rec": 6,
-      "yds": 107,
-      "td": 1
-     },
-     {
-      "date": "2026-09-12",
-      "opp": "Wake Forest",
-      "site": "H",
-      "result": "L 36-38",
-      "rec": 6,
-      "yds": 65,
-      "td": 0
-     },
-     {
-      "date": "2026-09-19",
-      "opp": "UCLA",
-      "site": "A",
-      "result": "L 38-52",
-      "rec": 8,
-      "yds": 149,
-      "td": 0
-     },
-     {
-      "date": "2026-09-26",
-      "opp": "Notre Dame",
-      "site": "H",
-      "result": "L 10-49",
-      "rec": 4,
-      "yds": 34,
-      "td": 0
-     },
-     {
-      "date": "2026-10-03",
-      "opp": "Illinois",
-      "site": "A",
-      "result": "W 24-17",
-      "rec": 3,
-      "yds": 98,
-      "td": 0
-     },
-     {
-      "date": "2026-10-10",
-      "opp": "Minnesota",
-      "site": "H",
-      "result": "W 41-13",
-      "rec": 2,
-      "yds": 19,
-      "td": 0
-     }
-    ]
-   },
    "756-50284098": {
     "name": "Dezmen Roebuck",
     "team": "Washington",
@@ -9472,6 +9572,83 @@
       "result": "L 20-25",
       "rec": 4,
       "yds": 58,
+      "td": 0
+     }
+    ]
+   },
+   "772-50287926": {
+    "name": "Jonathan Stafford Jr.",
+    "team": "Western Ky",
+    "pos": "WR",
+    "line": {
+     "g": 7,
+     "rec": 41,
+     "yds": 369,
+     "td": 1
+    },
+    "url": "https://cfbstats.com/2026/player/772/50287926/receiving/gamelog.html",
+    "games": [
+     {
+      "date": "2026-09-05",
+      "opp": "Nevada",
+      "site": "A",
+      "result": "L 14-49",
+      "rec": 5,
+      "yds": 48,
+      "td": 0
+     },
+     {
+      "date": "2026-09-12",
+      "opp": "Georgia",
+      "site": "A",
+      "result": "L 20-70",
+      "rec": 3,
+      "yds": 17,
+      "td": 0
+     },
+     {
+      "date": "2026-09-19",
+      "opp": "Indiana",
+      "site": "A",
+      "result": "L 0-38",
+      "rec": 6,
+      "yds": 27,
+      "td": 0
+     },
+     {
+      "date": "2026-09-26",
+      "opp": "Mercyhurst",
+      "site": "H",
+      "result": "W 52-7",
+      "rec": 6,
+      "yds": 60,
+      "td": 0
+     },
+     {
+      "date": "2026-10-01",
+      "opp": "New Mexico State",
+      "site": "A",
+      "result": "L 13-34",
+      "rec": 10,
+      "yds": 108,
+      "td": 0
+     },
+     {
+      "date": "2026-10-08",
+      "opp": "Missouri State",
+      "site": "H",
+      "result": "W 34-13",
+      "rec": 6,
+      "yds": 72,
+      "td": 1
+     },
+     {
+      "date": "2026-10-14",
+      "opp": "Sam Houston State",
+      "site": "A",
+      "result": "W 16-3",
+      "rec": 5,
+      "yds": 37,
       "td": 0
      }
     ]
@@ -10687,65 +10864,6 @@
      }
     ]
    },
-   "669-1238956": {
-    "name": "Isaiah Myers",
-    "team": "MO State",
-    "pos": "WR",
-    "line": {
-     "g": 5,
-     "rec": 20,
-     "yds": 419,
-     "td": 3
-    },
-    "url": "https://cfbstats.com/2026/player/669/1238956/receiving/gamelog.html",
-    "games": [
-     {
-      "date": "2026-09-05",
-      "opp": "Texas A&M",
-      "site": "A",
-      "result": "L 0-50",
-      "rec": 0,
-      "yds": 0,
-      "td": 0
-     },
-     {
-      "date": "2026-09-12",
-      "opp": "Lindenwood",
-      "site": "H",
-      "result": "W 48-14",
-      "rec": 5,
-      "yds": 155,
-      "td": 1
-     },
-     {
-      "date": "2026-09-19",
-      "opp": "Marshall",
-      "site": "H",
-      "result": "L 24-30",
-      "rec": 7,
-      "yds": 141,
-      "td": 0
-     },
-     {
-      "date": "2026-09-26",
-      "opp": "SMU",
-      "site": "A",
-      "result": "L 24-34",
-      "rec": 5,
-      "yds": 46,
-      "td": 1
-     },
-     {
-      "date": "2026-10-08",
-      "opp": "Western Kentucky",
-      "site": "A",
-      "result": "L 13-34",
-      "rec": 3,
-      "yds": 77,
-      "td": 1
-     }
-    ]
-   },
    "77-50323834": {
     "name": "Legend Glasker",
     "team": "BYU",
@@ -11637,6 +11755,6 @@
    }
   },
   "dropped": [],
-  "retrieved_at": "2026-10-15T01:42+00:00"
+  "retrieved_at": "2026-10-16T05:13+00:00"
  }
 }
