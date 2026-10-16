@@ -399,6 +399,51 @@ def build(root, as_of):
     return model
 
 
+def check_manifest(root, html):
+    """Problems with the web app manifest the page links, or [].
+
+    An installed app takes its name, colours and icons from the manifest, so a
+    broken link or a missing icon is an app with default chrome.  Pages serves
+    the repo root, so every path resolves against `root`.  theme_color must
+    match the page's theme-color meta tag, and both colours must appear in the
+    built page, so the manifest cannot drift from what the page paints."""
+    import re, struct
+    m = re.search(r'<link rel="manifest" href="([^"]+)">', html[:html.find("</head>")])
+    if not m:
+        return ["the page links no manifest"]
+    path = os.path.join(root, m.group(1))
+    try:
+        man = json.load(open(path, encoding="utf-8"))
+    except (OSError, ValueError) as exc:
+        return [f"{m.group(1)}: {exc}"]
+    out = []
+    for k in ("name", "short_name", "id", "start_url", "scope", "display", "theme_color", "background_color", "icons"):
+        if not man.get(k): out.append(f"{m.group(1)} has no {k}")
+    if man.get("display") != "standalone": out.append("display must be standalone")
+    meta = re.search(r'<meta name="theme-color" content="([^"]+)">', html)
+    if meta and man.get("theme_color", "").lower() != meta.group(1).lower():
+        out.append(f"theme_color {man.get('theme_color')} differs from the page's theme-color {meta.group(1)}")
+    for k in ("theme_color", "background_color"):
+        if man.get(k) and man[k].lower() not in html.lower():
+            out.append(f"{k} {man[k]} does not appear in the page")
+    have = set()
+    for icon in man.get("icons") or []:
+        ip = os.path.join(os.path.dirname(path), icon.get("src", ""))
+        try:
+            with open(ip, "rb") as f: head = f.read(24)
+        except OSError:
+            out.append(f"icon {icon.get('src')} is missing"); continue
+        if head[:8] != b"\x89PNG\r\n\x1a\n":
+            out.append(f"icon {icon.get('src')} is not a PNG"); continue
+        w, h = struct.unpack(">II", head[16:24])
+        if icon.get("sizes") != f"{w}x{h}":
+            out.append(f"icon {icon.get('src')} is {w}x{h} but declared {icon.get('sizes')}")
+        have.add((icon.get("purpose", "any"), w))
+    for need in (("any", 192), ("any", 512), ("maskable", 512)):
+        if need not in have: out.append(f"no {need[1]}px icon with purpose {need[0]}")
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--root", default=os.path.dirname(os.path.abspath(__file__)))
@@ -436,6 +481,7 @@ def main():
                 '<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">'
                 '<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">'
                 '<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">'
+                '<link rel="manifest" href="manifest.webmanifest">'
                 '<meta name="theme-color" content="#990000">'
                 f'<meta property="og:title" content="{og_title}">'
                 f'<meta property="og:description" content="{og_desc}">'
@@ -444,6 +490,12 @@ def main():
                 '<meta name="twitter:card" content="summary_large_image">'
                 '<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>'
                 '</head><body>\n' + html + '\n</body></html>\n')
+    if a.standalone:
+        problems = check_manifest(a.root, html)
+        if problems:
+            print("VALIDATION FAILED - web app manifest:", file=sys.stderr)
+            for p in problems: print("  -", p, file=sys.stderr)
+            sys.exit(1)
     tmp = a.out + ".tmp"
     open(tmp, "w").write(html)
     os.replace(tmp, a.out)

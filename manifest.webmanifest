@@ -1,0 +1,16 @@
+{
+  "name": "IU Football Report",
+  "short_name": "IU Football",
+  "description": "Indiana football against the earlier Cignetti-era teams, game for game: quarterbacks, running backs, receivers and the team.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#111216",
+  "theme_color": "#990000",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
