@@ -1,7 +1,7 @@
 {
  "rb": {
   "latest": {
-   "data_through": "2026-10-14",
+   "data_through": "2026-10-16",
    "boards": {
     "yds": {
      "label": "Rushing yards",
@@ -10,43 +10,43 @@
      "top": [
       {
        "rank": 1,
+       "name": "Torrance Burgess Jr.",
+       "team": "Texas St",
+       "g": 6,
+       "value": 838.0
+      },
+      {
+       "rank": 2,
        "name": "Dylan Riley",
        "team": "Boise St",
        "g": 6,
        "value": 835.0
       },
       {
-       "rank": 2,
+       "rank": 3,
        "name": "Jamal Roberts",
        "team": "Missouri",
        "g": 6,
        "value": 828.0
       },
       {
-       "rank": 3,
+       "rank": 4,
        "name": "Cam Cook",
        "team": "WVU",
        "g": 6,
        "value": 793.0
       },
       {
-       "rank": 4,
-       "name": "Nate Sheppard",
-       "team": "Duke",
-       "g": 5,
-       "value": 743.0
-      },
-      {
        "rank": 5,
-       "name": "Jahiem White",
-       "team": "North Texas",
-       "g": 6,
-       "value": 687.0
+       "name": "Jaylin Carter",
+       "team": "Memphis",
+       "g": 7,
+       "value": 780.0
       }
      ],
      "players": {
       "Lee Beebe Jr.": {
-       "rank": 19,
+       "rank": 20,
        "value": 551.0,
        "g": 6
       },
@@ -101,18 +101,18 @@
        "rank": 5,
        "name": "Fame Ijeboi",
        "team": "Purdue",
-       "g": 6,
+       "g": 7,
        "value": 9.0
       }
      ],
      "players": {
       "Lee Beebe Jr.": {
-       "rank": 64,
+       "rank": 67,
        "value": 4.0,
        "g": 6
       },
       "Turbo Richard": {
-       "rank": 39,
+       "rank": 41,
        "value": 5.0,
        "g": 6
       }
@@ -132,36 +132,36 @@
       },
       {
        "rank": 2,
-       "name": "Maurice Turner",
-       "team": "Tulane",
-       "g": 4,
-       "value": 10.65
-      },
-      {
-       "rank": 3,
        "name": "Samari Howard",
        "team": "Army",
        "g": 5,
        "value": 10.48
       },
       {
-       "rank": 4,
-       "name": "Mel Brown",
-       "team": "Colorado State",
-       "g": 5,
-       "value": 9.98
-      },
-      {
-       "rank": 5,
+       "rank": 3,
        "name": "Jaylon Coleman",
        "team": "Liberty",
        "g": 6,
        "value": 9.92
+      },
+      {
+       "rank": 4,
+       "name": "Antwan Roberts Jr.",
+       "team": "Arizona",
+       "g": 5,
+       "value": 9.78
+      },
+      {
+       "rank": 5,
+       "name": "Cardae Mack",
+       "team": "Arizona State",
+       "g": 5,
+       "value": 9.73
       }
      ],
      "players": {
       "Turbo Richard": {
-       "rank": 12,
+       "rank": 11,
        "value": 8.41,
        "g": 6
       }
@@ -181,31 +181,31 @@
       },
       {
        "rank": 2,
+       "name": "Torrance Burgess Jr.",
+       "team": "Texas St",
+       "g": 6,
+       "value": 139.67
+      },
+      {
+       "rank": 3,
        "name": "Dylan Riley",
        "team": "Boise St",
        "g": 6,
        "value": 139.17
       },
       {
-       "rank": 3,
+       "rank": 4,
        "name": "Jamal Roberts",
        "team": "Missouri",
        "g": 6,
        "value": 138.0
       },
       {
-       "rank": 4,
+       "rank": 5,
        "name": "Cam Cook",
        "team": "WVU",
        "g": 6,
        "value": 132.17
-      },
-      {
-       "rank": 5,
-       "name": "Torrance Burgess Jr.",
-       "team": "Texas St",
-       "g": 5,
-       "value": 122.8
       }
      ],
      "players": {
@@ -226,7 +226,7 @@
     "Lee Beebe Jr.",
     "Turbo Richard"
    ],
-   "retrieved_at": "2026-10-16T05:13+00:00"
+   "retrieved_at": "2026-10-17T21:59+00:00"
   },
   "rank_history": [
    {
@@ -247,18 +247,18 @@
     }
    },
    {
-    "through": "2026-10-14",
+    "through": "2026-10-16",
     "ranks": {
      "Lee Beebe Jr.": {
-      "yds": 19,
-      "td": 64,
+      "yds": 20,
+      "td": 67,
       "ypc": null,
       "ypg": 28
      },
      "Turbo Richard": {
       "yds": 14,
-      "td": 39,
-      "ypc": 12,
+      "td": 41,
+      "ypc": 11,
       "ypg": 21
      }
     }
@@ -267,7 +267,7 @@
  },
  "wr": {
   "latest": {
-   "data_through": "2026-10-14",
+   "data_through": "2026-10-16",
    "boards": {
     "rec": {
      "label": "Receptions",
@@ -289,35 +289,35 @@
        "value": 48.0
       },
       {
-       "rank": 3,
+       "rank": 2,
+       "name": "Dezmen Roebuck",
+       "team": "Washington",
+       "g": 7,
+       "value": 48.0
+      },
+      {
+       "rank": 4,
        "name": "Collin Dixon",
        "team": "Illinois",
        "g": 6,
        "value": 47.0
       },
       {
-       "rank": 4,
+       "rank": 5,
        "name": "Chris Durr Jr.",
        "team": "Maryland",
        "g": 6,
        "value": 46.0
-      },
-      {
-       "rank": 5,
-       "name": "Dezmen Roebuck",
-       "team": "Washington",
-       "g": 6,
-       "value": 43.0
       }
      ],
      "players": {
       "Charlie Becker": {
-       "rank": 40,
+       "rank": 43,
        "value": 30.0,
        "g": 6
       },
       "Nick Marsh": {
-       "rank": 42,
+       "rank": 45,
        "value": 29.0,
        "g": 6
       }
@@ -366,12 +366,12 @@
      ],
      "players": {
       "Charlie Becker": {
-       "rank": 14,
+       "rank": 15,
        "value": 529.0,
        "g": 6
       },
       "Nick Marsh": {
-       "rank": 16,
+       "rank": 17,
        "value": 528.0,
        "g": 6
       }
@@ -466,17 +466,17 @@
       },
       {
        "rank": 4,
+       "name": "Colton Hinton",
+       "team": "Coastal Carolina",
+       "g": 6,
+       "value": 22.85
+      },
+      {
+       "rank": 5,
        "name": "TK Keyes",
        "team": "Troy",
        "g": 5,
        "value": 22.5
-      },
-      {
-       "rank": 5,
-       "name": "Colton Hinton",
-       "team": "Coastal Carolina",
-       "g": 5,
-       "value": 22.0
       }
      ],
      "players": {
@@ -486,7 +486,7 @@
        "g": 6
       },
       "Nick Marsh": {
-       "rank": 31,
+       "rank": 32,
        "value": 18.21,
        "g": 6
       }
@@ -551,7 +551,7 @@
     "Charlie Becker",
     "Nick Marsh"
    ],
-   "retrieved_at": "2026-10-16T05:13+00:00"
+   "retrieved_at": "2026-10-17T21:59+00:00"
   },
   "rank_history": [
    {
@@ -574,20 +574,20 @@
     }
    },
    {
-    "through": "2026-10-14",
+    "through": "2026-10-16",
     "ranks": {
      "Charlie Becker": {
-      "rec": 40,
-      "yds": 14,
+      "rec": 43,
+      "yds": 15,
       "td": 4,
       "ypr": 43,
       "ypg": 22
      },
      "Nick Marsh": {
-      "rec": 42,
-      "yds": 16,
+      "rec": 45,
+      "yds": 17,
       "td": 7,
-      "ypr": 31,
+      "ypr": 32,
       "ypg": 24
      }
     }

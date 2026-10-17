@@ -3,7 +3,7 @@
  "source": "cfbstats.com national player leaders, passing, all games (FBS)",
  "qualifier_note": "Completion %, passer rating and yards per attempt require 15 pass attempts per game played and 75% of team games (cfbstats/NCAA rule). Yards and TD have no qualifier.",
  "latest": {
-  "data_through": "2026-10-14",
+  "data_through": "2026-10-16",
   "boards": {
    "yds": {
     "rows": [
@@ -41,29 +41,29 @@
       "src_rating": 172.43
      },
      {
-      "name": "Julian Sayin",
-      "team": "Ohio State",
-      "g": 6,
-      "cmp": 116,
-      "att": 163,
-      "yds": 1772,
-      "td": 17,
-      "int": 2,
-      "src_rating": 194.46
+      "name": "Marcus Stokes",
+      "team": "Memphis",
+      "g": 7,
+      "cmp": 121,
+      "att": 181,
+      "yds": 1841,
+      "td": 18,
+      "int": 6,
+      "src_rating": 178.48
      },
      {
-      "name": "Noah Fifita",
-      "team": "Arizona",
-      "g": 6,
-      "cmp": 140,
-      "att": 191,
-      "yds": 1756,
-      "td": 16,
-      "int": 4,
-      "src_rating": 173.98
+      "name": "Ryan Browne",
+      "team": "Purdue",
+      "g": 7,
+      "cmp": 145,
+      "att": 221,
+      "yds": 1822,
+      "td": 10,
+      "int": 3,
+      "src_rating": 147.08
      }
     ],
-    "hoover_rank": 39,
+    "hoover_rank": 42,
     "label": "Passing yards",
     "source_url": "https://cfbstats.com/2026/leader/national/player/split01/category02/sort08.html"
    },
@@ -90,6 +90,17 @@
       "td": 18,
       "int": 3,
       "src_rating": 168.38
+     },
+     {
+      "name": "Marcus Stokes",
+      "team": "Memphis",
+      "g": 7,
+      "cmp": 121,
+      "att": 181,
+      "yds": 1841,
+      "td": 18,
+      "int": 6,
+      "src_rating": 178.48
      },
      {
       "name": "Julian Sayin",
@@ -125,7 +136,7 @@
       "src_rating": 200.53
      }
     ],
-    "hoover_rank": 3,
+    "hoover_rank": 4,
     "label": "Passing TD",
     "source_url": "https://cfbstats.com/2026/leader/national/player/split01/category02/sort10.html"
    },
@@ -187,7 +198,7 @@
       "src_rating": 161.0
      }
     ],
-    "hoover_rank": 31,
+    "hoover_rank": 29,
     "label": "Completion %",
     "source_url": "https://cfbstats.com/2026/leader/national/player/split01/category02/sort03.html",
     "qualified": true
@@ -239,15 +250,15 @@
       "src_rating": 194.46
      },
      {
-      "name": "Marcus Stokes",
-      "team": "Memphis",
+      "name": "CJ Carr",
+      "team": "Notre Dame",
       "g": 6,
-      "cmp": 101,
+      "cmp": 102,
       "att": 144,
-      "yds": 1535,
+      "yds": 1378,
       "td": 16,
-      "int": 3,
-      "src_rating": 192.18
+      "int": 1,
+      "src_rating": 186.49
      }
     ],
     "hoover_rank": 2,
@@ -278,17 +289,6 @@
       "td": 15,
       "int": 0,
       "src_rating": 212.25
-     },
-     {
-      "name": "Marcus Stokes",
-      "team": "Memphis",
-      "g": 6,
-      "cmp": 101,
-      "att": 144,
-      "yds": 1535,
-      "td": 16,
-      "int": 3,
-      "src_rating": 192.18
      },
      {
       "name": "Josh Hoover",
@@ -324,7 +324,7 @@
       "src_rating": 198.57
      }
     ],
-    "hoover_rank": 4,
+    "hoover_rank": 3,
     "label": "Yards per attempt",
     "source_url": "https://cfbstats.com/2026/leader/national/player/split01/category02/sort04.html",
     "qualified": true
@@ -341,7 +341,7 @@
    "int": 0,
    "src_rating": 200.53
   },
-  "retrieved_at": "2026-10-16T05:13+00:00"
+  "retrieved_at": "2026-10-17T21:59+00:00"
  },
  "rank_history": [
   {
@@ -386,14 +386,14 @@
    }
   },
   {
-   "through": "2026-10-14",
+   "through": "2026-10-16",
    "games": 6,
    "ranks": {
-    "yds": 39,
-    "td": 3,
-    "pct": 31,
+    "yds": 42,
+    "td": 4,
+    "pct": 29,
     "rating": 2,
-    "ypa": 4
+    "ypa": 3
    }
   }
  ]

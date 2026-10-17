@@ -3758,12 +3758,103 @@
          "td": 0
         }
        ]
+      },
+      {
+       "event": "401858488",
+       "date": "2026-10-17",
+       "opp": "Ohio State",
+       "opp_id": "194",
+       "site": "H",
+       "pf": 15,
+       "pa": 19,
+       "result": "L 15-19",
+       "total_yds": 369,
+       "rush_yds": 73,
+       "pass_yds": 296,
+       "to_lost": 2,
+       "to_gained": 2,
+       "third_conv": 8,
+       "third_att": 16,
+       "rush": [
+        {
+         "id": "5146724",
+         "name": "Turbo Richard",
+         "n": 16,
+         "yds": 46,
+         "td": 1
+        },
+        {
+         "id": "5091725",
+         "name": "Lee Beebe Jr.",
+         "n": 9,
+         "yds": 24,
+         "td": 0
+        },
+        {
+         "id": "4685401",
+         "name": "Josh Hoover",
+         "n": 4,
+         "yds": 3,
+         "td": 0
+        }
+       ],
+       "rec": [
+        {
+         "id": "5146735",
+         "name": "Charlie Becker",
+         "n": 9,
+         "yds": 165,
+         "td": 0
+        },
+        {
+         "id": "5079600",
+         "name": "Nick Marsh",
+         "n": 3,
+         "yds": 57,
+         "td": 1
+        },
+        {
+         "id": "5205460",
+         "name": "Davion Chandler",
+         "n": 2,
+         "yds": 32,
+         "td": 0
+        },
+        {
+         "id": "4685464",
+         "name": "Tyler Morris",
+         "n": 3,
+         "yds": 26,
+         "td": 0
+        },
+        {
+         "id": "5142604",
+         "name": "Brock Schott",
+         "n": 1,
+         "yds": 8,
+         "td": 0
+        },
+        {
+         "id": "4685516",
+         "name": "Shazz Preston",
+         "n": 1,
+         "yds": 6,
+         "td": 0
+        },
+        {
+         "id": "5146724",
+         "name": "Turbo Richard",
+         "n": 1,
+         "yds": 2,
+         "td": 0
+        }
+       ]
       }
      ],
      "complete": false,
-     "retrieved_at": "2026-10-16T05:13+00:00",
-     "check": "cfbstats season totals matched through 2026-10-14",
-     "cfbstats_url": "https://cfbstats.com/2026/team/306/index.html"
+     "retrieved_at": "2026-10-17T21:59+00:00",
+     "check": "not cross-checked yet: cfbstats has 6 games through 2026-10-16, ESPN 7",
+     "cfbstats_url": null
     }
    }
   },
@@ -3876,8 +3967,8 @@
       }
      ],
      "complete": false,
-     "retrieved_at": "2026-10-16T05:13+00:00",
-     "check": "cfbstats season totals matched through 2026-10-14",
+     "retrieved_at": "2026-10-17T21:59+00:00",
+     "check": "cfbstats season totals matched through 2026-10-16",
      "cfbstats_url": "https://cfbstats.com/2026/team/257/index.html"
     }
    }
@@ -3991,8 +4082,8 @@
       }
      ],
      "complete": false,
-     "retrieved_at": "2026-10-16T05:13+00:00",
-     "check": "cfbstats season totals matched through 2026-10-14",
+     "retrieved_at": "2026-10-17T21:59+00:00",
+     "check": "cfbstats season totals matched through 2026-10-16",
      "cfbstats_url": "https://cfbstats.com/2026/team/513/index.html"
     }
    }
@@ -4089,8 +4180,8 @@
       }
      ],
      "complete": false,
-     "retrieved_at": "2026-10-16T05:13+00:00",
-     "check": "cfbstats season totals matched through 2026-10-14",
+     "retrieved_at": "2026-10-17T21:59+00:00",
+     "check": "cfbstats season totals matched through 2026-10-16",
      "cfbstats_url": "https://cfbstats.com/2026/team/415/index.html"
     }
    }
@@ -4201,12 +4292,29 @@
        "to_gained": 0,
        "third_conv": 5,
        "third_att": 13
+      },
+      {
+       "event": "401858488",
+       "date": "2026-10-17",
+       "opp": "Indiana",
+       "opp_id": "84",
+       "site": "A",
+       "pf": 19,
+       "pa": 15,
+       "result": "W 19-15",
+       "total_yds": 313,
+       "rush_yds": 78,
+       "pass_yds": 235,
+       "to_lost": 2,
+       "to_gained": 2,
+       "third_conv": 6,
+       "third_att": 15
       }
      ],
      "complete": false,
-     "retrieved_at": "2026-10-16T05:13+00:00",
-     "check": "cfbstats season totals matched through 2026-10-14",
-     "cfbstats_url": "https://cfbstats.com/2026/team/518/index.html"
+     "retrieved_at": "2026-10-17T21:59+00:00",
+     "check": "not cross-checked yet: cfbstats has 6 games through 2026-10-16, ESPN 7",
+     "cfbstats_url": null
     }
    }
   }
@@ -4265,6 +4373,6 @@
    }
   ],
   "source_url": "https://www.espn.com/college-football/rankings",
-  "retrieved_at": "2026-10-16T05:13+00:00"
+  "retrieved_at": "2026-10-17T21:59+00:00"
  }
 }

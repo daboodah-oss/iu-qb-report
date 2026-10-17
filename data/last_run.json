@@ -1,18 +1,21 @@
 {
- "at": "2026-10-16T01:13-04:00",
+ "at": "2026-10-17T17:59-04:00",
  "failed": [],
  "log": [
   "[schedule] 2026: 12 games, 6 played",
-  "[schedule] ESPN finals seen: 6, latest 2026-10-10 W 20-17",
-  "[games] next game kickoff: {'kickoff': '2026-10-17T12:00-04:00', 'tv': 'Fox'}",
-  "[team] Indiana 2026: 6 games; matches cfbstats through 2026-10-14",
-  "[team] Georgia 2026: 6 games; matches cfbstats through 2026-10-14",
-  "[team] Notre Dame 2026: 6 games; matches cfbstats through 2026-10-14",
-  "[team] Miami 2026: 5 games; matches cfbstats through 2026-10-14",
-  "[team] Ohio State 2026: 6 games; matches cfbstats through 2026-10-14",
-  "[natref] qb: 51 players stored (2 game logs fetched, 49 unchanged)",
-  "[natref] rb: 52 players stored (0 game logs fetched, 52 unchanged)",
-  "[natref] wr: 56 players stored (2 game logs fetched, 54 unchanged)",
+  "[schedule] ESPN finals seen: 7, latest 2026-10-17 L 15-19",
+  "[schedule] 2026-10-17 Ohio State: final from ESPN (L 15-19)",
+  "quick check: new final 2026-10-17 Ohio State L 15-19",
+  "[games] added Hoover 2026-10-17 Ohio State L 15-19",
+  "[games] next game kickoff: {'kickoff': '2026-10-24T12:00-04:00', 'tv': 'Fox'}",
+  "[team] Indiana 2026: 7 games; not cross-checked yet: cfbstats has 6 games through 2026-10-16, ESPN 7",
+  "[team] Georgia 2026: 6 games; matches cfbstats through 2026-10-16",
+  "[team] Notre Dame 2026: 6 games; matches cfbstats through 2026-10-16",
+  "[team] Miami 2026: 5 games; matches cfbstats through 2026-10-16",
+  "[team] Ohio State 2026: 7 games; not cross-checked yet: cfbstats has 6 games through 2026-10-16, ESPN 7",
+  "[natref] qb: 49 players stored (6 game logs fetched, 43 unchanged)",
+  "[natref] rb: 52 players stored (9 game logs fetched, 43 unchanged)",
+  "[natref] wr: 55 players stored (5 game logs fetched, 50 unchanged)",
   "FAILED sections: none"
  ]
 }

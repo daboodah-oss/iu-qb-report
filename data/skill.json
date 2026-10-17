@@ -66,21 +66,22 @@
       "att": 9,
       "yds": 31,
       "td": 0
+     },
+     {
+      "date": "2026-10-17",
+      "event": "401858488",
+      "opp": "Ohio State",
+      "site": "H",
+      "result": "L 15-19",
+      "att": 9,
+      "yds": 24,
+      "td": 0
      }
     ],
-    "cfbstats_row": {
-     "name": "Lee Beebe Jr.",
-     "pos": "RB",
-     "g": 6,
-     "att": 98,
-     "yds": 551,
-     "td": 4,
-     "cfb_id": "1179517"
-    },
-    "cfbstats_through": "2026-10-14",
+    "cfbstats_row": null,
+    "cfbstats_through": "2026-10-16",
     "cfbstats_url": "https://cfbstats.com/2026/team/306/rushing/index.html",
-    "chosen": "named in roster.json",
-    "check_diff": []
+    "chosen": "named in roster.json"
    },
    {
     "name": "Turbo Richard",
@@ -147,21 +148,22 @@
       "att": 8,
       "yds": 10,
       "td": 0
+     },
+     {
+      "date": "2026-10-17",
+      "event": "401858488",
+      "opp": "Ohio State",
+      "site": "H",
+      "result": "L 15-19",
+      "att": 16,
+      "yds": 46,
+      "td": 1
      }
     ],
-    "cfbstats_row": {
-     "name": "Turbo Richard",
-     "pos": "RB",
-     "g": 6,
-     "att": 71,
-     "yds": 597,
-     "td": 5,
-     "cfb_id": "50216801"
-    },
-    "cfbstats_through": "2026-10-14",
+    "cfbstats_row": null,
+    "cfbstats_through": "2026-10-16",
     "cfbstats_url": "https://cfbstats.com/2026/team/306/rushing/index.html",
-    "chosen": "named in roster.json",
-    "check_diff": []
+    "chosen": "named in roster.json"
    },
    {
     "name": "Roman Hemby",
@@ -828,7 +830,7 @@
     "check_diff": []
    }
   ],
-  "retrieved_at": "2026-10-16T05:13+00:00",
+  "retrieved_at": "2026-10-17T21:59+00:00",
   "rule": "Current season: players named in roster.json. Earlier seasons: Indiana's top 2 RB by rushing yards (cfbstats.com)."
  },
  "wr": {
@@ -898,21 +900,22 @@
       "rec": 3,
       "yds": 52,
       "td": 0
+     },
+     {
+      "date": "2026-10-17",
+      "event": "401858488",
+      "opp": "Ohio State",
+      "site": "H",
+      "result": "L 15-19",
+      "rec": 9,
+      "yds": 165,
+      "td": 0
      }
     ],
-    "cfbstats_row": {
-     "name": "Charlie Becker",
-     "pos": "WR",
-     "g": 6,
-     "rec": 30,
-     "yds": 529,
-     "td": 8,
-     "cfb_id": "50304327"
-    },
-    "cfbstats_through": "2026-10-14",
+    "cfbstats_row": null,
+    "cfbstats_through": "2026-10-16",
     "cfbstats_url": "https://cfbstats.com/2026/team/306/receiving/index.html",
-    "chosen": "named in roster.json",
-    "check_diff": []
+    "chosen": "named in roster.json"
    },
    {
     "name": "Nick Marsh",
@@ -979,21 +982,22 @@
       "rec": 6,
       "yds": 187,
       "td": 2
+     },
+     {
+      "date": "2026-10-17",
+      "event": "401858488",
+      "opp": "Ohio State",
+      "site": "H",
+      "result": "L 15-19",
+      "rec": 3,
+      "yds": 57,
+      "td": 1
      }
     ],
-    "cfbstats_row": {
-     "name": "Nick Marsh",
-     "pos": "WR",
-     "g": 6,
-     "rec": 29,
-     "yds": 528,
-     "td": 6,
-     "cfb_id": "50312177"
-    },
-    "cfbstats_through": "2026-10-14",
+    "cfbstats_row": null,
+    "cfbstats_through": "2026-10-16",
     "cfbstats_url": "https://cfbstats.com/2026/team/306/receiving/index.html",
-    "chosen": "named in roster.json",
-    "check_diff": []
+    "chosen": "named in roster.json"
    },
    {
     "name": "Omar Cooper Jr.",
@@ -1643,7 +1647,7 @@
     "check_diff": []
    }
   ],
-  "retrieved_at": "2026-10-16T05:13+00:00",
+  "retrieved_at": "2026-10-17T21:59+00:00",
   "rule": "Current season: players named in roster.json. Earlier seasons: Indiana's top 2 WR/TE by receiving yards (cfbstats.com)."
  }
 }
